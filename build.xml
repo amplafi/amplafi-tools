@@ -410,7 +410,7 @@
         <fail unless="maven-home" message="maven-home has not been set." />
         <fail message="tomcat ports are in use! stop any running instances of tomcat!" if="_tomcat-sockets-in-use" />
     </target>
-    <target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config,_james-config">
+    <target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config-opensource,_james-config">
     </target>
 
 
@@ -456,36 +456,7 @@
     </target>
 
     <!-- tomcat -->
-    <target name="_tomcat-dev-config" depends="_validate-tomcat,_unzip-tomcat,_create-tomcat-ROOT,_create-tomcat-config-files,_setup-tomcat-keystore,_test-tomcat-ports">
-        <!-- TODO: conf/server.xml has :
-                <Connector port="8080" maxHttpHeaderSize="8192"
-                   maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
-                For developers reduce minSpareThreads from 25 ==> 2
-                -->
-        <!-- (!!NOTE!!) amplafi ticket #345 - tom - Tue 30 Mar 2010
-                http://forums.sun.com/thread.jspa?messageID=4421914#4421914
-                need to modify this target with a new ant task to generate the conf/server.xml or conf/context.xml
-                    setting Manager pathname to nullstring should disable tomcat session persistence :
-                        <Manager pathname="" />
-                -->
-        <!-- (!!NOTE!!) amplafi ticket #2344 - tom - Tue 30 Mar 2010
-                http://tomcat.apache.org/tomcat-6.0-doc/ssl-howto.html
-                need to modify this target with the new ant task to generate the conf/server.xml
-                (tomcat will listen for secure TCP/IP connections, nominally on port 8443, ideally port-selectable)
-                    goals :
-                        use boolean ant property to select ssl/non-ssl on connector port
-                        use integer ant property to select number of threads
-                        make the ports used (note also target _test-tomcat-ports) ant properties as well
-                    (!!NOTE!!) I have generated a self-signed certificate via keytool (with amplafi company credentials)
-                            Pat : will amplafi be purchasing a CA signed certificate?
-                -->
-        <!-- (!!NOTE!!) - tom - Wed 31 Mar 2010
-                to permit configuration modifications in Tomcat 5 and above, <Context> should not be in server.xml
-                by removing dependencies from server.xml the webapp will be more portable (obviating tomcat restarts)
-                    http://tomcat.apache.org/tomcat-5.5-doc/config/context.html
-                    http://wiki.metawerx.net/wiki/Context.xml
-                -->
-    </target>
+	<target name="_tomcat-dev-config-opensource" depends="_validate-tomcat,_unzip-tomcat,_create-tomcat-ROOT"/>
     <target name="_validate-tomcat">
         <condition property="_tomcat_is_old">
             <not>
