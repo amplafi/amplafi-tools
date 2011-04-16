@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template autoinsert="false" context="methodbody_context" deleted="false" description="Code in created function stubs" enabled="true" id="org.eclipse.wst.jsdt.ui.text.codetemplates.methodbody" name="methodbody">${body_statement}</template></templates>

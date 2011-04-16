@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookmarks>
+   <site url="http://download.jboss.org/jbosstools/updates/stable" selected="true" name="Hibernate tools"/>
+   <site url="http://findbugs.cs.umd.edu/eclipse"selected="true" name="Findbugs" />
+   <site url="http://opensocial-development-environment.googlecode.com/svn/update-site/site.xml" selected="true" name="OpenSocial update site"/>
+   <site url="http://pydev.org/updates" selected="false" name="Python update site"/>
+   <site url="http://q4e.googlecode.com/svn/trunk/updatesite/" selected="false" name="Q4E update site"/>
+   <site url="http://download.scala-ide.org/update-current-35" selected="true" name="scala eclipse plugin"/>
+   <site url="http://dl.google.com/eclipse/plugin/3.5" selected="true" name="Google update site"/>
+   <site url="https://dl-ssl.google.com/android/eclipse/" selected="true" name="android"/>
+   <site url="http://subclipse.tigris.org/update_1.6.x" selected="true" name="Subclipse update site"/>
+   <site url="http://beust.com/eclipse" selected="true" name="TestNG"/>
+   <site url="http://www.yourkit.com/download/eclipse/3.4/" selected="false" name="YourKit update site"/>
+</bookmarks>
