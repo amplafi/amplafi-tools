@@ -9,19 +9,17 @@ Note: at the moment this document will have a unix slant.
 
 * **[A Github Account:](https://github.com/)**
    * Setup your machine to use github with their [instructions](http://help.github.com/set-up-git-redirect).
-   * [Fork](http://help.github.com/fork-a-repo/) the project that you will be working on to your github account.
-
 
 * **[Git 1.7+:](http://help.github.com/set-up-git-redirect)** the program git is needed for the initial download and install.
    * Check this is installed with this command.
-> git --version
+<pre> git --version</pre>
 
    * The ouput should say something like: git version 1.7.
    * Use the [instructions](http://help.github.com/set-up-git-redirect) if you need to set it up. If you get an error like: *Permission denied (publickey)*. Then you didn't properly follow the instructions, set up your SSH key now.
 
 * **[Java JDK 1.6+:](http://www.oracle.com/technetwork/java/javase/downloads/index.html)** this program is needed to run builds.
    * Check that this is installed with this command.
-> java -version
+<pre> java -version</pre>
 
    * The output should say something like: Java SE runtime build 1.6.
 * **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in.
@@ -35,31 +33,25 @@ Note: at the moment this document will have a unix slant.
 ## Cloning the amplafi-tools repository using git.##
 
 1. Run this command.
-> git clone https://github.com/amplafi/amplafi-tools.git
+<pre> git clone https://github.com/amplafi/amplafi-tools.git</pre>
 
 ## Starting the ant script.##
 
 1. cd into the amplafi-tools directory.
 2. run this command.
-> apache-ant-1.8.2/bin/ant opensource-one-time-setup
+<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup</pre>
 
 3. The console window will ask prompt for things so pay attention and answer the questions/promts.
 4. If the build fails then read the error and see if is something easy like github not being setup properly. Then fix that and rerun the command.
+<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup</pre>
 
 ## Change the origin and upstream for the project you are working on##
 
 Currently you have downloaded all of the opensource projects, but do not have write access. It is nessary at this point to modify your origin and upstream so that they point to the correct projects. In a nut shell the origin should point to your fork, and the upstream should point to the amplafi project.
 
-1. cd into the project directory (the project you are going to be making modifications on).
-2. Rename your origin remote to upstream with this command.
-> git remote rename origin upstream
-
-3. Add a new origin with this command. Note: username and forkname should be replaced with your information.
-> git remote add origin git@github:username/forkname
-
-4. Preform a fetch & push to place your fork onto github with these commands. 
-    git fetch origin
-    git push origin 
+1. cd into the amplafi-code directory
+2. Delete the directory you will be working on 
+3. Follow these [instructions](http://help.github.com/fork-a-repo/) to fork the project you will be working on and re-download the new fork.
 
 ##Setup the Eclipse workspace##
 Now that you have the opensource files it is time to add them to an Eclipse workspace.
@@ -76,7 +68,7 @@ Now that you have the opensource files it is time to add them to an Eclipse work
 10. Now, eclipse will take a moment and refresh and build the projects. When it completes you should see no errors (just warnings and tasks).
    * If you see errors, then close eclipse and:
       1. go to the command window and run this command again.
-> apache-ant-1.8.2/bin/ant opensource-one-time-setup
+<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup</pre>
 
       2. Open eclipse to the amplafi-code workspace.
       3. Select all of the projects on the left hand side and **press the F5 key** (This will force refresh).
