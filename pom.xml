@@ -3,7 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.amplafi</groupId>
+    <groupId>org.amplafi</groupId>
     <artifactId>amplafi-tools</artifactId>
     <version>0.9-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -14,11 +14,10 @@
     <licenses>
         <license>
             <name>Copyright 2010 by Amplafi</name>
-            <distribution>no distribution permitted</distribution>
+            <distribution>distribution permitted</distribution>
             <comments>
-                All code under the com.amplafi package structure is owned entirely by Amplafi. No
-                permission is granted to
-                distribute in any form the code under that package.
+                All code under the org.amplafi package structure is opensource.
+                TODO: what license is this under?
             </comments>
         </license>
     </licenses>
@@ -26,9 +25,6 @@
         <name>Amplafi</name>
         <url>http://amplafi.com</url>
     </organization>
-   <!--  <scm>
-        <developerConnection>scm:svn:${svn-base}/trunk/amplafi</developerConnection>
-    </scm>  -->
     <distributionManagement>
         <repository>
             <id>amplafi-tools</id>
@@ -1549,10 +1545,6 @@
                     <version>${maven-eclipse-plugin-build}</version>
                     <!-- eclipse:configure-workspace adds M2_REPO to eclipse -->
                     <!--
-                        mvn eclipse:eclipse must be run in the amplafi-common directory ( i.e. running mvn eclipse;* commands in
-                        the amplafi-core directory will not result in the correct .project .classpath files being created. )
-                    -->
-                    <!--
                         workspaceActiveCodeStyleProfileName Name of a profile in workspaceCodeStylesURL to activate. Default is
                         the first profile name in the code style file in workspaceCodeStylesURL
                     -->
@@ -1564,9 +1556,7 @@
                         <workspaceCodeStylesURL>file://${basedir}/../amplafi-tools/src/main/resources/eclipse/eclipse-java-formatting.xml</workspaceCodeStylesURL>
                         <workspaceCleanUpStylesURL>file://${basedir}/../amplafi-tools/src/main/resources/eclipse/eclipse-java-cleanup.xml</workspaceCleanUpStylesURL>
                         <workspaceImportOrderURL>file://${basedir}/../amplafi-tools/src/main/resources/eclipse/eclipse.importorder</workspaceImportOrderURL>
-<!--
-                        <workspaceTemplatesURL>file://${basedir}/../amplafi-common/src/main/resources/eclipse/eclipse-java-codetemplates.xml</workspaceTemplatesURL>
--->
+
                         <buildOutputDirectory>bin</buildOutputDirectory>
                     </configuration>
 
@@ -1754,7 +1744,7 @@
                             </goals>
                             <configuration>
                                 <files>
-                                    <file>../amplafi-common/pom.properties</file>
+                                    <file>../amplafi-tools/pom.properties</file>
                                 </files>
                             </configuration>
                         </execution>
@@ -1766,7 +1756,7 @@
                             </goals>
                             <configuration>
                                 <files>
-                                    <file>../amplafi-common/pom.properties</file>
+                                    <file>../amplafi-tools/pom.properties</file>
                                 </files>
                             </configuration>
                         </execution>                                
@@ -2075,12 +2065,6 @@
                 <defaultGoal>test</defaultGoal>
                 <plugins>
                     <plugin>
-                        <!--
-                            This still doesn't works for me. Refer
-                            http://www.mail-archive.com/users@maven.apache.org/msg59604.html and
-                            http://maven.apache.org/plugins/maven-surefire-plugin/test-mojo.html#test for details Usage example:
-                            mvn -Ptest -Dtest.name=com/amplafi/core/audit/processors/FileSaver
-                        -->
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
@@ -2135,13 +2119,12 @@
                 <module>../amplafi-flow-tapestry4</module>
                 <module>../jericho-html</module>
                 <module>../htmlcleaner</module>
-                <module>../amplafi-mailet</module>
             </modules>
         </profile>
         <profile>
             <!--
                 This profile is used to create eclipse projects that include all the amplafi code. This must be run in the
-                amplafi-common directory, not in a module directory. ( i.e. running mvn -PAll in the amplafi-core directory will
+                amplafi-tools directory, not in a module directory. ( i.e. running mvn -PAll in any other opensource directory will
                 not result in the correct .project .classpath files being created. )
             -->
             <id>All</id>
@@ -2174,7 +2157,7 @@
         <profile>
             <!--
                 This profile is used to create eclipse projects that include all the amplafi code. This must be run in the
-                amplafi-common directory, not in a module directory. ( i.e. running mvn -PMostlyAll in the amplafi-core directory will
+                amplafi-tools directory, not in a module directory. ( i.e. running mvn -PAll in any other opensource directory will
                 not result in the correct .project .classpath files being created. )
             -->
             <id>MostlyAll</id>
