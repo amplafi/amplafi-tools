@@ -6,34 +6,30 @@ source to work on the opensource projects.
 Note: at the moment this document will have a unix slant.
 
 
-1#Prerequisites:#
+#Prerequisites:#
 	* **[A Github Account:](https://github.com/)**
 		* Setup your machine to use github with their [instructions](http://help.github.com/set-up-git-redirect).
 		* [Fork](http://help.github.com/fork-a-repo/) the
 			project that you will be working on to your github account.
 		
 		
-	* <a href="http://help.github.com/set-up-git-redirect"><b>Git
-		1.7+:</b></a> the program git is needed for the initial download and install.
-		* Check this is installed by typing <b>git --version</b> in
+	* **[Git 1.7+:](http://help.github.com/set-up-git-redirect)** the program git is needed for the initial download and install.
+		* Check this is installed by typing **git --version** in
 			the console.
 		* The ouput should say something like: git version 1.7.
-		* Use the <a href="http://help.github.com/set-up-git-redirect">instructions</a>
-			if you need to set it up. If you get an error like: <i>Permission
-			denied (publickey)</i>. Then you didn't properly follow the instructions,
+		* Use the [instructions](http://help.github.com/set-up-git-redirect)
+			if you need to set it up. If you get an error like: *Permission
+			denied (publickey)*. Then you didn't properly follow the instructions,
 			set up your SSH key now.
 		
-	* <a
-			href="http://www.oracle.com/technetwork/java/javase/downloads/index.html"><b>Java
-		JDK 1.6+:</b></a> this program is needed to run builds.
-		* Check that this is installed by typing <b>java -version</b>
+	* **[Java JDK 1.6+:](http://www.oracle.com/technetwork/java/javase/downloads/index.html)** this program is needed to run builds.
+		* Check that this is installed by typing **java -version**
 			in the console.
 		* The output should say something like: Java SE runtime build
 			1.6.
-	* <a href="http://www.eclipse.org/downloads/"><b>Eclipse
-		latest download:</b></a> This is the tool you will be developing in.
-		*The "Eclipse IDE for Java EE Developers" is the tool you
-			need.</li>
+	* **[Eclipse latest download:](http://www.eclipse.org/downloads/) This is the tool you will be developing in.
+		* The "Eclipse IDE for Java EE Developers" is the tool you
+			need.
 
 	</ul>
 	</li>
