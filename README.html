@@ -18,14 +18,21 @@ Note: at the moment this document will have a unix slant.
 	<li>
 	<h2>Prerequisites:</h2>
 	<ul>
+		<li><a href="https://github.com/"><b>A Github Account:</b></a>
+		<ul>
+			<li>Setup your machine to use github with their <a
+				href="http://help.github.com/set-up-git-redirect">instructions</a>.</li>
+			<li><a href="http://help.github.com/fork-a-repo/">Fork</a> the
+			project that you will be working on to your github account.</li>
+		</ul>
+		</li>
 		<li><a href="http://help.github.com/set-up-git-redirect"><b>Git
 		1.7+:</b></a> the program git is needed for the initial download and install.
 		<ul>
 			<li>Check this is installed by typing <b>git --version</b> in
 			the console.</li>
 			<li>The ouput should say something like: git version 1.7.</li>
-			<li>Use the <a
-				hreaf="http://help.github.com/set-up-git-redirect">instructions</a>
+			<li>Use the <a href="http://help.github.com/set-up-git-redirect">instructions</a>
 			if you need to set it up. If you get an error like: <i>Permission
 			denied (publickey)</i>. Then you didn't properly follow the instructions,
 			set up your SSH key now.</li>
@@ -48,32 +55,37 @@ Note: at the moment this document will have a unix slant.
 			need.</li>
 		</ul>
 		</li>
+
 	</ul>
+	</li>
 	<li>
 	<h2>Creating the proper folder structure.</h2>
 	<ol>
 		<li>Find the place where you want the amplafi files and tools to
-		be placed.
-		<li>Create the amplafi-code directory.
+		be placed.</li>
+		<li>Create the amplafi-code directory.</li>
 	</ol>
+	</li>
 	<li>
 	<h2>Cloning the amplafi-tools repository using git.</h2>
 	<ol>
-		<li>Run this command #> <b>git clone
+		<li>Run this command #&gt; <b>git clone
 		https://github.com/amplafi/amplafi-tools.git</b>
 	</ol>
+	</li>
 	<li>
 	<h2>Starting the ant script.</h2>
 	<ol>
-		<li>cd into the amplafi-tools directory.
-		<li>run this command #> <b>apache-ant-1.8.2/bin/ant
-		opensource-one-time-setup</b>
+		<li>cd into the amplafi-tools directory.</li>
+		<li>run this command #&gt; <b>apache-ant-1.8.2/bin/ant
+		opensource-one-time-setup</b></li>
 		<li>The console window will ask prompt for things so pay
 		attention and answer the questions/promts.</li>
 		<li>If the build fails then read the error and see if is
 		something easy like github not being setup properly. Then fix that and
 		rerun the command.</li>
 	</ol>
+	</li>
 	<li>
 	<h2>Setup the Eclipse workspace.</h2>
 	Now that you have the opensource files it is time to add them to an
@@ -82,7 +94,7 @@ Note: at the moment this document will have a unix slant.
 		<li>Open eclipse and set your working directory to the
 		amplafi-code directory.</li>
 		<li>Go to the workbench.</li>
-		<li>use the menu <b>File>Import...</b></li>
+		<li>use the menu <b>File&gt;Import...</b></li>
 		<li>open the General folder (with the + sign or arrow) and select
 		<b>Existing Projects Into Workspace</b>.</li>
 		<li>Hit the next button.</li>
@@ -97,12 +109,12 @@ Note: at the moment this document will have a unix slant.
 		and tasks).</li>
 		<li>If you see errors, then close eclipse and:
 		<ol>
-			<li>, go to the command window and run this command again #> <b>apache-ant-1.8.2/bin/ant
-			opensource-one-time-setup</b></li>
+			<li>, go to the command window and run this command again #&gt;
+			<b>apache-ant-1.8.2/bin/ant opensource-one-time-setup</b></li>
 			<li>Open eclipse to the amplafi-code workspace.</li>
 			<li>Select all of the projects on the left hand side and <b>press
 			the F5 key</b> (This will force the re).</li>
-			<li>Now use the menu <b>Projects>clean...</b></li>
+			<li>Now use the menu <b>Projects&gt;clean...</b></li>
 			<li>Choose <b>clean all projects</b>.</li>
 			<li>If the errors still don't go away after the rebuild then ask
 			for help.</li>
@@ -113,24 +125,24 @@ Note: at the moment this document will have a unix slant.
 	<li>
 	<h2>Configure Eclipse</h2>
 	The following files are located in the src/main/resources/eclipse/
-	directory.</li>
+	directory.
 	<ol>
 		<li>import the eclipse-java-codetemplates.xml
 		<ul>
-			<li>Use the menu <b>Window>Preferences> --- Java>Code
-			Style>Code Templates</b></li>
+			<li>Use the menu <b>Window&gt;Preferences&gt; ---
+			Java&gt;Code Style&gt;Code Templates</b></li>
 		</ul>
 		</li>
 		<li>import the eclipse-java-formatting.xml
 		<ul>
-			<li>Use the menu <b>Window>Preferences> --- Java>Code
-			Style>Formatter</b></li>
+			<li>Use the menu <b>Window&gt;Preferences&gt; ---
+			Java&gt;Code Style&gt;Formatter</b></li>
 		</ul>
 		</li>
 		<li>import the eclipse-java-cleanup.xml
 		<ul>
-			<li>Use the menu <b>Window>Preferences> --- Java>Code
-			Style>Clean Up</b></li>
+			<li>Use the menu <b>Window&gt;Preferences&gt; ---
+			Java&gt;Code Style&gt;Clean Up</b></li>
 		</ul>
 		</li>
 		<li>import the eclipse.bookmarks.xml
@@ -148,6 +160,7 @@ Note: at the moment this document will have a unix slant.
 		</li>
 	</ol>
 	</li>
+	<li>Fork</li>
 </ol>
 <br>
 Notes on progress:
