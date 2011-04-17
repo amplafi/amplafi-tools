@@ -6,8 +6,8 @@ source to work on the opensource projects.
 Note: at the moment this document will have a unix slant.
 
 
-#Prerequisites:#
-	* **[A Github Account:](https://github.com/)**
+Prerequisites:
+	* [A Github Account:](https://github.com/)
 		* Setup your machine to use github with their [instructions](http://help.github.com/set-up-git-redirect).
 		* [Fork](http://help.github.com/fork-a-repo/) the
 			project that you will be working on to your github account.
