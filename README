@@ -1,0 +1,167 @@
+Welcome to the Amplafi opensource tools project. The goal of this
+project is to get a user up and running with all of the needed tools and
+source to work on the opensource projects.
+<br>
+<br>
+Note: at the moment this document will have a unix slant.
+<br>
+<br>
+
+<ol>
+	<li>
+	<h2>Prerequisites:</h2>
+	<ul>
+		<li><a href="https://github.com/"><b>A Github Account:</b></a>
+		<ul>
+			<li>Setup your machine to use github with their <a
+				href="http://help.github.com/set-up-git-redirect">instructions</a>.</li>
+			<li><a href="http://help.github.com/fork-a-repo/">Fork</a> the
+			project that you will be working on to your github account.</li>
+		</ul>
+		</li>
+		<li><a href="http://help.github.com/set-up-git-redirect"><b>Git
+		1.7+:</b></a> the program git is needed for the initial download and install.
+		<ul>
+			<li>Check this is installed by typing <b>git --version</b> in
+			the console.</li>
+			<li>The ouput should say something like: git version 1.7.</li>
+			<li>Use the <a href="http://help.github.com/set-up-git-redirect">instructions</a>
+			if you need to set it up. If you get an error like: <i>Permission
+			denied (publickey)</i>. Then you didn't properly follow the instructions,
+			set up your SSH key now.</li>
+		</ul>
+		</li>
+		<li><a
+			href="http://www.oracle.com/technetwork/java/javase/downloads/index.html"><b>Java
+		JDK 1.6+:</b></a> this program is needed to run builds.
+		<ul>
+			<li>Check that this is installed by typing <b>java -version</b>
+			in the console.</li>
+			<li>The output should say something like: Java SE runtime build
+			1.6.</li>
+		</ul>
+		</li>
+		<li><a href="http://www.eclipse.org/downloads/"><b>Eclipse
+		latest download:</b></a> This is the tool you will be developing in.
+		<ul>
+			<li>The "Eclipse IDE for Java EE Developers" is the tool you
+			need.</li>
+		</ul>
+		</li>
+
+	</ul>
+	</li>
+	<li>
+	<h2>Creating the proper folder structure.</h2>
+	<ol>
+		<li>Find the place where you want the amplafi files and tools to
+		be placed.</li>
+		<li>Create the amplafi-code directory.</li>
+	</ol>
+	</li>
+	<li>
+	<h2>Cloning the amplafi-tools repository using git.</h2>
+	<ol>
+		<li>Run this command #&gt; <b>git clone
+		https://github.com/amplafi/amplafi-tools.git</b>
+	</ol>
+	</li>
+	<li>
+	<h2>Starting the ant script.</h2>
+	<ol>
+		<li>cd into the amplafi-tools directory.</li>
+		<li>run this command #&gt; <b>apache-ant-1.8.2/bin/ant
+		opensource-one-time-setup</b></li>
+		<li>The console window will ask prompt for things so pay
+		attention and answer the questions/promts.</li>
+		<li>If the build fails then read the error and see if is
+		something easy like github not being setup properly. Then fix that and
+		rerun the command.</li>
+	</ol>
+	</li>
+	<li>
+	<h2>Setup the Eclipse workspace.</h2>
+	Now that you have the opensource files it is time to add them to an
+	Eclipse workspace.
+	<ol>
+		<li>Open eclipse and set your working directory to the
+		amplafi-code directory.</li>
+		<li>Go to the workbench.</li>
+		<li>use the menu <b>File&gt;Import...</b></li>
+		<li>open the General folder (with the + sign or arrow) and select
+		<b>Existing Projects Into Workspace</b>.</li>
+		<li>Hit the next button.</li>
+		<li>On the option <b>Select root directory</b> hit the browse
+		button.</li>
+		<li>Choose the <b>amplafi-code</b> directory(and hit okay).</li>
+		<li>A list of projects should appear on the screen, and all of
+		them should be checked.</li>
+		<li>Now, hit <b>Finish</b>.</li>
+		<li>Now, eclipse will take a moment and refresh and build the
+		projects. When it completes you should see no errors (just warnings
+		and tasks).</li>
+		<li>If you see errors, then close eclipse and:
+		<ol>
+			<li>, go to the command window and run this command again #&gt;
+			<b>apache-ant-1.8.2/bin/ant opensource-one-time-setup</b></li>
+			<li>Open eclipse to the amplafi-code workspace.</li>
+			<li>Select all of the projects on the left hand side and <b>press
+			the F5 key</b> (This will force the re).</li>
+			<li>Now use the menu <b>Projects&gt;clean...</b></li>
+			<li>Choose <b>clean all projects</b>.</li>
+			<li>If the errors still don't go away after the rebuild then ask
+			for help.</li>
+		</ol>
+		</li>
+	</ol>
+	</li>
+	<li>
+	<h2>Configure Eclipse</h2>
+	The following files are located in the src/main/resources/eclipse/
+	directory.
+	<ol>
+		<li>import the eclipse-java-codetemplates.xml
+		<ul>
+			<li>Use the menu <b>Window&gt;Preferences&gt; ---
+			Java&gt;Code Style&gt;Code Templates</b></li>
+		</ul>
+		</li>
+		<li>import the eclipse-java-formatting.xml
+		<ul>
+			<li>Use the menu <b>Window&gt;Preferences&gt; ---
+			Java&gt;Code Style&gt;Formatter</b></li>
+		</ul>
+		</li>
+		<li>import the eclipse-java-cleanup.xml
+		<ul>
+			<li>Use the menu <b>Window&gt;Preferences&gt; ---
+			Java&gt;Code Style&gt;Clean Up</b></li>
+		</ul>
+		</li>
+		<li>import the eclipse.bookmarks.xml
+		<ul>
+			<li>TODO: how is this added? Is this needed for the opensource
+			code?</li>
+		</ul>
+		</li>
+
+		<li>import the eclipse.importorder
+		<ul>
+			<li>TODO: how is this added? Is this needed for the opensource
+			code?</li>
+		</ul>
+		</li>
+	</ol>
+	</li>
+	<li>Fork</li>
+</ol>
+<br>
+Notes on progress:
+<br>
+It would be nice if the workspace could be built with the formatters in
+place and all the user would have to do is direct eclipse to the
+workspace folder and viola projects added, formatters imported, and no
+eclipse configuration for the user.
+<br>
+It would also be nice if we could download some default plugins and drop
+them into eclipse.
