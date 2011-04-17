@@ -410,7 +410,7 @@
         <fail unless="maven-home" message="maven-home has not been set." />
         <fail message="tomcat ports are in use! stop any running instances of tomcat!" if="_tomcat-sockets-in-use" />
     </target>
-    <target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config-opensource,_james-config">
+    <target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config-opensource,_james-config-opensource">
     </target>
 
 
@@ -490,9 +490,7 @@
     </target>
 
     <!-- james -->
-    <target name="_james-config" depends="_validate-james,_unzip-james">
-        <!-- TODO: configure james mail server. Probably need to do this in amplafi-mailet because some config may be deploy time. -->
-    </target>
+    <target name="_james-config-opensource" depends="_validate-james,_unzip-james"/>
     <target name="_validate-james">
         <echo>Validating James exists: ${james-home}</echo>
         <condition property="_james_is_old">
