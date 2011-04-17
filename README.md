@@ -1,12 +1,11 @@
+# Amplafi Opensource Tools Project#
 Welcome to the Amplafi opensource tools project. The goal of this
 project is to get a user up and running with all of the needed tools and
 source to work on the opensource projects.
 
-
 Note: at the moment this document will have a unix slant.
 
-
-# Prerequisites:#
+## Prerequisites:##
 
 * **[A Github Account:](https://github.com/)**
    * Setup your machine to use github with their [instructions](http://help.github.com/set-up-git-redirect).
@@ -24,23 +23,23 @@ Note: at the moment this document will have a unix slant.
 * **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in.
    * The "Eclipse IDE for Java EE Developers" is the tool you need.
 
-# Creating the proper folder structure.#
+## Creating the proper folder structure.##
 
 1. Find the place where you want the amplafi files and tools to be placed.
 2. Create the amplafi-code directory.
 
-# Cloning the amplafi-tools repository using git.#
+## Cloning the amplafi-tools repository using git.##
 
 1. Run this command #> **git clone https://github.com/amplafi/amplafi-tools.git**
 
-# Starting the ant script.#
+## Starting the ant script.##
 
 1. cd into the amplafi-tools directory.
 2. run this command #> **apache-ant-1.8.2/bin/ant opensource-one-time-setup**
 3. The console window will ask prompt for things so pay attention and answer the questions/promts.
 4. If the build fails then read the error and see if is something easy like github not being setup properly. Then fix that and rerun the command.
 
-#Setup the Eclipse workspace#
+##Setup the Eclipse workspace##
 Now that you have the opensource files it is time to add them to an Eclipse workspace.
 	
 1. Open eclipse and set your working directory to the amplafi-code directory.
@@ -61,7 +60,7 @@ Now that you have the opensource files it is time to add them to an Eclipse work
       5. Choose **clean all projects**.
       6. If the errors still don't go away after the rebuild then ask for help.
 	
-# Configure Eclipse#
+## Configure Eclipse##
 	The following files are located in the src/main/resources/eclipse/
 	directory.
 
