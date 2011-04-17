@@ -1,53 +1,40 @@
 Welcome to the Amplafi opensource tools project. The goal of this
 project is to get a user up and running with all of the needed tools and
 source to work on the opensource projects.
-<br>
-<br>
-Note: at the moment this document will have a unix slant.
-<br>
-<br>
 
-<ol>
-	<li>
-	<h2>Prerequisites:</h2>
-	<ul>
-		<li><a href="https://github.com/"><b>A Github Account:</b></a>
-		<ul>
-			<li>Setup your machine to use github with their <a
-				href="http://help.github.com/set-up-git-redirect">instructions</a>.</li>
-			<li><a href="http://help.github.com/fork-a-repo/">Fork</a> the
-			project that you will be working on to your github account.</li>
-		</ul>
-		</li>
-		<li><a href="http://help.github.com/set-up-git-redirect"><b>Git
+
+Note: at the moment this document will have a unix slant.
+
+
+1.	#Prerequisites:#
+	* <a href="https://github.com/"><b>A Github Account:</b></a>
+		* Setup your machine to use github with their <a
+				href="http://help.github.com/set-up-git-redirect">instructions</a>.
+		* <a href="http://help.github.com/fork-a-repo/">Fork</a> the
+			project that you will be working on to your github account.
+		
+		
+	* <a href="http://help.github.com/set-up-git-redirect"><b>Git
 		1.7+:</b></a> the program git is needed for the initial download and install.
-		<ul>
-			<li>Check this is installed by typing <b>git --version</b> in
-			the console.</li>
-			<li>The ouput should say something like: git version 1.7.</li>
-			<li>Use the <a href="http://help.github.com/set-up-git-redirect">instructions</a>
+		* Check this is installed by typing <b>git --version</b> in
+			the console.
+		* The ouput should say something like: git version 1.7.
+		* Use the <a href="http://help.github.com/set-up-git-redirect">instructions</a>
 			if you need to set it up. If you get an error like: <i>Permission
 			denied (publickey)</i>. Then you didn't properly follow the instructions,
-			set up your SSH key now.</li>
-		</ul>
-		</li>
-		<li><a
+			set up your SSH key now.
+		
+	* <a
 			href="http://www.oracle.com/technetwork/java/javase/downloads/index.html"><b>Java
 		JDK 1.6+:</b></a> this program is needed to run builds.
-		<ul>
-			<li>Check that this is installed by typing <b>java -version</b>
-			in the console.</li>
-			<li>The output should say something like: Java SE runtime build
-			1.6.</li>
-		</ul>
-		</li>
-		<li><a href="http://www.eclipse.org/downloads/"><b>Eclipse
+		* Check that this is installed by typing <b>java -version</b>
+			in the console.
+		* The output should say something like: Java SE runtime build
+			1.6.
+	* <a href="http://www.eclipse.org/downloads/"><b>Eclipse
 		latest download:</b></a> This is the tool you will be developing in.
-		<ul>
-			<li>The "Eclipse IDE for Java EE Developers" is the tool you
+		*The "Eclipse IDE for Java EE Developers" is the tool you
 			need.</li>
-		</ul>
-		</li>
 
 	</ul>
 	</li>
