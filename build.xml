@@ -33,11 +33,7 @@
 		<format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
 	</tstamp>
 	<!-- TARGETS -->
-	<target name="_test" depends="">
-		<antcall target="_opensource-list-calls">
-			<param name="target-call" value="_get-dependencies-for-one-project" />
-			<param name="target-parameter" value="project-name" />
-		</antcall>
+	<target name="_test" depends="eclipse-setup-all-opensource">
 	</target>
 
 	<target name="help" description="HOW TO GET STARTED">
@@ -149,7 +145,16 @@
 	</target>
 	<!-- TODO: TIRIS: write this target-->
 	<target name="eclipse-setup-all-opensource">
-		<echo>Replace the eclipse-set-all target with one that doesn't use the All profile.</echo>
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_eclipse-setup-one-project" />
+			<param name="target-parameter" value="project-name" />
+		</antcall>
+	</target>
+	<target name="_eclipse-setup-one-project">
+		<fail unless="project-name"/>
+		<antcall target="eclipse-setup">
+			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
+		</antcall>
 	</target>
 
 
