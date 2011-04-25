@@ -122,8 +122,7 @@
 		<echo>TODO: verify that YOU are running latest eclipse!!!!!!</echo>
 		<!-- need to add "-Dfile.encoding=UTF-8" (no quotes) to eclipse.ini see: http://maven.apache.org/general.html#special-characters-site -->
 	</target>
-	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var,eclipse-init-workingsets">
-	</target>
+	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var"/>
 	<target name="eclipse-setup" depends="dependencies" description="Recreate the eclipse project files">
 		<echo>Copy the 'standard' eclipse configuration to where eclipse expects it</echo>
 		<echo>Ideally q4e would solve this problem :-P</echo>
@@ -159,12 +158,7 @@
 
 
 
-	<target name="eclipse-init-workingsets" description="Create the useful workingsets for searching amplafi code.">
-		<!-- not certain if this will work because there are id attributes in the working set elements -->
-		<echo>Creating working sets (maybe?) from ${eclipse-plugins-src-dir}/org.eclipse.ui.workbench/workingsets.xml</echo>
-		<copy todir="${eclipse-plugins-dir}/org.eclipse.ui.workbench" file="${eclipse-plugins-src-dir}/org.eclipse.ui.workbench/workingsets.xml">
-		</copy>
-	</target>
+
 
 
 	<target name="_eclipse-init-maven-var">
