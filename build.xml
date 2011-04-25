@@ -122,7 +122,7 @@
 		<echo>TODO: verify that YOU are running latest eclipse!!!!!!</echo>
 		<!-- need to add "-Dfile.encoding=UTF-8" (no quotes) to eclipse.ini see: http://maven.apache.org/general.html#special-characters-site -->
 	</target>
-	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var,_eclipse-init-java-debug-vars,eclipse-init-workingsets">
+	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var,eclipse-init-workingsets">
 	</target>
 	<target name="eclipse-setup" depends="dependencies" description="Recreate the eclipse project files">
 		<echo>Copy the 'standard' eclipse configuration to where eclipse expects it</echo>
@@ -143,7 +143,6 @@
         </copy>
             -->
 	</target>
-	<!-- TODO: TIRIS: write this target-->
 	<target name="eclipse-setup-all-opensource">
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="_eclipse-setup-one-project" />
@@ -159,20 +158,6 @@
 
 
 
-
-	<target name="_eclipse-init-java-debug-vars">
-		<!-- TODO test to see if the eclipse is the correct version -->
-		<!-- TODO do the variable substitution on tomcat-home ( needs to be fixed ) mem-size, others, but preferences has some wierd escaping needed ( look at : and ='s ) -->
-		<echo>creating some variables in ${eclipse-plugins-dir}/org.eclipse.core.runtime/.settings/org.eclipse.core.variables.prefs</echo>
-		<echo>You will need to fix the tomcat-home variable ( go to debug configurations )</echo>
-		<copy file="${eclipse-plugins-src-dir}/org.eclipse.core.runtime/_dot_.settings/org.eclipse.core.variables.prefs" tofile="${eclipse-plugins-dir}/org.eclipse.core.runtime/.settings/org.eclipse.core.variables.prefs" verbose="true">
-			<filterset>
-				<filter token="tomcat-home" value="${tomcat-home}" />
-			</filterset>
-		</copy>
-
-	</target>
-	<!-- should run _eclipse-init-java-debug-vars -->
 
 	<target name="eclipse-init-workingsets" description="Create the useful workingsets for searching amplafi code.">
 		<!-- not certain if this will work because there are id attributes in the working set elements -->
