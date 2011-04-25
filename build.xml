@@ -34,6 +34,9 @@
 	</tstamp>
 	<!-- TARGETS -->
 	<target name="_test" depends="">
+		<antcall target="_mvn-no-tests">
+			<param name="mvn-target" value="dependency:sources" />
+		</antcall>
 	</target>
 
 	<target name="help" description="HOW TO GET STARTED">
@@ -209,6 +212,7 @@
 			<param name="mvn-profile" value="${mvn-profile-all}" />
 		</antcall>
 	</target>
+	<!-- Maven's All profile does not exist for this project :(-->
 	<target name="dependencies-all" description="Like dependencies-all but force maven's All profile">
 		<antcall target="dependencies">
 			<param name="mvn-profile" value="${mvn-profile-all}" />
@@ -523,23 +527,13 @@
 	</target>
 
 	<!-- tomcat -->
-	<target name="_tomcat-dev-config-opensource" depends="_validate-tomcat,_unzip-tomcat,_create-tomcat-ROOT" />
+	<target name="_tomcat-dev-config-opensource" depends="_validate-tomcat,_unzip-tomcat" />
 	<target name="_validate-tomcat">
 		<condition property="_tomcat_is_old">
 			<not>
 				<available file="${tools-dir}/${tomcat-tool}" />
 			</not>
 		</condition>
-	</target>
-
-	<target name="_create-tomcat-ROOT">
-		<echo>Creating ${tomcat-config-dir}/ROOT.xml</echo>
-		<echoxml file="${tomcat-config-dir}/ROOT.xml">
-			<Context reloadable="true" docBase="${root-dir}/amplafi-web/src/main/webapp" workDir="${root-dir}/amplafi-tomcat-working" debug="99" privileged="true" antiResourceLocking="false" antiJARLocking="false">
-				<Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true" />
-			</Context>
-		</echoxml>
-		<move file="${tomcat-home}/webapps" tofile="${tomcat-home}/webapps-examples" failonerror="false" />
 	</target>
 	<target name="_unzip-tomcat" if="_tomcat_is_old">
 		<echo>Getting the correct version of tomcat.</echo>
@@ -597,6 +591,7 @@
 			<param name="tool" value="${maven-tool}" />
 			<param name="tool-executable" value="mvn" />
 		</antcall>
+		<!-- Theses are now stored in build.properties 
 		<antcall target="_write_to_env_settings">
 			<param name="__env-var" value="MAVEN_MEMORY_OPTS" />
 			<param name="__build.local-var" value="MAVEN_MEMORY_OPTS" />
@@ -605,12 +600,12 @@
 		<antcall target="_write_to_env_settings">
 			<param name="__env-var" value="MAVEN_OPTS" />
 			<param name="__env-value" value="${_env-var-before-env-ref}MAVEN_MEMORY_OPTS${_env-var-after-env-ref}" />
-		</antcall>
+		</antcall>-->
 	</target>
 
 	<!-- NOTE: targets below this line must use very old ant tasks as we may be using a very old version of ant (many linux distros are very behind) -->
 	<!-- ant -->
-	<target name="_ant-config" depends="_validate-ant,_unzip-ant">
+	<target name="_ant-config" depends="_validate-ant,_add-ant-path">
 		<!-- we don't check for the _dojo043-fix-config here because this runs when the user is first getting started -->
 	</target>
 	<target name="_fail-on-old-ant">
@@ -624,6 +619,21 @@
 			</not>
 		</condition>
 	</target>
+	<!-- Task writes the ant path to the env.settings file -->
+	<target name="_add-ant-path" unless="ant-is-on-path" depends="_is-ant-on-path">
+		<antcall target="_write_path_to_env_settings">
+			<param name="tool" value="${ant-tool}" />
+		</antcall>
+	</target>
+	<!-- determines if ant in the tools directory is on the environment path
+	Stores the answer in ${ant-is-on-path}--> 
+	<target name="_is-ant-on-path">
+		<property environment="test-env" />
+		<condition property="ant-is-on-path">
+			<contains string="${test-env.PATH}" substring="${tools-dir}${file.separator}${ant-tool}${file.separator}bin"/>
+		</condition>
+	</target>
+	
 	<!-- downloading/unziping ant should no longer be needed, since it should be in the amplafi-tools dir and pulled from the opensource repository-->
 	<target name="_unzip-ant" if="_ant_is_old">
 		<echo>Getting the correct version of ant. Once it is downloaded, you will need to rerun ant using the downloaded version of ant.</echo>
@@ -713,15 +723,18 @@
         ${__build.local-var}=${__env-value}</echo>
 	</target>
 	<target name="_write_path_to_env_settings">
+		<fail unless="tool" />
+		
+		<!-- This is stored in build.properties now 
 		<fail unless="_env-var" />
 		<antcall target="_write_to_env_settings">
 			<param name="__env-var" value="${_env-var}" />
 			<param name="__build.local-var" value="${_build.local-var}" />
 			<param name="__env-value" value="${tools-dir}${file.separator}${tool}" />
-		</antcall>
+		</antcall> -->
 		<antcall target="_write_to_env_settings">
 			<param name="__env-var" value="PATH" />
-			<param name="__env-value" value="${_env-var-before-env-ref}${_env-var}${_env-var-after-env-ref}${file.separator}bin${path.separator}${_env-var-before-env-ref}PATH${_env-var-after-env-ref}" />
+			<param name="__env-value" value="${tools-dir}${file.separator}${tool}${file.separator}bin${path.separator}${_env-var-before-env-ref}PATH${_env-var-after-env-ref}" />
 		</antcall>
 	</target>
 	<target name="_mvn">
