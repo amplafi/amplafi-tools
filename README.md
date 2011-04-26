@@ -94,6 +94,15 @@ directory.
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
 
+## Known Issues##
+
+* ant git-pull-all-opensource (git clone or pull) just hangs
+   * This is known to happen on Windows, the problem is that the home-dir/.gitconfig file has not yet been created. Check that the file is there. Run the 
+   <pre> git config --global user.name "Firstname Lastname"</pre>
+   command. This command is what initially creates the .gitconfig file. 
+* git keeps asking for the user to manually type in a password.
+   * This is know to happen on Windows and can be solved by installing an [ssh-agent](http://mah.everybody.org/docs/ssh).
+   
 Notes on progress:
 
 * It would be nice if the workspace could be built with the formatters in
