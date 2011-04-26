@@ -122,7 +122,7 @@
 		<echo>TODO: verify that YOU are running latest eclipse!!!!!!</echo>
 		<!-- need to add "-Dfile.encoding=UTF-8" (no quotes) to eclipse.ini see: http://maven.apache.org/general.html#special-characters-site -->
 	</target>
-	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var"/>
+	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var" />
 	<target name="eclipse-setup" depends="dependencies" description="Recreate the eclipse project files">
 		<echo>Copy the 'standard' eclipse configuration to where eclipse expects it</echo>
 		<echo>Ideally q4e would solve this problem :-P</echo>
@@ -149,7 +149,7 @@
 		</antcall>
 	</target>
 	<target name="_eclipse-setup-one-project">
-		<fail unless="project-name"/>
+		<fail unless="project-name" />
 		<antcall target="eclipse-setup">
 			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
 		</antcall>
@@ -157,7 +157,7 @@
 	<target name="_eclipse-init-maven-var">
 		<echo>Creating Eclipse variable (M2_REPO) to point to the maven repository.</echo>
 		<antcall target="_mvn-no-tests">
-			<param name="mvn-profile" value="-Declipse.workspace=${root-dir}"/>
+			<param name="mvn-profile" value="-Declipse.workspace=${root-dir}" />
 			<param name="mvn-target" value="eclipse:configure-workspace" />
 		</antcall>
 	</target>
@@ -174,9 +174,22 @@
 			<param name="mvn-target" value="clean" />
 		</antcall>
 	</target>
-	<!-- TODO: TIRIS: write this target-->
 	<target name="build-clean-all-opensource">
-		<echo>Replace the build-clean-all target with one that doesn't use the All profile.</echo>
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
+			<param name="target-parameter" value="project-name" />
+		</antcall>
+	</target>
+	<target name="_build-clean-for-one-project-using-maven">
+		<!-- TODO: Find a way to have maven calculate the dependencies of multiple projects and perform the clean install as a single build.
+				Calling clean install on maven projects one at a time is slow, 
+				because maven will clean build all of the dependencies as well.
+				There has to be a way to call maven once with all of the needed project information-->
+		<fail unless="project-name" />
+		<antcall target="_mvn-no-tests">
+			<param name="mvn-target" value="clean install" />
+			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
+		</antcall>
 	</target>
 
 	<!-- ============================================================================= -->
@@ -216,7 +229,11 @@
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-client" />
 		</antcall>
+		
 		<!-- amplafiphp -->
+		<echo>
+			WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
+		</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafiphp" />
 			<!-- this project is not on amplafi's profile-->
@@ -284,7 +301,7 @@
 	<target name="git-push-all" description="git commit/push all">
 		<!-- commit/push all from list. -->
 		<antcall target="_opensource-list-calls">
-			<param name="target-call" value="git-push"/>
+			<param name="target-call" value="git-push" />
 			<param name="target-parameter" value="project" />
 		</antcall>
 	</target>
@@ -308,7 +325,7 @@
 	</target>
 	<target name="git-diff-all" description="git diff all">
 		<antcall target="_opensource-list-calls">
-			<param name="target-call" value="git-diff"/>
+			<param name="target-call" value="git-diff" />
 			<param name="target-parameter" value="project" />
 		</antcall>
 	</target>
