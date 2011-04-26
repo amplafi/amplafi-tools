@@ -312,7 +312,7 @@
 		</antcall>
 	</target>
 
-	<target name="dependencies" description="Get the dependent libraries">
+	<target name="dependencies" description="Get the dependent libraries -Dmvn-profile needs to be set">
 		<echo>
             =============================================
             If this may take a looooooooooooong time if you have a slow connection
@@ -324,11 +324,7 @@
 			<param name="mvn-target" value="dependency:sources" />
 		</antcall>
 	</target>
-	<target name="update-source" description="Get the latest source code">
-		<antcall target="_mvn-no-tests">
-			<param name="mvn-target" value="scm:update-subprojects" />
-		</antcall>
-	</target>
+
 	<!-- git tasks-->
 	<!-- missing something on how to do push from eclipse -->
 	<target name="git-push-all" description="git commit and push all - This target needs a -Dm=&quot;reason for changes here&quot;">
@@ -338,7 +334,7 @@
 			<param name="target-parameter" value="project" />
 		</antcall>
 	</target>
-	<target name="git-push" description="git commit/push">
+	<target name="git-push" description="git commit/push -Dproject needs to be set">
 		<fail unless="project" />
 		<echo>${project}</echo>
 		<exec executable="${git-exec}" dir="${root-dir}/${project}">
@@ -362,7 +358,7 @@
 			<param name="target-parameter" value="project" />
 		</antcall>
 	</target>
-	<target name="git-diff" description="git diff">
+	<target name="git-diff" description="git diff -Dproject needs to be set">
 		<fail unless="project" />
 		<echo>${project}</echo>
 		<exec executable="${git-exec}" dir="${root-dir}/${project}">
