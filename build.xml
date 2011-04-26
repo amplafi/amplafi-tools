@@ -220,6 +220,24 @@
 	<target name="_opensource-list-calls">
 		<fail unless="target-call" />
 		<fail unless="target-parameter" />
+		<!-- amplafi-tools-->
+		<!-- The amplafi-tools project is not on the list because I don't know how ant will react when changing the build.xml file at the same time it is running. Like when performing a git-pull-all -->
+		
+		<!-- amplafiphp -->
+		<echo>
+			WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
+		</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafiphp" />
+			<!-- this project is not on amplafi's profile-->
+			<param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
+		</antcall>
+		<!-- p6spy project from patmoore's account -->
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="p6spy" />
+			<!-- this project is not on amplafi's profile-->
+			<param name="git-url" value="git@github.com:patmoore/p6spy.git" />
+		</antcall>
 		<!-- amplafi-android -->
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-android" />
@@ -239,22 +257,6 @@
 		<!-- amplafi-flow-client -->
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-client" />
-		</antcall>
-
-		<!-- amplafiphp -->
-		<echo>
-			WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
-		</echo>
-		<antcall target="${target-call}">
-			<param name="${target-parameter}" value="amplafiphp" />
-			<!-- this project is not on amplafi's profile-->
-			<param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
-		</antcall>
-		<!-- p6spy project from patmoore's account -->
-		<antcall target="${target-call}">
-			<param name="${target-parameter}" value="p6spy" />
-			<!-- this project is not on amplafi's profile-->
-			<param name="git-url" value="git@github.com:patmoore/p6spy.git" />
 		</antcall>
 		<!-- amplafi-flow-core -->
 		<antcall target="${target-call}">
@@ -309,7 +311,7 @@
 	</target>
 	<!-- git tasks-->
 	<!-- missing something on how to do push from eclipse -->
-	<target name="git-push-all" description="git commit/push all">
+	<target name="git-push-all" description="git commit and push all - This target needs a -Dm=&quot;reason for changes here&quot;">
 		<!-- commit/push all from list. -->
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="git-push" />
