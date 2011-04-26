@@ -91,6 +91,10 @@ directory.
 5. import the eclipse.importorder
    * TODO: how is this added? Is this needed for the opensource code?
 
+Reccomended Eclipse Plugins
+* [Findbugs](http://findbugs.sourceforge.net/)
+* [Testng](http://testng.org/doc/eclipse.html)
+
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
 
@@ -102,7 +106,7 @@ When you are satisfied with your changes you will have to send a pull request to
    command. This command is what initially creates the .gitconfig file. 
 * git keeps asking for the user to manually type in a password.
    * This is know to happen on Windows and can be solved by installing an [ssh-agent](http://mah.everybody.org/docs/ssh).
-   
+
 Notes on progress:
 
 * It would be nice if the workspace could be built with the formatters in
