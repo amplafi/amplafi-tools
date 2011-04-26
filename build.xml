@@ -48,12 +48,11 @@
             Run: "apache-ant-1.8.2/bin/ant -p" for other commands
         </echo>
 	</target>
-	<target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,pull-opensource,complete-one-time-config-opensource,build-clean-all-opensource">
+	<target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,pull-opensource,dependencies-all-opensource,complete-one-time-config-opensource,build-clean-all-opensource">
 	</target>
 	<target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,build-clean-all-opensource,eclipse-one-time-config-opensource">
 	</target>
-	<target name="pull-opensource" depends="scm-init-android,scm-pull-osparent,scm-pull-os-support,scm-pull-flow-clients,scm-pull-flow,scm-pull-modified-os,dependencies-all-opensource">
-	</target>
+	<target name="pull-opensource" depends="git-pull-all" />
 
 	<!-- support tasks-->
 	<target name="_configure_environment">
@@ -229,7 +228,7 @@
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-client" />
 		</antcall>
-		
+
 		<!-- amplafiphp -->
 		<echo>
 			WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
@@ -238,6 +237,12 @@
 			<param name="${target-parameter}" value="amplafiphp" />
 			<!-- this project is not on amplafi's profile-->
 			<param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
+		</antcall>
+		<!-- p6spy project from patmoore's account -->
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="p6spy" />
+			<!-- this project is not on amplafi's profile-->
+			<param name="git-url" value="git@github.com:patmoore/p6spy.git" />
 		</antcall>
 		<!-- amplafi-flow-core -->
 		<antcall target="${target-call}">
@@ -336,62 +341,6 @@
 			<arg value="diff" />
 		</exec>
 	</target>
-	<target name="scm-pull-osparent">
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-opensource-parent" />
-		</antcall>
-	</target>
-	<target name="scm-pull-os-support" depends="scm-pull-osparent" description="Pull os support libraries">
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-json" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-sworddance" />
-		</antcall>
-	</target>
-	<target name="scm-pull-flow" depends="scm-pull-osparent,scm-pull-os-support,scm-pull-flow-clients" description="Checkout all the amplafi-flow code.">
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-flow-core" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-flow-tapestry4" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-flow-tapestry5" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-hivemind" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-tapestry4-test" />
-		</antcall>
-	</target>
-	<target name="scm-init-android" description="check out the amplafi-android">
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-android" />
-		</antcall>
-	</target>
-	<target name="scm-pull-flow-clients" depends="scm-pull-osparent,scm-pull-os-support,scm-init-android" description="check out the amplafi-flow-client-projects">
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-flow-client" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
-			<param name="project" value="amplafiphp" />
-		</antcall>
-	</target>
-
-	<target name="scm-pull-modified-os" description="Checkout all the modified-opensource code.">
-		<antcall target="git-pull">
-			<param name="project" value="htmlcleaner" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="jericho-html" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-tapestry4-springsecurity" />
-		</antcall>
-	</target>
 	<!-- TODO: check to make sure git clone on existing directory o.k. prob should switch to _git-update if directory already exists -->
 	<target name="git-pull" description="git pull/clone -Dproject needs to be set">
 		<fail unless="project" />
@@ -438,16 +387,10 @@
         name = ...
     </echo>
 	</target>
-	<target name="git-pull-all" depends="scm-pull-flow,scm-pull-modified-os" description="git pull all github projects">
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-hivemind" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="project" value="amplafi-tapestry4-test" />
-		</antcall>
-		<antcall target="git-pull">
-			<param name="git-url" value="git@github.com:patmoore/p6spy.git" />
-			<param name="project" value="p6spy" />
+	<target name="git-pull-all" description="git pull all github projects">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="git-pull" />
+			<param name="target-parameter" value="project" />
 		</antcall>
 	</target>
 
