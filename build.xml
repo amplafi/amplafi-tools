@@ -48,9 +48,9 @@
             Run: "apache-ant-1.8.2/bin/ant -p" for other commands
         </echo>
 	</target>
-	<target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,pull-opensource,dependencies-all-opensource,complete-one-time-config-opensource,build-clean-all-opensource">
+	<target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,pull-opensource,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource">
 	</target>
-	<target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,build-clean-all-opensource,eclipse-one-time-config-opensource">
+	<target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,_build-clean-all-opensource,eclipse-one-time-config-opensource">
 	</target>
 	<target name="pull-opensource" depends="git-pull-all" />
 
@@ -177,7 +177,7 @@
 			<param name="mvn-target" value="clean" />
 		</antcall>
 	</target>
-	<target name="build-clean-all-opensource">
+	<target name="_build-clean-all-opensource">
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
 			<param name="target-parameter" value="project-name" />
