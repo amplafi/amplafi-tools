@@ -162,14 +162,18 @@
 	</target>
 	<target name="build-clean" depends="clean,build" description="clean,build">
 	</target>
-	<target name="build" description="Installs the projects in the maven repository. Does not run the tests.">
-		<antcall target="_mvn-no-tests">
+	<target name="build" description="Installs all of the opensource projects in the maven repository. Does not run the tests.">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
+			<param name="target-parameter" value="project-name" />
 			<param name="mvn-target" value="install" />
 		</antcall>
 	</target>
-	<target name="clean" description="Cleans the projects">
+	<target name="clean" description="Cleans the all of the opensource projects">
 		<echo>Cleaning project...</echo>
-		<antcall target="_mvn-no-tests">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
+			<param name="target-parameter" value="project-name" />
 			<param name="mvn-target" value="clean" />
 		</antcall>
 	</target>
@@ -177,6 +181,7 @@
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
 			<param name="target-parameter" value="project-name" />
+			<param name="mvn-target" value="clean install" />
 		</antcall>
 	</target>
 	<target name="_build-clean-for-one-project-using-maven">
@@ -185,8 +190,8 @@
 				because maven will clean build all of the dependencies as well.
 				There has to be a way to call maven once with all of the needed project information-->
 		<fail unless="project-name" />
+		<fail unless="mvn-target" message="Need to specify the target(s) (ex. clean)"/>
 		<antcall target="_mvn-no-tests">
-			<param name="mvn-target" value="clean install" />
 			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
 		</antcall>
 	</target>
