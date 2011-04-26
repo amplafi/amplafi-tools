@@ -154,16 +154,10 @@
 			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
 		</antcall>
 	</target>
-
-
-
-
-
-
-
 	<target name="_eclipse-init-maven-var">
 		<echo>Creating Eclipse variable (M2_REPO) to point to the maven repository.</echo>
 		<antcall target="_mvn-no-tests">
+			<param name="mvn-profile" value="-Declipse.workspace=${root-dir}"/>
 			<param name="mvn-target" value="eclipse:configure-workspace" />
 		</antcall>
 	</target>
