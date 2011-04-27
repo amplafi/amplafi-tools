@@ -33,7 +33,8 @@
 		<format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
 	</tstamp>
 	<!-- TARGETS -->
-	<target name="_test" depends="eclipse-setup-all-opensource">
+	<target name="_test">
+		<echo>Testing is running.</echo>
 	</target>
 
 	<target name="help" description="HOW TO GET STARTED">
@@ -232,81 +233,81 @@
 		<echo>
 			WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
 		</echo>
-		<echo>Calling ${target-parameter} for amplafiphp</echo>
+		<echo>Calling ${target-call} for amplafiphp</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafiphp" />
 			<!-- this project is not on amplafi's profile-->
 			<param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
 		</antcall>
 		<!-- p6spy project from patmoore's account -->
-		<echo>Calling ${target-parameter} for p6spy</echo>
+		<echo>Calling ${target-call} for p6spy</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="p6spy" />
 			<!-- this project is not on amplafi's profile-->
 			<param name="git-url" value="git@github.com:patmoore/p6spy.git" />
 		</antcall>
 		<!-- amplafi-android -->
-		<echo>Calling ${target-parameter} for amplafi-android</echo>
+		<echo>Calling ${target-call} for amplafi-android</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-android" />
 		</antcall>
 		<!-- amplafi-opensource-parent -->
-		<echo>Calling ${target-parameter} for amplafi-opensource-parent</echo>
+		<echo>Calling ${target-call} for amplafi-opensource-parent</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-opensource-parent" />
 		</antcall>
 		<!-- amplafi-json -->
-		<echo>Calling ${target-parameter} for amplafi-json</echo>
+		<echo>Calling ${target-call} for amplafi-json</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-json" />
 		</antcall>
 		<!-- amplafi-sworddance -->
-		<echo>Calling ${target-parameter} for amplafi-sworddance</echo>
+		<echo>Calling ${target-call} for amplafi-sworddance</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-sworddance" />
 		</antcall>
 		<!-- amplafi-flow-client -->
-		<echo>Calling ${target-parameter} for amplafi-flow-client</echo>
+		<echo>Calling ${target-call} for amplafi-flow-client</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-client" />
 		</antcall>
 		<!-- amplafi-flow-core -->
-		<echo>Calling ${target-parameter} for amplafi-flow-core</echo>
+		<echo>Calling ${target-call} for amplafi-flow-core</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-core" />
 		</antcall>
 		<!-- amplafi-flow-tapestry4 -->
-		<echo>Calling ${target-parameter} for amplafi-flow-tapestry4</echo>
+		<echo>Calling ${target-call} for amplafi-flow-tapestry4</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-tapestry4" />
 		</antcall>
 		<!-- amplafi-flow-tapestry5 -->
-		<echo>Calling ${target-parameter} for amplafi-flow-tapestry5</echo>
+		<echo>Calling ${target-call} for amplafi-flow-tapestry5</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-flow-tapestry5" />
 		</antcall>
 		<!-- amplafi-hivemind -->
-		<echo>Calling ${target-parameter} for amplafi-hivemind</echo>
+		<echo>Calling ${target-call} for amplafi-hivemind</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-hivemind" />
 		</antcall>
 		<!-- amplafi-tapestry4-test -->
-		<echo>Calling ${target-parameter} for amplafi-tapestry4-test</echo>
+		<echo>Calling ${target-call} for amplafi-tapestry4-test</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-tapestry4-test" />
 		</antcall>
 		<!-- htmlcleaner -->
-		<echo>Calling ${target-parameter} for htmlcleaner</echo>
+		<echo>Calling ${target-call} for htmlcleaner</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="htmlcleaner" />
 		</antcall>
 		<!-- jericho-html -->
-		<echo>Calling ${target-parameter} for jericho-html</echo>
+		<echo>Calling ${target-call} for jericho-html</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="jericho-html" />
 		</antcall>
 		<!-- amplafi-tapestry4-springsecurity -->
-		<echo>Calling ${target-parameter} for amplafi-tapestry4-springsecurity</echo>
+		<echo>Calling ${target-call} for amplafi-tapestry4-springsecurity</echo>
 		<antcall target="${target-call}">
 			<param name="${target-parameter}" value="amplafi-tapestry4-springsecurity" />
 		</antcall>
@@ -442,7 +443,7 @@
                 The contents need to be in your ${user.home}/.bashrc file.
                 
                 Contents to be appended:
-            </echo>
+		</echo>
 		<concat>
 			<fileset file="${env.settings}" />
 		</concat>
