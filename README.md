@@ -106,6 +106,9 @@ When you are satisfied with your changes you will have to send a pull request to
    command. This command is what initially creates the .gitconfig file. 
 * git keeps asking for the user to manually type in a password.
    * This is know to happen on Windows and can be solved by installing an [ssh-agent](http://mah.everybody.org/docs/ssh).
+* maven complains about not the ANDROID_HOME environment variable not being set while building the amplafi-android project.
+   * If you need the amplafi-android project to build, please visit [Installing Android SDK](http://developer.android.com/sdk/installing.html) for information.
+   * Once the SDK is installed add the ANDRIOD_HOME enviroment variable to point to the SDK.
 
 Notes on progress:
 
