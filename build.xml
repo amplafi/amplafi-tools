@@ -161,16 +161,16 @@
 			<param name="mvn-target" value="eclipse:configure-workspace" />
 		</antcall>
 	</target>
-	<target name="build-clean" depends="clean,build" description="clean,build">
+	<target name="build-clean-opensource" depends="clean-opensource,build-opensource" description="clean,build">
 	</target>
-	<target name="build" description="Installs all of the opensource projects in the maven repository. Does not run the tests.">
+	<target name="build-opensource" description="Installs all of the opensource projects in the maven repository. Does not run the tests.">
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
 			<param name="target-parameter" value="project-name" />
 			<param name="mvn-target" value="install" />
 		</antcall>
 	</target>
-	<target name="clean" description="Cleans the all of the opensource projects">
+	<target name="clean-opensource" description="Cleans the all of the opensource projects">
 		<echo>Cleaning project...</echo>
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
