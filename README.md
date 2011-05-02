@@ -33,17 +33,17 @@ Note: at the moment this document will have a unix slant.
 ## Cloning the amplafi-tools repository using git.##
 
 1. Run this command.
-<pre> git clone https://github.com/amplafi/amplafi-tools.git</pre>
+<pre> git clone https://github.com/amplafi/amplafi-tools.git </pre>
 
 ## Starting the ant script.##
 
 1. cd into the amplafi-tools directory.
 2. run this command.
-<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup</pre>
+<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup </pre>
 
 3. The console window will ask prompt for things so pay attention and answer the questions/promts.
 4. If the build fails then read the error and see if is something easy like github not being setup properly. Then fix that and rerun the command.
-<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup</pre>
+<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup </pre>
 
 ## Change the origin and upstream for the project you are working on##
 
