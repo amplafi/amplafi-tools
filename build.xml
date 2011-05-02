@@ -390,19 +390,19 @@
 		<exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
 			<arg value="clone" />
 			<arg value="${git-url}" />
-			<arg value="${root-dir}/${project}" />
+			<arg value="${root-dir}${file.separator}${project}" />
 		</exec>
 	</target>
 	<target name="_git-pull" unless="_dont-git-pull">
 		<fail unless="project" />
 		<echo>git pulling ${project}</echo>
-		<exec executable="${git-exec}" dir="${root-dir}/${project}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
+		<exec executable="${git-exec}" dir="${root-dir}${file.separator}${project}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
 			<arg value="pull" />
 		</exec>
 	</target>
 	<target name="_gitconfig-exists-check">
 		<condition property="_gitconfig-exist">
-			<available file="${user.home}/.gitconfig" />
+			<available file="${user.home}${file.separator}.gitconfig" />
 		</condition>
 	</target>
 	<target name="_gitconfig-warning" depends="_gitconfig-exists-check" unless="_gitconfig-exist">
