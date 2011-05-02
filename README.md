@@ -22,7 +22,7 @@ Note: at the moment this document will have a unix slant.
 <pre> java -version</pre>
 
    * The output should say something like: Java SE runtime build 1.6.
-* **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in.
+* **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in (You can start downloading this tool and continue with the instructions if you are on a fast connection).
    * The "Eclipse IDE for Java EE Developers" is the tool you need.
 
 ## Creating the proper folder structure.##
