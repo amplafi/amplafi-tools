@@ -38,7 +38,7 @@ Note: at the moment this document will have a unix slant.
 ## Starting the ant script.##
 
 1. cd into the amplafi-tools directory.
-2. run this command.
+2. run this command(for windows change the '/' characters to '\').
 <pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup </pre>
 
 3. The console window will ask prompt for things so pay attention and answer the questions/promts.
