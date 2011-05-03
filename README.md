@@ -103,13 +103,13 @@ directory.
    1. While in Eclipse, open the marketplace.
    ![Opening the Eclipse Marketplace][OpenMarketplace]
    and another image
-   ![Opening the Eclipse Marketplace](https://github.com/amplafi/amplafi-tools/blob/master/readme-images/openMarketplace.png "Opening the Eclipse Marketplace")
+   ![Opening the Eclipse Marketplace](https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png "Opening the Eclipse Marketplace")
    and another image
-   ![Opening the Eclipse Marketplace](/blob/master/readme-images/openMarketplace.png)
+   ![Opening the Eclipse Marketplace](/raw/master/readme-images/openMarketplace.png)
    
 2. [Testng](http://testng.org/doc/eclipse.html)
 
-[OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/blob/master/readme-images/openMarketplace.png>
+[OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
 "Opening the Eclipse Marketplace"
 
 ## Making A Pull Request##
