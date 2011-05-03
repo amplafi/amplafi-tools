@@ -103,9 +103,11 @@ directory.
    1. While in Eclipse, open the marketplace.
    
    ![Opening the Eclipse Marketplace][OpenMarketplace]
+   
    2. Search for "findbugs" and click the install button.
    
-   [Finding the plugin in the marketplace][findbugsMarketplace]
+   ![Finding the plugin in the marketplace][findbugsMarketplace]
+   
 2. [Testng](http://testng.org/doc/eclipse.html)
 
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
