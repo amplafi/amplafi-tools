@@ -101,16 +101,15 @@ directory.
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
    1. While in Eclipse, open the marketplace.
-   ![Opening the Eclipse Marketplace][OpenMarketplace]
-   and another image
-   ![Opening the Eclipse Marketplace](https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png "Opening the Eclipse Marketplace")
-   and another image
-   ![Opening the Eclipse Marketplace](/raw/master/readme-images/openMarketplace.png)
    
+   ![Opening the Eclipse Marketplace][OpenMarketplace]
+   2. Search for "findbugs" and click the install button.
+   
+   [Finding the plugin in the marketplace][findbugsMarketplace]
 2. [Testng](http://testng.org/doc/eclipse.html)
 
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
-"Opening the Eclipse Marketplace"
+[findbugsMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsMarketplace.png>
 
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
