@@ -101,7 +101,9 @@ directory.
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
    1. While in Eclipse, open the marketplace.
-   [Opening the Eclipse Marketplace][OpenMarketplace]
+   ![Opening the Eclipse Marketplace][OpenMarketplace]
+   ![Opening the Eclipse Marketplace](https://github.com/amplafi/amplafi-tools/blob/master/readme-images/openMarketplace.png "Opening the Eclipse Marketplace")
+   
 2. [Testng](http://testng.org/doc/eclipse.html)
 
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/blob/master/readme-images/openMarketplace.png>
