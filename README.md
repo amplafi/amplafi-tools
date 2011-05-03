@@ -89,25 +89,44 @@ directory.
 
 1. import the eclipse-java-codetemplates.xml
    * Use the menu **Window>Preferences> --- Java>Code Style>Code Templates**
+   TODO: add images to illustrate this better
 2. import the eclipse-java-formatting.xml
    * Use the menu **Window>Preferences> --- Java>Code Style>Formatter**
+   TODO: add images to illustrate this better
 3. import the eclipse-java-cleanup.xml
    * Use the menu **Window>Preferences> --- Java>Code Style>Clean Up**
-4. import the eclipse.bookmarks.xml
-   * TODO: how is this added? Is this needed for the opensource code?
-5. import the eclipse.importorder
-   * TODO: how is this added? Is this needed for the opensource code?
+   TODO: add images to illustrate this better
 
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
-   1. While in Eclipse, open the marketplace.  
+   1. While in Eclipse, open the marketplace. When first screen pops up choose the Eclipse marketplace.  
    ![Opening the Eclipse Marketplace][OpenMarketplace]
    2. Search for "findbugs" and click the install button.  
    ![Finding the plugin in the marketplace][findbugsMarketplace]
+   3. Click next to continue installation.  
+   ![Click Next][findbugsInstall]
+   4. Now accept the license agreement and click finish.  
+   ![Accept the license][findbugsLicense]
+   5. Eclipse will now display the installing software dialog (you may click the button to run in the background).  
+   ![Eclipse installing software][installingSoftware]
+   6. You will be prompted if you want to continue installation, click OK.  
+   ![Eclipse Security Warning][securityWarning]
+   7. Finally, when the Eclipse installation is complete, you will be prompted to restart. Do so now.  
+   ![Restart Eclipse for the changes take effect.][restart]
+   8. Now that you have findBugs installed here is some short tips on using it.
+   TODO: add images to bring up the findbugs views, and an example on things it points out.
 2. [Testng](http://testng.org/doc/eclipse.html)
+   1. Install testng in much the same way as findbugs, only search for testng.
+   TODO: add image to hilight the testng software to install.
 
+<!-- These are the reference links to the images for this section. -->
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
+[installingSoftware]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/installingSoftware.png>
+[securityWarning]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/securityWarning.png>
+[restart]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/restart.png>
 [findbugsMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsMarketplace.png>
+[findbugsInstall]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsInstall.png>
+[findbugsLicense]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsLicense.png>
 
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
