@@ -25,6 +25,11 @@ Note: at the moment this document will have a unix slant.
 * **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in (You can start downloading this tool and continue with the instructions if you are on a fast connection).
    * The "Eclipse IDE for Java EE Developers" is the tool you need.
 
+## Before you start##
+* When going through the instructions, if you run into trouble first look at the known issues section at the bottom of this document to see if your trouble has a known fix.
+* If using windows, the commands will need to be issued from the msysgit bash tool, or cygwin.
+* For windows you may need to change the '/' characters to '\' when issuing commands to the terminal.
+
 ## Creating the proper folder structure.##
 
 1. Find the place where you want the amplafi files and tools to be placed.
@@ -32,13 +37,15 @@ Note: at the moment this document will have a unix slant.
 
 ## Cloning the amplafi-tools repository using git.##
 
-1. Run this command.
+1. Change your working directory to the amplafi-code directory
+<pre> cd /path/to/amplafi-code </pre>
+2. Run this command.
 <pre> git clone https://github.com/amplafi/amplafi-tools.git </pre>
 
 ## Starting the ant script.##
 
-1. cd into the amplafi-tools directory.
-2. run this command(for windows change the '/' characters to '\').
+1. change your working directory to the amplafi-tools directory.
+2. run this command.
 <pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup </pre>
 
 3. The console window will ask prompt for things so pay attention and answer the questions/promts.
@@ -102,11 +109,15 @@ When you are satisfied with your changes you will have to send a pull request to
 * JAVA_HOME has not been set - build failure
    * This environment variable should be setup when installing the JDK. Set this environment variable to point to the installation directory for the Java Development Kit.
 * ant git-pull-all-opensource (git clone or pull) just hangs
-   * This is known to happen on Windows, the problem is that the home-dir/.gitconfig file has not yet been created. Check that the file is there. Run the 
-   <pre> git config --global user.name "Firstname Lastname"</pre>
-   command. This command is what initially creates the .gitconfig file. 
-* git keeps asking for the user to manually type in a password.
-   * This is know to happen on Windows and can be solved by installing an [ssh-agent](http://mah.everybody.org/docs/ssh).
+   * This is known to happen on Windows, the problem is that the [ant exec task](http://ant.apache.org/manual/Tasks/exec.html) does not support user interaction. This behavior is expressed on windows as the command just sitting there.
+   * To fix this git must not require user interaction:
+      * Make sure that the github server is in the known_hosts file (running a ssh git@github.com should prompt you to add a known host if it is not already added).
+      * Use these [instructions](http://help.github.com/working-with-key-passphrases/) to add an ssh-agent to the msysgit bash.
+      * Reopen the msysgit bash utility. If you are not prompted for your passphrase then restart windows. If you are prompted for your passphrase then enter your passphrase and continue with running the ant command.
+      * Note: it was thought that the absence of the home-dir/.gitconfig file caused this issue, if the above doesn't fix the problem then check that this file exists.
+         * home-dir/.gitconfig file has not yet been created. Check that the file is there. If it is not run the following command to create it.
+         <pre> git config --global user.name "Firstname Lastname"</pre>
+         This command is what initially creates the .gitconfig file. 
 * maven complains about the ANDROID_HOME environment variable not being set while building the amplafi-android project.
    * If you need the amplafi-android project to build, please visit [Installing Android SDK](http://developer.android.com/sdk/installing.html) for information on how to install the SDK.
    * Once the SDK is installed add the ANDRIOD_HOME enviroment variable to point to the SDK.
