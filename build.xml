@@ -3,7 +3,6 @@
 
 	<dirname property="root-dir" file="." />
 	<property file="pom.properties" />
-	<property file="build.properties" />
 	<property file="build.server.properties" />
 	<condition property="osname" value="macosx">
 		<os name="Mac OS X" />
@@ -29,6 +28,7 @@
 		<os family="unix" />
 	</condition>
 	<property file="build.${osfamily}.properties" />
+	<property file="build.properties" />
 	<tstamp>
 		<format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
 	</tstamp>
