@@ -98,9 +98,14 @@ directory.
 5. import the eclipse.importorder
    * TODO: how is this added? Is this needed for the opensource code?
 
-Reccomended Eclipse Plugins
-* [Findbugs](http://findbugs.sourceforge.net/)
-* [Testng](http://testng.org/doc/eclipse.html)
+## Install these Eclipse Plugins##
+1. [Findbugs](http://findbugs.sourceforge.net/)
+   1. While in Eclipse, open the marketplace.
+   [Opening the Eclipse Marketplace][OpenMarketplace]
+2. [Testng](http://testng.org/doc/eclipse.html)
+
+[OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/blob/master/readme-images/openMarketplace.png>
+"Opening the Eclipse Marketplace"
 
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
