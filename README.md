@@ -102,7 +102,10 @@ directory.
 1. [Findbugs](http://findbugs.sourceforge.net/)
    1. While in Eclipse, open the marketplace.
    ![Opening the Eclipse Marketplace][OpenMarketplace]
+   and another image
    ![Opening the Eclipse Marketplace](https://github.com/amplafi/amplafi-tools/blob/master/readme-images/openMarketplace.png "Opening the Eclipse Marketplace")
+   and another image
+   ![Opening the Eclipse Marketplace](/blob/master/readme-images/openMarketplace.png)
    
 2. [Testng](http://testng.org/doc/eclipse.html)
 
