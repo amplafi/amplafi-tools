@@ -121,13 +121,17 @@ directory.
 
 1. Import the eclipse-java-codetemplates.xml
    * Use the menu **Window>Preferences> --- Java>Code Style>Code Templates**
-   ![eclipse code templates][EclCodeTemplates]
+   ![code templates]
+(https://github.com/harrietckm/Hello-World3/raw/master/readme-images/EclCodeTemplates.PNG)
+
 2. Import the eclipse-java-formatting.xml
    * Use the menu **Window>Preferences> --- Java>Code Style>Formatter**
    TODO: add images to illustrate this better
 3. Import the eclipse-java-cleanup.xml
    * Use the menu **Window>Preferences> --- Java>Code Style>Clean Up**
-   TODO: add images to illustrate this better
+  ![cleanup templates]
+(https://github.com/harrietckm/Hello-World3/raw/master/readme-images/EclCleanupTemplates.PNG)
+
 
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
@@ -152,7 +156,6 @@ directory.
    TODO: add image to hilight the testng software to install.
 
 <!-- These are the reference links to the images for this section. -->
-[EclCodeTemplates]<https://github.com/harrietckm/Hello-World3/blob/master/EclCodeTemplates.PNG?raw=true>
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
 [installingSoftware]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/installingSoftware.png>
 [securityWarning]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/securityWarning.png>
