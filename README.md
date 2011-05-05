@@ -142,7 +142,7 @@ directory.
 [codeTemplates]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeTemplates.png>
 [codeFormatter]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeFormatter.png>
 [codeCleanUp]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeCleanUp.png>
->>>>>>> upstream/master
+
 
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
@@ -172,7 +172,7 @@ directory.
 2. [Testng](http://testng.org/doc/eclipse.html)
    1. Install testng in much the same way as findbugs, only search for testng.  
    ![Installing testng from the marketplace][testngInstall]
->>>>>>> upstream/master
+
 
 <!-- These are the reference links to the images for this section. -->
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
