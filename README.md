@@ -112,26 +112,37 @@ Now that you have the opensource files it is time to add them to an Eclipse work
       4. Now use the menu **Projects>clean...**
       5. Choose **clean all projects**.
       6. If the errors still don't go away after the rebuild then ask for help.
+
 TODO: add more about what success looks like, maybe how can run the "testNG" run of a "...test..." file.
 TODO: add something about what to do when you want to import from a fork and Eclipse doesn't do anything when you import!
 
 ## Configure Eclipse##
-The following files are located in the ../amplafi/amplafi_code/amplafi-tools/src/main/resources/eclipse
+
+The following files are located in the amplafi-code/amplafi-opensource-parent/src/main/resources/eclipse/
 directory.
 
-1. Import the eclipse-java-codetemplates.xml
-   * Use the menu **Window>Preferences> --- Java>Code Style>Code Templates**
-   ![code templates]
-(https://github.com/harrietckm/Hello-World3/raw/master/readme-images/EclCodeTemplates.PNG)
+1. **import the eclipse-java-codetemplates.xml**
+   1. Open the preferences menu.  
+   ![Open the preferences menu.][openPreferences]
+   2. Navigate to the Java Code Templates and select import.  
+   ![Navigate to the Java Code Templates][codeTemplates]
+   3. Now use the file choose to select the file and click OK.
+2. **import the eclipse-java-formatting.xml**
+   1. Open the preferences menu.
+   2. Navigate to the Java Formatter and select import.  
+   ![Navigate to the Java Formatter][codeFormatter]
+   3. Now use the file choose to select the file and click OK.
+3. **import the eclipse-java-cleanup.xml**
+   1. Open the preferences menu.
+   2. Navigate to the Java Clean Up and select import.  
+   ![Navigate to the Java Clean Up][codeCleanUp]
+   3. Now use the file choose to select the file and click OK.
 
-2. Import the eclipse-java-formatting.xml
-   * Use the menu **Window>Preferences> --- Java>Code Style>Formatter**
-   TODO: add images to illustrate this better
-3. Import the eclipse-java-cleanup.xml
-   * Use the menu **Window>Preferences> --- Java>Code Style>Clean Up**
-  ![cleanup templates]
-(https://github.com/harrietckm/Hello-World3/raw/master/readme-images/EclCleanupTemplates.PNG)
-
+[openPreferences]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openPreferences.png>
+[codeTemplates]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeTemplates.png>
+[codeFormatter]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeFormatter.png>
+[codeCleanUp]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeCleanUp.png>
+>>>>>>> upstream/master
 
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
@@ -150,19 +161,32 @@ directory.
    7. Finally, when the Eclipse installation is complete, you will be prompted to restart. Do so now.  
    ![Restart Eclipse for the changes take effect.][restart]
    8. Now that you have findBugs installed here is some short tips on using it.
-   TODO: add images to bring up the findbugs views, and an example on things it points out.
-2. [TestNG](http://testng.org/doc/eclipse.html)
-   1. Install testNG in much the same way as findbugs, only search for testNG.
-   TODO: add image to hilight the testng software to install.
+
+      1. First lets run findbugs on a project. Right click on the project and click the 'Find Bugs' menu option.  
+      ![Running Find Bugs on a Project][findbugsRun]
+      2. Now open the Find Bugs perspective if you have not already.  
+      ![Opening a perspective][openPerspective]  
+      ![Opening the findbugs perspective][findbugsOpenPerspective]
+      3. Now that you have this perspective there is a lot of information that can be seen about the possible bugs in the code.  
+      ![General Perspective of findbugs][findbugsGeneral]
+2. [Testng](http://testng.org/doc/eclipse.html)
+   1. Install testng in much the same way as findbugs, only search for testng.  
+   ![Installing testng from the marketplace][testngInstall]
+>>>>>>> upstream/master
 
 <!-- These are the reference links to the images for this section. -->
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
 [installingSoftware]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/installingSoftware.png>
 [securityWarning]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/securityWarning.png>
 [restart]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/restart.png>
+[openPerspective]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openPerspective.png>
 [findbugsMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsMarketplace.png>
 [findbugsInstall]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsInstall.png>
 [findbugsLicense]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsLicense.png>
+[findbugsRun]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsRun.png>
+[finbugsOpenPerspective]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsOpenPerspective.png>
+[findbugsGeneral]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsGeneral.png>
+[testngInstall]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/testngInstall.png>
 
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
