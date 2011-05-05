@@ -87,18 +87,18 @@ Now that you have the opensource files it is time to add them to an Eclipse work
 The following files are located in the amplafi-code/amplafi-opensource-parent/src/main/resources/eclipse/
 directory.
 
-1. import the eclipse-java-codetemplates.xml
+1. **import the eclipse-java-codetemplates.xml**
    1. Open the preferences menu.  
    ![Open the preferences menu.][openPreferences]
    2. Navigate to the Java Code Templates and select import.  
    ![Navigate to the Java Code Templates][codeTemplates]
    3. Now use the file choose to select the file and click OK.
-2. import the eclipse-java-formatting.xml
+2. **import the eclipse-java-formatting.xml**
    1. Open the preferences menu.
    2. Navigate to the Java Formatter and select import.  
    ![Navigate to the Java Formatter][codeFormatter]
    3. Now use the file choose to select the file and click OK.
-3. import the eclipse-java-cleanup.xml
+3. **import the eclipse-java-cleanup.xml**
    1. Open the preferences menu.
    2. Navigate to the Java Clean Up and select import.  
    ![Navigate to the Java Clean Up][codeCleanUp]
