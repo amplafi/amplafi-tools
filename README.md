@@ -122,8 +122,8 @@ directory.
       3. Now that you have this perspective there is a lot of information that can be seen about the possible bugs in the code.  
       ![General Perspective of findbugs][findbugsGeneral]
 2. [Testng](http://testng.org/doc/eclipse.html)
-   1. Install testng in much the same way as findbugs, only search for testng.
-   TODO: add image to hilight the testng software to install.
+   1. Install testng in much the same way as findbugs, only search for testng.  
+   ![Installing testng from the marketplace][testngInstall]
 
 <!-- These are the reference links to the images for this section. -->
 [OpenMarketplace]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openMarketplace.png>
@@ -137,6 +137,7 @@ directory.
 [findbugsRun]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsRun.png>
 [finbugsOpenPerspective]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsOpenPerspective.png>
 [findbugsGeneral]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/findBugsGeneral.png>
+[testngInstall]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/testngInstall.png>
 
 ## Making A Pull Request##
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
