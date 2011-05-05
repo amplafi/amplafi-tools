@@ -84,18 +84,30 @@ Now that you have the opensource files it is time to add them to an Eclipse work
       6. If the errors still don't go away after the rebuild then ask for help.
 
 ## Configure Eclipse##
-The following files are located in the src/main/resources/eclipse/
+The following files are located in the amplafi-code/amplafi-opensource-parent/src/main/resources/eclipse/
 directory.
 
 1. import the eclipse-java-codetemplates.xml
-   * Use the menu **Window>Preferences> --- Java>Code Style>Code Templates**
-   TODO: add images to illustrate this better
+   1. Open the preferences menu.  
+   ![Open the preferences menu.][openPreferences]
+   2. Navigate to the Java Code Templates and select import.  
+   ![Navigate to the Java Code Templates][codeTemplates]
+   3. Now use the file choose to select the file and click OK.
 2. import the eclipse-java-formatting.xml
-   * Use the menu **Window>Preferences> --- Java>Code Style>Formatter**
-   TODO: add images to illustrate this better
+   1. Open the preferences menu.
+   2. Navigate to the Java Formatter and select import.  
+   ![Navigate to the Java Formatter][codeFormatter]
+   3. Now use the file choose to select the file and click OK.
 3. import the eclipse-java-cleanup.xml
-   * Use the menu **Window>Preferences> --- Java>Code Style>Clean Up**
-   TODO: add images to illustrate this better
+   1. Open the preferences menu.
+   2. Navigate to the Java Clean Up and select import.  
+   ![Navigate to the Java Clean Up][codeCleanUp]
+   3. Now use the file choose to select the file and click OK.
+
+[openPreferences]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/openPreferences.png>
+[codeTemplates]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeTemplates.png>
+[codeFormatter]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeFormatter.png>
+[codeCleanUp]: <https://github.com/amplafi/amplafi-tools/raw/master/readme-images/codeCleanUp.png>
 
 ## Install these Eclipse Plugins##
 1. [Findbugs](http://findbugs.sourceforge.net/)
