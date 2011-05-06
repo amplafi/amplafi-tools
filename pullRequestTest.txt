@@ -1,0 +1,6 @@
+This file has been created to test how pull requests should be done.
+
+Line not to be changed.
+Line to change some part of in fork.
+Line to change some part of in upstream.
+Line to change some part of in both the fork and the upstream.
