@@ -1,9 +1,0 @@
-This file has been created to test how pull requests should be done.
-
-Line not to be changed.
-Line to change some part of in fork.
-Line to change some part of in upstream [here is the change].
-Line to change some part of in both the fork and the upstream.
-
-Adding some lines to upstream (after fork was made).
-Adding another line to upstream.
