@@ -616,10 +616,17 @@
 
 
 	<!-- java testing -->
-	<target name="_java-config" depends="_validate-JAVA_HOME,_validate-java,_validate-javac">
+	<target name="_java-config" depends="_validate-java,_validate-javac">
 		<echo>Java looks good :-)</echo>
 	</target>
-	<target name="_validate-javac" depends="_validate-JAVA_HOME">
+    <target name="_validate-javac" depends="_validate-javac_in_path,_validate-javac_using_env">
+    </target>
+    <target name="_validate-javac_in_path">
+        <available file="javac" filepath="${env.PATH}" property="_javac-found" />
+        <available file="javac.exe" filepath="${env.PATH}" property="_javac-found" />
+    </target>
+    
+	<target name="_validate-javac_using_env" depends="_validate-JAVA_HOME" unless="_javac-found">
 		<!-- someone may have just the JRE loaded. (i.e. no javac compiler ) we are requiring that JAVA_HOME env be set so use that -->
 		<fail message="${env.JAVA_HOME}/bin/javac (also looked for javac.exe) does not exist- You need to download the Java JDK from http://java.sun.com/javase/downloads/index.jsp">
 			<condition>
@@ -645,7 +652,7 @@
 			</condition>
 		</fail>
 	</target>
-	<target name="_validate-JAVA_HOME">
+	<target name="_validate-JAVA_HOME" unless="_javac-found">
 		<fail unless="env.JAVA_HOME" message="JAVA_HOME has not been set. Check to make sure all the environment variables defined in ${env.settings} have been added to your enviroment" />
 	</target>
 	<target name="_write_to_env_settings" depends="_write_to_build_local_properties">
