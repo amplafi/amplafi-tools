@@ -16,7 +16,7 @@ Note: Comments and corrections to these instructions are welcome.
    * Check this is installed with this command, still in Git Bash on Windows.
 <pre> git --version</pre>
 
-   * The ouput should say something like: git version 1.7.
+   * The output should say something like: git version 1.7.
    * Use the [instructions](http://help.github.com/set-up-git-redirect) if you need to set it up. 
    * On Windows you need to set up an ssh-agent on your machine so there is no user verification required during the cloning that follows:
  
