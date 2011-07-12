@@ -594,6 +594,36 @@
 			<param name="project" value="amplafi-tools" />
 		</antcall>
 	</target>
+    <target name="_jruby" depends="_jruby-validation,_jruby-generation">
+    </target>
+    <target name="_jruby-validation">
+        <available file="bin/jruby" property="_jruby-available"/>
+    </target>
+    <target name="_jruby-generation" unless="_jruby-available">
+        <mkdir dir="bin"/>
+        <echo append="true" file="bin/jruby">
+export jruby_build=1.6.3
+export GEM_HOME=${tools-dir}${file.separator}/ruby/gems
+java -jar ${mvn-repository}/org/jruby/jruby-complete/${jruby_build}/jruby-complete-${jruby_build}.jar -S $*
+        </echo>
+        <chmod file="bin/jruby" perm="ugo+rx"/>
+        <antcall target="_write_path_to_env_settings">
+            <param name="tool" value=""/>   
+            <param name="_env-value" value="${tools-dir}/bin" />
+            <param name="_env-var" value="" />
+            <param name="_build.local-var" value="${_build.local-var}" />
+        </antcall>
+        <antcall target="_write_path_to_env_settings">
+            <param name="tool" value="ruby/gems"/>   
+            <param name="_env-value" value="${tools-dir}/bin" />
+            <param name="_env-var" value="" />
+            <param name="_build.local-var" value="${_build.local-var}" />
+        </antcall>
+        <antcall target="_write_to_env_settings">
+            <param name="__env-var" value="GEM_HOME"/>
+            <param name="__env-value" value="${tools-dir}/ruby/gems"/>
+        </antcall>
+    </target>
 	<!-- ============================================= -->
 	<target name="_tools-unzip" depends="_mkdir-tools">
 		<!-- no longer need
