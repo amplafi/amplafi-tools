@@ -419,7 +419,7 @@
 		</antcall>
 	</target>
 
-	<target name="validate-tools-opensource" depends="_java-config,_ant-config,_mvn-config,server-config-opensource,_update-bashrc,_fail-on-old-ant" description="Validate that the needed opensource tools have been downloaded and are the correct version">
+	<target name="validate-tools-opensource" depends="_java-config,_ant-config,_mvn-config,jruby,server-config-opensource,_update-bashrc,_fail-on-old-ant" description="Validate that the needed opensource tools have been downloaded and are the correct version">
 		<fail unless="tomcat-home" message="tomcat-home has not been set." />
 		<fail unless="maven-home" message="maven-home has not been set." />
 		<fail message="tomcat ports are in use! stop any running instances of tomcat!" if="_tomcat-sockets-in-use" />
@@ -594,7 +594,7 @@
 			<param name="project" value="amplafi-tools" />
 		</antcall>
 	</target>
-    <target name="_jruby" depends="_jruby-validation,_jruby-generation">
+    <target name="jruby" depends="_jruby-validation,_jruby-generation" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
     </target>
     <target name="_jruby-validation">
         <available file="bin/jruby" property="_jruby-available"/>
@@ -603,7 +603,7 @@
         <mkdir dir="bin"/>
         <echo append="true" file="bin/jruby">
 export jruby_build=1.6.3
-export GEM_HOME=${tools-dir}${file.separator}/ruby/gems
+export GEM_HOME=${tools-dir}${file.separator}ruby/gems
 java -jar ${mvn-repository}/org/jruby/jruby-complete/${jruby_build}/jruby-complete-${jruby_build}.jar -S $*
         </echo>
         <chmod file="bin/jruby" perm="ugo+rx"/>
