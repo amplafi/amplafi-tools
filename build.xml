@@ -650,10 +650,22 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 			TODO: Check: Will this work if the terminal has not been reopened to refresh environment variables?
 		</echo>
 		<antcall target="_exec">
-			<param name="_full-path-to-exec" value="${tools-dir}/bin/${jruby-exec}" />
+			<param name="_full-path-to-exec" value="${jruby}" />
 			<param name="_param-one" value="gem" />
 			<param name="_param-two" value="install" />
 			<param name="_param-three" value="sass" />
+		</antcall>
+	</target>
+	<target name="sass-compile" description="Compiles (updates) sass files. Use -Dsass-dir=dir to compile from ??/css/sass to ??/css.">
+		<condition property="_has-sass-dir">
+			<not> <equals arg1="${sass-dir}" arg2="$${sass-dir}"/> </not>
+		</condition>
+		<fail unless="${_has-sass-dir}" message="You must set the sass-dir property to use this task."/>
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${jruby}"/>
+			<param name="_param-one" value="sass"/>
+			<param name="_param-two" value="--update"/>
+			<param name="_param-three" value="${sass-dir}${file.separator}css${file.separator}sass:${sass-dir}${file.separator}css"/>
 		</antcall>
 	</target>
 	<!-- Run an executable on linux or a bat file on windows.
