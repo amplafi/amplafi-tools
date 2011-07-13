@@ -594,36 +594,88 @@
 			<param name="project" value="amplafi-tools" />
 		</antcall>
 	</target>
-    <target name="jruby" depends="_jruby-validation,_jruby-generation" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
+
+	<!-- ================JRUBY============================= -->
+    <target name="jruby" depends="_jruby-validation,_jruby-script-generation,_sass-installation" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
     </target>
     <target name="_jruby-validation">
-        <available file="bin/jruby" property="_jruby-available"/>
+        <available file="bin/${jruby-exec}" property="_jruby-available"/>
     </target>
-    <target name="_jruby-generation" unless="_jruby-available">
+    <target name="_jruby-script-generation" unless="_jruby-available">
         <mkdir dir="bin"/>
-        <echo append="true" file="bin/jruby">
-export jruby_build=1.6.3
-export GEM_HOME=${tools-dir}${file.separator}ruby/gems
-java -jar ${mvn-repository}/org/jruby/jruby-complete/${jruby_build}/jruby-complete-${jruby_build}.jar -S $*
+        <echo append="true" file="bin/${jruby-exec}"> 
+${_script-var-export} jruby_build=1.6.3
+${_script-var-export} GEM_HOME=${tools-dir}${file.separator}ruby${file.separator}gems
+java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.separator}jruby-complete${file.separator}${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}${file.separator}jruby-complete-${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}.jar -S ${_script-vat-all-parameters}
         </echo>
-        <chmod file="bin/jruby" perm="ugo+rx"/>
+        <chmod file="bin/${jruby-exec}" perm="ugo+rx"/> <!-- TODO: this only works under unix, does windows need something similar?-->
         <antcall target="_write_path_to_env_settings">
             <param name="tool" value=""/>   
-            <param name="_env-value" value="${tools-dir}/bin" />
+            <param name="_env-value" value="${tools-dir}${file.separator}bin" />
             <param name="_env-var" value="" />
             <param name="_build.local-var" value="${_build.local-var}" />
         </antcall>
         <antcall target="_write_to_env_settings">
             <param name="__env-var" value="GEM_HOME"/>
-            <param name="__env-value" value="${tools-dir}/ruby/gems"/>
+            <param name="__env-value" value="${tools-dir}${file.separator}ruby${file.separator}gems"/>
         </antcall>
         <antcall target="_write_path_to_env_settings">
-            <param name="tool" value="ruby/gems"/>   
-            <param name="_env-value" value="${tools-dir}/bin" />
+            <param name="tool" value="ruby${file.separator}gems"/>   
+            <param name="_env-value" value="${tools-dir}${file.separator}bin" />
             <param name="_env-var" value="" />
             <param name="_build.local-var" value="${_build.local-var}" />
         </antcall>
     </target>
+	<target name="_jruby-download">
+        <!-- 
+        Question: if user repository is not present will maven create it?
+    Example download command:
+    mvn org.apache.maven.plugins:maven-dependency-plugin:2.3:get -DrepoUrl=http://download.java.net/maven/2/ -Dartifact=org.jruby:jruby-complete:1.6.3
+     -->
+        <!-- XXX: This would not have to run on every call if we check that the proper jar exists -->
+        <property name="_mvn-get-plugin" value="org.apache.maven.plugins:maven-dependency-plugin:2.3:get"/>
+        <property name="_mvn-repository-url" value="-DrepoUrl=http://download.java.net/maven/2/"/>
+        <property name="_mvn-artifact" value="-Dartifact=org.jruby:jruby-complete:1.6.3"/>
+
+        <exec executable="cmd" osfamily="windows">
+             <arg value="/c"/>
+             <arg file="${mvn}"/>
+             <arg value="${_mvn-get-plugin}"/>
+             <arg value="${_mvn-repository-url}"/>
+             <arg value="${_mvn-artifact}"/>
+         </exec>
+        <exec executable="${mvn}" osfamily="unix">
+             <arg value="${_mvn-get-plugin}"/>
+             <arg value="${_mvn-repository-url}"/>
+             <arg value="${_mvn-artifact}"/>
+         </exec>
+	</target>
+	<target name="_sass-installation" depends="_jruby-download,_jruby-script-generation">
+		<!-- runs equivlant of 'gem install sass' to download sass for use with jruby-->
+		<!-- XXX: This would not have to be run on every call if there is a way to tell
+		if sass has already been installed using jruby -->
+		<echo>
+			Installing sass:
+			TODO: Check: Will this work if the terminal has not been reopened to refresh environment variables?
+		</echo>
+		<property name="_jruby" value="${tools-dir}/bin/${jruby-exec}"/>
+		<property name="_jruby-gem" value="gem"/>
+		<property name="_jruby-install" value="install"/>
+		<property name="_jruby-sass" value="sass"/>
+
+		<exec executable="cmd" osfamily="windows">
+			<arg value="/c"/>
+			<arg file="${_jruby}"/>
+			<arg value="${_jruby-gem}"/>
+			<arg value="${_jruby-install}"/>
+			<arg value="${_jruby-sass}"/>
+		</exec>
+		<exec executable="${_jruby}" osfamily="unix">
+			<arg value="${_jruby-gem}"/>
+			<arg value="${_jruby-install}"/>
+			<arg value="${_jruby-sass}"/>
+		</exec>
+	</target>
 	<!-- ============================================= -->
 	<target name="_tools-unzip" depends="_mkdir-tools">
 		<!-- no longer need
