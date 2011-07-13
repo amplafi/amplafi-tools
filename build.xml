@@ -633,22 +633,13 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
     mvn org.apache.maven.plugins:maven-dependency-plugin:2.3:get -DrepoUrl=http://download.java.net/maven/2/ -Dartifact=org.jruby:jruby-complete:1.6.3
      -->
         <!-- XXX: This would not have to run on every call if we check that the proper jar exists -->
-        <property name="_mvn-get-plugin" value="org.apache.maven.plugins:maven-dependency-plugin:2.3:get"/>
-        <property name="_mvn-repository-url" value="-DrepoUrl=http://download.java.net/maven/2/"/>
-        <property name="_mvn-artifact" value="-Dartifact=org.jruby:jruby-complete:1.6.3"/>
 
-        <exec executable="cmd" osfamily="windows">
-             <arg value="/c"/>
-             <arg file="${mvn}"/>
-             <arg value="${_mvn-get-plugin}"/>
-             <arg value="${_mvn-repository-url}"/>
-             <arg value="${_mvn-artifact}"/>
-         </exec>
-        <exec executable="${mvn}" osfamily="unix">
-             <arg value="${_mvn-get-plugin}"/>
-             <arg value="${_mvn-repository-url}"/>
-             <arg value="${_mvn-artifact}"/>
-         </exec>
+         <antcall target="_exec">
+             <param name="_full-path-to-exec" value="${mvn}"/>
+             <param name="_param-one" value="org.apache.maven.plugins:maven-dependency-plugin:2.3:get"/>
+             <param name="_param-two" value="-DrepoUrl=http://download.java.net/maven/2/"/>
+             <param name="_param-three" value="-Dartifact=org.jruby:jruby-complete:1.6.3"/>
+         </antcall>
 	</target>
 	<target name="_sass-installation" depends="_jruby-download,_jruby-script-generation">
 		<!-- runs equivlant of 'gem install sass' to download sass for use with jruby-->
@@ -658,22 +649,37 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 			Installing sass:
 			TODO: Check: Will this work if the terminal has not been reopened to refresh environment variables?
 		</echo>
-		<property name="_jruby" value="${tools-dir}/bin/${jruby-exec}"/>
-		<property name="_jruby-gem" value="gem"/>
-		<property name="_jruby-install" value="install"/>
-		<property name="_jruby-sass" value="sass"/>
-
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${tools-dir}/bin/${jruby-exec}" />
+			<param name="_param-one" value="gem" />
+			<param name="_param-two" value="install" />
+			<param name="_param-three" value="sass" />
+		</antcall>
+	</target>
+	<!-- Run an executable on linux or a bat file on windows.
+	Supports up to three parameters. -->
+	<target name="_exec">
+		<fail unless="_full-path-to-exec"/>
+		<condition property="_param-one" value="">
+				<equals arg1="${_param-one}" arg2="$${_param-one}"/>
+		</condition>
+		<condition property="_param-two" value="">
+			<equals arg1="${_param-two}" arg2="$${_param-two}"/>
+		</condition>
+		<condition property="_param-three" value="">
+			<equals arg1="${_param-three}" arg2="$${_param-three}"/>
+		</condition>
 		<exec executable="cmd" osfamily="windows">
 			<arg value="/c"/>
-			<arg file="${_jruby}"/>
-			<arg value="${_jruby-gem}"/>
-			<arg value="${_jruby-install}"/>
-			<arg value="${_jruby-sass}"/>
+			<arg file="${_full-path-to-exec}"/>
+			<arg value="${_param-one}"/>
+			<arg value="${_param-two}"/>
+			<arg value="${_param-three}"/>
 		</exec>
-		<exec executable="${_jruby}" osfamily="unix">
-			<arg value="${_jruby-gem}"/>
-			<arg value="${_jruby-install}"/>
-			<arg value="${_jruby-sass}"/>
+		<exec executable="${_full-path-to-exec}" osfamily="unix">
+			<arg value="${_param-one}"/>
+			<arg value="${_param-two}"/>
+			<arg value="${_param-three}"/>
 		</exec>
 	</target>
 	<!-- ============================================= -->
