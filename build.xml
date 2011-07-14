@@ -656,20 +656,25 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 			<param name="_param-three" value="sass" />
 		</antcall>
 	</target>
-	<target name="sass-compile" description="Compiles (updates) sass files. Use -Dsass-dir=dir to compile from ??/css/sass to ??/css.">
-		<condition property="_has-sass-dir">
-			<not> <equals arg1="${sass-dir}" arg2="$${sass-dir}"/> </not>
-		</condition>
-		<fail unless="${_has-sass-dir}" message="You must set the sass-dir property to use this task."/>
+    <target name="sass-compile" description="Compiles (updates) sass files. Properties sass-in and sass-out must be set.">
+        <condition property="_has-sass-in">
+            <not> <equals arg1="${sass-in}" arg2="$${sass-in}"/> </not>
+            </condition>
+        <fail unless="${_has-sass-in}" message="You must set the sass-in property to use this task. This property should point to a flat directory or file where sass files are stored."/>
+        <condition property="_has-sass-out">
+            <not> <equals arg1="${sass-out}" arg2="$${sass-out}"/> </not>
+        </condition>
+        <fail unless="${_has-sass-out}" message="You must set the sass-out property to use this task. This property should point to a directory/file where css is to be generated from the provided sass file(s)."/>
 		<antcall target="_exec">
 			<param name="_full-path-to-exec" value="${jruby}"/>
 			<param name="_param-one" value="sass"/>
 			<param name="_param-two" value="--update"/>
-			<param name="_param-three" value="${sass-dir}${file.separator}css${file.separator}sass:${sass-dir}${file.separator}css"/>
+            <param name="_param-three" value="${sass-in}:${sass-out}"/>
 		</antcall>
 	</target>
 	<!-- Run an executable on linux or a bat file on windows.
-	Supports up to three parameters. -->
+	Supports up to three parameters. Just remember user input is not supported,
+	so commands must be non-interactive-->
 	<target name="_exec">
 		<fail unless="_full-path-to-exec"/>
 		<condition property="_param-one" value="">
