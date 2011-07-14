@@ -656,7 +656,12 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 			<param name="_param-three" value="sass" />
 		</antcall>
 	</target>
+    <!-- Note: css files are marked readonly on the filesystem to prevent manually changing them.-->
     <target name="sass-compile" description="Compiles (updates) sass files. Properties sass-in and sass-out must be set.">
+        <!-- Known Issues:
+        * sass files that are deleted will not automatically have the associated css file deleted; 
+          so if it is desired that a css file is removed both the sass file and the css file will 
+          need to be removed.-->
         <condition property="_has-sass-in">
             <not> <equals arg1="${sass-in}" arg2="$${sass-in}"/> </not>
             </condition>
@@ -665,12 +670,20 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <not> <equals arg1="${sass-out}" arg2="$${sass-out}"/> </not>
         </condition>
         <fail unless="${_has-sass-out}" message="You must set the sass-out property to use this task. This property should point to a directory/file where css is to be generated from the provided sass file(s)."/>
+        <antcall target="_change-files-permissions-for-css-dir">
+            <param name="_permissions-dir" value="${sass-out}"/>
+            <param name="_permissions-set-readonly" value="false"/>
+        </antcall>
 		<antcall target="_exec">
 			<param name="_full-path-to-exec" value="${jruby}"/>
 			<param name="_param-one" value="sass"/>
 			<param name="_param-two" value="--update"/>
             <param name="_param-three" value="${sass-in}:${sass-out}"/>
 		</antcall>
+        <antcall target="_change-files-permissions-for-css-dir">
+            <param name="_permissions-dir" value="${sass-out}"/>
+            <param name="_permissions-set-readonly" value="true"/>
+        </antcall>
 	</target>
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
     <target name="_change-files-permissions-for-css-dir">
