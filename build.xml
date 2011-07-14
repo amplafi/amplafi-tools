@@ -687,11 +687,16 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 	</target>
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
     <target name="_change-files-permissions-for-css-dir">
+        <!-- Known Issues:
+        * All of the css files are marked readonly even if they do not have a sass equivalent, so
+          there is an exta step involved in editing these files.
+          * Workaround - rename the css file to sass and put it in the sass directory, sass will will copy 
+            it to the css directory on next compile.-->
         <echo>${_permissions-dir}</echo>
         <fail unless="_permissions-dir" message="Property _permissions-dir must be set. Determins directory of which files will be affected."/>
         <fail unless="_permissions-set-readonly" message="Property _permissions-set-readonly must be set (true/false)"/>
         <fileset dir="${_permissions-dir}" id="_css-files">
-            <include name="*.css"/>
+            <include name="**/*.css"/>
         </fileset>
         <condition property="_permissions-unix" value="a-w" else="a+w">
             <istrue value="${_permissions-set-readonly}"/>
