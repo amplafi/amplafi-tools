@@ -672,6 +672,27 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_param-three" value="${sass-in}:${sass-out}"/>
 		</antcall>
 	</target>
+    <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
+    <target name="_change-files-permissions-for-css-dir">
+        <echo>${_permissions-dir}</echo>
+        <fail unless="_permissions-dir" message="Property _permissions-dir must be set. Determins directory of which files will be affected."/>
+        <fail unless="_permissions-set-readonly" message="Property _permissions-set-readonly must be set (true/false)"/>
+        <fileset dir="${_permissions-dir}" id="_css-files">
+            <include name="*.css"/>
+        </fileset>
+        <condition property="_permissions-unix" value="a-w" else="a+w">
+            <istrue value="${_permissions-set-readonly}"/>
+        </condition>
+        <condition property="_permissions-windows" value="true" else="false">
+            <istrue value="${_permissions-set-readonly}"/>
+        </condition>
+        <chmod perm="${_permissions-unix}">
+            <fileset refid="_css-files"/>
+        </chmod>
+        <attrib readonly="${_permissions-windows}">
+            <fileset refid="_css-files"/>
+        </attrib>
+    </target>
 	<!-- Run an executable on linux or a bat file on windows.
 	Supports up to three parameters. Just remember user input is not supported,
 	so commands must be non-interactive-->
