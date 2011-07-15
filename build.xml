@@ -746,14 +746,14 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 		<condition property="_param-three" value="">
 			<equals arg1="${_param-three}" arg2="$${_param-three}"/>
 		</condition>
-		<exec executable="cmd" osfamily="windows">
+		<exec executable="cmd" osfamily="windows" failonerror="true">
 			<arg value="/c"/>
 			<arg file="${_full-path-to-exec}"/>
 			<arg value="${_param-one}"/>
 			<arg value="${_param-two}"/>
 			<arg value="${_param-three}"/>
 		</exec>
-		<exec executable="${_full-path-to-exec}" osfamily="unix">
+		<exec executable="${_full-path-to-exec}" osfamily="unix" failonerror="true">
 			<arg value="${_param-one}"/>
 			<arg value="${_param-two}"/>
 			<arg value="${_param-three}"/>
