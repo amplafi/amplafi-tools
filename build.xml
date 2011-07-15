@@ -688,6 +688,8 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
     <target name="_change-files-permissions-for-css-dir">
         <!-- Known Issues:
+        * Subversion does not store file permissions. The only way that this is applied the the files is 
+          if this target is run after downloading the files from the repository.
         * All of the css files are marked readonly even if they do not have a sass equivalent, so
           there is an exta step involved in editing these files.
           * Workaround - rename the css file to sass and put it in the sass directory, sass will will copy 
