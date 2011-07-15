@@ -658,9 +658,11 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 	</target>
     <target name="sass-watch" depends="_sass-before,_sass-watch,_sass-finish" description="Watches sass files. Properties sass-in and sass-out must be set."/>
     <target name="_sass-watch">
-        <!-- Known Issues:
-        * To exit CTRL+C is used canciling not only the sass operation but ant as well. The side effect 
-          of this is that the css files don't get changed back to read only.-->
+        <!-- Known Issues: -->
+        <echo>
+            * To exit CTRL+C is used canciling not only the sass operation but ant as well. The side effect 
+              of this is that the css files don't get changed back to read only.
+        </echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}"/>
             <param name="_param-one" value="sass"/>
@@ -711,7 +713,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
           there is an exta step involved in editing these files.
           * Workaround - rename the css file to sass and put it in the sass directory, sass will will copy 
             it to the css directory on next compile.-->
-        <echo>${_permissions-dir}</echo>
+        <echo>Changing permission in: ${_permissions-dir}</echo>
         <fail unless="_permissions-dir" message="Property _permissions-dir must be set. Determins directory of which files will be affected."/>
         <fail unless="_permissions-set-readonly" message="Property _permissions-set-readonly must be set (true/false)"/>
         <fileset dir="${_permissions-dir}" id="_css-files">
