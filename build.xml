@@ -414,6 +414,9 @@
 	</target>
     <target name="update-source" depends="git-pull-all" description="Update the github projects."></target>
 	<target name="git-pull-all" description="git pull all github projects">
+        <antcall target="git-pull">
+            <param name="project" value="amplafi-tools"/>
+        </antcall>
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="git-pull" />
 			<param name="target-parameter" value="project" />
