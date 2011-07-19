@@ -412,6 +412,7 @@
         name = ...
     </echo>
 	</target>
+    <target name="update-source" depends="git-pull-all" description="Update the github projects."></target>
 	<target name="git-pull-all" description="git pull all github projects">
 		<antcall target="_opensource-list-calls">
 			<param name="target-call" value="git-pull" />
