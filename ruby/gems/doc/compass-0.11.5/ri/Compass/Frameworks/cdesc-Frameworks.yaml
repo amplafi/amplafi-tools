@@ -1,0 +1,37 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: ALL
+    value: "[]"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: DEFAULT_FRAMEWORKS_PATH
+    value: File.join(Compass.base_directory, 'frameworks')
+full_name: Compass::Frameworks
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: "[]"
+  - !ruby/object:RI::MethodSummary 
+    name: detect_registration
+  - !ruby/object:RI::MethodSummary 
+    name: discover
+  - !ruby/object:RI::MethodSummary 
+    name: pretty_print
+  - !ruby/object:RI::MethodSummary 
+    name: register
+  - !ruby/object:RI::MethodSummary 
+    name: register_directory
+  - !ruby/object:RI::MethodSummary 
+    name: template_exists?
+  - !ruby/object:RI::MethodSummary 
+    name: template_usage
+name: Frameworks
+superclass: 

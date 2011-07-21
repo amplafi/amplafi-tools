@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Reads a PNG datastream from an input stream @param [IO] io The stream to read from. @return [ChunkyPNG::Datastream] The loaded datastream instance.
+full_name: ChunkyPNG::Datastream::from_io
+is_singleton: true
+name: from_io
+params: (io)
+visibility: public

@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: ==
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Comparison between two vectors for quality. @param [ChunkyPNG::Vector] other The vector to compare with. @return [true, false] true if the list of points are identical
+full_name: ChunkyPNG::Vector#eql?
+is_singleton: false
+name: eql?
+params: (other)
+visibility: public

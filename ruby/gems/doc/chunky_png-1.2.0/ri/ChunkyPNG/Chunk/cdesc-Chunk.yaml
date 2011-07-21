@@ -1,0 +1,33 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: read
+  - !ruby/object:RI::MethodSummary 
+    name: verify_crc!
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A PNG datastream consists of multiple chunks. This module, and the classes contained within, help with handling these chunks. It supports both reading and writing chunks.
+  - !ruby/struct:SM::Flow::P 
+    body: All chunk types are instances of the {ChunkyPNG::Chunk::Base} class. For some chunk types a specialized class is available, e.g. the IHDR chunk is represented by the {ChunkyPNG::Chunk::Header} class. These specialized classes help accessing the content of the chunk. All other chunks are represented by the {ChunkyPNG::Chunk::Generic} class.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see ChunkyPNG::Datastream"
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: Maps chunk types to classes, based on the four byte chunk type indicator at the beginning of a chunk.
+      - !ruby/struct:SM::Flow::P 
+        body: If a chunk type is not specified in this hash, the Generic chunk type will be used.
+      - !ruby/struct:SM::Flow::P 
+        body: "@see ChunkyPNG::Chunk.read"
+    name: CHUNK_TYPES
+    value: "{       'IHDR' => Header, 'IEND' => End, 'IDAT' => ImageData, 'PLTE' => Palette, 'tRNS' => Transparency,       'tEXt' => Text, 'zTXt' => CompressedText, 'iTXt' => InternationalText"
+full_name: ChunkyPNG::Chunk
+includes: []
+
+instance_methods: []
+
+name: Chunk
+superclass: 

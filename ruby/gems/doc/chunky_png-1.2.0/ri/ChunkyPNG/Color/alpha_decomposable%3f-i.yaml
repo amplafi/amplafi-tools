@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Checks whether an alpha channel value can successfully be composed given the resulting color, the mask color and a background color, all of which should be opaque.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] color The color that was the result of compositing. @param [Integer] mask The opaque variant of the color that was being composed @param [Integer] bg The background color on which the color was composed. @param [Integer] tolerance The decomposition tolerance level, a value between 0 and 255. @return [Boolean] True if the alpha component can be decomposed successfully. @see #decompose_alpha"
+full_name: ChunkyPNG::Color#alpha_decomposable?
+is_singleton: false
+name: alpha_decomposable?
+params: (color, mask, bg, tolerance = 1)
+visibility: public

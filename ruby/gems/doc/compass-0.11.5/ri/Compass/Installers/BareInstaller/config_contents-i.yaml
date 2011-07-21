@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::BareInstaller#config_contents
+is_singleton: false
+name: config_contents
+params: ()
+visibility: public

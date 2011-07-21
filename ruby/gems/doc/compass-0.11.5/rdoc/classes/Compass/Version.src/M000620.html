@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>read_version (Compass::Version)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/version.rb, line 23</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_version</span>
+      <span class="ruby-identifier">require</span> <span class="ruby-value str">'yaml'</span>
+      <span class="ruby-ivar">@version</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">scope</span>(<span class="ruby-value str">'VERSION.yml'</span>)))
+      <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:teeny</span>]  = <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:patch</span>]
+      <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:string</span>] = <span class="ruby-node">&quot;#{@version[:major]}.#{@version[:minor]}&quot;</span>
+      <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:string</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{@version[:patch]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:patch</span>]
+      <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:string</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{@version[:state]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:state</span>]
+      <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:string</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{@version[:build]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:build</span>]
+      <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">ENV</span>[<span class="ruby-value str">'OFFICIAL'</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">r</span> = <span class="ruby-identifier">revision</span>
+        <span class="ruby-ivar">@version</span>[<span class="ruby-identifier">:string</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{r[0..6]}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@version</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

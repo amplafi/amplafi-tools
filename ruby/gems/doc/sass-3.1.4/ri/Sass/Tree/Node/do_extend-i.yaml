@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Converts a static CSS tree (e.g. the output of \{Tree::Visitors::Cssize}) into another static CSS tree, with the given extensions applied to all relevant {RuleNode}s.
+  - !ruby/struct:SM::Flow::P 
+    body: "@todo Link this to the reference documentation on `@extend`"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  when such a thing exists.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param extends [Sass::Util::SubsetMap{Selector::Simple =&gt; Selector::Sequence}]"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  The extensions to perform on this tree\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Tree::Node] The resulting tree of static CSS nodes. @raise [Sass::SyntaxError] Only if there's a programmer error"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  and this is not a static CSS tree\n"
+full_name: Sass::Tree::Node#do_extend
+is_singleton: false
+name: do_extend
+params: (extends)
+visibility: public

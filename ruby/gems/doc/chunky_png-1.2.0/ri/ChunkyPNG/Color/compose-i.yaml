@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Alias for #compose_quick"
+full_name: ChunkyPNG::Color#compose
+is_singleton: false
+name: compose
+params: (fg, bg)
+visibility: public

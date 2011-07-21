@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Interpolation in a property is of the form `before #{mid} after`."
+  - !ruby/struct:SM::Flow::P 
+    body: "@param before [Node] The SassScript before the interpolation @param mid [Node] The SassScript within the interpolation @param after [Node] The SassScript after the interpolation @param wb [Boolean] Whether there was whitespace between `before` and `#{` @param wa [Boolean] Whether there was whitespace between `}` and `after` @param originally_text [Boolean]"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Whether the original format of the interpolation was plain text,\n  not an interpolation.\n  This is used when converting back to SassScript.\n"
+full_name: Sass::Script::Interpolation::new
+is_singleton: true
+name: new
+params: (before, mid, after, wb, wa, originally_text = false)
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Determines the minimal bit depth required for an indexed image @return [Integer] Number of bits per pixel, i.e. 1, 2, 4 or 8, or nil if this
+  - !ruby/struct:SM::Flow::VERB 
+    body: "   image cannot be saved as an indexed image.\n"
+full_name: ChunkyPNG::Palette#determine_bit_depth
+is_singleton: false
+name: determine_bit_depth
+params: ()
+visibility: public

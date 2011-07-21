@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Lowers the intensity of a color, by lowering its alpha by a given factor. @param [Integer] color The color to adjust. @param [Integer] factor Fade factor as an integer between 0 and 255. @return [Integer] The faded color.
+full_name: ChunkyPNG::Color#fade
+is_singleton: false
+name: fade
+params: (color, factor)
+visibility: public

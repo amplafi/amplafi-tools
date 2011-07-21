@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a new color using an r, g, b triple. @param [Integer] r The r-component (0-255) @param [Integer] g The g-component (0-255) @param [Integer] b The b-component (0-255) @return [Integer] The newly constructed color value.
+full_name: ChunkyPNG::Color#rgb
+is_singleton: false
+name: rgb
+params: (r, g, b)
+visibility: public

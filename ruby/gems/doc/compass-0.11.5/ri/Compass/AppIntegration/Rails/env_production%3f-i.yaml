@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::AppIntegration::Rails#env_production?
+is_singleton: false
+name: env_production?
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::ProjectBase#project_images_subdirectory
+is_singleton: false
+name: project_images_subdirectory
+params: ()
+visibility: protected

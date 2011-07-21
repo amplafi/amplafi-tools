@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Decodes a canvas from a Adam 7 interlaced PNG encoded pixelstream, using a given width, height and color mode. @param stream (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param width (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param height (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param color_mode (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param depth (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @return (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream)
+full_name: ChunkyPNG::Canvas::PNGDecoding#decode_png_with_adam7_interlacing
+is_singleton: false
+name: decode_png_with_adam7_interlacing
+params: (stream, width, height, color_mode, depth)
+visibility: protected

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::TemplateContext#http_stylesheets_path
+is_singleton: false
+name: http_stylesheets_path
+params: ()
+visibility: public

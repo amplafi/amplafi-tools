@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setup_template_location (Compass)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/app_integration/merb/runtime.rb, line 21</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">setup_template_location</span>
+    <span class="ruby-comment cmt"># default the compass configuration if they didn't set it up yet.</span>
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compass</span>] <span class="ruby-operator">||=</span> {}
+
+    <span class="ruby-comment cmt"># default sass stylesheet location unless configured to something else</span>
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compass</span>][<span class="ruby-identifier">:stylesheets</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:stylesheet</span>) <span class="ruby-operator">/</span> <span class="ruby-value str">&quot;sass&quot;</span>
+
+    <span class="ruby-comment cmt"># default sass css location unless configured to something else</span>
+    <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compass</span>][<span class="ruby-identifier">:compiled_stylesheets</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">Merb</span>.<span class="ruby-identifier">dir_for</span>(<span class="ruby-identifier">:stylesheet</span>)
+
+    <span class="ruby-comment cmt">#define the template hash for the project stylesheets as well as the framework stylesheets.</span>
+    <span class="ruby-identifier">template_location</span> = {
+      <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compass</span>][<span class="ruby-identifier">:stylesheets</span>] =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compass</span>][<span class="ruby-identifier">:compiled_stylesheets</span>]
+    }
+    <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Frameworks</span><span class="ruby-operator">::</span><span class="ruby-constant">ALL</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">framework</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">template_location</span>[<span class="ruby-identifier">framework</span>.<span class="ruby-identifier">stylesheets_directory</span>] = <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:compass</span>][<span class="ruby-identifier">:compiled_stylesheets</span>]
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># merge existing template locations if present</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:sass</span>][<span class="ruby-identifier">:template_location</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>)
+      <span class="ruby-identifier">template_location</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:sass</span>][<span class="ruby-identifier">:template_location</span>])
+      <span class="ruby-constant">Merb</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugins</span>.<span class="ruby-identifier">config</span>[<span class="ruby-identifier">:sass</span>][<span class="ruby-identifier">:template_location</span>] = <span class="ruby-identifier">template_location</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt">#configure Sass to know about all these sass locations.</span>
+    <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:template_location</span>] = <span class="ruby-identifier">template_location</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

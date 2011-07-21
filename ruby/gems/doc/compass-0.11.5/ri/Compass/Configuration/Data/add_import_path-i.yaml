@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Data#add_import_path
+is_singleton: false
+name: add_import_path
+params: (*paths)
+visibility: public

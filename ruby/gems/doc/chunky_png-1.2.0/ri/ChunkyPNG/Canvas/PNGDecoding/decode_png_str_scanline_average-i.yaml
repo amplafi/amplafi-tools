@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Decodes a scanline in a pixelstream that was encoded using AVERAGE filtering. This will change the pixelstream to have unfiltered values. @params (see #decode_png_str_scanline) @return [void]"
+full_name: ChunkyPNG::Canvas::PNGDecoding#decode_png_str_scanline_average
+is_singleton: false
+name: decode_png_str_scanline_average
+params: (stream, pos, prev_pos, line_length, pixel_size)
+visibility: protected

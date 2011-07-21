@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Factory method to return a color value, based on the arguments given.
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Color(r, g, b, a)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param (see ChunkyPNG::Color.rgba)\n  @return [Integer] The rgba color value.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Color(r, g, b)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param (see ChunkyPNG::Color.rgb)\n  @return [Integer] The rgb color value.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Color(hex_value, opacity = nil)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param (see ChunkyPNG::Color.from_hex)\n  @return [Integer] The hex color value, with the opacity applied if one was given.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Color(color_name, opacity = nil)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param (see ChunkyPNG::Color.html_color)\n  @return [Integer] The hex color value, with the opacity applied if one was given.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Color(color_value, opacity = nil)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param [Integer, :to_i] The color value.\n  @return [Integer] The color value, with the opacity applied if one was given.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Integer] The determined color value as RGBA integer. @raise [ArgumentError] if the arguments weren't understood as a color. @see ChunkyPNG::Color @see ChunkyPNG::Color.parse"
+full_name: ChunkyPNG::Color
+is_singleton: true
+name: Color
+params: (*args)
+visibility: public

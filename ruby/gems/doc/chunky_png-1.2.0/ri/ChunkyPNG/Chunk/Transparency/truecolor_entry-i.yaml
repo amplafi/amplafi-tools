@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the truecolor entry to be replaced by transparent pixels,
+  - !ruby/struct:SM::Flow::P 
+    body: This method should only be used for images having color mode ChunkyPNG::COLOR_TRUECOLOR (2).
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Integer] The color to replace with fully transparent pixels."
+full_name: ChunkyPNG::Chunk::Transparency#truecolor_entry
+is_singleton: false
+name: truecolor_entry
+params: (bit_depth)
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::Manifest#welcome_message
+is_singleton: false
+name: welcome_message
+params: (value = nil, options = {})
+visibility: public

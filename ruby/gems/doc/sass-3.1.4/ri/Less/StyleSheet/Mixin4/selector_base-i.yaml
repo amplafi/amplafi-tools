@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Less::StyleSheet::Mixin4#selector_base
+is_singleton: false
+name: selector_base
+params: (path)
+visibility: public

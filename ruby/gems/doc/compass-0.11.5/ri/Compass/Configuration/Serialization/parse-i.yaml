@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Serialization#parse
+is_singleton: false
+name: parse
+params: (config_file)
+visibility: public

@@ -1,0 +1,43 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: color_stops
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: position_or_angle
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::SassExtensions::Functions::GradientSupport::LinearGradient
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Gradient
+  - !ruby/object:RI::IncludedModule 
+    name: Assertions
+  - !ruby/object:RI::IncludedModule 
+    name: Functions
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Constants
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::InlineImage
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: children
+  - !ruby/object:RI::MethodSummary 
+    name: to_css2
+  - !ruby/object:RI::MethodSummary 
+    name: to_owg
+  - !ruby/object:RI::MethodSummary 
+    name: to_pie
+  - !ruby/object:RI::MethodSummary 
+    name: to_s
+  - !ruby/object:RI::MethodSummary 
+    name: to_svg
+name: LinearGradient
+superclass: Sass::Script::Literal

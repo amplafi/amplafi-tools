@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: to_tree
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Alias for #parse_with_sass"
+full_name: Less::Engine#parse
+is_singleton: false
+name: parse
+params: ()
+visibility: public

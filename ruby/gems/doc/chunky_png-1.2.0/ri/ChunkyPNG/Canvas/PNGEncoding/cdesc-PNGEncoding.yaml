@@ -1,0 +1,104 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The palette used for encoding the image.This is only in used for images that get encoded using indexed colors. @return [ChunkyPNG::Palette]
+    name: encoding_palette
+    rw: RW
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Methods for encoding a Canvas instance into a PNG datastream.
+  - !ruby/struct:SM::Flow::P 
+    body: "Overview of the encoding process:"
+  - !ruby/object:SM::Flow::LIST 
+    contents: 
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: The image is split up in scanlines (i.e. rows of pixels);
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: All pixels are encoded as a pixelstream, based on the color mode.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: All the pixel bytes in the pixelstream are adjusted using a filtering method if one is specified.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: Compress the resulting string using deflate compression.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: Split compressed data over one or more PNG chunks.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: These chunks should be embedded in a datastream with at least a IHDR and IEND chunk and possibly a PLTE chunk.
+    type: :BULLET
+  - !ruby/struct:SM::Flow::P 
+    body: For interlaced images, the initial image is first split into 7 subimages. These images get encoded exactly as above, and the result gets combined before the compression step.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see ChunkyPNG::Canvas::PNGDecoding @see http://www.w3.org/TR/PNG/ The W3C PNG format specification"
+constants: []
+
+full_name: ChunkyPNG::Canvas::PNGEncoding
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: determine_png_encoding
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_image_pass_to_stream
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_image_with_interlacing
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_image_without_interlacing
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_grayscale_1bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_grayscale_2bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_grayscale_4bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_grayscale_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_grayscale_alpha_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_indexed_1bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_indexed_2bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_indexed_4bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_indexed_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_method
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_truecolor_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixels_to_scanline_truecolor_alpha_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_pixelstream
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_str_scanline_average
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_str_scanline_none
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_str_scanline_paeth
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_str_scanline_sub
+  - !ruby/object:RI::MethodSummary 
+    name: encode_png_str_scanline_up
+  - !ruby/object:RI::MethodSummary 
+    name: save
+  - !ruby/object:RI::MethodSummary 
+    name: to_blob
+  - !ruby/object:RI::MethodSummary 
+    name: to_datastream
+  - !ruby/object:RI::MethodSummary 
+    name: to_s
+  - !ruby/object:RI::MethodSummary 
+    name: to_string
+  - !ruby/object:RI::MethodSummary 
+    name: write
+name: PNGEncoding
+superclass: 

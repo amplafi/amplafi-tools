@@ -1,0 +1,51 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The helpers are available as methods on the Compass module. E.g. Compass.configuration
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: "TODO: Deprecate the src/config.rb location."
+    name: KNOWN_CONFIG_LOCATIONS
+    value: "['config/compass.rb', \".compass/config.rb\", \"config/compass.config\", \"config.rb\", \"src/config.rb\"]"
+full_name: Compass::Configuration::Helpers
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: add_configuration
+  - !ruby/object:RI::MethodSummary 
+    name: add_project_configuration
+  - !ruby/object:RI::MethodSummary 
+    name: compiler
+  - !ruby/object:RI::MethodSummary 
+    name: configuration
+  - !ruby/object:RI::MethodSummary 
+    name: configuration_for
+  - !ruby/object:RI::MethodSummary 
+    name: configure_sass_plugin!
+  - !ruby/object:RI::MethodSummary 
+    name: default_configuration
+  - !ruby/object:RI::MethodSummary 
+    name: deprojectize
+  - !ruby/object:RI::MethodSummary 
+    name: detect_configuration_file
+  - !ruby/object:RI::MethodSummary 
+    name: discover_extensions!
+  - !ruby/object:RI::MethodSummary 
+    name: handle_configuration_change!
+  - !ruby/object:RI::MethodSummary 
+    name: projectize
+  - !ruby/object:RI::MethodSummary 
+    name: reset_configuration!
+  - !ruby/object:RI::MethodSummary 
+    name: sass_engine_options
+  - !ruby/object:RI::MethodSummary 
+    name: sass_plugin_configuration
+name: Helpers
+superclass: 

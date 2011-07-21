@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Alias for #flip_vertically"
+full_name: ChunkyPNG::Canvas::Operations#mirror
+is_singleton: false
+name: mirror
+params: ()
+visibility: public

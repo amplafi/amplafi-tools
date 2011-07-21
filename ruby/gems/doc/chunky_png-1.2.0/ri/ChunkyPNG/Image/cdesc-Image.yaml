@@ -1,0 +1,37 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Hash] The hash of metadata fields for this PNG image."
+    name: metadata
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: from_datastream
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: ChunkyPNG::Image is an extension of the {ChunkyPNG::Canvas} class, that also includes support for metadata.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see ChunkyPNG::Canvas"
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The minimum size of bytes the value of a metadata field should be before compression is enabled for the chunk.
+    name: METADATA_COMPRESSION_TRESHOLD
+    value: "300"
+full_name: ChunkyPNG::Image
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: initialize_copy
+  - !ruby/object:RI::MethodSummary 
+    name: metadata_chunks
+  - !ruby/object:RI::MethodSummary 
+    name: to_datastream
+name: Image
+superclass: Canvas

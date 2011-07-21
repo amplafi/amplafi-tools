@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Gets a color value based on a HTML color name.
+  - !ruby/struct:SM::Flow::P 
+    body: The color name is flexible. E.g. <tt>'yellowgreen'</tt>, <tt>'Yellow green'</tt>, <tt>'YellowGreen'</tt>, <tt>'YELLOW_GREEN'</tt> and <tt>:yellow_green</tt> will all return the same color value.
+  - !ruby/struct:SM::Flow::P 
+    body: You can include a opacity level in the color name (e.g. <tt>'red @ 0.5'</tt>) or give an explicit opacity value as second argument. If no opacity value is given, the color will be fully opaque.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Symbol, String] color_name The color name. It may include an opacity specifier"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  like <tt>@ 0.8</tt> to set the color's opacity.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] opacity The opacity value for the color between 0 and 255. Overrides"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  any opacity value given in the color name.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Integer] The color value. @raise [ChunkyPNG::Exception] If the color name was not recognized."
+full_name: ChunkyPNG::Color#html_color
+is_singleton: false
+name: html_color
+params: (color_name, opacity = nil)
+visibility: public

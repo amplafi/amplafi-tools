@@ -1,0 +1,36 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: css
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: path
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: prop_count
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: selector_count
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::Stats::CssFile
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: analyze!
+  - !ruby/object:RI::MethodSummary 
+    name: contents
+  - !ruby/object:RI::MethodSummary 
+    name: lines
+name: CssFile
+superclass: Object

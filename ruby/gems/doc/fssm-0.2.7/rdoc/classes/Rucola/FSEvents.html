@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Rucola::FSEvents</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Rucola::FSEvents</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/fssm/backends/rubycocoa/fsevents_rb.html">
+                lib/fssm/backends/rubycocoa/fsevents.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000370">create_stream</a>&nbsp;&nbsp;
+      <a href="#M000369">new</a>&nbsp;&nbsp;
+      <a href="#M000371">start</a>&nbsp;&nbsp;
+      <a href="#M000368">start_watching</a>&nbsp;&nbsp;
+      <a href="#M000372">stop</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="FSEvents/FSEvent.html" class="link">Rucola::FSEvents::FSEvent</a><br />
+Class <a href="FSEvents/StreamError.html" class="link">Rucola::FSEvents::StreamError</a><br />
+
+    </div>
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">allocator</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">context</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">flags</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">latency</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">paths</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">since</td>
+          <td class="context-item-value">&nbsp;[RW]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">stream</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000369" class="method-detail">
+        <a name="M000369"></a>
+
+        <div class="method-heading">
+          <a href="FSEvents.src/M000369.html" target="Code" class="method-signature"
+            onclick="popupCode('FSEvents.src/M000369.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(*params, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a <a href="FSEvents.html#M000369">new</a> <a
+href="FSEvents.html">FSEvents</a> `watchdog` object. You can specify a list
+of paths to watch and options to control the behaviour of the watchdog. The
+block you pass serves as a callback when an event is generated on one of
+the specified paths.
+</p>
+<pre>
+  fsevents = FSEvents.new('/etc/passwd') { Mailer.send_mail(&quot;Someone touched the password file!&quot;) }
+  fsevents.create_stream
+  fsevents.start
+
+  fsevents = FSEvents.new('/home/upload', :since =&gt; UploadWatcher.last_event_id) do |events|
+    events.each do |event|
+      UploadWatcher.last_event_id = event.id
+      event.files.each do |file|
+        UploadWatcher.logfile.append(&quot;#{file} was changed&quot;)
+      end
+    end
+  end
+</pre>
+<p>
+*:since: The service will report events that have happened after the
+supplied event ID. Never use 0 because that
+</p>
+<pre>
+  will cause every fsevent since the &quot;beginning of time&quot; to be reported. Use OSX::KFSEventStreamEventIdSinceNow
+  if you want to receive events that have happened after this call. (Default: OSX::KFSEventStreamEventIdSinceNow).
+  You can find the ID's passed with :since in the events passed to your block.
+</pre>
+<p>
+*:latency: Number of seconds to wait until an <a
+href="FSEvents/FSEvent.html">FSEvent</a> is reported, this allows the
+service to bundle events. (Default: 0.0)
+</p>
+<p>
+Please refer to the Cocoa documentation for the rest of the options.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000368" class="method-detail">
+        <a name="M000368"></a>
+
+        <div class="method-heading">
+          <a href="FSEvents.src/M000368.html" target="Code" class="method-signature"
+            onclick="popupCode('FSEvents.src/M000368.html');return false;">
+          <span class="method-name">start_watching</span><span class="method-args">(*params, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Initializes a <a href="FSEvents.html#M000369">new</a> <a
+href="FSEvents.html">FSEvents</a> `watchdog` object and starts watching the
+directories you specify for events. The block is used as a handler for
+events, which are passed as the block&#8216;s argument. This method is the
+easiest way to <a href="FSEvents.html#M000371">start</a> watching some
+directories if you don&#8216;t care about the details of setting up the
+event stream.
+</p>
+<pre>
+  Rucola::FSEvents.start_watching('/tmp') do |events|
+    events.each { |event| log.debug(&quot;#{event.files.inspect} were changed.&quot;) }
+  end
+
+  Rucola::FSEvents.start_watching('/var/log/system.log', '/var/log/secure.log', :since =&gt; last_id, :latency =&gt; 5) do
+    Growl.notify(&quot;Something was added to your log files!&quot;)
+  end
+</pre>
+<p>
+Note that the method also returns the <a href="FSEvents.html">FSEvents</a>
+object. This enables you to control the event stream if you want to.
+</p>
+<pre>
+  fsevents = Rucola::FSEvents.start_watching('/Volumes') do |events|
+    events.each { |event| Growl.notify(&quot;Volume changes: #{event.files.to_sentence}&quot;) }
+  end
+  fsevents.stop
+</pre>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000370" class="method-detail">
+        <a name="M000370"></a>
+
+        <div class="method-heading">
+          <a href="FSEvents.src/M000370.html" target="Code" class="method-signature"
+            onclick="popupCode('FSEvents.src/M000370.html');return false;">
+          <span class="method-name">create_stream</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create the stream. Raises a <a
+href="FSEvents/StreamError.html">Rucola::FSEvents::StreamError</a> if the
+stream could not be created.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000371" class="method-detail">
+        <a name="M000371"></a>
+
+        <div class="method-heading">
+          <a href="FSEvents.src/M000371.html" target="Code" class="method-signature"
+            onclick="popupCode('FSEvents.src/M000371.html');return false;">
+          <span class="method-name">start</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Start the stream. Raises a <a
+href="FSEvents/StreamError.html">Rucola::FSEvents::StreamError</a> if the
+stream could not be started.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000372" class="method-detail">
+        <a name="M000372"></a>
+
+        <div class="method-heading">
+          <a href="FSEvents.src/M000372.html" target="Code" class="method-signature"
+            onclick="popupCode('FSEvents.src/M000372.html');return false;">
+          <span class="method-name">stop</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Stop the stream. You can resume it by calling `<a
+href="FSEvents.html#M000371">start</a>` again.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Adapters#resolve_additional_import_paths
+is_singleton: false
+name: resolve_additional_import_paths
+params: ()
+visibility: public

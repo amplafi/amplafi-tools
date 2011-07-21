@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@param name [String] The name of the mixin @param args [Array&lt;Script::Node&gt;] See \\{#args} @param keywords [{String =&gt; Script::Node}] See \\{#keywords}"
+full_name: Sass::Tree::MixinNode::new
+is_singleton: true
+name: new
+params: (name, args, keywords)
+visibility: public

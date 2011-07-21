@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Draws a circle on the canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] x0 The x-coordinate of the center of the circle. @param [Integer] y0 The y-coordinate of the center of the circle. @param [Integer] radius The radius of the circle from the center point. @param [Integer] stroke_color The color to use for the line. @param [Integer] fill_color The color to use that fills the circle. @return [ChunkyPNG::Canvas] Itself, with the circle drawn."
+full_name: ChunkyPNG::Canvas::Drawing#circle
+is_singleton: false
+name: circle
+params: (x0, y0, radius, stroke_color = ChunkyPNG::Color::BLACK, fill_color = ChunkyPNG::Color::TRANSPARENT)
+visibility: public

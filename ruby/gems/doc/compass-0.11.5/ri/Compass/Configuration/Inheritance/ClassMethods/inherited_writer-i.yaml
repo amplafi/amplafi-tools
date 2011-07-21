@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Inheritance::ClassMethods#inherited_writer
+is_singleton: false
+name: inherited_writer
+params: (*attributes)
+visibility: public

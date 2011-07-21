@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: to_string
+  - !ruby/object:RI::AliasName 
+    name: to_s
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Encodes this datastream into a string. @return [String] The encoded PNG datastream.
+full_name: ChunkyPNG::Datastream#to_blob
+is_singleton: false
+name: to_blob
+params: ()
+visibility: public

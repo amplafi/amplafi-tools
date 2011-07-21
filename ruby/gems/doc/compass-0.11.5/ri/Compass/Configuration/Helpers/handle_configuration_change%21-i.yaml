@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Helpers#handle_configuration_change!
+is_singleton: false
+name: handle_configuration_change!
+params: ()
+visibility: public

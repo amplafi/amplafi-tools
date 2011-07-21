@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A subclass of {Parser} that parses code in Sass documents using some SCSS constructs. This is necessary because SassScript in Sass supports `!`-style variables, whereas in SCSS it doesn't.
+constants: []
+
+full_name: Sass::SCSS::SassParser
+includes: []
+
+instance_methods: []
+
+name: SassParser
+superclass: Parser

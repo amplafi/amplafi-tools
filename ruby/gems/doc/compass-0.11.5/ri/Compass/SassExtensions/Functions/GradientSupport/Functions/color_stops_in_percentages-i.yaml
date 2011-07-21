@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::GradientSupport::Functions#color_stops_in_percentages
+is_singleton: false
+name: color_stops_in_percentages
+params: (color_list)
+visibility: public

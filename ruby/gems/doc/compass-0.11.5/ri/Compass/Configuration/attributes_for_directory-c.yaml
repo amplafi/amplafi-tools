@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::attributes_for_directory
+is_singleton: true
+name: attributes_for_directory
+params: (dir_name, http_dir_name = dir_name)
+visibility: public

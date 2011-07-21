@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>usable_backend (FSSM::Support)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/fssm/support.rb, line 5</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">usable_backend</span>
+      <span class="ruby-identifier">choice</span> = <span class="ruby-keyword kw">case</span>
+                 <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">mac?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">lion?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">jruby?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">carbon_core?</span>
+                   <span class="ruby-value str">'FSEvents'</span>
+                 <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">mac?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">rb_fsevent?</span>
+                   <span class="ruby-value str">'RBFSEvent'</span>
+                 <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">linux?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">rb_inotify?</span>
+                   <span class="ruby-value str">'Inotify'</span>
+                 <span class="ruby-keyword kw">else</span>
+                   <span class="ruby-value str">'Polling'</span>
+               <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">mac?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">linux?</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">choice</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'Polling'</span>
+        <span class="ruby-identifier">optimal</span> = <span class="ruby-keyword kw">case</span>
+                    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">mac?</span>
+                      <span class="ruby-value str">'rb-fsevent'</span>
+                    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">linux?</span>
+                      <span class="ruby-value str">'rb-inotify'</span>
+                  <span class="ruby-keyword kw">end</span>
+        <span class="ruby-constant">FSSM</span>.<span class="ruby-identifier">dbg</span>(<span class="ruby-value str">&quot;An optimized backend is available for this platform!&quot;</span>)
+        <span class="ruby-constant">FSSM</span>.<span class="ruby-identifier">dbg</span>(<span class="ruby-node">&quot;    gem install #{optimal}&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">choice</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,33 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: description
+  - !ruby/object:RI::MethodSummary 
+    name: option_parser
+  - !ruby/object:RI::MethodSummary 
+    name: parse!
+  - !ruby/object:RI::MethodSummary 
+    name: parse_arguments!
+  - !ruby/object:RI::MethodSummary 
+    name: parse_init!
+  - !ruby/object:RI::MethodSummary 
+    name: parse_options!
+  - !ruby/object:RI::MethodSummary 
+    name: primary
+  - !ruby/object:RI::MethodSummary 
+    name: set_default_arguments
+  - !ruby/object:RI::MethodSummary 
+    name: usage
+comment: 
+constants: []
+
+full_name: Compass::Commands::CreateProject
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: is_project_creation?
+name: CreateProject
+superclass: StampPattern

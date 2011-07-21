@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: a genericized version of saturation/desaturate so that negative values can be used.
+full_name: Compass::SassExtensions::Functions::Colors#adjust_saturation
+is_singleton: false
+name: adjust_saturation
+params: (color, amount)
+visibility: public

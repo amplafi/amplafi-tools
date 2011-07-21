@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Replaces pixels on this image by pixels from another pixels, on a given offset. This method will modify the current canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: This will completely replace the pixels of the background image. If you want to blend them with semi-transparent pixels from the foreground image, see {#compose!}.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param (see #replace!) @return [ChunkyPNG::Canvas] Returns a new, combined canvas. @raise [ChunkyPNG::OutOfBounds] when the other canvas doesn't fit on this one,"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    given the offset and size of the other canvas.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@note API changed since 1.0 - This method now no longer is in place, but returns"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    a new canvas and leaves the original intact. Use {#replace!} if you want to\n    replace pixels on the canvas in place.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@see #compose"
+full_name: ChunkyPNG::Canvas::Operations#replace
+is_singleton: false
+name: replace
+params: (other, offset_x = 0, offset_y = 0)
+visibility: public

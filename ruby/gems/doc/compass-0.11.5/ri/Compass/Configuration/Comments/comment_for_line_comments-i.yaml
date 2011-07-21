@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Comments#comment_for_line_comments
+is_singleton: false
+name: comment_for_line_comments
+params: ()
+visibility: public

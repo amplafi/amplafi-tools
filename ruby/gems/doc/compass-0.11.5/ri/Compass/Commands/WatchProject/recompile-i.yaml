@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::WatchProject#recompile
+is_singleton: false
+name: recompile
+params: (base = nil, relative = nil)
+visibility: public

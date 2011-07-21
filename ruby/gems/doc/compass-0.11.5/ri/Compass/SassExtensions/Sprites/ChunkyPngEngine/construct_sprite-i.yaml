@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Sprites::ChunkyPngEngine#construct_sprite
+is_singleton: false
+name: construct_sprite
+params: ()
+visibility: public

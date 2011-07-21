@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Compiler#sass_files
+is_singleton: false
+name: sass_files
+params: (options = {})
+visibility: public

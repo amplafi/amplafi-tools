@@ -1,0 +1,250 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: declare
+  - !ruby/object:RI::MethodSummary 
+    name: signature
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Methods in this module are accessible from the SassScript context. For example, you can write
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    $color = hsl(120deg, 100%, 50%)\n"
+  - !ruby/struct:SM::Flow::P 
+    body: and it will call {Sass::Script::Functions#hsl}.
+  - !ruby/struct:SM::Flow::P 
+    body: "The following functions are provided:"
+  - !ruby/struct:SM::Flow::P 
+    body: "*Note: These functions are described in more detail below.*"
+  - !ruby/struct:SM::Flow::P 
+    body: "## RGB Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#rgb rgb($red, $green, $blue)} : Converts an `rgb(red, green, blue)` triplet into a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#rgba rgba($red, $green, $blue, $alpha)} : Converts an `rgba(red, green, blue, alpha)` quadruplet into a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#rgba rgba($color, $alpha)} : Adds an alpha layer to any color value."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#red red($color)} : Gets the red component of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#green green($color)} : Gets the green component of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#blue blue($color)} : Gets the blue component of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#mix mix($color-1, $color-2, \\[$weight\\])} : Mixes two colors together."
+  - !ruby/struct:SM::Flow::P 
+    body: "## HSL Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#hsl hsl($hue, $saturation, $lightness)} : Converts an `hsl(hue, saturation, lightness)` triplet into a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#hsla hsla($hue, $saturation, $lightness, $alpha)} : Converts an `hsla(hue, saturation, lightness, alpha)` quadruplet into a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#hue hue($color)} : Gets the hue component of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#saturation saturation($color)} : Gets the saturation component of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#lightness lightness($color)} : Gets the lightness component of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#adjust_hue adjust-hue($color, $degrees)} : Changes the hue of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#lighten lighten($color, $amount)} : Makes a color lighter."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#darken darken($color, $amount)} : Makes a color darker."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#saturate saturate($color, $amount)} : Makes a color more saturated."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#desaturate desaturate($color, $amount)} : Makes a color less saturated."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#grayscale grayscale($color)} : Converts a color to grayscale."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#complement complement($color)} : Returns the complement of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#invert invert($color)} : Returns the inverse of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "## Opacity Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#alpha alpha($color)} / \\{#opacity opacity($color)} : Gets the alpha component (opacity) of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#rgba rgba($color, $alpha)} : Add or change an alpha layer for any color value."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#opacify opacify($color, $amount)} / \\{#fade_in fade-in($color, $amount)} : Makes a color more opaque."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#transparentize transparentize($color, $amount)} / \\{#fade_out fade-out($color, $amount)} : Makes a color more transparent."
+  - !ruby/struct:SM::Flow::P 
+    body: "## Other Color Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#adjust_color adjust-color($color, \\[$red\\], \\[$green\\], \\[$blue\\], \\[$hue\\], \\[$saturation\\], \\[$lightness\\], \\[$alpha\\]} : Increase or decrease any of the components of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#scale_color scale-color($color, \\[$red\\], \\[$green\\], \\[$blue\\], \\[$hue\\], \\[$saturation\\], \\[$lightness\\], \\[$alpha\\]} : Fluidly scale one or more components of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#change_color change-color($color, \\[$red\\], \\[$green\\], \\[$blue\\], \\[$hue\\], \\[$saturation\\], \\[$lightness\\], \\[$alpha\\]} : Changes one or more properties of a color."
+  - !ruby/struct:SM::Flow::P 
+    body: "## String Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#unquote unquote($string)} : Removes the quotes from a string."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#quote quote($string)} : Adds quotes to a string."
+  - !ruby/struct:SM::Flow::P 
+    body: "## Number Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#percentage percentage($value)} : Converts a unitless number to a percentage."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#round round($value)} : Rounds a number to the nearest whole number."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#ceil ceil($value)} : Rounds a number up to the nearest whole number."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#floor floor($value)} : Rounds a number down to the nearest whole number."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#abs abs($value)} : Returns the absolute value of a number."
+  - !ruby/struct:SM::Flow::P 
+    body: "## List Functions {#list-functions}"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#length length($list)} : Returns the length of a list."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#nth nth($list, $n)} : Returns a specific item in a list."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#join join($list1, $list2, \\[$separator\\])} : Joins together two lists into one."
+  - !ruby/struct:SM::Flow::P 
+    body: "## Introspection Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#type_of type-of($value)} : Returns the type of a value."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#unit unit($number)} : Returns the units associated with a number."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#unitless unitless($number)} : Returns whether a number has units or not."
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#comparable comparable($number-1, $number-2)} : Returns whether two numbers can be added or compared."
+  - !ruby/struct:SM::Flow::P 
+    body: "## Miscellaneous Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "\\{#if if($condition, $if-true, $if-false)} : Returns one of two values, depending on whether or not a condition is true."
+  - !ruby/struct:SM::Flow::P 
+    body: "## Adding Custom Functions"
+  - !ruby/struct:SM::Flow::P 
+    body: "New Sass functions can be added by adding Ruby methods to this module. For example:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    module Sass::Script::Functions\n      def reverse(string)\n        assert_type string, :String\n        Sass::Script::String.new(string.value.reverse)\n      end\n      declare :reverse, :args =&gt; [:string]\n    end\n"
+  - !ruby/struct:SM::Flow::P 
+    body: Calling {declare} tells Sass the argument names for your function. If omitted, the function will still work, but will not be able to accept keyword arguments. {declare} can also allow your function to take arbitrary keyword arguments.
+  - !ruby/struct:SM::Flow::P 
+    body: There are a few things to keep in mind when modifying this module. First of all, the arguments passed are {Sass::Script::Literal} objects. Literal objects are also expected to be returned. This means that Ruby values must be unwrapped and wrapped.
+  - !ruby/struct:SM::Flow::P 
+    body: Most Literal objects support the {Sass::Script::Literal#value value} accessor for getting their Ruby values. Color objects, though, must be accessed using {Sass::Script::Color#rgb rgb}, {Sass::Script::Color#red red}, {Sass::Script::Color#blue green}, or {Sass::Script::Color#blue blue}.
+  - !ruby/struct:SM::Flow::P 
+    body: Second, making Ruby functions accessible from Sass introduces the temptation to do things like database access within stylesheets. This is generally a bad idea; since Sass files are by default only compiled once, dynamic code is not a great fit.
+  - !ruby/struct:SM::Flow::P 
+    body: If you really, really need to compile Sass on each request, first make sure you have adequate caching set up. Then you can use {Sass::Engine} to render the code, using the {file:SASS_REFERENCE.md#custom-option `options` parameter} to pass in data that {EvaluationContext#options can be accessed} from your Sass functions.
+  - !ruby/struct:SM::Flow::P 
+    body: Within one of the functions in this module, methods of {EvaluationContext} can be used.
+  - !ruby/struct:SM::Flow::P 
+    body: "### Caveats"
+  - !ruby/struct:SM::Flow::P 
+    body: "When creating new {Literal} objects within functions, be aware that it's not safe to call {Literal#to_s #to_s} (or other methods that use the string representation) on those objects without first setting {Node#options= the #options attribute}."
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: A class representing a Sass function signature.
+      - !ruby/struct:SM::Flow::P 
+        body: "@attr args [Array&lt;Symbol&gt;] The names of the arguments to the function. @attr var_args [Boolean] Whether the function takes a variable number of arguments. @attr var_kwargs [Boolean] Whether the function takes an arbitrary set of keyword arguments."
+    name: Signature
+    value: Struct.new(:args, :var_args, :var_kwargs)
+full_name: Sass::Script::Functions
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: abs
+  - !ruby/object:RI::MethodSummary 
+    name: adjust_color
+  - !ruby/object:RI::MethodSummary 
+    name: adjust_hue
+  - !ruby/object:RI::MethodSummary 
+    name: alpha
+  - !ruby/object:RI::MethodSummary 
+    name: append
+  - !ruby/object:RI::MethodSummary 
+    name: blue
+  - !ruby/object:RI::MethodSummary 
+    name: ceil
+  - !ruby/object:RI::MethodSummary 
+    name: change_color
+  - !ruby/object:RI::MethodSummary 
+    name: comparable
+  - !ruby/object:RI::MethodSummary 
+    name: complement
+  - !ruby/object:RI::MethodSummary 
+    name: darken
+  - !ruby/object:RI::MethodSummary 
+    name: desaturate
+  - !ruby/object:RI::MethodSummary 
+    name: fade_in
+  - !ruby/object:RI::MethodSummary 
+    name: fade_out
+  - !ruby/object:RI::MethodSummary 
+    name: floor
+  - !ruby/object:RI::MethodSummary 
+    name: grayscale
+  - !ruby/object:RI::MethodSummary 
+    name: green
+  - !ruby/object:RI::MethodSummary 
+    name: hsl
+  - !ruby/object:RI::MethodSummary 
+    name: hsla
+  - !ruby/object:RI::MethodSummary 
+    name: hue
+  - !ruby/object:RI::MethodSummary 
+    name: if
+  - !ruby/object:RI::MethodSummary 
+    name: index
+  - !ruby/object:RI::MethodSummary 
+    name: invert
+  - !ruby/object:RI::MethodSummary 
+    name: join
+  - !ruby/object:RI::MethodSummary 
+    name: length
+  - !ruby/object:RI::MethodSummary 
+    name: lighten
+  - !ruby/object:RI::MethodSummary 
+    name: lightness
+  - !ruby/object:RI::MethodSummary 
+    name: mix
+  - !ruby/object:RI::MethodSummary 
+    name: nth
+  - !ruby/object:RI::MethodSummary 
+    name: opacify
+  - !ruby/object:RI::MethodSummary 
+    name: opacity
+  - !ruby/object:RI::MethodSummary 
+    name: percentage
+  - !ruby/object:RI::MethodSummary 
+    name: quote
+  - !ruby/object:RI::MethodSummary 
+    name: red
+  - !ruby/object:RI::MethodSummary 
+    name: rgb
+  - !ruby/object:RI::MethodSummary 
+    name: rgba
+  - !ruby/object:RI::MethodSummary 
+    name: round
+  - !ruby/object:RI::MethodSummary 
+    name: saturate
+  - !ruby/object:RI::MethodSummary 
+    name: saturation
+  - !ruby/object:RI::MethodSummary 
+    name: scale_color
+  - !ruby/object:RI::MethodSummary 
+    name: transparentize
+  - !ruby/object:RI::MethodSummary 
+    name: type_of
+  - !ruby/object:RI::MethodSummary 
+    name: unit
+  - !ruby/object:RI::MethodSummary 
+    name: unitless
+  - !ruby/object:RI::MethodSummary 
+    name: unquote
+  - !ruby/object:RI::MethodSummary 
+    name: zip
+name: Functions
+superclass: 

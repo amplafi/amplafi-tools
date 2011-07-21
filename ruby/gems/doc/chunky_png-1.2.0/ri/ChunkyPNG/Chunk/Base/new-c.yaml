@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Initializes the chunk instance. @param [String] type The four character chunk type indicator. @param [Hash] attributes A hash of attributes to set on this chunk.
+full_name: ChunkyPNG::Chunk::Base::new
+is_singleton: true
+name: new
+params: (type, attributes = {})
+visibility: public

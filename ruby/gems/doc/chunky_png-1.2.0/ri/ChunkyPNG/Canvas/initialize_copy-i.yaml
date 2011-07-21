@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Initializes a new Canvas instances when being cloned. @param [ChunkyPNG::Canvas] other The canvas to duplicate @return [void] @private
+full_name: ChunkyPNG::Canvas#initialize_copy
+is_singleton: false
+name: initialize_copy
+params: (other)
+visibility: public

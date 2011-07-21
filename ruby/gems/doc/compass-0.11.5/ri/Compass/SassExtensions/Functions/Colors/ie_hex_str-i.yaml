@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: returns an IE hex string for a color with an alpha channel suitable for passing to IE filters.
+full_name: Compass::SassExtensions::Functions::Colors#ie_hex_str
+is_singleton: false
+name: ie_hex_str
+params: (color)
+visibility: public

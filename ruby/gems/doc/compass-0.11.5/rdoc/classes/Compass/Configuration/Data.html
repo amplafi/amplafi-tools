@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Compass::Configuration::Data</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Compass::Configuration::Data</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/compass/configuration/data_rb.html">
+                lib/compass/configuration/data.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+The <a href="../../Compass.html">Compass</a> configuration data storage
+class manages configuration data that comes from a variety of different
+sources and aggregates them together into a consistent API Some of the
+possible sources of configuration data:
+</p>
+<pre>
+  * Compass default project structure for stand alone projects
+  * App framework specific project structures for rails, etc.
+  * User supplied explicit configuration
+  * Configuration data provided via the command line interface
+</pre>
+<p>
+There are two kinds of configuration data that doesn&#8216;t come from the
+user:
+</p>
+<ol>
+<li><a href="../Configuration.html">Configuration</a> data that is defaulted as
+if the user had provided it themselves. This is useful for providing
+defaults that the user is likely to want to edit but shouldn&#8216;t have
+to provide explicitly when getting started
+
+</li>
+<li><a href="../Configuration.html">Configuration</a> data that is defaulted
+behind the scenes because <em>some</em> value is required.
+
+</li>
+</ol>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000551">add_import_path</a>&nbsp;&nbsp;
+      <a href="#M000553">asset_cache_buster</a>&nbsp;&nbsp;
+      <a href="#M000552">asset_host</a>&nbsp;&nbsp;
+      <a href="#M000558">discover</a>&nbsp;&nbsp;
+      <a href="#M000557">load</a>&nbsp;&nbsp;
+      <a href="#M000549">new</a>&nbsp;&nbsp;
+      <a href="#M000559">relative_assets?</a>&nbsp;&nbsp;
+      <a href="#M000556">require</a>&nbsp;&nbsp;
+      <a href="#M000560">run_callback</a>&nbsp;&nbsp;
+      <a href="#M000550">set_all</a>&nbsp;&nbsp;
+      <a href="#M000554">watch</a>&nbsp;&nbsp;
+      <a href="#M000555">watches</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="Inheritance.html">Compass::Configuration::Inheritance</a></span>
+        <span class="include-name"><a href="Serialization.html">Compass::Configuration::Serialization</a></span>
+        <span class="include-name"><a href="Adapters.html">Compass::Configuration::Adapters</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">name</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000549" class="method-detail">
+        <a name="M000549"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000549.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000549.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(name, attr_hash = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000551" class="method-detail">
+        <a name="M000551"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000551.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000551.html');return false;">
+          <span class="method-name">add_import_path</span><span class="method-args">(*paths)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000553" class="method-detail">
+        <a name="M000553"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000553.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000553.html');return false;">
+          <span class="method-name">asset_cache_buster</span><span class="method-args">(simple = nil, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+When called with a block, defines the cache buster strategy to be used. If
+the block returns nil or a string, then it is appended to the url as a
+query parameter. In this case, the returned string must not include the
+starting &#8217;?&#8217;. The block may also return a hash with :path
+and/or :query values and it will replace the original path and query string
+with the busted values returned. The block will be passed the root-relative
+url of the asset. If the block accepts two arguments, it will also be
+passed a File object that points to the asset on disk &#8212; which may or
+may not exist. When called without a block, returns the block that was
+previously set.
+</p>
+<p>
+To disable the asset cache buster:
+</p>
+<pre>
+    asset_cache_buster :none
+</pre>
+        </div>
+      </div>
+
+      <div id="method-M000552" class="method-detail">
+        <a name="M000552"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000552.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000552.html');return false;">
+          <span class="method-name">asset_host</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+When called with a block, defines the asset host url to be used. The block
+must return a string that starts with a protocol (E.g. http). The block
+will be passed the root-relative url of the asset. When called without a
+block, returns the block that was previously set.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000558" class="method-detail">
+        <a name="M000558"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000558.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000558.html');return false;">
+          <span class="method-name">discover</span><span class="method-args">(frameworks_dir)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Finds all extensions within a directory and registers them.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000557" class="method-detail">
+        <a name="M000557"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000557.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000557.html');return false;">
+          <span class="method-name">load</span><span class="method-args">(framework_dir)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000559" class="method-detail">
+        <a name="M000559"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000559.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000559.html');return false;">
+          <span class="method-name">relative_assets?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000556" class="method-detail">
+        <a name="M000556"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000556.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000556.html');return false;">
+          <span class="method-name">require</span><span class="method-args">(lib)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Require a compass plugin and capture that it occured so that the
+configuration serialization works next time.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000560" class="method-detail">
+        <a name="M000560"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000560.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000560.html');return false;">
+          <span class="method-name">run_callback</span><span class="method-args">(event, *args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000550" class="method-detail">
+        <a name="M000550"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000550.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000550.html');return false;">
+          <span class="method-name">set_all</span><span class="method-args">(attr_hash)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000554" class="method-detail">
+        <a name="M000554"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000554.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000554.html');return false;">
+          <span class="method-name">watch</span><span class="method-args">(glob, &amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000555" class="method-detail">
+        <a name="M000555"></a>
+
+        <div class="method-heading">
+          <a href="Data.src/M000555.html" target="Code" class="method-signature"
+            onclick="popupCode('Data.src/M000555.html');return false;">
+          <span class="method-name">watches</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

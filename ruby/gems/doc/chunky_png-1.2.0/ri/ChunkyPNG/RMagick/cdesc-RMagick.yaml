@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Methods for importing and exporting RMagick image objects.
+  - !ruby/struct:SM::Flow::P 
+    body: By default, this module is disabled because of the dependency on RMagick. You need to include this module yourself if you want to use it.
+  - !ruby/struct:SM::Flow::P 
+    body: "@example"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "   require 'rmagick'\n   require 'chunky_png/rmagick'\n\n   canvas = ChunkyPNG::Canvas.from_file('filename.png')\n   image = ChunkyPNG::RMagick.export(canvas)\n\n   # do something with the image using RMagick\n\n   updated_canvas = ChunkyPNG::RMagick.import(image)\n"
+constants: []
+
+full_name: ChunkyPNG::RMagick
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: export
+  - !ruby/object:RI::MethodSummary 
+    name: import
+name: RMagick
+superclass: 

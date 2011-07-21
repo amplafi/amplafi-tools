@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>finalize (Compass::Installers::BareInstaller)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/installers/bare_installer.rb, line 29</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">finalize</span>(<span class="ruby-identifier">options</span> = {})
+        <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;\n*********************************************************************\nCongratulations! Your compass project has been created.\n\nYou may now add sass stylesheets to the \#{Compass.configuration.sass_dir} subdirectory of your project.\n\nSass files beginning with an underscore are called partials and won't be\ncompiled to CSS, but they can be imported into other sass stylesheets.\n\nYou can configure your project by editing the config.rb configuration file.\n\nYou must compile your sass stylesheets into CSS when they change.\nThis can be done in one of the following ways:\n1. To compile on demand:\ncompass compile [path/to/project]\n2. To monitor your project for changes and automatically recompile:\ncompass watch [path/to/project]\n\nMore Resources:\n* Website: http://compass-style.org/\n* Sass: http://sass-lang.com\n* Community: http://groups.google.com/group/compass-users/\n&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

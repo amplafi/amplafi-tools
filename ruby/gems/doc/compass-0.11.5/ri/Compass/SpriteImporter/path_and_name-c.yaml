@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SpriteImporter::path_and_name
+is_singleton: true
+name: path_and_name
+params: (uri)
+visibility: public

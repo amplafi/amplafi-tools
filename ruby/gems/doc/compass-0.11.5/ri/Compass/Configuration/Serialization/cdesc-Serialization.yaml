@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The serialization module manages reading and writing the configuration file(s).
+constants: []
+
+full_name: Compass::Configuration::Serialization
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: _parse
+  - !ruby/object:RI::MethodSummary 
+    name: issue_deprecation_warnings
+  - !ruby/object:RI::MethodSummary 
+    name: parse
+  - !ruby/object:RI::MethodSummary 
+    name: parse_string
+  - !ruby/object:RI::MethodSummary 
+    name: serialize
+  - !ruby/object:RI::MethodSummary 
+    name: serialize_property
+name: Serialization
+superclass: 

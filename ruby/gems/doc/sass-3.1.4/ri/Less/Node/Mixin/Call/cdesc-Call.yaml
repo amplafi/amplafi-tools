@@ -1,0 +1,16 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Less::Node::Mixin::Call
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: to_sass_tree
+name: Call
+superclass: Object

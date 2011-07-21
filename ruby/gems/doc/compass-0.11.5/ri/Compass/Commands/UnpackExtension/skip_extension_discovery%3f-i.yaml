@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::UnpackExtension#skip_extension_discovery?
+is_singleton: false
+name: skip_extension_discovery?
+params: ()
+visibility: public

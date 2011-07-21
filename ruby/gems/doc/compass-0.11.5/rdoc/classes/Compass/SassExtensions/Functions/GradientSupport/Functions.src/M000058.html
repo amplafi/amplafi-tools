@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>grad_point (Compass::SassExtensions::Functions::GradientSupport::Functions)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/sass_extensions/functions/gradient_support.rb, line 191</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">grad_point</span>(<span class="ruby-identifier">position</span>)
+      <span class="ruby-identifier">original_value</span> = <span class="ruby-identifier">position</span>
+      <span class="ruby-identifier">position</span> = <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">position</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">List</span>)
+        <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">position</span>], <span class="ruby-identifier">:space</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">dup</span>, <span class="ruby-identifier">position</span>.<span class="ruby-identifier">separator</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt"># Handle unknown arguments by passing them along untouched.</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">all?</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">is_position</span>(<span class="ruby-identifier">p</span>).<span class="ruby-identifier">to_bool</span> }
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">original_value</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/top|bottom/</span>) <span class="ruby-keyword kw">or</span> (<span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/left|right/</span>)
+        <span class="ruby-comment cmt"># browsers are pretty forgiving of reversed positions so we are too.</span>
+        <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">reverse!</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/top|bottom/</span>
+          <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;center&quot;</span>)
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/left|right/</span>
+          <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">push</span> <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;center&quot;</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">position</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">map!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">value</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/top|left/</span>
+          <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, [<span class="ruby-value str">&quot;%&quot;</span>])
+        <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/bottom|right/</span>
+          <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">100</span>, [<span class="ruby-value str">&quot;%&quot;</span>])
+        <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/center/</span>
+          <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">50</span>, [<span class="ruby-value str">&quot;%&quot;</span>])
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">p</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">position</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

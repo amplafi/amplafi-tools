@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Decodes the Canvas from a PNG datastream instance. @param [ChunkyPNG::Datastream] ds The datastream to decode. @return [ChunkyPNG::Canvas] The canvas decoded from the PNG datastream.
+full_name: ChunkyPNG::Canvas::PNGDecoding#from_datastream
+is_singleton: false
+name: from_datastream
+params: (ds)
+visibility: public

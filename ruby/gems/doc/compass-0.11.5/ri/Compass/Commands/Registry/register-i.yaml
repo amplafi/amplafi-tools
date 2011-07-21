@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: "[]="
+block_params: 
+comment: 
+full_name: Compass::Commands::Registry#register
+is_singleton: false
+name: register
+params: (name, command_class)
+visibility: public

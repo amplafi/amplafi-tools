@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>hsla (Sass::Script::Functions)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sass/script/functions.rb, line 460</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hsla</span>(<span class="ruby-identifier">hue</span>, <span class="ruby-identifier">saturation</span>, <span class="ruby-identifier">lightness</span>, <span class="ruby-identifier">alpha</span>)
+      <span class="ruby-identifier">assert_type</span> <span class="ruby-identifier">hue</span>, <span class="ruby-identifier">:Number</span>
+      <span class="ruby-identifier">assert_type</span> <span class="ruby-identifier">saturation</span>, <span class="ruby-identifier">:Number</span>
+      <span class="ruby-identifier">assert_type</span> <span class="ruby-identifier">lightness</span>, <span class="ruby-identifier">:Number</span>
+      <span class="ruby-identifier">assert_type</span> <span class="ruby-identifier">alpha</span>, <span class="ruby-identifier">:Number</span>
+
+      <span class="ruby-keyword kw">unless</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">alpha</span>.<span class="ruby-identifier">value</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Alpha channel #{alpha.value} must be between 0 and 1&quot;</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">original_s</span> = <span class="ruby-identifier">saturation</span>
+      <span class="ruby-identifier">original_l</span> = <span class="ruby-identifier">lightness</span>
+      <span class="ruby-comment cmt"># This algorithm is from http://www.w3.org/TR/css3-color#hsl-color</span>
+      <span class="ruby-identifier">h</span>, <span class="ruby-identifier">s</span>, <span class="ruby-identifier">l</span> = [<span class="ruby-identifier">hue</span>, <span class="ruby-identifier">saturation</span>, <span class="ruby-identifier">lightness</span>].<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">value</span> }
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Saturation #{s} must be between 0% and 100%&quot;</span>) <span class="ruby-keyword kw">unless</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">s</span>)
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Lightness #{l} must be between 0% and 100%&quot;</span>) <span class="ruby-keyword kw">unless</span> (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">l</span>)
+
+      <span class="ruby-constant">Color</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">:hue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">h</span>, <span class="ruby-identifier">:saturation</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">s</span>, <span class="ruby-identifier">:lightness</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">l</span>, <span class="ruby-identifier">:alpha</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">alpha</span>.<span class="ruby-identifier">value</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

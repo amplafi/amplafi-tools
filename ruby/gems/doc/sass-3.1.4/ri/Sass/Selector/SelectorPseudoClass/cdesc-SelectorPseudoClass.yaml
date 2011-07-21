@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The name of the pseudoclass.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [String]"
+    name: name
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The selector argument.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Selector::Sequence]"
+    name: selector
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A pseudoclass selector whose argument is itself a selector (e.g. `:not(.foo)` or `:-moz-all(.foo, .bar)`).
+constants: []
+
+full_name: Sass::Selector::SelectorPseudoClass
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: to_a
+name: SelectorPseudoClass
+superclass: Simple

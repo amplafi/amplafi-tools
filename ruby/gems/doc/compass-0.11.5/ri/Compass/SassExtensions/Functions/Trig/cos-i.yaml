@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Trig#cos
+is_singleton: false
+name: cos
+params: (number)
+visibility: public

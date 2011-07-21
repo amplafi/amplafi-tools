@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Sprites::VariableReader#get_var
+is_singleton: false
+name: get_var
+params: (variable_name)
+visibility: public

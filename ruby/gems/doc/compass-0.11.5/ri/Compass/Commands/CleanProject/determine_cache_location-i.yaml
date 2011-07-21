@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::CleanProject#determine_cache_location
+is_singleton: false
+name: determine_cache_location
+params: ()
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Resamples a 16 bit value to an 8 bit value. This will discard some color information. @param [Integer] value The 16 bit value to resample. @return [Integer] The 8 bit resampled value
+full_name: ChunkyPNG::Canvas::PNGDecoding#decode_png_resample_16bit_value
+is_singleton: false
+name: decode_png_resample_16bit_value
+params: (value)
+visibility: protected

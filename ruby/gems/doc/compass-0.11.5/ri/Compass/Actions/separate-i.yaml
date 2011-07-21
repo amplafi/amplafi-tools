@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Write paths like we're on unix and then fix it
+full_name: Compass::Actions#separate
+is_singleton: false
+name: separate
+params: (path)
+visibility: public

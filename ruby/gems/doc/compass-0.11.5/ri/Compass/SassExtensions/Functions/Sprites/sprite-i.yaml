@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Returns the image and background position for use in a single shorthand property:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    $icons: sprite-map(&quot;icons/*.png&quot;); // contains icons/new.png among others.\n    background: sprite($icons, new) no-repeat;\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "Becomes:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    background: url('/images/icons.png?12345678') 0 -24px no-repeat;\n"
+full_name: Compass::SassExtensions::Functions::Sprites#sprite
+is_singleton: false
+name: sprite
+params: (map, sprite, offset_x = ZERO, offset_y = ZERO)
+visibility: public

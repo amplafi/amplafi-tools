@@ -1,0 +1,76 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Compass::Configuration::Defaults
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: default_cache
+  - !ruby/object:RI::MethodSummary 
+    name: default_cache_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_chunky_png_options
+  - !ruby/object:RI::MethodSummary 
+    name: default_color_output
+  - !ruby/object:RI::MethodSummary 
+    name: default_css_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_environment
+  - !ruby/object:RI::MethodSummary 
+    name: default_extensions_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_extensions_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_fonts_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_fonts_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_fonts_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_fonts_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_images_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_images_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_javascripts_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_javascripts_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_stylesheets_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_stylesheets_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_images_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_javascripts_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_line_comments
+  - !ruby/object:RI::MethodSummary 
+    name: default_output_style
+  - !ruby/object:RI::MethodSummary 
+    name: default_preferred_syntax
+  - !ruby/object:RI::MethodSummary 
+    name: default_project_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_project_type
+  - !ruby/object:RI::MethodSummary 
+    name: default_sass_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_sprite_engine
+  - !ruby/object:RI::MethodSummary 
+    name: http_join
+  - !ruby/object:RI::MethodSummary 
+    name: http_path_without_default
+  - !ruby/object:RI::MethodSummary 
+    name: http_pathify
+  - !ruby/object:RI::MethodSummary 
+    name: http_root_relative
+name: Defaults
+superclass: 

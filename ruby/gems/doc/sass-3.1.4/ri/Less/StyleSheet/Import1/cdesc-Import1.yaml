@@ -1,0 +1,20 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@import statements. Less handles these during parse-time, so we want to wrap them up as a node in the tree. We also include the nodes, though, since we want to have access to the mixins so we can tell if they take arguments or not. The included nodes are hidden so they don't appear in the output."
+constants: []
+
+full_name: Less::StyleSheet::Import1
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: build
+  - !ruby/object:RI::MethodSummary 
+    name: build_with_sass
+name: Import1
+superclass: 

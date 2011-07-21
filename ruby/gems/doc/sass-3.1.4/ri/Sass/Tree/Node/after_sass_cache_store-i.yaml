@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Sass::Tree::Node#after_sass_cache_store
+is_singleton: false
+name: after_sass_cache_store
+params: (o)
+visibility: public

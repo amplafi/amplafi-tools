@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates an ABGR-formatted pixelstream with the pixel data from this canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: Note that this format is fast but bloated, because no compression is used and the internal representation is left intact. To reconstruct the canvas, the width and height should be known.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [String] The RGBA-formatted pixel data."
+full_name: ChunkyPNG::Canvas::StreamExporting#to_abgr_stream
+is_singleton: false
+name: to_abgr_stream
+params: ()
+visibility: public

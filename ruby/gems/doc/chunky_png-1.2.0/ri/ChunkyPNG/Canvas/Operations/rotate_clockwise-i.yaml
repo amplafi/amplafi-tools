@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Alias for #rotate_right"
+full_name: ChunkyPNG::Canvas::Operations#rotate_clockwise
+is_singleton: false
+name: rotate_clockwise
+params: ()
+visibility: public

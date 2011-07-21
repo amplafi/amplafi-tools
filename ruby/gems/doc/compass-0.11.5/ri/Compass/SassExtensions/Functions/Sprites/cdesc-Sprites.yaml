@@ -1,0 +1,49 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: ZERO
+    value: Sass::Script::Number::new(0)
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: VALID_SELECTORS
+    value: "%w(hover active target)"
+full_name: Compass::SassExtensions::Functions::Sprites
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: convert_sprite_name
+  - !ruby/object:RI::MethodSummary 
+    name: missing_image!
+  - !ruby/object:RI::MethodSummary 
+    name: missing_sprite!
+  - !ruby/object:RI::MethodSummary 
+    name: sprite
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_does_not_have_parent
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_file
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_has_selector
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_image
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_map
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_map_name
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_position
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_url
+  - !ruby/object:RI::MethodSummary 
+    name: verify_map
+  - !ruby/object:RI::MethodSummary 
+    name: verify_sprite
+name: Sprites
+superclass: 

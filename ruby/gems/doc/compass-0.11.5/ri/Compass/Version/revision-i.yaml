@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Version#revision
+is_singleton: false
+name: revision
+params: ()
+visibility: protected

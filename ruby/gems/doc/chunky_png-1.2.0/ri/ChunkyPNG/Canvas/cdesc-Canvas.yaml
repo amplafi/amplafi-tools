@@ -1,0 +1,115 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Integer] The number of rows in this canvas"
+    name: height
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Array&lt;ChunkyPNG::Color&gt;] The list of pixels in this canvas."
+      - !ruby/struct:SM::Flow::VERB 
+        body: "    This array always should have +width * height+ elements.\n"
+    name: pixels
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Integer] The number of columns in this canvas"
+    name: width
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: from_canvas
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The ChunkyPNG::Canvas class represents a raster image as a matrix of pixels.
+  - !ruby/struct:SM::Flow::P 
+    body: This class supports loading a Canvas from a PNG datastream, and creating a {ChunkyPNG::Datastream PNG datastream} based on this matrix. ChunkyPNG only supports 8-bit color depth, otherwise all of the PNG format's variations are supported for both reading and writing.
+  - !ruby/struct:SM::Flow::P 
+    body: This class offers per-pixel access to the matrix by using x,y coordinates. It uses a palette (see {ChunkyPNG::Palette}) to keep track of the different colors used in this matrix.
+  - !ruby/struct:SM::Flow::P 
+    body: The pixels in the canvas are stored as 4-byte fixnum, representing 32-bit RGBA colors (8 bit per channel). The module {ChunkyPNG::Color} is provided to work more easily with these number as color values.
+  - !ruby/struct:SM::Flow::P 
+    body: The module {ChunkyPNG::Canvas::Operations} is imported for operations on the whole canvas, like cropping and alpha compositing. Simple drawing functions are imported from the {ChunkyPNG::Canvas::Drawing} module.
+constants: []
+
+full_name: ChunkyPNG::Canvas
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: PNGEncoding
+  - !ruby/object:RI::IncludedModule 
+    name: StreamExporting
+  - !ruby/object:RI::IncludedModule 
+    name: Operations
+  - !ruby/object:RI::IncludedModule 
+    name: Drawing
+  - !ruby/object:RI::IncludedModule 
+    name: Resampling
+  - !ruby/object:RI::IncludedModule 
+    name: Masking
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: ==
+  - !ruby/object:RI::MethodSummary 
+    name: "[]"
+  - !ruby/object:RI::MethodSummary 
+    name: "[]="
+  - !ruby/object:RI::MethodSummary 
+    name: area
+  - !ruby/object:RI::MethodSummary 
+    name: assert_height!
+  - !ruby/object:RI::MethodSummary 
+    name: assert_size!
+  - !ruby/object:RI::MethodSummary 
+    name: assert_width!
+  - !ruby/object:RI::MethodSummary 
+    name: assert_x!
+  - !ruby/object:RI::MethodSummary 
+    name: assert_xy!
+  - !ruby/object:RI::MethodSummary 
+    name: assert_y!
+  - !ruby/object:RI::MethodSummary 
+    name: column
+  - !ruby/object:RI::MethodSummary 
+    name: dimension
+  - !ruby/object:RI::MethodSummary 
+    name: eql?
+  - !ruby/object:RI::MethodSummary 
+    name: get_pixel
+  - !ruby/object:RI::MethodSummary 
+    name: include?
+  - !ruby/object:RI::MethodSummary 
+    name: include_point?
+  - !ruby/object:RI::MethodSummary 
+    name: include_x?
+  - !ruby/object:RI::MethodSummary 
+    name: include_xy?
+  - !ruby/object:RI::MethodSummary 
+    name: include_y?
+  - !ruby/object:RI::MethodSummary 
+    name: initialize_copy
+  - !ruby/object:RI::MethodSummary 
+    name: inspect
+  - !ruby/object:RI::MethodSummary 
+    name: palette
+  - !ruby/object:RI::MethodSummary 
+    name: replace_canvas!
+  - !ruby/object:RI::MethodSummary 
+    name: replace_column!
+  - !ruby/object:RI::MethodSummary 
+    name: replace_row!
+  - !ruby/object:RI::MethodSummary 
+    name: row
+  - !ruby/object:RI::MethodSummary 
+    name: set_pixel
+  - !ruby/object:RI::MethodSummary 
+    name: set_pixel_if_within_bounds
+  - !ruby/object:RI::MethodSummary 
+    name: to_image
+name: Canvas
+superclass: Object

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Add quotes to a string if the string isn't quoted, or returns the same string if it is.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param string [String] @return [String] @raise [ArgumentError] if `string` isn't a string @see #unquote @example"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  quote(&quot;foo&quot;) =&gt; &quot;foo&quot;\n  quote(foo) =&gt; &quot;foo&quot;\n"
+full_name: Sass::Script::Functions#quote
+is_singleton: false
+name: quote
+params: (string)
+visibility: public

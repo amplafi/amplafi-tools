@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: LESS_TO_SASS_OPERATORS
+    value: "{\"-\" => :minus, \"+\" => :plus, \"*\" => :times, \"/\" => :div, \"=\" => :single_eq}"
+full_name: Less::Node::Expression
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: to_sass_tree
+name: Expression
+superclass: Object

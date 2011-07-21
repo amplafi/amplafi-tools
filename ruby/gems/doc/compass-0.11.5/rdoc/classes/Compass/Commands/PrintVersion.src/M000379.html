@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>execute (Compass::Commands::PrintVersion)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/print_version.rb, line 77</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">execute</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:custom</span>]
+          <span class="ruby-identifier">version</span> = <span class="ruby-value str">&quot;&quot;</span>
+          <span class="ruby-identifier">version</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{Compass.version[:major]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:major</span>]
+          <span class="ruby-identifier">version</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{Compass.version[:minor]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:minor</span>]
+          <span class="ruby-identifier">version</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;.#{Compass.version[:teeny]}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:patch</span>]
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:revision</span>]
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">version</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+              <span class="ruby-identifier">version</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; [#{Compass.version[:rev][0..6]}]&quot;</span>
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-identifier">version</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Compass</span>.<span class="ruby-identifier">version</span>[<span class="ruby-identifier">:rev</span>]
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-identifier">version</span>
+        <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:quiet</span>]
+          <span class="ruby-identifier">puts</span> <span class="ruby-operator">::</span><span class="ruby-constant">Compass</span>.<span class="ruby-identifier">version</span>[<span class="ruby-identifier">:string</span>]
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">long_output_string</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

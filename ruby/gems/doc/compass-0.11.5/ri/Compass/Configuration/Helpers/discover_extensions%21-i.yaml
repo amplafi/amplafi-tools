@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Helpers#discover_extensions!
+is_singleton: false
+name: discover_extensions!
+params: ()
+visibility: public

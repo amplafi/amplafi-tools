@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Defaults#default_sprite_engine
+is_singleton: false
+name: default_sprite_engine
+params: ()
+visibility: public

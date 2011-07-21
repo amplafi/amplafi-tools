@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>prompt_sass_dir (Compass::AppIntegration::Rails::Installer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/app_integration/rails/installer.rb, line 84</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prompt_sass_dir</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rails3?</span>
+            <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">recommended_location</span> = <span class="ruby-identifier">separate</span>(<span class="ruby-value str">'app/stylesheets'</span>)
+            <span class="ruby-identifier">default_location</span> = <span class="ruby-identifier">separate</span>(<span class="ruby-value str">'public/stylesheets/sass'</span>)
+            <span class="ruby-identifier">print</span> <span class="ruby-node">%Q{Compass recommends that you keep your stylesheets in #{recommended_location}
+  instead of the Sass default location of #{default_location}.
+  Is this OK? (Y/n) }</span>
+            <span class="ruby-identifier">answer</span> = <span class="ruby-identifier">$stdin</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">downcase</span>[<span class="ruby-value">0</span>]
+            <span class="ruby-identifier">answer</span> <span class="ruby-operator">==</span> <span class="ruby-value">?n</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">default_location</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">recommended_location</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

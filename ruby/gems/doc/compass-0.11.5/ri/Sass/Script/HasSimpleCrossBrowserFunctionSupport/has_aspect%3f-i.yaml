@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Sass::Script::HasSimpleCrossBrowserFunctionSupport#has_aspect?
+is_singleton: false
+name: has_aspect?
+params: (children = nil)
+visibility: public

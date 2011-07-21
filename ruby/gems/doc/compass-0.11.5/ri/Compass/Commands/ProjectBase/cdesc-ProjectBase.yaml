@@ -1,0 +1,44 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: options
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: project_directory
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: project_name
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::Commands::ProjectBase
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: add_project_configuration
+  - !ruby/object:RI::MethodSummary 
+    name: assert_project_directory_exists!
+  - !ruby/object:RI::MethodSummary 
+    name: configure!
+  - !ruby/object:RI::MethodSummary 
+    name: execute
+  - !ruby/object:RI::MethodSummary 
+    name: project_css_subdirectory
+  - !ruby/object:RI::MethodSummary 
+    name: project_directory
+  - !ruby/object:RI::MethodSummary 
+    name: project_images_subdirectory
+  - !ruby/object:RI::MethodSummary 
+    name: project_src_subdirectory
+  - !ruby/object:RI::MethodSummary 
+    name: projectize
+name: ProjectBase
+superclass: Base

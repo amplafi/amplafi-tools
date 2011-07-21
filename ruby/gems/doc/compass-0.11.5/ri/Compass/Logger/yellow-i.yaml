@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ""
+comment: 
+full_name: Compass::Logger#yellow
+is_singleton: false
+name: yellow
+params: () {|| ...}
+visibility: public

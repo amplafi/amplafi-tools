@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Finds the highest y-coordinate in this vector. @return [Integer] The highest y-coordinate of all the points in the vector.
+full_name: ChunkyPNG::Vector#max_y
+is_singleton: false
+name: max_y
+params: ()
+visibility: public

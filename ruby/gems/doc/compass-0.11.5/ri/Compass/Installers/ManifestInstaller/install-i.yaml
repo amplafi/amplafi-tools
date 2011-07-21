@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The default install method. Calls install_&lt;type&gt; methods in the order specified by the manifest.
+full_name: Compass::Installers::ManifestInstaller#install
+is_singleton: false
+name: install
+params: ()
+visibility: public

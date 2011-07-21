@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>check_encoding (Sass::Util)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sass/util.rb, line 420</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_encoding</span>(<span class="ruby-identifier">str</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">ruby1_8?</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\A\xEF\xBB\xBF/</span>, <span class="ruby-value str">''</span>) <span class="ruby-comment cmt"># Get rid of the UTF-8 BOM</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">valid_encoding?</span>
+        <span class="ruby-comment cmt"># Get rid of the Unicode BOM if possible</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^UTF-(8|16|32)(BE|LE)?$/</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\\A\uFEFF&quot;</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">str</span>.<span class="ruby-identifier">encoding</span>.<span class="ruby-identifier">name</span>)), <span class="ruby-value str">''</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">encoding</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">encoding</span>
+      <span class="ruby-identifier">newlines</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;\r\n|\r|\n&quot;</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">encoding</span>).<span class="ruby-identifier">force_encoding</span>(<span class="ruby-value str">&quot;binary&quot;</span>))
+      <span class="ruby-identifier">str</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-value str">&quot;binary&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-identifier">newlines</span>).<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-identifier">line</span>.<span class="ruby-identifier">encode</span>(<span class="ruby-identifier">encoding</span>)
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Encoding</span><span class="ruby-operator">::</span><span class="ruby-constant">UndefinedConversionError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+          <span class="ruby-keyword kw">yield</span> <span class="ruby-operator">&lt;&lt;</span><span class="ruby-constant">MSG</span>.<span class="ruby-identifier">rstrip</span>, <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+<span class="ruby-constant">Invalid</span> <span class="ruby-comment cmt">#{encoding.name} character #{e.error_char.dump}</span>
+<span class="ruby-constant">MSG</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">str</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

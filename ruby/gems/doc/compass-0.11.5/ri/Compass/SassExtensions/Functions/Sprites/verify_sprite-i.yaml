@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Sprites#verify_sprite
+is_singleton: false
+name: verify_sprite
+params: (sprite)
+visibility: protected

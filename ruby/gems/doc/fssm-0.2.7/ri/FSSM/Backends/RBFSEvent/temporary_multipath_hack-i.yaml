@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FSSM::Backends::RBFSEvent#temporary_multipath_hack
+is_singleton: false
+name: temporary_multipath_hack
+params: ()
+visibility: public

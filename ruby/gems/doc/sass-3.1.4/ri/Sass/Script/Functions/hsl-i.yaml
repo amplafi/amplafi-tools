@@ -1,0 +1,26 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a {Color} object from hue, saturation, and lightness. Uses the algorithm from the [CSS3 spec](http://www.w3.org/TR/css3-color/#hsl-color).
+  - !ruby/struct:SM::Flow::P 
+    body: "@param hue [Number] The hue of the color."
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Should be between 0 and 360 degrees, inclusive\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param saturation [Number] The saturation of the color."
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Must be between `0%` and `100%`, inclusive\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param lightness [Number] The lightness of the color."
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Must be between `0%` and `100%`, inclusive\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Color] The resulting color @see #hsla @raise [ArgumentError] if `saturation` or `lightness` are out of bounds"
+full_name: Sass::Script::Functions#hsl
+is_singleton: false
+name: hsl
+params: (hue, saturation, lightness)
+visibility: public

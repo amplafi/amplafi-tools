@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Push a new stack frame onto the mixin/include stack.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param frame_info [{Symbol =&gt; Object}]"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Frame information has the following keys:\n\n  `:filename`\n  : The name of the file in which the lexical scope changed.\n\n  `:mixin`\n  : The name of the mixin in which the lexical scope changed,\n    or `nil` if it wasn't within in a mixin.\n\n  `:line`\n  : The line of the file on which the lexical scope changed. Never nil.\n"
+full_name: Sass::Environment#push_frame
+is_singleton: false
+name: push_frame
+params: (frame_info)
+visibility: public

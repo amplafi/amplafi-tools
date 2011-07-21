@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@param operand [Script::Node] The parse-tree node"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  for the object of the operator\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param operator [Symbol] The operator to perform"
+full_name: Sass::Script::UnaryOperation::new
+is_singleton: true
+name: new
+params: (operand, operator)
+visibility: public

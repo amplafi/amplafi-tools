@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: If the argument is a list, it will return a new list that is space delimited Otherwise it returns a new, single element, space-delimited list.
+full_name: Compass::SassExtensions::Functions::Lists#_compass_space_list
+is_singleton: false
+name: _compass_space_list
+params: (list)
+visibility: public

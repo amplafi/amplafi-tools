@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Writes the canvas to an IO stream, encoded as a PNG image. @param [IO] io The output stream to write to. @param constraints (see ChunkyPNG::Canvas::PNGEncoding#to_datastream) @return [void]
+full_name: ChunkyPNG::Canvas::PNGEncoding#write
+is_singleton: false
+name: write
+params: (io, constraints = {})
+visibility: public

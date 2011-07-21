@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>install_stylesheet (Compass::Installers::Base)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/installers/base.rb, line 92</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">install_stylesheet</span>(<span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-identifier">from</span> = <span class="ruby-identifier">templatize</span>(<span class="ruby-identifier">from</span>)
+        <span class="ruby-identifier">to</span> = <span class="ruby-identifier">targetize</span>(<span class="ruby-identifier">install_location_for_stylesheet</span>(<span class="ruby-identifier">to</span>, <span class="ruby-identifier">options</span>))
+        <span class="ruby-identifier">contents</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">from</span>).<span class="ruby-identifier">read</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:erb</span>)
+          <span class="ruby-identifier">ctx</span> = <span class="ruby-constant">TemplateContext</span>.<span class="ruby-identifier">ctx</span>(<span class="ruby-identifier">:to</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">to</span>, <span class="ruby-identifier">:options</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">options</span>)
+          <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">process_erb</span>(<span class="ruby-identifier">contents</span>, <span class="ruby-identifier">ctx</span>)
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">preferred_syntax</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">from</span>[<span class="ruby-value">-4</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+          <span class="ruby-comment cmt"># logger.record :convert, basename(from)</span>
+          <span class="ruby-identifier">tree</span> = <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">contents</span>, <span class="ruby-constant">Compass</span>.<span class="ruby-identifier">sass_engine_options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:syntax</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">from</span>[<span class="ruby-value">-4</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">intern</span>)).<span class="ruby-identifier">to_tree</span>
+          <span class="ruby-identifier">contents</span> = <span class="ruby-identifier">tree</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;to_#{preferred_syntax}&quot;</span>)
+          <span class="ruby-identifier">to</span>[<span class="ruby-value">-4</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] = <span class="ruby-identifier">preferred_syntax</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">write_file</span> <span class="ruby-identifier">to</span>, <span class="ruby-identifier">contents</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

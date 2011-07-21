@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Initializes a new dimension instance. @param [Integer] width The width-component of the new dimension. @param [Integer] height The height-component of the new dimension.
+full_name: ChunkyPNG::Dimension::new
+is_singleton: true
+name: new
+params: (width, height)
+visibility: public

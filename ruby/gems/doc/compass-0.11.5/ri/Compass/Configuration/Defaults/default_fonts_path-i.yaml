@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Defaults#default_fonts_path
+is_singleton: false
+name: default_fonts_path
+params: ()
+visibility: public

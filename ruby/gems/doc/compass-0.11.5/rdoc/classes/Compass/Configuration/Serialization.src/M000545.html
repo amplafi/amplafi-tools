@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>parse_string (Compass::Configuration::Serialization)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/configuration/serialization.rb, line 19</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_string</span>(<span class="ruby-identifier">contents</span>, <span class="ruby-identifier">filename</span>)
+        <span class="ruby-identifier">bind</span> = <span class="ruby-identifier">binding</span>
+        <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">contents</span>, <span class="ruby-identifier">bind</span>, <span class="ruby-identifier">filename</span>)
+        <span class="ruby-constant">ATTRIBUTES</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prop</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">eval</span>(<span class="ruby-identifier">prop</span>.<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">bind</span>) <span class="ruby-keyword kw">rescue</span> <span class="ruby-keyword kw">nil</span>
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Pathname</span>)
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{prop}=&quot;</span>, <span class="ruby-identifier">value</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@added_import_paths</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">additional_import_paths</span> <span class="ruby-operator">||=</span> []
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">additional_import_paths</span> <span class="ruby-operator">+=</span> <span class="ruby-ivar">@added_import_paths</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">issue_deprecation_warnings</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Hover selector Image object if exsists
+full_name: Compass::SassExtensions::Sprites::Image#hover
+is_singleton: false
+name: hover
+params: ()
+visibility: public

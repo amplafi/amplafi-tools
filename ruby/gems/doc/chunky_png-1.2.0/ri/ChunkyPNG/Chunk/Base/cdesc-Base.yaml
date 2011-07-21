@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The four-character type indicator for the chunk. This field is used to find the correct class for a chunk when it is loaded from a PNG stream. @return [String]
+    name: type
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The base chunk class is the superclass for every chunk type. It contains methods to write the chunk to an output stream.
+  - !ruby/struct:SM::Flow::P 
+    body: A subclass should implement the <tt>content</tt> method, which gets called when the chunk gets written to a PNG datastream
+  - !ruby/struct:SM::Flow::P 
+    body: "@abstract"
+constants: []
+
+full_name: ChunkyPNG::Chunk::Base
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: write
+  - !ruby/object:RI::MethodSummary 
+    name: write_with_crc
+name: Base
+superclass: Object

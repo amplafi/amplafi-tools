@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Compass::AppIntegration::Rails::Installer</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Compass::AppIntegration::Rails::Installer</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../files/lib/compass/app_integration/rails/installer_rb.html">
+                lib/compass/app_integration/rails/installer.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="../../Installers/ManifestInstaller.html">
+                Compass::Installers::ManifestInstaller
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000200">completed_configuration</a>&nbsp;&nbsp;
+      <a href="#M000210">config_contents</a>&nbsp;&nbsp;
+      <a href="#M000205">finalize</a>&nbsp;&nbsp;
+      <a href="#M000204">gem_config_instructions</a>&nbsp;&nbsp;
+      <a href="#M000214">haml_stylesheet_links</a>&nbsp;&nbsp;
+      <a href="#M000206">hamlize?</a>&nbsp;&nbsp;
+      <a href="#M000215">html_stylesheet_links</a>&nbsp;&nbsp;
+      <a href="#M000211">initializer_contents</a>&nbsp;&nbsp;
+      <a href="#M000207">install_location_for_html</a>&nbsp;&nbsp;
+      <a href="#M000203">prepare</a>&nbsp;&nbsp;
+      <a href="#M000209">prompt_css_dir</a>&nbsp;&nbsp;
+      <a href="#M000208">prompt_sass_dir</a>&nbsp;&nbsp;
+      <a href="#M000202">rails3?</a>&nbsp;&nbsp;
+      <a href="#M000213">stylesheet_links</a>&nbsp;&nbsp;
+      <a href="#M000212">stylesheet_prefix</a>&nbsp;&nbsp;
+      <a href="#M000201">write_configuration_files</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000200" class="method-detail">
+        <a name="M000200"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000200.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000200.html');return false;">
+          <span class="method-name">completed_configuration</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000210" class="method-detail">
+        <a name="M000210"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000210.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000210.html');return false;">
+          <span class="method-name">config_contents</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000205" class="method-detail">
+        <a name="M000205"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000205.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000205.html');return false;">
+          <span class="method-name">finalize</span><span class="method-args">(options = {})</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000204" class="method-detail">
+        <a name="M000204"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000204.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000204.html');return false;">
+          <span class="method-name">gem_config_instructions</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000214" class="method-detail">
+        <a name="M000214"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000214.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000214.html');return false;">
+          <span class="method-name">haml_stylesheet_links</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000206" class="method-detail">
+        <a name="M000206"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000206.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000206.html');return false;">
+          <span class="method-name">hamlize?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000215" class="method-detail">
+        <a name="M000215"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000215.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000215.html');return false;">
+          <span class="method-name">html_stylesheet_links</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000211" class="method-detail">
+        <a name="M000211"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000211.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000211.html');return false;">
+          <span class="method-name">initializer_contents</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000207" class="method-detail">
+        <a name="M000207"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000207.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000207.html');return false;">
+          <span class="method-name">install_location_for_html</span><span class="method-args">(to, options)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000203" class="method-detail">
+        <a name="M000203"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000203.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000203.html');return false;">
+          <span class="method-name">prepare</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000209" class="method-detail">
+        <a name="M000209"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000209.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000209.html');return false;">
+          <span class="method-name">prompt_css_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000208" class="method-detail">
+        <a name="M000208"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000208.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000208.html');return false;">
+          <span class="method-name">prompt_sass_dir</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000202" class="method-detail">
+        <a name="M000202"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000202.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000202.html');return false;">
+          <span class="method-name">rails3?</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000213" class="method-detail">
+        <a name="M000213"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000213.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000213.html');return false;">
+          <span class="method-name">stylesheet_links</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000212" class="method-detail">
+        <a name="M000212"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000212.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000212.html');return false;">
+          <span class="method-name">stylesheet_prefix</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000201" class="method-detail">
+        <a name="M000201"></a>
+
+        <div class="method-heading">
+          <a href="Installer.src/M000201.html" target="Code" class="method-signature"
+            onclick="popupCode('Installer.src/M000201.html');return false;">
+          <span class="method-name">write_configuration_files</span><span class="method-args">(config_file = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

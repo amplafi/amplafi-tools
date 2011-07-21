@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: MD5 hash of this file
+full_name: Compass::SassExtensions::Sprites::Image#digest
+is_singleton: false
+name: digest
+params: ()
+visibility: public

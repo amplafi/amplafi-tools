@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: No-op - available for completeness sake only @param [Integer] value The 8 bit value to resample. @return [Integer] The 8 bit resampled value
+full_name: ChunkyPNG::Canvas::PNGDecoding#decode_png_resample_8bit_value
+is_singleton: false
+name: decode_png_resample_8bit_value
+params: (value)
+visibility: protected

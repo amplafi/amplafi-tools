@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Is active selector
+full_name: Compass::SassExtensions::Sprites::Image#active?
+is_singleton: false
+name: active?
+params: ()
+visibility: public

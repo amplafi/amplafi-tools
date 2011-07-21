@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: <<MSG.rstrip, i + 1
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Checks that the encoding of a string is valid in Ruby 1.9 and cleans up potential encoding gotchas like the UTF-8 BOM. If it's not, yields an error string describing the invalid character and the line on which it occurrs.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param str [String] The string of which to check the encoding @yield [msg] A block in which an encoding error can be raised."
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Only yields if there is an encoding error\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@yieldparam msg [String] The error message to be raised @return [String] `str`, potentially with encoding gotchas like BOMs removed"
+full_name: Sass::Util#check_encoding
+is_singleton: false
+name: check_encoding
+params: (str) {|<<MSG.rstrip, i + 1| ...}
+visibility: public

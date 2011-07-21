@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Sass::Selector::Sequence</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Sass::Selector::Sequence</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../files/lib/sass/selector/sequence_rb.html">
+                lib/sass/selector/sequence.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="AbstractSequence.html">
+                AbstractSequence
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+An operator-separated sequence of {<a
+href="SimpleSequence.html">SimpleSequence</a> simple selector sequences}.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000327">do_extend</a>&nbsp;&nbsp;
+      <a href="#M000324">filename=</a>&nbsp;&nbsp;
+      <a href="#M000330">inspect</a>&nbsp;&nbsp;
+      <a href="#M000323">line=</a>&nbsp;&nbsp;
+      <a href="#M000325">new</a>&nbsp;&nbsp;
+      <a href="#M000326">resolve_parent_refs</a>&nbsp;&nbsp;
+      <a href="#M000328">superselector?</a>&nbsp;&nbsp;
+      <a href="#M000329">to_a</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">members</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc">
+The array of {<a href="SimpleSequence.html">SimpleSequence</a> simple
+selector sequences}, operators, and newlines. The operators are strings
+such as `&quot;+&quot;` and `&quot;&gt;&quot;` representing the
+corresponding <a href="../CSS.html">CSS</a> operators. Newlines are also
+newline strings; these aren&#8216;t semantically relevant, but they do
+affect formatting.
+
+<p>
+@return [Array&lt;<a href="SimpleSequence.html">SimpleSequence</a>,
+String&gt;]
+</p>
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000325" class="method-detail">
+        <a name="M000325"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000325.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000325.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(seqs_and_ops)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@param seqs_and_ops [Array&lt;<a
+href="SimpleSequence.html">SimpleSequence</a>, String&gt;] See \{members}
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000327" class="method-detail">
+        <a name="M000327"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000327.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000327.html');return false;">
+          <span class="method-name">do_extend</span><span class="method-args">(extends, seen = Set.new)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Non-destructively extends this selector with the extensions specified in a
+hash (which should come from {<a
+href="../Tree/Visitors/Cssize.html">Sass::Tree::Visitors::Cssize</a>}).
+</p>
+<p>
+@overload def <a href="Sequence.html#M000327">do_extend</a>(extends) @param
+extends [<a href="../Util/SubsetMap.html">Sass::Util::SubsetMap</a>{<a
+href="Simple.html">Selector::Simple</a> =&gt; <a
+href="Sequence.html">Selector::Sequence</a>}]
+</p>
+<pre>
+  The extensions to perform on this selector
+</pre>
+<p>
+@return [Array&lt;<a href="Sequence.html">Sequence</a>&gt;] A list of
+selectors generated
+</p>
+<pre>
+  by extending this selector with `extends`.
+  These correspond to a {CommaSequence}'s {CommaSequence#members members array}.
+</pre>
+<p>
+@see <a href="CommaSequence.html#M000320">CommaSequence#do_extend</a>
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000324" class="method-detail">
+        <a name="M000324"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000324.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000324.html');return false;">
+          <span class="method-name">filename=</span><span class="method-args">(filename)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the name of the file in which this selector was declared, or `nil` if
+it was not declared in a file (e.g. on stdin). This also sets the filename
+for all child selectors.
+</p>
+<p>
+@param filename [String, nil] @return [String, nil]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000330" class="method-detail">
+        <a name="M000330"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000330.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000330.html');return false;">
+          <span class="method-name">inspect</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a string representation of the sequence. This is basically the
+selector string.
+</p>
+<p>
+@return [String]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000323" class="method-detail">
+        <a name="M000323"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000323.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000323.html');return false;">
+          <span class="method-name">line=</span><span class="method-args">(line)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the line of the <a href="../../Sass.html">Sass</a> template on which
+this selector was declared. This also sets the line for all child
+selectors.
+</p>
+<p>
+@param line [Fixnum] @return [Fixnum]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000326" class="method-detail">
+        <a name="M000326"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000326.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000326.html');return false;">
+          <span class="method-name">resolve_parent_refs</span><span class="method-args">(super_seq)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Resolves the {<a href="Parent.html">Parent</a>} selectors within this
+selector by replacing them with the given parent selector, handling commas
+appropriately.
+</p>
+<p>
+@param super_seq [<a href="Sequence.html">Sequence</a>] The parent selector
+sequence @return [<a href="Sequence.html">Sequence</a>] This selector, with
+parent references resolved @raise [<a
+href="../SyntaxError.html">Sass::SyntaxError</a>] If a parent selector is
+invalid
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000328" class="method-detail">
+        <a name="M000328"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000328.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000328.html');return false;">
+          <span class="method-name">superselector?</span><span class="method-args">(sseq)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns whether or not this selector matches all elements that the given
+selector matches (as well as possibly more).
+</p>
+<p>
+@example
+</p>
+<pre>
+  (.foo).superselector?(.foo.bar) #=&gt; true
+  (.foo).superselector?(.bar) #=&gt; false
+  (.bar .foo).superselector?(.foo) #=&gt; false
+</pre>
+<p>
+@param sseq [<a href="SimpleSequence.html">SimpleSequence</a>] @return
+[Boolean]
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000329" class="method-detail">
+        <a name="M000329"></a>
+
+        <div class="method-heading">
+          <a href="Sequence.src/M000329.html" target="Code" class="method-signature"
+            onclick="popupCode('Sequence.src/M000329.html');return false;">
+          <span class="method-name">to_a</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+@see <a href="Simple.html#M000331">Simple#to_a</a>
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

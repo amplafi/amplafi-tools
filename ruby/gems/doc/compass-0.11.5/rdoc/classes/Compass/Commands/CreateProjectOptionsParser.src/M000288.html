@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_options (Compass::Commands::CreateProjectOptionsParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/create_project.rb, line 7</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_options</span>(<span class="ruby-identifier">opts</span>)
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$command</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;create&quot;</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">%Q{
+            Usage: compass create path/to/project [options]
+
+            Description:
+            Create a new compass project at the path specified.
+
+            Options:
+          }</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^ */</span>,<span class="ruby-value str">''</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-value str">&quot;--bare&quot;</span>, <span class="ruby-value str">&quot;Don't generate any Sass or CSS files.&quot;</span>) <span class="ruby-keyword kw">do</span>
+            <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:bare</span>] = <span class="ruby-keyword kw">true</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">%Q{
+            Usage: compass init project_type path/to/project [options]
+
+            Description:
+            Initialize an existing project at the path specified.
+
+            Supported Project Types:
+            * rails
+
+            Options:
+          }</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^ */</span>,<span class="ruby-value str">''</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>).<span class="ruby-identifier">strip</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--using PATTERN&quot;</span>, <span class="ruby-value str">&quot;A framework's pattern to use when creating the project.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">framework</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">framework</span> = <span class="ruby-identifier">framework</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>, <span class="ruby-value">2</span>)
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:framework</span>] = <span class="ruby-identifier">framework</span>[<span class="ruby-value">0</span>]
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:pattern</span>] = <span class="ruby-identifier">framework</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-x&quot;</span>, <span class="ruby-value str">&quot;--syntax SYNTAX&quot;</span>, [<span class="ruby-identifier">:sass</span>, <span class="ruby-identifier">:scss</span>], <span class="ruby-value str">&quot;Specify the syntax to use when generating stylesheets.&quot;</span>, <span class="ruby-value str">&quot;One of sass or scss. Defaults to scss.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">syntax</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:preferred_syntax</span>] = <span class="ruby-identifier">syntax</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--prepare&quot;</span>, <span class="ruby-value str">&quot;Prepare the project by only creating configuration files.&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:prepare</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">super</span>
+
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

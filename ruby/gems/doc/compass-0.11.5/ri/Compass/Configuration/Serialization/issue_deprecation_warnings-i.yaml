@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Serialization#issue_deprecation_warnings
+is_singleton: false
+name: issue_deprecation_warnings
+params: ()
+visibility: public

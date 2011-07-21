@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::UnpackExtension#readme
+is_singleton: false
+name: readme
+params: (framework)
+visibility: public

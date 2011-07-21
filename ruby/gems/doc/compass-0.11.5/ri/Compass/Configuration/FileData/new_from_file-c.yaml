@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::FileData::new_from_file
+is_singleton: true
+name: new_from_file
+params: (config_file, defaults = nil)
+visibility: public

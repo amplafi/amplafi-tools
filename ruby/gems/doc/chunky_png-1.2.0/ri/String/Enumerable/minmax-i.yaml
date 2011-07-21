@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: String::Enumerable#minmax
+is_singleton: false
+name: minmax
+params: ()
+visibility: public

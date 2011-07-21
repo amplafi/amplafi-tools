@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Adds compass configuration accessor to the application configuration.
+  - !ruby/struct:SM::Flow::P 
+    body: If a configuration file for compass exists, it will be read in and the project's configuration values will already be set on the config object.
+  - !ruby/struct:SM::Flow::P 
+    body: "For example:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    module MyApp\n      class Application &lt; Rails::Application\n         config.compass.line_comments = !Rails.env.production?\n         config.compass.fonts_dir = &quot;app/assets/fonts&quot;\n      end\n    end\n"
+  - !ruby/struct:SM::Flow::P 
+    body: It is suggested that you create a compass configuration file if you want a quicker boot time when using the compass command line tool.
+  - !ruby/struct:SM::Flow::P 
+    body: "For more information on available configuration options see: http://compass-style.org/help/tutorials/configuration-reference/"
+full_name: Rails::Railtie::Configuration#compass
+is_singleton: false
+name: compass
+params: ()
+visibility: public

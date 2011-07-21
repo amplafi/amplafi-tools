@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: copy/process a template in the compass template directory to the project directory.
+full_name: Compass::Actions#copy
+is_singleton: false
+name: copy
+params: (from, to, options = nil, binary = false)
+visibility: public

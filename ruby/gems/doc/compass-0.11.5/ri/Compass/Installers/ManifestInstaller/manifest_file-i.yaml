@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::ManifestInstaller#manifest_file
+is_singleton: false
+name: manifest_file
+params: ()
+visibility: public

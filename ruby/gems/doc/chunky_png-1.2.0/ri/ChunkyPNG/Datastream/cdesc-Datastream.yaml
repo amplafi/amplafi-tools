@@ -1,0 +1,89 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The chunks that together compose the images pixel data. @return [Array&lt;ChunkyPNG::Chunk::ImageData&gt;]
+    name: data_chunks
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The empty chunk that signals the end of this datastream @return [ChunkyPNG::Chunk::Header]
+    name: end_chunk
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The header chunk of this datastream. @return [ChunkyPNG::Chunk::Header]
+    name: header_chunk
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: All other chunks in this PNG file. @return [Array&lt;ChunkyPNG::Chunk::Generic&gt;]
+    name: other_chunks
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The chunk containing the image's palette. @return [ChunkyPNG::Chunk::Palette]
+    name: palette_chunk
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The chunk containing the transparency information of the palette. @return [ChunkyPNG::Chunk::Transparency]
+    name: transparency_chunk
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: empty_bytearray
+  - !ruby/object:RI::MethodSummary 
+    name: from_blob
+  - !ruby/object:RI::MethodSummary 
+    name: from_file
+  - !ruby/object:RI::MethodSummary 
+    name: from_io
+  - !ruby/object:RI::MethodSummary 
+    name: new
+  - !ruby/object:RI::MethodSummary 
+    name: verify_signature!
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The Datastream class represents a PNG formatted datastream. It supports both reading from and writing to strings, streams and files.
+  - !ruby/struct:SM::Flow::P 
+    body: A PNG datastream begins with the PNG signature, and than contains multiple chunks, starting with a header (IHDR) chunk and finishing with an end (IEND) chunk.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see ChunkyPNG::Chunk"
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The signature that each PNG file or stream should begin with.
+    name: SIGNATURE
+    value: "[137, 80, 78, 71, 13, 10, 26, 10].pack('C8')"
+full_name: ChunkyPNG::Datastream
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: chunks
+  - !ruby/object:RI::MethodSummary 
+    name: each_chunk
+  - !ruby/object:RI::MethodSummary 
+    name: imagedata
+  - !ruby/object:RI::MethodSummary 
+    name: metadata
+  - !ruby/object:RI::MethodSummary 
+    name: save
+  - !ruby/object:RI::MethodSummary 
+    name: to_blob
+  - !ruby/object:RI::MethodSummary 
+    name: to_s
+  - !ruby/object:RI::MethodSummary 
+    name: to_string
+  - !ruby/object:RI::MethodSummary 
+    name: write
+name: Datastream
+superclass: Object

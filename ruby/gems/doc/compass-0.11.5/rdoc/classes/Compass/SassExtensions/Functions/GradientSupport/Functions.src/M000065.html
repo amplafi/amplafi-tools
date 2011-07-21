@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>grad_end_position (Compass::SassExtensions::Functions::GradientSupport::Functions)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/sass_extensions/functions/gradient_support.rb, line 334</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">grad_end_position</span>(<span class="ruby-identifier">color_list</span>, <span class="ruby-identifier">radial</span> = <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Bool</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">false</span>))
+      <span class="ruby-identifier">assert_type</span> <span class="ruby-identifier">color_list</span>, <span class="ruby-identifier">:List</span>
+      <span class="ruby-identifier">default</span> = <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">100</span>)
+      <span class="ruby-identifier">grad_position</span>(<span class="ruby-identifier">color_list</span>, <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Number</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">color_list</span>.<span class="ruby-identifier">value</span>.<span class="ruby-identifier">size</span>), <span class="ruby-identifier">default</span>, <span class="ruby-identifier">radial</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a {ChunkyPNG::Dimension} instance using arguments that can be interpreted as width and height.
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Dimension(width, height)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param [Integer] width The width-component of the dimension.\n  @param [Integer] height The height-component of the dimension.\n  @return [ChunkyPNG::Dimension] The instantiated dimension.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Dimension(string)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param [String] string A string from which a width and height value can be parsed, e.g.\n     <tt>'10x20'</tt> or <tt>'[10, 20]'</tt>.\n  @return [ChunkyPNG::Dimension] The instantiated dimension.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Dimension(ary)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param [Array] ary An array with the desired width as first element and the\n     desired height as second element, e.g. <tt>[10, 20]</tt>.\n  @return [ChunkyPNG::Dimension] The instantiated dimension.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload Dimension(hash)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  @param [Hash] hash An hash with a <tt>'height'</tt> or <tt>:height</tt> key for the\n     desired height and with a <tt>'width'</tt> or <tt>:width</tt> key for the desired\n     width.\n  @return [ChunkyPNG::Dimension] The instantiated dimension.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [ChunkyPNG::Dimension] The dimension created by this factory method. @raise [ArgumentError] If the argument(s) given where not understood as a dimension. @see ChunkyPNG::Dimension"
+full_name: ChunkyPNG::Dimension
+is_singleton: true
+name: Dimension
+params: (*args)
+visibility: public

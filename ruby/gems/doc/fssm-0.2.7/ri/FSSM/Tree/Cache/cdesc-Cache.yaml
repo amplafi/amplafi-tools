@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: FSSM::Tree::Cache
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: NodeBase
+  - !ruby/object:RI::IncludedModule 
+    name: NodeEnumerable
+  - !ruby/object:RI::IncludedModule 
+    name: NodeInsertion
+  - !ruby/object:RI::IncludedModule 
+    name: CacheDebug
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: directories
+  - !ruby/object:RI::MethodSummary 
+    name: files
+  - !ruby/object:RI::MethodSummary 
+    name: links
+  - !ruby/object:RI::MethodSummary 
+    name: set
+  - !ruby/object:RI::MethodSummary 
+    name: symlinks
+name: Cache
+superclass: Object

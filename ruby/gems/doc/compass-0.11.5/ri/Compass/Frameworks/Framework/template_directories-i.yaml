@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Frameworks::Framework#template_directories
+is_singleton: false
+name: template_directories
+params: ()
+visibility: public

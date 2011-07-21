@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: build
+block_params: 
+comment: 
+full_name: Less::StyleSheet::Declaration3#build_with_sass
+is_singleton: false
+name: build_with_sass
+params: (env)
+visibility: public

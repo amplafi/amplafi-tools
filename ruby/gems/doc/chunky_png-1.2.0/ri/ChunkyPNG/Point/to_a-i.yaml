@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: to_ary
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Converts the point instance to an array. @return [Array] A 2-element array, i.e. <tt>[x, y]</tt>.
+full_name: ChunkyPNG::Point#to_a
+is_singleton: false
+name: to_a
+params: ()
+visibility: public

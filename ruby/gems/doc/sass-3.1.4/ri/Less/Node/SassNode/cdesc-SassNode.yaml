@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Less::Node::SassNode
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Entity
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: to_sass_tree
+name: SassNode
+superclass: Object

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Compass::Commands::ProjectBase)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/project_base.rb, line 11</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">options</span> = {})
+        <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">project_name</span> = <span class="ruby-identifier">determine_project_name</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">options</span>)
+        <span class="ruby-constant">Compass</span>.<span class="ruby-identifier">add_configuration</span>({<span class="ruby-identifier">:project_path</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">determine_project_directory</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">options</span>)}, <span class="ruby-value str">&quot;implied&quot;</span>)
+        <span class="ruby-identifier">configure!</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

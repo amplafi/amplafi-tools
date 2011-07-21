@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>content_for_images (Compass::SpriteImporter)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/sprite_importer.rb, line 124</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">content_for_images</span>(<span class="ruby-identifier">skip_overrides</span> = <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-value str">&quot;@import \&quot;compass/utilities/sprites/base\&quot;;\n\n// General Sprite Defaults\n// You can override them before you import this file.\n$\#{name}-sprite-base-class: \&quot;.\#{name}-sprite\&quot; !default;\n$\#{name}-sprite-dimensions: false !default;\n$\#{name}-position: 0% !default;\n$\#{name}-spacing: 0 !default;\n$\#{name}-repeat: no-repeat !default;\n$\#{name}-prefix: '' !default;\n$\#{name}-clean-up: true !default;\n\n\#{skip_overrides ? \&quot;$\#{name}-sprites: sprite-map(\\\&quot;\#{uri}\\\&quot;, $cleanup: $\#{name}-clean-up);\&quot; : generate_overrides }\n\n// All sprites should extend this class\n// The \#{name}-sprite mixin will do so for you.\n\\\#{$\#{name}-sprite-base-class} {\nbackground: $\#{name}-sprites no-repeat;\n}\n\n// Use this to set the dimensions of an element\n// based on the size of the original image.\n@mixin \#{name}-sprite-dimensions($name) {\n@include sprite-dimensions($\#{name}-sprites, $name)\n}\n\n// Move the background position to display the sprite.\n@mixin \#{name}-sprite-position($name, $offset-x: 0, $offset-y: 0) {\n@include sprite-background-position($\#{name}-sprites, $name, $offset-x, $offset-y)\n}\n\n// Extends the sprite base class and set the background position for the desired sprite.\n// It will also apply the image dimensions if $dimensions is true.\n@mixin \#{name}-sprite($name, $dimensions: $\#{name}-sprite-dimensions, $offset-x: 0, $offset-y: 0) {\n@extend \\\#{$\#{name}-sprite-base-class};\n@include sprite($\#{name}-sprites, $name, $dimensions, $offset-x, $offset-y)\n}\n\n@mixin \#{name}-sprites($sprite-names, $dimensions: $\#{name}-sprite-dimensions, $prefix: sprite-map-name($\#{name}-sprites)) {\n@include sprites($\#{name}-sprites, $sprite-names, $\#{name}-sprite-base-class, $dimensions, $prefix)\n}\n\n// Generates a class for each sprited image.\n@mixin all-\#{name}-sprites($dimensions: $\#{name}-sprite-dimensions, $prefix: sprite-map-name($\#{name}-sprites)) {\n@include \#{name}-sprites(\#{sprite_names.join(\&quot; \&quot;)}, $dimensions, $prefix);\n}\n&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

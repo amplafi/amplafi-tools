@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Check whether this palette only contains grayscale colors. @return [true, false] True if all colors in this palette are grayscale teints. @see ChunkyPNG::Color#grayscale??
+full_name: ChunkyPNG::Palette#grayscale?
+is_singleton: false
+name: grayscale?
+params: ()
+visibility: public

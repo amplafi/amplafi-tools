@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: option_parser
+  - !ruby/object:RI::MethodSummary 
+    name: parse!
+comment: 
+constants: []
+
+full_name: Compass::Commands::Default
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: execute
+name: Default
+superclass: Base

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: When called with a block, defines the cache buster strategy to be used. If the block returns nil or a string, then it is appended to the url as a query parameter. In this case, the returned string must not include the starting '?'. The block may also return a hash with :path and/or :query values and it will replace the original path and query string with the busted values returned. The block will be passed the root-relative url of the asset. If the block accepts two arguments, it will also be passed a File object that points to the asset on disk -- which may or may not exist. When called without a block, returns the block that was previously set.
+  - !ruby/struct:SM::Flow::P 
+    body: "To disable the asset cache buster:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    asset_cache_buster :none\n"
+full_name: Compass::Configuration::Data#asset_cache_buster
+is_singleton: false
+name: asset_cache_buster
+params: (simple = nil, &block)
+visibility: public

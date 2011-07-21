@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::CrossBrowserSupport::CSS2FallbackValue#has_aspect?
+is_singleton: false
+name: has_aspect?
+params: ()
+visibility: public

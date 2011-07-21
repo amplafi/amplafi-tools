@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Rotates the image 180 degrees. This method will leave the original object intact and return a new canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [ChunkyPNG::Canvas] The rotated image. @see #rotate_180!"
+full_name: ChunkyPNG::Canvas::Operations#rotate_180
+is_singleton: false
+name: rotate_180
+params: ()
+visibility: public

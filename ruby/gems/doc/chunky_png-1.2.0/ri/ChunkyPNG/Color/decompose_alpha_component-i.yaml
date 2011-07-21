@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Decomposes an alpha channel for either the r, g or b color channel. @param [:r, :g, :b] channel The channel to decompose the alpha channel from. @param [Integer] color The color that was the result of compositing. @param [Integer] mask The opaque variant of the color that was being composed @param [Integer] bg The background color on which the color was composed. @return [Integer] The decomposed alpha value for the channel.
+full_name: ChunkyPNG::Color#decompose_alpha_component
+is_singleton: false
+name: decompose_alpha_component
+params: (channel, color, mask, bg)
+visibility: public

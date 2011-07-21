@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: for
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: VIRTUAL_REGEX
+    value: /^file:([^!]*)!/
+full_name: FSSM::Pathname
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: glob
+  - !ruby/object:RI::MethodSummary 
+    name: is_virtual?
+  - !ruby/object:RI::MethodSummary 
+    name: segments
+name: Pathname
+superclass: "::Pathname"

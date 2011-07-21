@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: only used for webkit
+full_name: Compass::SassExtensions::Functions::GradientSupport::Functions#linear_end_position
+is_singleton: false
+name: linear_end_position
+params: (position_or_angle, color_list)
+visibility: public

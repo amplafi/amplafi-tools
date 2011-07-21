@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>pretty_print (Compass::Frameworks)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/frameworks.rb, line 102</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pretty_print</span>(<span class="ruby-identifier">skip_patterns</span> = <span class="ruby-keyword kw">false</span>)
+      <span class="ruby-identifier">result</span> = <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">max</span> = <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Frameworks</span><span class="ruby-operator">::</span><span class="ruby-constant">ALL</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">gm</span>, <span class="ruby-identifier">framework</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">fm</span> = <span class="ruby-identifier">framework</span>.<span class="ruby-identifier">template_directories</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lm</span>,<span class="ruby-identifier">pattern</span><span class="ruby-operator">|</span>
+          [<span class="ruby-identifier">lm</span>, <span class="ruby-value">7</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">framework</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">pattern</span>.<span class="ruby-identifier">size</span>].<span class="ruby-identifier">max</span>
+        <span class="ruby-keyword kw">end</span>
+        [<span class="ruby-identifier">gm</span>, <span class="ruby-identifier">fm</span>].<span class="ruby-identifier">max</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Frameworks</span><span class="ruby-operator">::</span><span class="ruby-constant">ALL</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">framework</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">framework</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^_/</span>
+        <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;  * #{framework.name}\n&quot;</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">skip_patterns</span>
+          <span class="ruby-identifier">framework</span>.<span class="ruby-identifier">template_directories</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pattern</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;    - #{framework.name}/#{pattern}&quot;</span>.<span class="ruby-identifier">ljust</span>(<span class="ruby-identifier">max</span>)
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">description</span> = <span class="ruby-identifier">framework</span>.<span class="ruby-identifier">manifest</span>(<span class="ruby-identifier">pattern</span>).<span class="ruby-identifier">description</span>
+              <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; - #{description}&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+            <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\n&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">result</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

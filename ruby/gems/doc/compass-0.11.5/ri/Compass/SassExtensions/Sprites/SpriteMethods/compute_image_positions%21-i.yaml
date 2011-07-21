@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Calculates the overal image dimensions collects image sizes and input parameters for each sprite
+full_name: Compass::SassExtensions::Sprites::SpriteMethods#compute_image_positions!
+is_singleton: false
+name: compute_image_positions!
+params: ()
+visibility: public

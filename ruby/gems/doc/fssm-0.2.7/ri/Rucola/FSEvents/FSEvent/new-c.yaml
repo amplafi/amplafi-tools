@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Rucola::FSEvents::FSEvent::new
+is_singleton: true
+name: new
+params: (fsevents_object, id, path)
+visibility: public

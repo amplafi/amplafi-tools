@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>pad (Compass::Commands::ProjectStats)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/project_stats.rb, line 70</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pad</span>(<span class="ruby-identifier">c</span>, <span class="ruby-identifier">max</span>, <span class="ruby-identifier">options</span> = {})
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:align</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">:left</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:-</span>
+          <span class="ruby-identifier">filler</span> = <span class="ruby-value str">'-'</span>
+          <span class="ruby-identifier">c</span> = <span class="ruby-value str">''</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">filler</span> = <span class="ruby-value str">' '</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">spaces</span> = <span class="ruby-identifier">max</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">size</span>
+        <span class="ruby-identifier">filled</span> = <span class="ruby-identifier">filler</span> <span class="ruby-operator">*</span> [<span class="ruby-identifier">spaces</span>,<span class="ruby-value">0</span>].<span class="ruby-identifier">max</span>
+        <span class="ruby-node">&quot;#{options[:left]}#{filled if options[:align] == :right}#{c}#{filled if options[:align] == :left}#{options[:right]}&quot;</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

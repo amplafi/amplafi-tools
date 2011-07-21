@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Inheritance::InstanceMethods#debug
+is_singleton: false
+name: debug
+params: ()
+visibility: public

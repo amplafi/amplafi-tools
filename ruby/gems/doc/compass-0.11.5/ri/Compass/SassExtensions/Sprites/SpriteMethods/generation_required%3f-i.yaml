@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Does this sprite need to be generated
+full_name: Compass::SassExtensions::Sprites::SpriteMethods#generation_required?
+is_singleton: false
+name: generation_required?
+params: ()
+visibility: public

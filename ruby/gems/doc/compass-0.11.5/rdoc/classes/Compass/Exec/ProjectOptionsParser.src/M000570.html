@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_project_options (Compass::Exec::ProjectOptionsParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/exec/project_options_parser.rb, line 14</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_project_options</span>(<span class="ruby-identifier">opts</span>)
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-c'</span>, <span class="ruby-value str">'--config CONFIG_FILE'</span>, <span class="ruby-value str">'Specify the location of the configuration file explicitly.'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">configuration_file</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:configuration_file</span>] = <span class="ruby-identifier">configuration_file</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--app APP'</span>, <span class="ruby-value str">'Tell compass what kind of application it is integrating with. E.g. rails'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">project_type</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:project_type</span>] = <span class="ruby-identifier">project_type</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--sass-dir SRC_DIR'</span>, <span class="ruby-value str">&quot;The source directory where you keep your sass stylesheets.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sass_dir</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_dir_or_path</span>(<span class="ruby-identifier">:sass</span>, <span class="ruby-identifier">sass_dir</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--css-dir CSS_DIR'</span>, <span class="ruby-value str">&quot;The target directory where you keep your css stylesheets.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">css_dir</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_dir_or_path</span>(<span class="ruby-identifier">:css</span>, <span class="ruby-identifier">css_dir</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--images-dir IMAGES_DIR'</span>, <span class="ruby-value str">&quot;The directory where you keep your images.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">images_dir</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_dir_or_path</span>(<span class="ruby-identifier">:images</span>, <span class="ruby-identifier">images_dir</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--javascripts-dir JS_DIR'</span>, <span class="ruby-value str">&quot;The directory where you keep your javascripts.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">javascripts_dir</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_dir_or_path</span>(<span class="ruby-identifier">:javascripts</span>, <span class="ruby-identifier">javascripts_dir</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-e ENV'</span>, <span class="ruby-value str">'--environment ENV'</span>, [<span class="ruby-identifier">:development</span>, <span class="ruby-identifier">:production</span>], <span class="ruby-value str">'Use sensible defaults for your current environment.'</span>,
+            <span class="ruby-value str">'  One of: development (default), production'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">env</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:environment</span>] = <span class="ruby-identifier">env</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-s STYLE'</span>, <span class="ruby-value str">'--output-style STYLE'</span>, [<span class="ruby-identifier">:nested</span>, <span class="ruby-identifier">:expanded</span>, <span class="ruby-identifier">:compact</span>, <span class="ruby-identifier">:compressed</span>], <span class="ruby-value str">'Select a CSS output mode.'</span>,
+            <span class="ruby-value str">'  One of: nested, expanded, compact, compressed'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">style</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:output_style</span>] = <span class="ruby-identifier">style</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--relative-assets'</span>, <span class="ruby-identifier">:NONE</span>, <span class="ruby-value str">'Make compass asset helpers generate relative urls to assets.'</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:relative_assets</span>] = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--no-line-comments'</span>, <span class="ruby-identifier">:NONE</span>, <span class="ruby-value str">'Disable line comments.'</span>) <span class="ruby-keyword kw">do</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:line_comments</span>] = <span class="ruby-keyword kw">false</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

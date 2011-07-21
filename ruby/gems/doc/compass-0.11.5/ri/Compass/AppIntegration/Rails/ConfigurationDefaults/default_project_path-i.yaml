@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::AppIntegration::Rails::ConfigurationDefaults#default_project_path
+is_singleton: false
+name: default_project_path
+params: ()
+visibility: public

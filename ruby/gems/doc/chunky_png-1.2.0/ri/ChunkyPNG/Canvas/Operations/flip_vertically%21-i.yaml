@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: mirror!
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Flips the image vertically in place.
+  - !ruby/struct:SM::Flow::P 
+    body: This will flip the image on its vertical axis, e.g. pixels on the left will now be pixels on the right. Chaining this method twice will return the original canvas. This method will leave the original object intact and return a new canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [ChunkyPNG::Canvas] Itself, but flipped @see #flip_vertically"
+full_name: ChunkyPNG::Canvas::Operations#flip_vertically!
+is_singleton: false
+name: flip_vertically!
+params: ()
+visibility: public

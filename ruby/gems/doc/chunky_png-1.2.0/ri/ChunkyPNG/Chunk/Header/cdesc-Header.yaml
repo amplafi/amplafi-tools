@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: color
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: compression
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: depth
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: filtering
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: height
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: interlace
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: width
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+  - !ruby/object:RI::MethodSummary 
+    name: read
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "The header (IHDR) chunk is the first chunk of every PNG image, and contains information about the image: i.e. its width, height, color depth, color mode, compression method, filtering method and interlace method."
+  - !ruby/struct:SM::Flow::P 
+    body: "ChunkyPNG supports all values for these variables that are defined in the PNG spec, except for color depth: Only 8-bit depth images are supported. Note that it is still possible to access the chunk for such an image, but ChunkyPNG will raise an exception if you try to access the pixel data."
+constants: []
+
+full_name: ChunkyPNG::Chunk::Header
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: content
+name: Header
+superclass: Base

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: create a directory and all the directories necessary to reach it.
+full_name: Compass::Actions#directory
+is_singleton: false
+name: directory
+params: (dir, options = nil)
+visibility: public

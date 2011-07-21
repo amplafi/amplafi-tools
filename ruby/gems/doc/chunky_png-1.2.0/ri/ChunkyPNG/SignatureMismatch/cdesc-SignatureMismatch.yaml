@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Exception that is raised if the PNG signature is not encountered at the beginning of the file.
+constants: []
+
+full_name: ChunkyPNG::SignatureMismatch
+includes: []
+
+instance_methods: []
+
+name: SignatureMismatch
+superclass: ChunkyPNG::Exception

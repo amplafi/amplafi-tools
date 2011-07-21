@@ -1,0 +1,137 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The palette that is used to decode the image, loading from the PLTE and tRNS chunk from the PNG stream. For RGB(A) images, no palette is required. @return [ChunkyPNG::Palette]
+    name: decoding_palette
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The color to be replaced with fully transparent pixels.
+    name: transparent_color
+    rw: RW
+class_methods: []
+
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The PNGDecoding contains methods for decoding PNG datastreams to create a Canvas object. The datastream can be provided as filename, string or IO stream.
+  - !ruby/struct:SM::Flow::P 
+    body: "Overview of the decoding process:"
+  - !ruby/object:SM::Flow::LIST 
+    contents: 
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: The optional PLTE and tRNS chunk are decoded for the color palette of the original image.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: The contents of the IDAT chunks is combined, and uncompressed using Inflate decompression to the image pixelstream.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: Based on the color mode, width and height of the original image, which is read from the PNG header (IHDR chunk), the amount of bytes per line is determined.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: For every line of pixels in the encoded image, the original byte values are restored by unapplying the milter method for that line.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: The read bytes are unfiltered given by the filter function specified by the first byte of the line.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: The unfiltered pixelstream are is into colored pixels, using the color mode.
+      - !ruby/struct:SM::Flow::LI 
+        label: "*"
+        body: All lines combined to form the original image.
+    type: :BULLET
+  - !ruby/struct:SM::Flow::P 
+    body: For interlaced images, the original image was split into 7 subimages. These images get decoded just like the process above (from step 3), and get combined to form the original images.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see ChunkyPNG::Canvas::PNGEncoding @see http://www.w3.org/TR/PNG/ The W3C PNG format specification"
+constants: []
+
+full_name: ChunkyPNG::Canvas::PNGDecoding
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_extract_1bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_extract_2bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_extract_4bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_image_pass
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_16bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_1bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_2bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_4bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_alpha_16bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_grayscale_alpha_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_indexed_1bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_indexed_2bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_indexed_4bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_indexed_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_method
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_truecolor_16bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_truecolor_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_truecolor_alpha_16bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixels_from_scanline_truecolor_alpha_8bit
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_pixelstream
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_resample_16bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_resample_1bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_resample_2bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_resample_4bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_resample_8bit_value
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_str_scanline
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_str_scanline_average
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_str_scanline_paeth
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_str_scanline_sub
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_str_scanline_sub_none
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_str_scanline_up
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_with_adam7_interlacing
+  - !ruby/object:RI::MethodSummary 
+    name: decode_png_without_interlacing
+  - !ruby/object:RI::MethodSummary 
+    name: from_blob
+  - !ruby/object:RI::MethodSummary 
+    name: from_datastream
+  - !ruby/object:RI::MethodSummary 
+    name: from_file
+  - !ruby/object:RI::MethodSummary 
+    name: from_io
+  - !ruby/object:RI::MethodSummary 
+    name: from_stream
+  - !ruby/object:RI::MethodSummary 
+    name: from_string
+name: PNGDecoding
+superclass: 

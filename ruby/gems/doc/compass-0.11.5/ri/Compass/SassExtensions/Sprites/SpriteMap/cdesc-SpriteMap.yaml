@@ -1,0 +1,63 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: engine
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: height
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: image_names
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: images
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: kwargs
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: map
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: name
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: path
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: width
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: from_uri
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::SassExtensions::Sprites::SpriteMap
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: SpriteMethods
+  - !ruby/object:RI::IncludedModule 
+    name: ImageMethods
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: inspect
+  - !ruby/object:RI::MethodSummary 
+    name: method_missing
+  - !ruby/object:RI::MethodSummary 
+    name: respond_to?
+  - !ruby/object:RI::MethodSummary 
+    name: to_s
+name: SpriteMap
+superclass: Sass::Script::Literal

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Scales a color's saturation by some percentage. If the amount is negative, the color is desaturated, if positive, it is saturated. This will never return a pure saturated or desaturated color unless the amount is 100%.
+full_name: Compass::SassExtensions::Functions::Colors#scale_saturation
+is_singleton: false
+name: scale_saturation
+params: (color, amount)
+visibility: public

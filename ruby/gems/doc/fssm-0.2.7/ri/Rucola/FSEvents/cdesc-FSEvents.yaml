@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: allocator
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: context
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: flags
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: latency
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: paths
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: since
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: stream
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+  - !ruby/object:RI::MethodSummary 
+    name: start_watching
+comment: 
+constants: []
+
+full_name: Rucola::FSEvents
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: create_stream
+  - !ruby/object:RI::MethodSummary 
+    name: start
+  - !ruby/object:RI::MethodSummary 
+    name: stop
+name: FSEvents
+superclass: Object
