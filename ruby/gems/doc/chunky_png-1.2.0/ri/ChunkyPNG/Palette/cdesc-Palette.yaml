@@ -1,0 +1,55 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: from_canvas
+  - !ruby/object:RI::MethodSummary 
+    name: from_chunks
+  - !ruby/object:RI::MethodSummary 
+    name: from_pixels
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A palette describes the set of colors that is being used for an image.
+  - !ruby/struct:SM::Flow::P 
+    body: A PNG image can contain an explicit palette which defines the colors of that image, but can also use an implicit palette, e.g. all truecolor colors or all grayscale colors.
+  - !ruby/struct:SM::Flow::P 
+    body: This palette supports decoding colors from a palette if an explicit palette is provided in a PNG datastream, and it supports encoding colors to an explicit palette (stores as PLTE &amp; tRNS chunks in a PNG file).
+  - !ruby/struct:SM::Flow::P 
+    body: "@see ChunkyPNG::Color"
+constants: []
+
+full_name: ChunkyPNG::Palette
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: "[]"
+  - !ruby/object:RI::MethodSummary 
+    name: best_color_settings
+  - !ruby/object:RI::MethodSummary 
+    name: black_and_white?
+  - !ruby/object:RI::MethodSummary 
+    name: can_decode?
+  - !ruby/object:RI::MethodSummary 
+    name: can_encode?
+  - !ruby/object:RI::MethodSummary 
+    name: determine_bit_depth
+  - !ruby/object:RI::MethodSummary 
+    name: grayscale?
+  - !ruby/object:RI::MethodSummary 
+    name: index
+  - !ruby/object:RI::MethodSummary 
+    name: indexable?
+  - !ruby/object:RI::MethodSummary 
+    name: opaque?
+  - !ruby/object:RI::MethodSummary 
+    name: opaque_palette
+  - !ruby/object:RI::MethodSummary 
+    name: to_plte_chunk
+  - !ruby/object:RI::MethodSummary 
+    name: to_trns_chunk
+name: Palette
+superclass: SortedSet

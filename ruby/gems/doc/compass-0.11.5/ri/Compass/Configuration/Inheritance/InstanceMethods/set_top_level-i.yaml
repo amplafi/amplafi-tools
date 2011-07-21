@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Inheritance::InstanceMethods#set_top_level
+is_singleton: false
+name: set_top_level
+params: (new_top)
+visibility: public

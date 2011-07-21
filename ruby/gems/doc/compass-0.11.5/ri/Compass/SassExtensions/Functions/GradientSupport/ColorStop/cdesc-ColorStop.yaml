@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: color
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: stop
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::SassExtensions::Functions::GradientSupport::ColorStop
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: children
+  - !ruby/object:RI::MethodSummary 
+    name: inspect
+  - !ruby/object:RI::MethodSummary 
+    name: to_s
+name: ColorStop
+superclass: Sass::Script::Literal

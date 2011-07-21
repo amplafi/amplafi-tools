@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Support for testing.
+full_name: Compass::Configuration::Helpers#reset_configuration!
+is_singleton: false
+name: reset_configuration!
+params: ()
+visibility: public

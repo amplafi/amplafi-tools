@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>perform! (Compass::Exec::SubCommandUI)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/exec/sub_command_ui.rb, line 29</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">perform!</span>
+      <span class="ruby-identifier">$command</span> = <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>
+      <span class="ruby-identifier">command_class</span> = <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>[<span class="ruby-identifier">$command</span>]
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">command_class</span>
+        <span class="ruby-identifier">args</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">$command</span>)
+        <span class="ruby-identifier">$command</span> = <span class="ruby-value str">&quot;help&quot;</span>
+        <span class="ruby-identifier">command_class</span> = <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span><span class="ruby-operator">::</span><span class="ruby-constant">Default</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@options</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">command_class</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-node">&quot;parse_#{$command}!&quot;</span>)
+        <span class="ruby-identifier">command_class</span>.<span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;parse_#{$command}!&quot;</span>, <span class="ruby-identifier">args</span>)
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">command_class</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">args</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">cmd</span> = <span class="ruby-identifier">command_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">getwd</span>, <span class="ruby-ivar">@options</span>)
+      <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">execute</span>
+      <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">successful?</span> <span class="ruby-value">? </span><span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">OptionParser</span><span class="ruby-operator">::</span><span class="ruby-constant">ParseError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Error: #{e.message}&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">command_class</span>.<span class="ruby-identifier">usage</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">command_class</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:usage</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Offset within the sprite
+full_name: Compass::SassExtensions::Sprites::Image#offset
+is_singleton: false
+name: offset
+params: ()
+visibility: public

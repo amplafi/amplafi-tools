@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The options hash for the {Sass::Engine} that is processing the function call
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [{Symbol =&gt; Object}]"
+    name: options
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The context in which methods in {Script::Functions} are evaluated. That means that all instance methods of {EvaluationContext} are available to use in functions.
+constants: []
+
+full_name: Sass::Script::Functions::EvaluationContext
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Functions
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: assert_type
+name: EvaluationContext
+superclass: Object

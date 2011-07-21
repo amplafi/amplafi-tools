@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Less::StyleSheet::Accessor1#build
+is_singleton: false
+name: build
+params: (env)
+visibility: public

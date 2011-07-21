@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Removes support for one or more aspects for the given simple function Example:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Compass::BrowserSupport.remove_support(&quot;image&quot;, &quot;o&quot;, &quot;ms&quot;)\n  # =&gt; Adds support for moz and webkit to the image() function.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: This function can be called one or more times in a compass configuration file in order to remove support for simple functions that no longer need to a prefix without waiting for a new compass release.
+full_name: Compass::BrowserSupport#remove_support
+is_singleton: false
+name: remove_support
+params: (function, *aspects)
+visibility: public

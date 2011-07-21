@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Removes the trailing separator, if any, from a path.
+full_name: Compass::Actions#strip_trailing_separator
+is_singleton: false
+name: strip_trailing_separator
+params: (path)
+visibility: public

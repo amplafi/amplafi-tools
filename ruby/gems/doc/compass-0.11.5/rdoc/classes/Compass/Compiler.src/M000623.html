@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (Compass::Compiler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/compiler.rb, line 8</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">from</span>, <span class="ruby-identifier">to</span>, <span class="ruby-identifier">options</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">working_path</span> = <span class="ruby-identifier">working_path</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">from</span>, <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">from</span>), <span class="ruby-identifier">to</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">logger</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:logger</span>)
+      <span class="ruby-identifier">sass_opts</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:sass</span>) <span class="ruby-operator">||</span> {}
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sass_options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sass_options</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">sass_opts</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sass_options</span>[<span class="ruby-identifier">:cache_location</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">determine_cache_location</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sass_options</span>[<span class="ruby-identifier">:importer</span>] = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">importer</span> = <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Importers</span><span class="ruby-operator">::</span><span class="ruby-constant">Filesystem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">from</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">staleness_checker</span> = <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span><span class="ruby-operator">::</span><span class="ruby-constant">StalenessChecker</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">sass_options</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

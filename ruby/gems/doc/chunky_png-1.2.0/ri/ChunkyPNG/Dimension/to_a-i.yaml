@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: to_ary
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Casts this dimension into an array. @return [Array&lt;Integer&gt;] <tt>[width, height]</tt> for this dimension.
+full_name: ChunkyPNG::Dimension#to_a
+is_singleton: false
+name: to_a
+params: ()
+visibility: public

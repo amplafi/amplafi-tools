@@ -1,0 +1,49 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: Changing this string will invalidate all previously generated sprite images. We should do so only when the packing algorithm changes
+    name: SPRITE_VERSION
+    value: "\"1\""
+full_name: Compass::SassExtensions::Sprites::SpriteMethods
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: cleanup_old_sprites
+  - !ruby/object:RI::MethodSummary 
+    name: compute_image_metadata!
+  - !ruby/object:RI::MethodSummary 
+    name: compute_image_positions!
+  - !ruby/object:RI::MethodSummary 
+    name: filename
+  - !ruby/object:RI::MethodSummary 
+    name: generate
+  - !ruby/object:RI::MethodSummary 
+    name: generation_required?
+  - !ruby/object:RI::MethodSummary 
+    name: image_filenames
+  - !ruby/object:RI::MethodSummary 
+    name: init_engine
+  - !ruby/object:RI::MethodSummary 
+    name: init_images
+  - !ruby/object:RI::MethodSummary 
+    name: mtime
+  - !ruby/object:RI::MethodSummary 
+    name: outdated?
+  - !ruby/object:RI::MethodSummary 
+    name: save!
+  - !ruby/object:RI::MethodSummary 
+    name: size
+  - !ruby/object:RI::MethodSummary 
+    name: uniqueness_hash
+  - !ruby/object:RI::MethodSummary 
+    name: validate!
+name: SpriteMethods
+superclass: 

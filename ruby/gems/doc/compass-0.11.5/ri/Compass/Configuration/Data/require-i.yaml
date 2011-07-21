@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Require a compass plugin and capture that it occured so that the configuration serialization works next time.
+full_name: Compass::Configuration::Data#require
+is_singleton: false
+name: require
+params: (lib)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Initializes the project to work with compass
+full_name: Compass::Installers::ManifestInstaller#init
+is_singleton: false
+name: init
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FSSM::Tree::NodeInsertion#recurse
+is_singleton: false
+name: recurse
+params: (key, create=false)
+visibility: protected

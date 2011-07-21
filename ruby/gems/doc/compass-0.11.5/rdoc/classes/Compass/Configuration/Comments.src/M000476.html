@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>comment_for_preferred_syntax (Compass::Configuration::Comments)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/configuration/comments.rb, line 40</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">comment_for_preferred_syntax</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">top_level</span>.<span class="ruby-identifier">preferred_syntax</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">:scss</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">top_level</span>.<span class="ruby-identifier">sass_dir</span>
+          <span class="ruby-node">%Q{
+# If you prefer the indented syntax, you might want to regenerate this
+# project again passing --syntax sass, or you can uncomment this:
+# preferred_syntax = :sass
+# and then run:
+# sass-convert -R --from scss --to sass #{top_level.sass_dir} scss &amp;&amp; rm -rf sass &amp;&amp; mv scss sass
+}</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

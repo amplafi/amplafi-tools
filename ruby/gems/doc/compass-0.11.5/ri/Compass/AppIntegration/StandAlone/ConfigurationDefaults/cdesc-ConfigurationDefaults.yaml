@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Compass::AppIntegration::StandAlone::ConfigurationDefaults
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: css_dir_without_default
+  - !ruby/object:RI::MethodSummary 
+    name: default_cache_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_project_type
+  - !ruby/object:RI::MethodSummary 
+    name: images_dir_without_default
+  - !ruby/object:RI::MethodSummary 
+    name: javascripts_dir_without_default
+  - !ruby/object:RI::MethodSummary 
+    name: sass_dir_without_default
+name: ConfigurationDefaults
+superclass: 

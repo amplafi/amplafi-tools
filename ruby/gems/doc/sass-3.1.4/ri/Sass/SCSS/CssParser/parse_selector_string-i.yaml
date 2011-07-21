@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Parse a selector, and return its value as a string.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [String, nil] The parsed selector, or nil if no selector was parsed @raise [Sass::SyntaxError] if there's a syntax error in the selector"
+full_name: Sass::SCSS::CssParser#parse_selector_string
+is_singleton: false
+name: parse_selector_string
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::Help::option_parser
+is_singleton: true
+name: option_parser
+params: (arguments)
+visibility: public

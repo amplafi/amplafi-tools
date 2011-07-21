@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Compass::SassExtensions::Functions::Colors
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: adjust_lightness
+  - !ruby/object:RI::MethodSummary 
+    name: adjust_saturation
+  - !ruby/object:RI::MethodSummary 
+    name: ie_hex_str
+  - !ruby/object:RI::MethodSummary 
+    name: scale_lightness
+  - !ruby/object:RI::MethodSummary 
+    name: scale_saturation
+name: Colors
+superclass: 

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Converts the canvas to grascale.
+  - !ruby/struct:SM::Flow::P 
+    body: This method will modify the canvas. The obtain a new canvas and leave the current instance intact, use {#grayscale} instead.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [ChunkyPNG::Canvas] Returns itself, converted to grayscale. @see {#grayscale} @see {ChunkyPNG::Color#to_grayscale}"
+full_name: ChunkyPNG::Canvas::Operations#grayscale!
+is_singleton: false
+name: grayscale!
+params: ()
+visibility: public

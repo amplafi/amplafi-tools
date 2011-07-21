@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_options (Compass::Commands::ConfigurationOptionsParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/write_configuration.rb, line 6</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_options</span>(<span class="ruby-identifier">opts</span>)
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-node">%Q{
+          Usage: compass config [path/to/config_file.rb] [options]
+
+          Description:
+            Generate a configuration file for the options specified.
+            Compass will recognize configuration files in the
+            following locations relative to the project root:
+              * #{Compass::Configuration::Helpers::KNOWN_CONFIG_LOCATIONS.join(&quot;
+              * &quot;)}
+            Any other location, and you'll need to specify it when working with the command line tool using the -c option.
+
+          Options:
+        }</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^ {0,10}/</span>,<span class="ruby-value str">''</span>)}.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--debug [PROPERTY]&quot;</span>, <span class="ruby-value str">&quot;Debug your configuration by printing out details.&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prop</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:debug</span>] = <span class="ruby-identifier">prop</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">prop</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-p PROPERTY&quot;</span>, <span class="ruby-value str">&quot;--property PROPERTY&quot;</span>, <span class="ruby-value str">&quot;Print out the value of a particular configuration property&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">prop</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:display</span>] = <span class="ruby-identifier">prop</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">super</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

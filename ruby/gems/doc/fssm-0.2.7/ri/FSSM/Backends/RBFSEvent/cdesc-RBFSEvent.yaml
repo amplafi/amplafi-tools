@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: FSSM::Backends::RBFSEvent
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: add_handler
+  - !ruby/object:RI::MethodSummary 
+    name: run
+  - !ruby/object:RI::MethodSummary 
+    name: temporary_multipath_hack
+  - !ruby/object:RI::MethodSummary 
+    name: temporary_multipath_handler
+name: RBFSEvent
+superclass: Object

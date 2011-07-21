@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Decodes a scanline if it was encoded using filtering.
+  - !ruby/struct:SM::Flow::P 
+    body: It will extract the filtering method from the first byte of the scanline, and uses the method to change the subsequent bytes to unfiltered values. This will modify the pixelstream.
+  - !ruby/struct:SM::Flow::P 
+    body: The bytes of the scanline can then be used to construct pixels, based on the color mode..
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [String] stream The pixelstream to undo the filtering in. @param [Integer] pos The starting position of the scanline to decode. @param [Integer, nil] prev_pos The starting position of the previously decoded scanline, or <tt>nil</tt>"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    if this is the first scanline of the image.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] line_length The number of bytes in the scanline, discounting the filter method byte. @param [Integer] pixel_size The number of bytes used per pixel, based on the color mode. @return [void]"
+full_name: ChunkyPNG::Canvas::PNGDecoding#decode_png_str_scanline
+is_singleton: false
+name: decode_png_str_scanline
+params: (stream, pos, prev_pos, line_length, pixel_size)
+visibility: protected

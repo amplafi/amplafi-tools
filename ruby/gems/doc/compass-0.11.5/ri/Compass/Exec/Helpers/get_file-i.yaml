@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Exec::Helpers#get_file
+is_singleton: false
+name: get_file
+params: (exception)
+visibility: public

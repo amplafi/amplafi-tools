@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::Registry#abbreviation_of
+is_singleton: false
+name: abbreviation_of
+params: (name)
+visibility: public

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Initializes a vector based on a list of Point instances.
+  - !ruby/struct:SM::Flow::P 
+    body: You usually do not want to use this method directly, but call {ChunkyPNG.Vector} instead.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Array&lt;ChunkyPNG::Point&gt;] points @see ChunkyPNG.Vector"
+full_name: ChunkyPNG::Vector::new
+is_singleton: true
+name: new
+params: (points = [])
+visibility: public

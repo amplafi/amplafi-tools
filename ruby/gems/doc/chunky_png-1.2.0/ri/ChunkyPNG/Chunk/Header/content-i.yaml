@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the content for this chunk when it gets written to a file, by packing the image information variables into the correct format. @return [String] The 13-byte content for the header chunk.
+full_name: ChunkyPNG::Chunk::Header#content
+is_singleton: false
+name: content
+params: ()
+visibility: public

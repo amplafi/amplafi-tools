@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>to_owg (Compass::SassExtensions::Functions::GradientSupport::LinearGradient)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/sass_extensions/functions/gradient_support.rb, line 164</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_owg</span>(<span class="ruby-identifier">options</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>)
+      <span class="ruby-identifier">args</span> = []
+      <span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">grad_point</span>(<span class="ruby-identifier">position_or_angle</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">&quot;top&quot;</span>))
+      <span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">linear_end_position</span>(<span class="ruby-identifier">position_or_angle</span>, <span class="ruby-identifier">color_stops</span>)
+      <span class="ruby-identifier">args</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">grad_color_stops</span>(<span class="ruby-identifier">color_stops</span>)
+      <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>}
+      <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;-webkit-gradient(linear, #{args.join(', ')})&quot;</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The default prepare method -- it is a no-op. Generally you would create required directories, etc.
+full_name: Compass::Installers::Base#prepare
+is_singleton: false
+name: prepare
+params: ()
+visibility: public

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: Compass::SassExtensions::Functions::GradientSupport::Functions</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">Compass::SassExtensions::Functions::GradientSupport::Functions</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../../../../files/lib/compass/sass_extensions/functions/gradient_support_rb.html">
+                lib/compass/sass_extensions/functions/gradient_support.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000059">color_stops</a>&nbsp;&nbsp;
+      <a href="#M000063">color_stops_in_percentages</a>&nbsp;&nbsp;
+      <a href="#M000062">grad_color_stops</a>&nbsp;&nbsp;
+      <a href="#M000065">grad_end_position</a>&nbsp;&nbsp;
+      <a href="#M000058">grad_point</a>&nbsp;&nbsp;
+      <a href="#M000066">grad_position</a>&nbsp;&nbsp;
+      <a href="#M000064">linear_end_position</a>&nbsp;&nbsp;
+      <a href="#M000061">linear_gradient</a>&nbsp;&nbsp;
+      <a href="#M000067">linear_svg_gradient</a>&nbsp;&nbsp;
+      <a href="#M000060">radial_gradient</a>&nbsp;&nbsp;
+      <a href="#M000068">radial_svg_gradient</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000059" class="method-detail">
+        <a name="M000059"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000059.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000059.html');return false;">
+          <span class="method-name">color_stops</span><span class="method-args">(*args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000063" class="method-detail">
+        <a name="M000063"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000063.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000063.html');return false;">
+          <span class="method-name">color_stops_in_percentages</span><span class="method-args">(color_list)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000062" class="method-detail">
+        <a name="M000062"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000062.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000062.html');return false;">
+          <span class="method-name">grad_color_stops</span><span class="method-args">(color_list)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns color-stop() calls for use in webkit.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000065" class="method-detail">
+        <a name="M000065"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000065.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000065.html');return false;">
+          <span class="method-name">grad_end_position</span><span class="method-args">(color_list, radial = Sass::Script::Bool.new(false))</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+returns the end position of the gradient from the color stop
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000058" class="method-detail">
+        <a name="M000058"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000058.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000058.html');return false;">
+          <span class="method-name">grad_point</span><span class="method-args">(position)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+given a position list, return a corresponding position in percents
+otherwise, returns the original argument
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000066" class="method-detail">
+        <a name="M000066"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000066.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000066.html');return false;">
+          <span class="method-name">grad_position</span><span class="method-args">(color_list, index, default, radial = Sass::Script::Bool.new(false))</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000064" class="method-detail">
+        <a name="M000064"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000064.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000064.html');return false;">
+          <span class="method-name">linear_end_position</span><span class="method-args">(position_or_angle, color_list)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+only used for webkit
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000061" class="method-detail">
+        <a name="M000061"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000061.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000061.html');return false;">
+          <span class="method-name">linear_gradient</span><span class="method-args">(position_or_angle, *color_stops)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000067" class="method-detail">
+        <a name="M000067"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000067.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000067.html');return false;">
+          <span class="method-name">linear_svg_gradient</span><span class="method-args">(color_stops, start)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000060" class="method-detail">
+        <a name="M000060"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000060.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000060.html');return false;">
+          <span class="method-name">radial_gradient</span><span class="method-args">(position_or_angle, shape_and_size, *color_stops)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000068" class="method-detail">
+        <a name="M000068"></a>
+
+        <div class="method-heading">
+          <a href="Functions.src/M000068.html" target="Code" class="method-signature"
+            onclick="popupCode('Functions.src/M000068.html');return false;">
+          <span class="method-name">radial_svg_gradient</span><span class="method-args">(color_stops, center)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: When called with a block, defines the asset host url to be used. The block must return a string that starts with a protocol (E.g. http). The block will be passed the root-relative url of the asset. When called without a block, returns the block that was previously set.
+full_name: Compass::Configuration::Data#asset_host
+is_singleton: false
+name: asset_host
+params: (&block)
+visibility: public

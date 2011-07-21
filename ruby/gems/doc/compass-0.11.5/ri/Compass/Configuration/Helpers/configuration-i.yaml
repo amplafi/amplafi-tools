@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: "@configuration"
+comment: 
+full_name: Compass::Configuration::Helpers#configuration
+is_singleton: false
+name: configuration
+params: () {|@configuration| ...}
+visibility: public

@@ -1,0 +1,83 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: base
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: left
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: options
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: relative_file
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: top
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: ACTIVE
+    value: "%r{[_-]active$}"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: TARGET
+    value: "%r{[_-]target$}"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: HOVER
+    value: "%r{[_-]hover$}"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: PARENT
+    value: "%r{(.+)[-_](.+)$}"
+full_name: Compass::SassExtensions::Sprites::Image
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: active
+  - !ruby/object:RI::MethodSummary 
+    name: active?
+  - !ruby/object:RI::MethodSummary 
+    name: digest
+  - !ruby/object:RI::MethodSummary 
+    name: file
+  - !ruby/object:RI::MethodSummary 
+    name: height
+  - !ruby/object:RI::MethodSummary 
+    name: hover
+  - !ruby/object:RI::MethodSummary 
+    name: hover?
+  - !ruby/object:RI::MethodSummary 
+    name: mtime
+  - !ruby/object:RI::MethodSummary 
+    name: name
+  - !ruby/object:RI::MethodSummary 
+    name: offset
+  - !ruby/object:RI::MethodSummary 
+    name: parent
+  - !ruby/object:RI::MethodSummary 
+    name: position
+  - !ruby/object:RI::MethodSummary 
+    name: repeat
+  - !ruby/object:RI::MethodSummary 
+    name: spacing
+  - !ruby/object:RI::MethodSummary 
+    name: target
+  - !ruby/object:RI::MethodSummary 
+    name: target?
+  - !ruby/object:RI::MethodSummary 
+    name: width
+name: Image
+superclass: Object

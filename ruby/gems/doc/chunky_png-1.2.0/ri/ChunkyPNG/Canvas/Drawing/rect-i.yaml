@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Draws a rectangle on the canvas, using two control points.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] x0 The x-coordinate of the first control point. @param [Integer] y0 The y-coordinate of the first control point. @param [Integer] x1 The x-coordinate of the second control point. @param [Integer] y1 The y-coordinate of the second control point. @param [Integer] stroke_color The line color to use for this rectangle. @param [Integer] fill_color The fill color to use for this rectangle. @return [ChunkyPNG::Canvas] Itself, with the rectangle drawn."
+full_name: ChunkyPNG::Canvas::Drawing#rect
+is_singleton: false
+name: rect
+params: (x0, y0, x1, y1, stroke_color = ChunkyPNG::Color::BLACK, fill_color = ChunkyPNG::Color::TRANSPARENT)
+visibility: public

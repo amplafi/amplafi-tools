@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: able_to_generate
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: column_width
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: filename
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: gutter_width
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: options
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: GridBuilder
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Actions
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: generate!
+  - !ruby/object:RI::MethodSummary 
+    name: working_path
+name: GridBuilder
+superclass: PNG

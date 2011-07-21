@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Composes another image onto this image using alpha blending. This will modify the current canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: If you simply want to replace pixels or when the other image does not have transparency, it is faster to use {#replace!}.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [ChunkyPNG::Canvas] other The foreground canvas to compose on the"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    current canvas, using alpha compositing.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] offset_x The x-offset to apply the new foreground on. @param [Integer] offset_y The y-offset to apply the new foreground on. @return [ChunkyPNG::Canvas] Returns itself, but with the other canvas composed onto it. @raise [ChunkyPNG::OutOfBounds] when the other canvas doesn't fit on this one,"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    given the offset and size of the other canvas.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@see #replace! @see #compose"
+full_name: ChunkyPNG::Canvas::Operations#compose!
+is_singleton: false
+name: compose!
+params: (other, offset_x = 0, offset_y = 0)
+visibility: public

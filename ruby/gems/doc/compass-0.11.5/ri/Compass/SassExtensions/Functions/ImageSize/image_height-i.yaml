@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the height of the image relative to the images directory
+full_name: Compass::SassExtensions::Functions::ImageSize#image_height
+is_singleton: false
+name: image_height
+params: (image_file)
+visibility: public

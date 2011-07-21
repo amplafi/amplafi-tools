@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Stats::CssFile#lines
+is_singleton: false
+name: lines
+params: ()
+visibility: public

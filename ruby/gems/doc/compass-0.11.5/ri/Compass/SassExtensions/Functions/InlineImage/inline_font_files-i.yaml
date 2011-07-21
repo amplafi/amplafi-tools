@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::InlineImage#inline_font_files
+is_singleton: false
+name: inline_font_files
+params: (*args)
+visibility: public

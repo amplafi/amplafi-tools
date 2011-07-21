@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::UpdateProject#new_compiler_instance
+is_singleton: false
+name: new_compiler_instance
+params: (additional_options = {})
+visibility: public

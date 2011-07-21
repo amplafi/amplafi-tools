@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_options (Compass::Commands::DefaultOptionsParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/default.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_options</span>(<span class="ruby-identifier">opts</span>)
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;--trace&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:trace</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-?&quot;</span>, <span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:command</span>] = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-constant">Help</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">:help_command</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">&quot;help&quot;</span>))
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-q&quot;</span>, <span class="ruby-value str">&quot;--quiet&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:quiet</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-v&quot;</span>, <span class="ruby-value str">&quot;--version&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:command</span>] = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+            <span class="ruby-constant">PrintVersion</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">working_path</span>, <span class="ruby-identifier">options</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">super</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

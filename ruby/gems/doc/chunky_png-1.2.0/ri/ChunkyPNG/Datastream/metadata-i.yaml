@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns all the textual metadata key/value pairs as hash. @return [Hash] A hash containing metadata fields and their values.
+full_name: ChunkyPNG::Datastream#metadata
+is_singleton: false
+name: metadata
+params: ()
+visibility: public

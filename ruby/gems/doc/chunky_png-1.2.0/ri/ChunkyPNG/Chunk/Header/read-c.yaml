@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Reads the 13 bytes of content from the header chunk to set the image attributes. @param [String] type The four character chunk type indicator (= &quot;IHDR&quot;). @param [String] content The 13 bytes of content read from the chunk. @return [ChunkyPNG::Chunk::End] The new Header chunk instance with the
+  - !ruby/struct:SM::Flow::VERB 
+    body: "   variables set to the values according to the content.\n"
+full_name: ChunkyPNG::Chunk::Header::read
+is_singleton: true
+name: read
+params: (type, content)
+visibility: public

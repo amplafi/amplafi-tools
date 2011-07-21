@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Checks whether this palette is suitable for decoding an image from a datastream.
+  - !ruby/struct:SM::Flow::P 
+    body: This requires that the positions of the colors in the original palette chunk is known, which is stored as an array in the +@decoding_map+ instance variable.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [true, false] True if a decoding map was built when this palette was loaded."
+full_name: ChunkyPNG::Palette#can_decode?
+is_singleton: false
+name: can_decode?
+params: ()
+visibility: public

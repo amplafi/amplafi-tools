@@ -1,0 +1,58 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: chunk
+  - !ruby/object:RI::MethodSummary 
+    name: const_missing
+  - !ruby/object:RI::MethodSummary 
+    name: crc
+  - !ruby/object:RI::MethodSummary 
+    name: new
+  - !ruby/object:RI::MethodSummary 
+    name: setup_template_location
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "To configure Merb to use compass do the following:"
+  - !ruby/struct:SM::Flow::P 
+    body: Add dependencies to config/dependencies.rb
+  - !ruby/struct:SM::Flow::P 
+    body: dependency &quot;haml&quot;, &quot;&gt;=2.2.0&quot; dependency &quot;merb-haml&quot;, merb_gems_version dependency &quot;chriseppstein-compass&quot;, :require_as =&gt; 'compass'
+  - !ruby/struct:SM::Flow::P 
+    body: "To use a different sass stylesheets locations as is recommended by compass add this configuration to your configuration block:"
+  - !ruby/struct:SM::Flow::P 
+    body: Merb::BootLoader.before_app_loads do
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  Merb::Plugins.config[:compass] = {\n    :stylesheets =&gt; &quot;app/stylesheets&quot;,\n    :compiled_stylesheets =&gt; &quot;public/stylesheets/compiled&quot;\n  }\n"
+  - !ruby/struct:SM::Flow::P 
+    body: end
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: BITS
+    value: "8"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: RGB
+    value: "2"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: NONE
+    value: "0"
+full_name: Compass
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: base_directory
+  - !ruby/object:RI::MethodSummary 
+    name: lib_directory
+  - !ruby/object:RI::MethodSummary 
+    name: png_join
+  - !ruby/object:RI::MethodSummary 
+    name: shared_extension_paths
+  - !ruby/object:RI::MethodSummary 
+    name: to_blob
+name: Compass
+superclass: 

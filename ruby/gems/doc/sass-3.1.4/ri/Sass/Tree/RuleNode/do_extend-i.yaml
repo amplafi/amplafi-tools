@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Extends this Rule's selector with the given `extends`.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see Node#do_extend"
+full_name: Sass::Tree::RuleNode#do_extend
+is_singleton: false
+name: do_extend
+params: (extends)
+visibility: public

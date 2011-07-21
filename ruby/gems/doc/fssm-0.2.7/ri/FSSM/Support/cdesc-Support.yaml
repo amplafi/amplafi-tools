@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: backend
+  - !ruby/object:RI::MethodSummary 
+    name: carbon_core?
+  - !ruby/object:RI::MethodSummary 
+    name: jruby?
+  - !ruby/object:RI::MethodSummary 
+    name: linux?
+  - !ruby/object:RI::MethodSummary 
+    name: lion?
+  - !ruby/object:RI::MethodSummary 
+    name: mac?
+  - !ruby/object:RI::MethodSummary 
+    name: rb_fsevent?
+  - !ruby/object:RI::MethodSummary 
+    name: rb_inotify?
+  - !ruby/object:RI::MethodSummary 
+    name: usable_backend
+  - !ruby/object:RI::MethodSummary 
+    name: use_block
+comment: 
+constants: []
+
+full_name: FSSM::Support
+includes: []
+
+instance_methods: []
+
+name: Support
+superclass: 

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::WriteConfiguration#perform
+is_singleton: false
+name: perform
+params: ()
+visibility: public

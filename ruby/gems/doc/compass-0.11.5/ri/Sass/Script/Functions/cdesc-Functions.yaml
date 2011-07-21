@@ -1,0 +1,42 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Sass::Script::Functions
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Selectors
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Enumerate
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Urls
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Display
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::InlineImage
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::ImageSize
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::GradientSupport::Functions
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::FontFiles
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Constants
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Lists
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Colors
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Trig
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::Sprites
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::SassExtensions::Functions::CrossBrowserSupport
+instance_methods: []
+
+name: Functions
+superclass: 

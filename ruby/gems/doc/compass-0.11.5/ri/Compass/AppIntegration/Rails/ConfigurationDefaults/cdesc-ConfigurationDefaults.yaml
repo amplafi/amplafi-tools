@@ -1,0 +1,44 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Compass::AppIntegration::Rails::ConfigurationDefaults
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: default_cache_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_css_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_environment
+  - !ruby/object:RI::MethodSummary 
+    name: default_extensions_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_fonts_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_fonts_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_images_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_javascripts_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_http_stylesheets_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_images_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_javascripts_dir
+  - !ruby/object:RI::MethodSummary 
+    name: default_project_path
+  - !ruby/object:RI::MethodSummary 
+    name: default_sass_dir
+  - !ruby/object:RI::MethodSummary 
+    name: project_type_without_default
+name: ConfigurationDefaults
+superclass: 

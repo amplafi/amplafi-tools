@@ -14,7 +14,8 @@ Note: Comments and corrections to these instructions are welcome.
 
 * **[Git 1.7+:](http://help.github.com/set-up-git-redirect)**  The program git is needed for the initial download and install.
    * Check this is installed with this command, still in Git Bash on Windows.
-<pre> git --version</pre>
+
+<code>git --version</code>
 
    * The output should say something like: git version 1.7.
    * Use the [instructions](http://help.github.com/set-up-git-redirect) if you need to set it up. 
@@ -25,7 +26,6 @@ Note: Comments and corrections to these instructions are welcome.
         b) Now when you run the msysgit bash you should be prompted for your passphrase. If you are not prompted for your passphrase then restart windows and start the msysgit bash tool again. 
 
 
-
    * If you get an error like: *Permission denied (publickey)*, please review your Git and ssh setup for correctness.
 
 * **[Java JDK 1.6+:](http://www.oracle.com/technetwork/java/javase/downloads/index.html)**  This program is needed to run builds. Note this is the *JDK*, not the *JRE*, and you want to avoid the "glassfish" version".  Here is a [link for Windows Java JDK] (http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html)
@@ -34,7 +34,6 @@ Note: Comments and corrections to these instructions are welcome.
 <pre> java -version</pre>
 
    * The output should say something like: Java SE runtime build 1.6.
-
 
 * **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in (You can start downloading this tool and continue with the instructions if you are on a fast connection). Note this is the *EE* version of Eclipse.
    * The "Eclipse IDE for Java EE Developers" is the tool you need.

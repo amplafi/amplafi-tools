@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Constructs an RGB or HSL color object, optionally with an alpha channel.
+  - !ruby/struct:SM::Flow::P 
+    body: The RGB values must be between 0 and 255. The saturation and lightness values must be between 0 and 100. The alpha value must be between 0 and 1.
+  - !ruby/struct:SM::Flow::P 
+    body: "@raise [Sass::SyntaxError] if any color value isn't in the specified range"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload initialize(attrs)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  The attributes are specified as a hash.\n  This hash must contain either `:hue`, `:saturation`, and `:value` keys,\n  or `:red`, `:green`, and `:blue` keys.\n  It cannot contain both HSL and RGB keys.\n  It may also optionally contain an `:alpha` key.\n\n  @param attrs [{Symbol =&gt; Numeric}] A hash of color attributes to values\n  @raise [ArgumentError] if not enough attributes are specified,\n    or both RGB and HSL attributes are specified\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@overload initialize(rgba)"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  The attributes are specified as an array.\n  This overload only supports RGB or RGBA colors.\n\n  @param rgba [Array&lt;Numeric&gt;] A three- or four-element array\n    of the red, green, blue, and optionally alpha values (respectively)\n    of the color\n  @raise [ArgumentError] if not enough attributes are specified\n"
+full_name: Sass::Script::Color::new
+is_singleton: true
+name: new
+params: (attrs, allow_both_rgb_and_hsl = false)
+visibility: public

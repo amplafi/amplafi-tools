@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FSSM::Tree::NodeBase#child
+is_singleton: false
+name: child
+params: (segment)
+visibility: protected

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>strip_trailing_separator (Compass::Configuration::Paths)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/configuration/paths.rb, line 5</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">strip_trailing_separator</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">attributes</span>)
+    <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attr</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">alias_method</span> <span class="ruby-node">&quot;#{attr}_with_trailing_separator&quot;</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">attr</span>
+      <span class="ruby-identifier">class_eval</span> <span class="ruby-node">%Q{
+        def #{attr}                                # def css_dir
+          path = #{attr}_with_trailing_separator   #   path = css_dir_with_trailing_separator
+          if path.to_s =~ TRAILING_SEPARATOR       #   if path =~ TRAILING_SEPARATOR
+            path = path[0..-($1.length+1)]         #     path = path[0..-($1.length+1)]
+          end                                      #   end
+          path                                     #   path
+        end                                        # end
+      }</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

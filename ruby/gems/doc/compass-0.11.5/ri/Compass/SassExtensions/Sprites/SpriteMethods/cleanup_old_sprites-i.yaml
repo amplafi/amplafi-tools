@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Sprites::SpriteMethods#cleanup_old_sprites
+is_singleton: false
+name: cleanup_old_sprites
+params: ()
+visibility: public

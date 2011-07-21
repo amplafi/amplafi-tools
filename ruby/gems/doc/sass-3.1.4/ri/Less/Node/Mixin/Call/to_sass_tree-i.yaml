@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Less::Node::Mixin::Call#to_sass_tree
+is_singleton: false
+name: to_sass_tree
+params: ()
+visibility: public

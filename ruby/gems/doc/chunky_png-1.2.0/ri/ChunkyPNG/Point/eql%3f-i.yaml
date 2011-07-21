@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: ==
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Checks whether 2 points are identical. @return [true, false] <tt>true</tt> iff the x and y coordinates match
+full_name: ChunkyPNG::Point#eql?
+is_singleton: false
+name: eql?
+params: (other)
+visibility: public

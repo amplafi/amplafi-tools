@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Parses the argument list for a mixin definition.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Array&lt;Script::Node&gt;] The root nodes of the arguments. @raise [Sass::SyntaxError] if the argument list isn't valid SassScript"
+full_name: Sass::Script::Parser#parse_mixin_definition_arglist
+is_singleton: false
+name: parse_mixin_definition_arglist
+params: ()
+visibility: public

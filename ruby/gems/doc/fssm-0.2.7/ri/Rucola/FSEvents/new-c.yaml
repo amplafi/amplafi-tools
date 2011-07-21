@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a new FSEvents `watchdog` object. You can specify a list of paths to watch and options to control the behaviour of the watchdog. The block you pass serves as a callback when an event is generated on one of the specified paths.
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  fsevents = FSEvents.new('/etc/passwd') { Mailer.send_mail(&quot;Someone touched the password file!&quot;) }\n  fsevents.create_stream\n  fsevents.start\n\n  fsevents = FSEvents.new('/home/upload', :since =&gt; UploadWatcher.last_event_id) do |events|\n    events.each do |event|\n      UploadWatcher.last_event_id = event.id\n      event.files.each do |file|\n        UploadWatcher.logfile.append(&quot;#{file} was changed&quot;)\n      end\n    end\n  end\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "*:since: The service will report events that have happened after the supplied event ID. Never use 0 because that"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  will cause every fsevent since the &quot;beginning of time&quot; to be reported. Use OSX::KFSEventStreamEventIdSinceNow\n  if you want to receive events that have happened after this call. (Default: OSX::KFSEventStreamEventIdSinceNow).\n  You can find the ID's passed with :since in the events passed to your block.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "*:latency: Number of seconds to wait until an FSEvent is reported, this allows the service to bundle events. (Default: 0.0)"
+  - !ruby/struct:SM::Flow::P 
+    body: Please refer to the Cocoa documentation for the rest of the options.
+full_name: Rucola::FSEvents::new
+is_singleton: true
+name: new
+params: (*params, &block)
+visibility: public

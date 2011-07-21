@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Compares the size of 2 dimensions. @param [ChunkyPNG::Dimension] The dimension to compare with. @return [-1, 0, 1] -1 if the other dimension has a larger area, 1 of this
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  dimension is larger, 0 if both are identical in size.\n"
+full_name: ChunkyPNG::Dimension#<=>
+is_singleton: false
+name: <=>
+params: (other)
+visibility: public

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>render (Sass::Tree::RootNode)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sass/tree/root_node.rb, line 18</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>
+        <span class="ruby-constant">Visitors</span><span class="ruby-operator">::</span><span class="ruby-constant">CheckNesting</span>.<span class="ruby-identifier">visit</span>(<span class="ruby-keyword kw">self</span>)
+        <span class="ruby-identifier">result</span> = <span class="ruby-constant">Visitors</span><span class="ruby-operator">::</span><span class="ruby-constant">Perform</span>.<span class="ruby-identifier">visit</span>(<span class="ruby-keyword kw">self</span>)
+        <span class="ruby-constant">Visitors</span><span class="ruby-operator">::</span><span class="ruby-constant">CheckNesting</span>.<span class="ruby-identifier">visit</span>(<span class="ruby-identifier">result</span>) <span class="ruby-comment cmt"># Check again to validate mixins</span>
+        <span class="ruby-identifier">result</span>, <span class="ruby-identifier">extends</span> = <span class="ruby-constant">Visitors</span><span class="ruby-operator">::</span><span class="ruby-constant">Cssize</span>.<span class="ruby-identifier">visit</span>(<span class="ruby-identifier">result</span>)
+        <span class="ruby-identifier">result</span> = <span class="ruby-identifier">result</span>.<span class="ruby-identifier">do_extend</span>(<span class="ruby-identifier">extends</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">extends</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-identifier">result</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

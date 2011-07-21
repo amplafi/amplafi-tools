@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::UpdateProject#check_for_sass_files!
+is_singleton: false
+name: check_for_sass_files!
+params: (compiler)
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Sass::Script::Funcall#sass_to_literal
+is_singleton: false
+name: sass_to_literal
+params: ()
+visibility: public

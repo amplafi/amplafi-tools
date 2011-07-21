@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Serialization#serialize_property
+is_singleton: false
+name: serialize_property
+params: (prop, value)
+visibility: public

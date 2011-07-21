@@ -1,0 +1,73 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: options
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: uri
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: find_all_sprite_map_files
+  - !ruby/object:RI::MethodSummary 
+    name: load
+  - !ruby/object:RI::MethodSummary 
+    name: new
+  - !ruby/object:RI::MethodSummary 
+    name: path_and_name
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: VAILD_FILE_NAME
+    value: /\A#{Sass::SCSS::RX::IDENT}\Z/
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: SPRITE_IMPORTER_REGEX
+    value: "%r{((.+/)?([^\\*.]+))/(.+?)\\.png}"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: VALID_EXTENSIONS
+    value: "['.png']"
+full_name: Compass::SpriteImporter
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: content_for_images
+  - !ruby/object:RI::MethodSummary 
+    name: ensure_path_and_name!
+  - !ruby/object:RI::MethodSummary 
+    name: eql?
+  - !ruby/object:RI::MethodSummary 
+    name: files
+  - !ruby/object:RI::MethodSummary 
+    name: find
+  - !ruby/object:RI::MethodSummary 
+    name: find_relative
+  - !ruby/object:RI::MethodSummary 
+    name: generate_overrides
+  - !ruby/object:RI::MethodSummary 
+    name: hash
+  - !ruby/object:RI::MethodSummary 
+    name: key
+  - !ruby/object:RI::MethodSummary 
+    name: mtime
+  - !ruby/object:RI::MethodSummary 
+    name: name
+  - !ruby/object:RI::MethodSummary 
+    name: path
+  - !ruby/object:RI::MethodSummary 
+    name: sass_engine
+  - !ruby/object:RI::MethodSummary 
+    name: sass_options
+  - !ruby/object:RI::MethodSummary 
+    name: sprite_names
+  - !ruby/object:RI::MethodSummary 
+    name: to_s
+  - !ruby/object:RI::MethodSummary 
+    name: validate_sprites!
+name: SpriteImporter
+superclass: Sass::Importers::Base

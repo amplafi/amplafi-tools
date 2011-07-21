@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The parse tree for the list. @param [Script::Node]
+    name: list
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The name of the loop variable. @return [String]
+    name: var
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A dynamic node representing a Sass `@each` loop.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see Sass::Tree"
+constants: []
+
+full_name: Sass::Tree::EachNode
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: subnodes
+name: EachNode
+superclass: Node

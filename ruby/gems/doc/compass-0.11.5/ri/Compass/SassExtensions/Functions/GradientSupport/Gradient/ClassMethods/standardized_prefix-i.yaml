@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::GradientSupport::Gradient::ClassMethods#standardized_prefix
+is_singleton: false
+name: standardized_prefix
+params: (prefix)
+visibility: public

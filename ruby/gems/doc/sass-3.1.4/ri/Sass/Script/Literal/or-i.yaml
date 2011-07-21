@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The SassScript `or` operation.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param other [Literal] The right-hand side of the operator @return [Literal] The result of the logical or:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  this literal if it isn't a false {Bool},\n  and `other` otherwise\n"
+full_name: Sass::Script::Literal#or
+is_singleton: false
+name: or
+params: (other)
+visibility: public

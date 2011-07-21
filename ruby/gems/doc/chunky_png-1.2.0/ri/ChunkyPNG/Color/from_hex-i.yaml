@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a color by converting it from a string in hex notation.
+  - !ruby/struct:SM::Flow::P 
+    body: It supports colors with (#rrggbbaa) or without (#rrggbb) alpha channel. Color strings may include the prefix &quot;0x&quot; or &quot;#&quot;.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [String] str The color in hex notation. @return [Integer] The"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  converted color value.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] opacity The opacity value for the color. Overrides any"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "   opacity value given in the hex value if given.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Integer] The color value. @raise [ArgumentError] if the value given is not a hex color notation."
+full_name: ChunkyPNG::Color#from_hex
+is_singleton: false
+name: from_hex
+params: (hex_value, opacity = nil)
+visibility: public

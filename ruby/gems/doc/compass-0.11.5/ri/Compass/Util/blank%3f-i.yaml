@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Util#blank?
+is_singleton: false
+name: blank?
+params: (value)
+visibility: public

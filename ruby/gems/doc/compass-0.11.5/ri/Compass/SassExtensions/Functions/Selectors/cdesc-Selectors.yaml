@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: COMMA_SEPARATOR
+    value: /\s*,\s*/
+full_name: Compass::SassExtensions::Functions::Selectors
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: append_selector
+  - !ruby/object:RI::MethodSummary 
+    name: headers
+  - !ruby/object:RI::MethodSummary 
+    name: headings
+  - !ruby/object:RI::MethodSummary 
+    name: nest
+name: Selectors
+superclass: 

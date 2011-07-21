@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::CleanProject::description
+is_singleton: true
+name: description
+params: (command)
+visibility: public

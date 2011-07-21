@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Fetches the Sprite::Image object for the supplied name
+full_name: Compass::SassExtensions::Sprites::ImageMethods#image_for
+is_singleton: false
+name: image_for
+params: (name)
+visibility: public

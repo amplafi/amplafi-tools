@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SpriteImporter#find_relative
+is_singleton: false
+name: find_relative
+params: (uri, base, options)
+visibility: public

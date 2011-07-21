@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a new color using a grayscale teint and alpha value. @param [Integer] teint The grayscale teint (0-255), will be used as r, g, and b value. @param [Integer] a The opacity (0-255) @return [Integer] The newly constructed color value.
+full_name: ChunkyPNG::Color#grayscale_alpha
+is_singleton: false
+name: grayscale_alpha
+params: (teint, a)
+visibility: public

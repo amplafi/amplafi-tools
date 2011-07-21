@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_options (Compass::Commands::HelpOptionsParser)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/help.rb, line 4</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_options</span>(<span class="ruby-identifier">opts</span>)
+        <span class="ruby-identifier">banner</span> = <span class="ruby-value str">%Q{Usage: compass help [command]
+
+Description:
+  The Compass Stylesheet Authoring Framework helps you
+  build and maintain your stylesheets and makes it easy
+  for you to use stylesheet libraries provided by others.
+
+Donating:
+  Compass is charityware. If you find it useful please make
+  a tax deductable donation: http://umdf.org/compass
+
+To get help on a particular command please specify the command.
+
+}</span>
+        
+        <span class="ruby-identifier">primary_commands</span> = <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">select</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">cmd</span> = <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>[<span class="ruby-identifier">c</span>]
+          <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:primary</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">primary</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">other_commands</span> = <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Commands</span>.<span class="ruby-identifier">all</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">primary_commands</span>
+
+        <span class="ruby-identifier">banner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">command_list</span>(<span class="ruby-value str">&quot;Primary Commands:&quot;</span>, <span class="ruby-identifier">primary_commands</span>)
+        <span class="ruby-identifier">banner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">command_list</span>(<span class="ruby-value str">&quot;Other Commands:&quot;</span>, <span class="ruby-identifier">other_commands</span>)
+ 
+        <span class="ruby-identifier">banner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\nAvailable Frameworks &amp; Patterns:\n\n&quot;</span>
+        <span class="ruby-identifier">banner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Frameworks</span>.<span class="ruby-identifier">pretty_print</span>
+        <span class="ruby-identifier">banner</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\nGlobal Options:\n&quot;</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-identifier">banner</span>
+
+        <span class="ruby-keyword kw">super</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

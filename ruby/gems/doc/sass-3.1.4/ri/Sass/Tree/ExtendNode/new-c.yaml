@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@param selector [Array&lt;String, Sass::Script::Node&gt;]"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  The CSS selector to extend,\n  interspersed with {Sass::Script::Node}s\n  representing `#{}`-interpolation.\n"
+full_name: Sass::Tree::ExtendNode::new
+is_singleton: true
+name: new
+params: (selector)
+visibility: public

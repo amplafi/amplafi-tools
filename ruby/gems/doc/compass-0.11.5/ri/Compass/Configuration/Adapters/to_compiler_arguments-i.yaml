@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Adapters#to_compiler_arguments
+is_singleton: false
+name: to_compiler_arguments
+params: (additional_options = {})
+visibility: public

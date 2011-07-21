@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a stream of the alpha channel of this canvas.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [String] The 0-255 alpha values of all pixels packed as string"
+full_name: ChunkyPNG::Canvas::StreamExporting#to_alpha_channel_stream
+is_singleton: false
+name: to_alpha_channel_stream
+params: ()
+visibility: public

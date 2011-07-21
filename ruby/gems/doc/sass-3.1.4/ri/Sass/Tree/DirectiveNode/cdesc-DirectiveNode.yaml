@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The text of the directive, `@` and all.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [String]"
+    name: value
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A static node representing an unproccessed Sass `@`-directive. Directives known to Sass, like `@for` and `@debug`, are handled by their own nodes; only CSS directives like `@media` and `@font-face` become {DirectiveNode}s.
+  - !ruby/struct:SM::Flow::P 
+    body: "`@import` and `@charset` are special cases; they become {ImportNode}s and {CharsetNode}s, respectively."
+  - !ruby/struct:SM::Flow::P 
+    body: "@see Sass::Tree"
+constants: []
+
+full_name: Sass::Tree::DirectiveNode
+includes: []
+
+instance_methods: []
+
+name: DirectiveNode
+superclass: Node

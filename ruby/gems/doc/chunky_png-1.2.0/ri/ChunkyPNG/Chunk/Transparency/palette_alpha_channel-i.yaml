@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the alpha channel for the palette of an indexed image.
+  - !ruby/struct:SM::Flow::P 
+    body: This method should only be used for images having color mode ChunkyPNG::COLOR_INDEXED (3).
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Array&lt;Integer&gt;] Returns an array of alpha channel values [0-255]."
+full_name: ChunkyPNG::Chunk::Transparency#palette_alpha_channel
+is_singleton: false
+name: palette_alpha_channel
+params: ()
+visibility: public

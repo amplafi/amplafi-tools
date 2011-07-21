@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: symlinks
+block_params: 
+comment: 
+full_name: FSSM::Tree::Cache#links
+is_singleton: false
+name: links
+params: ()
+visibility: public

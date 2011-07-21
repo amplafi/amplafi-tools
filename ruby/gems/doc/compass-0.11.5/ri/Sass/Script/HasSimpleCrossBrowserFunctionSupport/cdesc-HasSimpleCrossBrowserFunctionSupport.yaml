@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Sass::Script::HasSimpleCrossBrowserFunctionSupport
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: has_aspect?
+  - !ruby/object:RI::MethodSummary 
+    name: supports?
+name: HasSimpleCrossBrowserFunctionSupport
+superclass: 

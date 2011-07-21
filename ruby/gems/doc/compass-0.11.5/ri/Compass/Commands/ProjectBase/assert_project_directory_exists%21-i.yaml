@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::ProjectBase#assert_project_directory_exists!
+is_singleton: false
+name: assert_project_directory_exists!
+params: ()
+visibility: protected

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a canvas by reading pixels from an RGB formatted stream with a provided with and height.
+  - !ruby/struct:SM::Flow::P 
+    body: Every pixel should be represented by 3 bytes in the stream, in the correct RGB order. This format closely resembles the internal representation of a canvas object, so this kind of stream can be read extremely quickly.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] width The width of the new canvas. @param [Integer] height The height of the new canvas. @param [#read, String] stream The stream to read the pixel data from. @return [ChunkyPNG::Canvas] The newly constructed canvas instance."
+full_name: ChunkyPNG::Canvas::StreamImporting#from_rgb_stream
+is_singleton: false
+name: from_rgb_stream
+params: (width, height, stream)
+visibility: public

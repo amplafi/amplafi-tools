@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Runs the installer. Every installer must conform to the installation strategy of prepare, install, and then finalize. A default implementation is provided for each step.
+full_name: Compass::Installers::Base#run
+is_singleton: false
+name: run
+params: (run_options = {})
+visibility: public

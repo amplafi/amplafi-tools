@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::WatchProject#remove_obsolete_css
+is_singleton: false
+name: remove_obsolete_css
+params: (base = nil, relative = nil)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Writes the chunk to the IO stream, using the provided content. The checksum will be calculated and appended to the stream. @param [IO] io The IO stream to write to. @param [String] content The content for this chunk.
+full_name: ChunkyPNG::Chunk::Base#write_with_crc
+is_singleton: false
+name: write_with_crc
+params: (io, content)
+visibility: public

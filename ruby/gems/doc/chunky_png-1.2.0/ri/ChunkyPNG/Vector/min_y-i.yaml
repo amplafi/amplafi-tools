@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Finds the lowest y-coordinate in this vector. @return [Integer] The lowest y-coordinate of all the points in the vector.
+full_name: ChunkyPNG::Vector#min_y
+is_singleton: false
+name: min_y
+params: ()
+visibility: public

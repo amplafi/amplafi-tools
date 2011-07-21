@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>radial_svg_gradient (Compass::SassExtensions::Functions::GradientSupport::Functions)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/sass_extensions/functions/gradient_support.rb, line 375</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">radial_svg_gradient</span>(<span class="ruby-identifier">color_stops</span>, <span class="ruby-identifier">center</span>)
+      <span class="ruby-identifier">cx</span>, <span class="ruby-identifier">cy</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">grad_point</span>(<span class="ruby-identifier">center</span>).<span class="ruby-identifier">value</span>
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">grad_end_position</span>(<span class="ruby-identifier">color_stops</span>,  <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Bool</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">true</span>))
+      <span class="ruby-identifier">stops</span> = <span class="ruby-identifier">color_stops_in_percentages</span>(<span class="ruby-identifier">color_stops</span>)
+
+      <span class="ruby-identifier">svg</span> = <span class="ruby-identifier">radial_svg</span>(<span class="ruby-identifier">stops</span>, <span class="ruby-identifier">cx</span>, <span class="ruby-identifier">cy</span>, <span class="ruby-identifier">r</span>)
+      <span class="ruby-identifier">inline_image_string</span>(<span class="ruby-identifier">svg</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\s+/</span>, <span class="ruby-value str">' '</span>), <span class="ruby-value str">'image/svg+xml'</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

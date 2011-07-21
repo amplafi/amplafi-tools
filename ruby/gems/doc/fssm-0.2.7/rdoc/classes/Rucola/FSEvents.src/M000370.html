@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create_stream (Rucola::FSEvents)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/fssm/backends/rubycocoa/fsevents.rb, line 113</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create_stream</span>
+      <span class="ruby-ivar">@stream</span> = <span class="ruby-constant">OSX</span>.<span class="ruby-constant">FSEventStreamCreate</span>(<span class="ruby-ivar">@allocator</span>, <span class="ruby-ivar">@callback</span>, <span class="ruby-ivar">@context</span>, <span class="ruby-ivar">@paths</span>, <span class="ruby-ivar">@since</span>, <span class="ruby-ivar">@latency</span>, <span class="ruby-ivar">@flags</span>)
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">StreamError</span>, <span class="ruby-value str">'Unable to create FSEvents stream.'</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@stream</span>
+      <span class="ruby-constant">OSX</span>.<span class="ruby-constant">FSEventStreamScheduleWithRunLoop</span>(<span class="ruby-ivar">@stream</span>, <span class="ruby-constant">OSX</span>.<span class="ruby-constant">CFRunLoopGetCurrent</span>, <span class="ruby-constant">OSX</span><span class="ruby-operator">::</span><span class="ruby-constant">KCFRunLoopDefaultMode</span>)
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

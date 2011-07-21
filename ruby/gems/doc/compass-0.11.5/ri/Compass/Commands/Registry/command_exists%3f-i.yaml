@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::Registry#command_exists?
+is_singleton: false
+name: command_exists?
+params: (name)
+visibility: public

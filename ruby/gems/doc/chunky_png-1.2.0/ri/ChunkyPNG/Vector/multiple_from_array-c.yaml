@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [Array&lt;ChunkyPNG::Point&gt;] The list of points interpreted from the input array."
+full_name: ChunkyPNG::Vector::multiple_from_array
+is_singleton: true
+name: multiple_from_array
+params: (source)
+visibility: public

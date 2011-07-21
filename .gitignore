@@ -2,3 +2,4 @@
 /apache-james-2.3.2
 /apache-maven-2.2.1
 .project
+/env.settings*

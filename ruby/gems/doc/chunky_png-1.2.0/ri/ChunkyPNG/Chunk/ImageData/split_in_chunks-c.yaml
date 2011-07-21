@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ChunkyPNG::Chunk::ImageData::split_in_chunks
+is_singleton: true
+name: split_in_chunks
+params: (data, level = Zlib::DEFAULT_COMPRESSION, chunk_size = 2147483647)
+visibility: public

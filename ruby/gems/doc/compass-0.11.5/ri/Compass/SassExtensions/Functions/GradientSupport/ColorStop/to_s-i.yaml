@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::GradientSupport::ColorStop#to_s
+is_singleton: false
+name: to_s
+params: (options = self.options)
+visibility: public

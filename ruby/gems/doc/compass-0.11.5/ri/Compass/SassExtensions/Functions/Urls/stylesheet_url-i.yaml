@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Urls#stylesheet_url
+is_singleton: false
+name: stylesheet_url
+params: (path, only_path = Sass::Script::Bool.new(false))
+visibility: public

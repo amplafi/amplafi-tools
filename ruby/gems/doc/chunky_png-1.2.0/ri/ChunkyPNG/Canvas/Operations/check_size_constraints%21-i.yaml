@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Checks whether another image has the correct dimension to be used for an operation on the current image, given an offset coordinate to work with. @param [ChunkyPNG::Canvas] other The other canvas @param [Integer] offset_x The x offset on which the other image will be applied. @param [Integer] offset_y The y offset on which the other image will be applied. @raise [ChunkyPNG::OutOfBounds] when the other image doesn't fit.
+full_name: ChunkyPNG::Canvas::Operations#check_size_constraints!
+is_singleton: false
+name: check_size_constraints!
+params: (other, offset_x, offset_y)
+visibility: protected

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Record an action that has occurred
+full_name: Compass::Logger#record
+is_singleton: false
+name: record
+params: (action, *arguments)
+visibility: public

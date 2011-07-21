@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns an empty stream using binary encoding that can be used as stream to encode to. @return [String] An empty, binary string.
+full_name: ChunkyPNG::Datastream::empty_bytearray
+is_singleton: true
+name: empty_bytearray
+params: ()
+visibility: public

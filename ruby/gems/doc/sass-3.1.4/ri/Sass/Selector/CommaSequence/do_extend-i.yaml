@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Non-destrucively extends this selector with the extensions specified in a hash (which should come from {Sass::Tree::Visitors::Cssize}).
+  - !ruby/struct:SM::Flow::P 
+    body: "@todo Link this to the reference documentation on `@extend`"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  when such a thing exists.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param extends [Sass::Util::SubsetMap{Selector::Simple =&gt; Selector::Sequence}]"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  The extensions to perform on this selector\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [CommaSequence] A copy of this selector,"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  with extensions made according to `extends`\n"
+full_name: Sass::Selector::CommaSequence#do_extend
+is_singleton: false
+name: do_extend
+params: (extends)
+visibility: public

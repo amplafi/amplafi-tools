@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Defaults#http_root_relative
+is_singleton: false
+name: http_root_relative
+params: (path)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: if block_given?) || :stand_alone)
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Read the configuration file for this project
+full_name: Compass::Configuration::Helpers#add_project_configuration
+is_singleton: false
+name: add_project_configuration
+params: (*args) {|if block_given?) || :stand_alone)| ...}
+visibility: public

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Composes another image onto this image using alpha blending. This will return a new canvas and leave the original intact.
+  - !ruby/struct:SM::Flow::P 
+    body: If you simply want to replace pixels or when the other image does not have transparency, it is faster to use {#replace}.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param (see #compose!) @return [ChunkyPNG::Canvas] Returns the new canvas, composed of the other 2. @raise [ChunkyPNG::OutOfBounds] when the other canvas doesn't fit on this one,"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    given the offset and size of the other canvas.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@note API changed since 1.0 - This method now no longer is in place, but returns"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "    a new canvas and leaves the original intact. Use {#compose!} if you want to\n    compose on the canvas in place.\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@see #replace"
+full_name: ChunkyPNG::Canvas::Operations#compose
+is_singleton: false
+name: compose
+params: (other, offset_x = 0, offset_y = 0)
+visibility: public

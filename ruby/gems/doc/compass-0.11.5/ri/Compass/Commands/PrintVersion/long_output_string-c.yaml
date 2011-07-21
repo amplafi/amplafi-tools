@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::PrintVersion::long_output_string
+is_singleton: true
+name: long_output_string
+params: ()
+visibility: public

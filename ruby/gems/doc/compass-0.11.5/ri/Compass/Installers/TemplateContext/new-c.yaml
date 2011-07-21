@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::TemplateContext::new
+is_singleton: true
+name: new
+params: (template, locals = {})
+visibility: public

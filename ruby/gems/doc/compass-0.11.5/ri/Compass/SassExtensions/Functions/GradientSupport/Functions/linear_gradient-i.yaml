@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::GradientSupport::Functions#linear_gradient
+is_singleton: false
+name: linear_gradient
+params: (position_or_angle, *color_stops)
+visibility: public

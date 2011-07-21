@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::TemplateContext::ctx
+is_singleton: true
+name: ctx
+params: (*arguments)
+visibility: public

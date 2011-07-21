@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::AppIntegration::Rails::ConfigurationDefaults#default_sass_dir
+is_singleton: false
+name: default_sass_dir
+params: ()
+visibility: public

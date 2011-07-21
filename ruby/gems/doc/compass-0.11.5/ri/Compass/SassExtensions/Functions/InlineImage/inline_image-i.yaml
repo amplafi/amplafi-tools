@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::InlineImage#inline_image
+is_singleton: false
+name: inline_image
+params: (path, mime_type = nil)
+visibility: public

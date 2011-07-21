@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Compile one Sass file
+full_name: Compass::Compiler#compile
+is_singleton: false
+name: compile
+params: (sass_filename, css_filename)
+visibility: public

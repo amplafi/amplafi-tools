@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Target selector Image object if exsists
+full_name: Compass::SassExtensions::Sprites::Image#target
+is_singleton: false
+name: target
+params: ()
+visibility: public

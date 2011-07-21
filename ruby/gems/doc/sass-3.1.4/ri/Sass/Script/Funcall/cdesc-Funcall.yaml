@@ -1,0 +1,52 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The arguments to the function.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Array&lt;Script::Node&gt;]"
+    name: args
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The keyword arguments to the function.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [{String =&gt; Script::Node}]"
+    name: keywords
+    rw: R
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The name of the function.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [String]"
+    name: name
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A SassScript parse node representing a function call.
+  - !ruby/struct:SM::Flow::P 
+    body: A function call either calls one of the functions in {Script::Functions}, or if no function with the given name exists it returns a string representation of the function call.
+constants: []
+
+full_name: Sass::Script::Funcall
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: _perform
+  - !ruby/object:RI::MethodSummary 
+    name: children
+  - !ruby/object:RI::MethodSummary 
+    name: inspect
+  - !ruby/object:RI::MethodSummary 
+    name: to_literal
+  - !ruby/object:RI::MethodSummary 
+    name: to_sass
+name: Funcall
+superclass: Node

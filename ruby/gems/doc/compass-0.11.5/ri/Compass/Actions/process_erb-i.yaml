@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Actions#process_erb
+is_singleton: false
+name: process_erb
+params: (contents, ctx = nil)
+visibility: public

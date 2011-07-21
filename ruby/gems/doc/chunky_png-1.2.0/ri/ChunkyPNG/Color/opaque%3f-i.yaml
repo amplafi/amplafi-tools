@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns true if this color is fully opaque.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] value The color to test. @return [true, false] True if the alpha channel equals MAX."
+full_name: ChunkyPNG::Color#opaque?
+is_singleton: false
+name: opaque?
+params: (value)
+visibility: public

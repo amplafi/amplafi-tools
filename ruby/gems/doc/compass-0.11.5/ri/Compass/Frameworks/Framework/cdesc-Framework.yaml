@@ -1,0 +1,36 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: name
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: path
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: stylesheets_directory
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: templates_directory
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::Frameworks::Framework
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: manifest
+  - !ruby/object:RI::MethodSummary 
+    name: manifest_file
+  - !ruby/object:RI::MethodSummary 
+    name: template_directories
+name: Framework
+superclass: Object

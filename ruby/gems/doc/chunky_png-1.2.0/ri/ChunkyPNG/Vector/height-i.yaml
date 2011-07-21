@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the height of the minimal bounding box of all the points in this vector. @return [Integer] The y-distance between the points that are farthest from each other.
+full_name: ChunkyPNG::Vector#height
+is_singleton: false
+name: height
+params: ()
+visibility: public

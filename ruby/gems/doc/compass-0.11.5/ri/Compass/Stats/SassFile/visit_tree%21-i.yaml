@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Stats::SassFile#visit_tree!
+is_singleton: false
+name: visit_tree!
+params: ()
+visibility: public

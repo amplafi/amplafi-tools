@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>configure_sass_plugin! (Compass::Configuration::Helpers)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/configuration/helpers.rb, line 59</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">configure_sass_plugin!</span>
+        <span class="ruby-identifier">require</span> <span class="ruby-value str">'sass/plugin'</span>
+        <span class="ruby-identifier">config</span> = <span class="ruby-identifier">sass_plugin_configuration</span>
+        <span class="ruby-identifier">locations</span> = <span class="ruby-identifier">config</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:template_location</span>)
+        <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span>.<span class="ruby-identifier">options</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">config</span>)
+        <span class="ruby-identifier">locations</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sass_dir</span>, <span class="ruby-identifier">css_dir</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span>.<span class="ruby-identifier">engine_options</span>[<span class="ruby-identifier">:load_paths</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">sass_dir</span>)
+            <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span>.<span class="ruby-identifier">add_template_location</span> <span class="ruby-identifier">sass_dir</span>, <span class="ruby-identifier">css_dir</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@callbacks_loaded</span>
+          <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span>.<span class="ruby-identifier">on_updating_stylesheet</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sass_file</span>, <span class="ruby-identifier">css_file</span><span class="ruby-operator">|</span>
+            <span class="ruby-constant">Compass</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">run_callback</span>(<span class="ruby-identifier">:stylesheet_saved</span>, <span class="ruby-identifier">css_file</span>)
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Plugin</span>.<span class="ruby-identifier">on_compilation_error</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">css</span><span class="ruby-operator">|</span>
+            <span class="ruby-constant">Compass</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">run_callback</span>(<span class="ruby-identifier">:stylesheet_error</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>)
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-ivar">@callbacks_loaded</span> = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

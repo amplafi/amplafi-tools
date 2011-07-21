@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: WARN_METHOD
+    value: ":sass_warn"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: WARN_METHOD
+    value: ":haml_warn"
+full_name: Compass::Util
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Sass::Util
+  - !ruby/object:RI::IncludedModule 
+    name: Haml::Util
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: blank?
+  - !ruby/object:RI::MethodSummary 
+    name: compass_warn
+name: Util
+superclass: 

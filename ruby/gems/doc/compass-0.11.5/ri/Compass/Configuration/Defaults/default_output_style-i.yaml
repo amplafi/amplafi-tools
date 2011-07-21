@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Defaults#default_output_style
+is_singleton: false
+name: default_output_style
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Constants#is_position
+is_singleton: false
+name: is_position
+params: (position)
+visibility: public

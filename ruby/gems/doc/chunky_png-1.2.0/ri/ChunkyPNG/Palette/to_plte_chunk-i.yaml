@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Creates a PLTE chunk that corresponds with this palette to store the r, g and b channels of all colors.
+  - !ruby/struct:SM::Flow::P 
+    body: Note that a PLTE chunk should only be included if the image is encoded using index colors. After this chunk has been built, the palette becomes suitable for encoding an image.
+  - !ruby/struct:SM::Flow::P 
+    body: "@return [ChunkyPNG::Chunk::Palette] The PLTE chunk. @see ChunkyPNG::Palette#can_encode?"
+full_name: ChunkyPNG::Palette#to_plte_chunk
+is_singleton: false
+name: to_plte_chunk
+params: ()
+visibility: public

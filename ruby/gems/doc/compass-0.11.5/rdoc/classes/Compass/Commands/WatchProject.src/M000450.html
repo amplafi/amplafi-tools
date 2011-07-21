@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>recompile (Compass::Commands::WatchProject)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/watch_project.rb, line 136</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recompile</span>(<span class="ruby-identifier">base</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">relative</span> = <span class="ruby-keyword kw">nil</span>)
+        <span class="ruby-ivar">@memory_cache</span>.<span class="ruby-identifier">reset!</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@memory_cache</span>
+        <span class="ruby-identifier">compiler</span> = <span class="ruby-identifier">new_compiler_instance</span>(<span class="ruby-identifier">:quiet</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>, <span class="ruby-identifier">:loud</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-identifier">:identical</span>, <span class="ruby-identifier">:overwrite</span>, <span class="ruby-identifier">:create</span>])
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span> = <span class="ruby-identifier">compiler</span>.<span class="ruby-identifier">out_of_date?</span>
+          <span class="ruby-keyword kw">begin</span>
+            <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&gt;&gt;&gt; Change detected to: #{relative || compiler.relative_stylesheet_name(file)}&quot;</span>
+            <span class="ruby-identifier">compiler</span>.<span class="ruby-identifier">run</span>
+            <span class="ruby-constant">GC</span>.<span class="ruby-identifier">start</span>
+          <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">StandardError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+            <span class="ruby-operator">::</span><span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Exec</span><span class="ruby-operator">::</span><span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">report_error</span>(<span class="ruby-identifier">e</span>, <span class="ruby-identifier">options</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

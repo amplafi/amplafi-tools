@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FSSM::Tree::Cache#files
+is_singleton: false
+name: files
+params: ()
+visibility: public

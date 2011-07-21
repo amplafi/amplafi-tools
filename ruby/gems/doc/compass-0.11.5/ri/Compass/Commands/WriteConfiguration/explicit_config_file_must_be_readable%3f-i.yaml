@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::WriteConfiguration#explicit_config_file_must_be_readable?
+is_singleton: false
+name: explicit_config_file_must_be_readable?
+params: ()
+visibility: public

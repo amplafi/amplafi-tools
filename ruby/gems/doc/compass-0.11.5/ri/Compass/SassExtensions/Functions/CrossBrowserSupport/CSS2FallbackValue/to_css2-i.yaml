@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::CrossBrowserSupport::CSS2FallbackValue#to_css2
+is_singleton: false
+name: to_css2
+params: (options = self.options)
+visibility: public

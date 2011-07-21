@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Paths#strip_trailing_separator
+is_singleton: false
+name: strip_trailing_separator
+params: (*attributes)
+visibility: public

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>font_url (Compass::SassExtensions::Functions::Urls)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/sass_extensions/functions/urls.rb, line 24</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">font_url</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">only_path</span> = <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">Bool</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">false</span>))
+    <span class="ruby-identifier">path</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">value</span> <span class="ruby-comment cmt"># get to the string value of the literal.</span>
+
+    <span class="ruby-comment cmt"># Short curcuit if they have provided an absolute url.</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">absolute_path?</span>(<span class="ruby-identifier">path</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;url(#{path})&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># Compute the path to the font file, either root relative or stylesheet relative</span>
+    <span class="ruby-comment cmt"># or nil if the http_fonts_path cannot be determined from the configuration.</span>
+    <span class="ruby-identifier">http_fonts_path</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">relative?</span>
+                        <span class="ruby-identifier">compute_relative_path</span>(<span class="ruby-constant">Compass</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">fonts_path</span>)
+                      <span class="ruby-keyword kw">else</span>
+                        <span class="ruby-constant">Compass</span>.<span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">http_fonts_path</span>
+                      <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">path</span> = <span class="ruby-node">&quot;#{http_fonts_path}/#{path}&quot;</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">only_path</span>.<span class="ruby-identifier">to_bool</span>
+      <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Script</span><span class="ruby-operator">::</span><span class="ruby-constant">String</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">clean_path</span>(<span class="ruby-identifier">path</span>))
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">clean_url</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

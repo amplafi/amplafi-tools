@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::ValidateProject::new
+is_singleton: true
+name: new
+params: (working_path, options)
+visibility: public

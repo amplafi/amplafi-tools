@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Sass::Script::Funcall
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: HasSimpleCrossBrowserFunctionSupport
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: sass_to_literal
+  - !ruby/object:RI::MethodSummary 
+    name: to_literal
+name: Funcall
+superclass: Node

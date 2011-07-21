@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: rails_controller
+    rw: RW
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Sass::Plugin
+includes: []
+
+instance_methods: []
+
+name: Plugin
+superclass: 

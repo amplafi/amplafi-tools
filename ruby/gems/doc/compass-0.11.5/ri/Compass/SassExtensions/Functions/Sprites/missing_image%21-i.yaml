@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Sprites#missing_image!
+is_singleton: false
+name: missing_image!
+params: (map, sprite)
+visibility: protected

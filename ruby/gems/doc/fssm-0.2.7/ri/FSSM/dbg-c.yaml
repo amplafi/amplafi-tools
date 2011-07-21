@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FSSM::dbg
+is_singleton: true
+name: dbg
+params: (msg=nil)
+visibility: public

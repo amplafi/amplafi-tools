@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::GradientSupport::Functions#radial_svg_gradient
+is_singleton: false
+name: radial_svg_gradient
+params: (color_stops, center)
+visibility: public

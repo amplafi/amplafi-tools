@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>abbreviation_of (Compass::Commands::Registry)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/commands/registry.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">abbreviation_of</span>(<span class="ruby-identifier">name</span>)
+      <span class="ruby-identifier">re</span> = <span class="ruby-node">/^#{Regexp.escape(name)}/</span>
+      <span class="ruby-identifier">matching</span> = <span class="ruby-ivar">@commands</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">re</span>}
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">matching</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">matching</span>.<span class="ruby-identifier">first</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^-/</span>
+        <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">matching</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;Ambiguous abbreviation '#{name}'. Did you mean one of: #{matching.join(&quot;, &quot;)}&quot;</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">Compass</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span>, <span class="ruby-node">&quot;Command not found: #{name}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

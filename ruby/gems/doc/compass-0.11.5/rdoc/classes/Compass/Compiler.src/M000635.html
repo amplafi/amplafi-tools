@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>run (Compass::Compiler)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/compiler.rb, line 84</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+      <span class="ruby-identifier">failure_count</span> = <span class="ruby-value">0</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">new_config?</span>
+        <span class="ruby-comment cmt"># Wipe out the cache and force compilation if the configuration has changed.</span>
+        <span class="ruby-identifier">remove</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:cache_location</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:cache_location</span>]
+        <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:force</span>] = <span class="ruby-keyword kw">true</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># Make sure the target directories exist</span>
+      <span class="ruby-identifier">target_directories</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">dir</span><span class="ruby-operator">|</span> <span class="ruby-identifier">directory</span> <span class="ruby-identifier">dir</span>}
+
+      <span class="ruby-comment cmt"># Compile each sass file.</span>
+      <span class="ruby-identifier">result</span> = <span class="ruby-identifier">timed</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">sass_files</span>.<span class="ruby-identifier">zip</span>(<span class="ruby-identifier">css_files</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">sass_filename</span>, <span class="ruby-identifier">css_filename</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword kw">begin</span>
+            <span class="ruby-identifier">compile_if_required</span> <span class="ruby-identifier">sass_filename</span>, <span class="ruby-identifier">css_filename</span>
+          <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">SyntaxError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+            <span class="ruby-identifier">failure_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+            <span class="ruby-identifier">handle_exception</span>(<span class="ruby-identifier">sass_filename</span>, <span class="ruby-identifier">css_filename</span>, <span class="ruby-identifier">e</span>)
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:time</span>]
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Compilation took #{(result.__duration * 1000).round / 1000.0}s&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">failure_count</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

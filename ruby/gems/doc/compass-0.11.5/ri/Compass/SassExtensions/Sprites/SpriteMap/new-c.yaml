@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Sprites::SpriteMap::new
+is_singleton: true
+name: new
+params: (sprites, path, name, context, kwargs)
+visibility: public

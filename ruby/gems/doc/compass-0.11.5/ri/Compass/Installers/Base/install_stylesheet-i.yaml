@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Installers::Base#install_stylesheet
+is_singleton: false
+name: install_stylesheet
+params: (from, to, options)
+visibility: public

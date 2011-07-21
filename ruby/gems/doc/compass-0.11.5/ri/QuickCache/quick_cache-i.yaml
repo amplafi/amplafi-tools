@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: "]).last"
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: cache a value in memory for just a few seconds This can speed up reads of values that change relatively infrequently but might be read many times in a short burst of reads.
+full_name: QuickCache#quick_cache
+is_singleton: false
+name: quick_cache
+params: (key, ttl = 1) {|]).last| ...}
+visibility: public

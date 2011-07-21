@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Commands::ProjectBase#configure!
+is_singleton: false
+name: configure!
+params: ()
+visibility: protected

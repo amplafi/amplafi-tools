@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::AppIntegration::Rails::Installer#install_location_for_html
+is_singleton: false
+name: install_location_for_html
+params: (to, options)
+visibility: public

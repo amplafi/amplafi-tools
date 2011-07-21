@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>set_opts (Sass::Exec::SassConvert)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sass/exec.rb, line 461</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set_opts</span>(<span class="ruby-identifier">opts</span>)
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Usage: sass-convert [options] [INPUT] [OUTPUT]\n\nDescription:\n  Converts between CSS, Sass, and SCSS files.\n  E.g. converts from SCSS to Sass,\n  or converts from CSS to SCSS (adding appropriate nesting).\n\nOptions:\n&quot;</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-F'</span>, <span class="ruby-value str">'--from FORMAT'</span>,
+          <span class="ruby-value str">'The format to convert from. Can be css, scss, sass, less.'</span>,
+          <span class="ruby-value str">'By default, this is inferred from the input filename.'</span>,
+          <span class="ruby-value str">'If there is none, defaults to css.'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:from</span>] = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">to_sym</span>
+          <span class="ruby-keyword kw">unless</span> [<span class="ruby-identifier">:css</span>, <span class="ruby-identifier">:scss</span>, <span class="ruby-identifier">:sass</span>, <span class="ruby-identifier">:less</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:from</span>])
+            <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unknown format for sass-convert --from: #{name}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">try_less_note</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:from</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">:less</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-T'</span>, <span class="ruby-value str">'--to FORMAT'</span>,
+          <span class="ruby-value str">'The format to convert to. Can be scss or sass.'</span>,
+          <span class="ruby-value str">'By default, this is inferred from the output filename.'</span>,
+          <span class="ruby-value str">'If there is none, defaults to sass.'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:to</span>] = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">to_sym</span>
+          <span class="ruby-keyword kw">unless</span> [<span class="ruby-identifier">:scss</span>, <span class="ruby-identifier">:sass</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:to</span>])
+            <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unknown format for sass-convert --to: #{name}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-R'</span>, <span class="ruby-value str">'--recursive'</span>,
+          <span class="ruby-value str">'Convert all the files in a directory. Requires --from and --to.'</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:recursive</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-i'</span>, <span class="ruby-value str">'--in-place'</span>,
+          <span class="ruby-value str">'Convert a file to its own syntax.'</span>,
+          <span class="ruby-value str">'This can be used to update some deprecated syntax.'</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:in_place</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--dasherize'</span>, <span class="ruby-value str">'Convert underscores to dashes'</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:for_tree</span>][<span class="ruby-identifier">:dasherize</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'--old'</span>, <span class="ruby-value str">'Output the old-style &quot;:prop val&quot; property syntax.'</span>,
+                         <span class="ruby-value str">'Only meaningful when generating Sass.'</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:for_tree</span>][<span class="ruby-identifier">:old</span>] = <span class="ruby-keyword kw">true</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-C'</span>, <span class="ruby-value str">'--no-cache'</span>, <span class="ruby-value str">&quot;Don't cache to sassc files.&quot;</span>) <span class="ruby-keyword kw">do</span>
+          <span class="ruby-ivar">@options</span>[<span class="ruby-identifier">:for_engine</span>][<span class="ruby-identifier">:read_cache</span>] = <span class="ruby-keyword kw">false</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-operator">::</span><span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">ruby1_8?</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">'-E encoding'</span>, <span class="ruby-value str">'Specify the default encoding for Sass and CSS files.'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">encoding</span><span class="ruby-operator">|</span>
+            <span class="ruby-constant">Encoding</span>.<span class="ruby-identifier">default_external</span> = <span class="ruby-identifier">encoding</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">super</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

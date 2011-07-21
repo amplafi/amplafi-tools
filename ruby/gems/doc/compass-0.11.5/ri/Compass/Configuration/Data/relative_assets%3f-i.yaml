@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Data#relative_assets?
+is_singleton: false
+name: relative_assets?
+params: ()
+visibility: public

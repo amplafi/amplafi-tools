@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Returns an enumerator that will iterate over all the edges in this vector. @param (see #each_edge) @return [Enumerator] The enumerator that iterates over the edges. @raise [ChunkyPNG::ExpectationFailed] if the vector contains less than two points. @see #each_edge"
+full_name: ChunkyPNG::Vector#edges
+is_singleton: false
+name: edges
+params: (close = true)
+visibility: public

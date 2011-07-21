@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: logger
+    rw: W
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Compass::Actions
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: basename
+  - !ruby/object:RI::MethodSummary 
+    name: copy
+  - !ruby/object:RI::MethodSummary 
+    name: directory
+  - !ruby/object:RI::MethodSummary 
+    name: log_action
+  - !ruby/object:RI::MethodSummary 
+    name: logger
+  - !ruby/object:RI::MethodSummary 
+    name: process_erb
+  - !ruby/object:RI::MethodSummary 
+    name: relativize
+  - !ruby/object:RI::MethodSummary 
+    name: remove
+  - !ruby/object:RI::MethodSummary 
+    name: separate
+  - !ruby/object:RI::MethodSummary 
+    name: strip_trailing_separator
+  - !ruby/object:RI::MethodSummary 
+    name: write_file
+name: Actions
+superclass: 

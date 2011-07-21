@@ -1,0 +1,60 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: name
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "The Compass configuration data storage class manages configuration data that comes from a variety of different sources and aggregates them together into a consistent API Some of the possible sources of configuration data:"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  * Compass default project structure for stand alone projects\n  * App framework specific project structures for rails, etc.\n  * User supplied explicit configuration\n  * Configuration data provided via the command line interface\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "There are two kinds of configuration data that doesn't come from the user:"
+  - !ruby/object:SM::Flow::LIST 
+    contents: 
+      - !ruby/struct:SM::Flow::LI 
+        label: "1."
+        body: Configuration data that is defaulted as if the user had provided it themselves. This is useful for providing defaults that the user is likely to want to edit but shouldn't have to provide explicitly when getting started
+      - !ruby/struct:SM::Flow::LI 
+        label: "2."
+        body: Configuration data that is defaulted behind the scenes because <em>some</em> value is required.
+    type: :NUMBER
+constants: []
+
+full_name: Compass::Configuration::Data
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::Configuration::Inheritance
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::Configuration::Serialization
+  - !ruby/object:RI::IncludedModule 
+    name: Compass::Configuration::Adapters
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: add_import_path
+  - !ruby/object:RI::MethodSummary 
+    name: asset_cache_buster
+  - !ruby/object:RI::MethodSummary 
+    name: asset_host
+  - !ruby/object:RI::MethodSummary 
+    name: discover
+  - !ruby/object:RI::MethodSummary 
+    name: load
+  - !ruby/object:RI::MethodSummary 
+    name: relative_assets?
+  - !ruby/object:RI::MethodSummary 
+    name: require
+  - !ruby/object:RI::MethodSummary 
+    name: run_callback
+  - !ruby/object:RI::MethodSummary 
+    name: set_all
+  - !ruby/object:RI::MethodSummary 
+    name: watch
+  - !ruby/object:RI::MethodSummary 
+    name: watches
+name: Data
+superclass: Object

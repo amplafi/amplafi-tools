@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Defaults#default_http_javascripts_dir
+is_singleton: false
+name: default_http_javascripts_dir
+params: ()
+visibility: public

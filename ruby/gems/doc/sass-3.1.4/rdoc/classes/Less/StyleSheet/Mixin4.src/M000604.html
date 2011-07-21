@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>build_with_sass (Less::StyleSheet::Mixin4)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sass/less.rb, line 15</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_with_sass</span>(<span class="ruby-identifier">env</span>)
+        <span class="ruby-identifier">selectors</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">env</span>, <span class="ruby-identifier">:mixin</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">el</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">env</span>.<span class="ruby-identifier">root</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">current</span>, <span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">current</span>.<span class="ruby-identifier">descend</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">selector</span>, <span class="ruby-identifier">node</span>) <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">MixinNameError</span>, <span class="ruby-node">&quot;#{selectors.text_value} in #{env}&quot;</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">el</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">Mixin</span><span class="ruby-operator">::</span><span class="ruby-constant">Def</span>)
+            <span class="ruby-comment cmt"># Calling a mixin with arguments, which gets compiled to a Sass mixin</span>
+            <span class="ruby-identifier">env</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">Mixin</span><span class="ruby-operator">::</span><span class="ruby-constant">Call</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">el</span>, [], <span class="ruby-identifier">env</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-comment cmt"># Calling a mixin without arguments, which gets compiled to @extend</span>
+            <span class="ruby-identifier">sel</span> = <span class="ruby-identifier">selector_str</span>(<span class="ruby-identifier">path</span>)
+            <span class="ruby-identifier">base</span> = <span class="ruby-identifier">selector_str</span>(<span class="ruby-identifier">selector_base</span>(<span class="ruby-identifier">path</span>))
+            <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">base</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sel</span>
+              <span class="ruby-identifier">env</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">SassNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">ExtendNode</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">sel</span>]))
+            <span class="ruby-keyword kw">else</span>
+              <span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Util</span>.<span class="ruby-identifier">sass_warn</span> <span class="ruby-value str">&quot;WARNING: Sass doesn't support mixing in selector sequences.\nReplacing \&quot;\#{sel}\&quot; with \&quot;@extend \#{base}\&quot;\n&quot;</span>
+              <span class="ruby-identifier">env</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">SassNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">CommentNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;// #{sel};&quot;</span>, <span class="ruby-keyword kw">true</span>))
+              <span class="ruby-identifier">env</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Node</span><span class="ruby-operator">::</span><span class="ruby-constant">SassNode</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Sass</span><span class="ruby-operator">::</span><span class="ruby-constant">Tree</span><span class="ruby-operator">::</span><span class="ruby-constant">ExtendNode</span>.<span class="ruby-identifier">new</span>([<span class="ruby-identifier">base</span>]))
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

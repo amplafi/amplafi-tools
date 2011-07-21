@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns the opaque value of this color by removing the alpha channel. @param [Integer] value The color to transform. @return [Integer] The opaque color
+full_name: ChunkyPNG::Color#opaque!
+is_singleton: false
+name: opaque!
+params: (value)
+visibility: public

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>write_configuration_files (Compass::AppIntegration::Rails::Installer)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/compass/app_integration/rails/installer.rb, line 20</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write_configuration_files</span>(<span class="ruby-identifier">config_file</span> = <span class="ruby-keyword kw">nil</span>)
+          <span class="ruby-identifier">config_file</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">targetize</span>(<span class="ruby-value str">'config/compass.rb'</span>)
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">config_file</span>)
+            <span class="ruby-identifier">directory</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">config_file</span>)
+            <span class="ruby-identifier">write_file</span> <span class="ruby-identifier">config_file</span>, <span class="ruby-identifier">config_contents</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">rails3?</span>
+            <span class="ruby-identifier">directory</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">targetize</span>(<span class="ruby-value str">'config/initializers/compass.rb'</span>))
+            <span class="ruby-identifier">write_file</span> <span class="ruby-identifier">targetize</span>(<span class="ruby-value str">'config/initializers/compass.rb'</span>), <span class="ruby-identifier">initializer_contents</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

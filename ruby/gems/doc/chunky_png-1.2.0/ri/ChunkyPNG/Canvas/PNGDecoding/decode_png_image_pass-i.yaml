@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Decodes a single PNG image pass width a given width, height and color mode, to a Canvas, starting at the given position in the stream.
+  - !ruby/struct:SM::Flow::P 
+    body: A non-interlaced image only consists of one pass, while an Adam7 image consists of 7 passes that must be combined after decoding.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param stream (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param width (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param height (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param color_mode (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream) @param [Integer] start_pos The position in the pixel stream to start reading. @return (see ChunkyPNG::Canvas::PNGDecoding#decode_png_pixelstream)"
+full_name: ChunkyPNG::Canvas::PNGDecoding#decode_png_image_pass
+is_singleton: false
+name: decode_png_image_pass
+params: (stream, width, height, color_mode, depth, start_pos)
+visibility: protected

@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns true if two numbers are similar enough to be added, subtracted, or compared.
+  - !ruby/struct:SM::Flow::P 
+    body: "@example"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "  comparable(2px, 1px) =&gt; true\n  comparable(100px, 3em) =&gt; false\n  comparable(10cm, 3mm) =&gt; true\n"
+  - !ruby/struct:SM::Flow::P 
+    body: "@param number_1 [Number] @param number_2 [Number] @return [Bool] indicating if the numbers can be compared. @raise [ArgumentError] if `number_1` or `number_2` aren't numbers"
+full_name: Sass::Script::Functions#comparable
+is_singleton: false
+name: comparable
+params: (number_1, number_2)
+visibility: public

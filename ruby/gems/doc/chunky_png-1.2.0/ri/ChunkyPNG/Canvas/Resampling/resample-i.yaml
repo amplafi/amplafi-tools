@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+  - !ruby/object:RI::AliasName 
+    name: resize
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: "Alias for #resample_nearest_neighbor"
+full_name: ChunkyPNG::Canvas::Resampling#resample
+is_singleton: false
+name: resample
+params: (new_width, new_height)
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Like \{#push_frame}, but next time a stack frame is pushed, it will be merged with this frame.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param frame_info [{Symbol =&gt; Object}] Same as for \\{#push_frame}."
+full_name: Sass::Environment#prepare_frame
+is_singleton: false
+name: prepare_frame
+params: (frame_info)
+visibility: public

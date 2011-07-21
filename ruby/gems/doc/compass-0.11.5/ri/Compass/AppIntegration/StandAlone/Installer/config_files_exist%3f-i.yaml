@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::AppIntegration::StandAlone::Installer#config_files_exist?
+is_singleton: false
+name: config_files_exist?
+params: ()
+visibility: public

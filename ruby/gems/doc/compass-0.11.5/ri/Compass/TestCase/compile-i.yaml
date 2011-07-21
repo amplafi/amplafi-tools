@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: "@last_compile if block_given?"
+comment: 
+full_name: Compass::TestCase#compile
+is_singleton: false
+name: compile
+params: (stylesheet) {|@last_compile if block_given?| ...}
+visibility: public

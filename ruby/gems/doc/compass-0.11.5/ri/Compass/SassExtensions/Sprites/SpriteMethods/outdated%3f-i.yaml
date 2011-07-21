@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Checks whether this sprite is outdated
+full_name: Compass::SassExtensions::Sprites::SpriteMethods#outdated?
+is_singleton: false
+name: outdated?
+params: ()
+visibility: public

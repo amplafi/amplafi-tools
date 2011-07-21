@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::GradientSupport::RadialGradient#to_svg
+is_singleton: false
+name: to_svg
+params: (options = self.options)
+visibility: public

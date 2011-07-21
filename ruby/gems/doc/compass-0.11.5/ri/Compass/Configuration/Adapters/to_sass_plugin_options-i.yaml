@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Adapters#to_sass_plugin_options
+is_singleton: false
+name: to_sass_plugin_options
+params: ()
+visibility: public

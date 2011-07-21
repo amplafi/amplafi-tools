@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns a Sass::Engine for this sprite object
+full_name: Compass::SpriteImporter#sass_engine
+is_singleton: false
+name: sass_engine
+params: ()
+visibility: public

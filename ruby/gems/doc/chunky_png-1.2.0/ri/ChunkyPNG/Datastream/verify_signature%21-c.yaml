@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Verifies that the current stream is a PNG datastream by checking its signature.
+  - !ruby/struct:SM::Flow::P 
+    body: This method reads the PNG signature from the stream, setting the current position of the stream directly after the signature, where the IHDR chunk should begin.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [IO] io The stream to read the PNG signature from. @raise [RuntimeError] An exception is raised if the PNG signature is not found at"
+  - !ruby/struct:SM::Flow::VERB 
+    body: "   the beginning of the stream.\n"
+full_name: ChunkyPNG::Datastream::verify_signature!
+is_singleton: true
+name: verify_signature!
+params: (io)
+visibility: public

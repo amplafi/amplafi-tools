@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FSSM::Pathname#glob
+is_singleton: false
+name: glob
+params: (pattern, flags = 0, &block)
+visibility: public

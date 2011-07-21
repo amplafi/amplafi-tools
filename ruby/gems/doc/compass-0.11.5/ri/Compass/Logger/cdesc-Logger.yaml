@@ -1,0 +1,49 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: actions
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+    name: options
+    rw: RW
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: 
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: DEFAULT_ACTIONS
+    value: "[:directory, :exists, :remove, :create, :overwrite, :compile, :error, :identical, :warning]"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: COLORS
+    value: "{ :clear => 0, :red => 31, :green => 32, :yellow => 33 }"
+  - !ruby/object:RI::Constant 
+    comment: 
+    name: ACTION_COLORS
+    value: "{       :error     => :red,       :warning   => :yellow,       :compile   => :green,       :overwrite => :yellow,       :create    => :green,       :remove    => :yellow,       :exists    => :green,       :directory => :green,       :identical => :green,       :convert   => :green,       :unchanged => :yellow"
+full_name: Compass::Logger
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: action_padding
+  - !ruby/object:RI::MethodSummary 
+    name: color
+  - !ruby/object:RI::MethodSummary 
+    name: emit
+  - !ruby/object:RI::MethodSummary 
+    name: log
+  - !ruby/object:RI::MethodSummary 
+    name: max_action_length
+  - !ruby/object:RI::MethodSummary 
+    name: record
+  - !ruby/object:RI::MethodSummary 
+    name: red
+  - !ruby/object:RI::MethodSummary 
+    name: yellow
+name: Logger
+superclass: Object

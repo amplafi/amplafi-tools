@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::SassExtensions::Functions::Urls#image_url_with_rails_integration
+is_singleton: false
+name: image_url_with_rails_integration
+params: (path, only_path = Sass::Script::Bool.new(false), cache_buster = Sass::Script::Bool.new(true))
+visibility: public

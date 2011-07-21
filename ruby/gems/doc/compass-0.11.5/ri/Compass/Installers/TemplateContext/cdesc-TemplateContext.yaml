@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: ctx
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+constants: []
+
+full_name: Compass::Installers::TemplateContext
+includes: []
+
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: config
+  - !ruby/object:RI::MethodSummary 
+    name: configuration
+  - !ruby/object:RI::MethodSummary 
+    name: get_binding
+  - !ruby/object:RI::MethodSummary 
+    name: http_stylesheets_path
+name: TemplateContext
+superclass: Object

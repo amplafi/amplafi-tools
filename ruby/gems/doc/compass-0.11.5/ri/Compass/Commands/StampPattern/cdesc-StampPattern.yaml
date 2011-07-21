@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: description
+  - !ruby/object:RI::MethodSummary 
+    name: new
+  - !ruby/object:RI::MethodSummary 
+    name: option_parser
+  - !ruby/object:RI::MethodSummary 
+    name: parse!
+  - !ruby/object:RI::MethodSummary 
+    name: parse_arguments!
+  - !ruby/object:RI::MethodSummary 
+    name: usage
+comment: 
+constants: []
+
+full_name: Compass::Commands::StampPattern
+includes: 
+  - !ruby/object:RI::IncludedModule 
+    name: InstallerCommand
+instance_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: is_project_creation?
+  - !ruby/object:RI::MethodSummary 
+    name: perform
+  - !ruby/object:RI::MethodSummary 
+    name: template_directory
+name: StampPattern
+superclass: ProjectBase

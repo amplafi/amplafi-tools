@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns an extracted column as vector of pixels. @param [Integer] x The 0-based column index. @return [Array&lt;Integer&gt;] The vector of pixels in the requested column.
+full_name: ChunkyPNG::Canvas#column
+is_singleton: false
+name: column
+params: (x)
+visibility: public

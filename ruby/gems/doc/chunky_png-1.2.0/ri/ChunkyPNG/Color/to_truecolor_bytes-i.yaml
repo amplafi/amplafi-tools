@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Returns an array with the separate RGB values for this color. The alpha channel will be discarded.
+  - !ruby/struct:SM::Flow::P 
+    body: "@param [Integer] color The color to convert. @return [Array&lt;Integer&gt;] An array with 3 Integer elements."
+full_name: ChunkyPNG::Color#to_truecolor_bytes
+is_singleton: false
+name: to_truecolor_bytes
+params: (color)
+visibility: public

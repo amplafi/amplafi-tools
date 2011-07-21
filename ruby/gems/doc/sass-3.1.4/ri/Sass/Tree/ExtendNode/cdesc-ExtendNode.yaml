@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The parsed selector after interpolation has been resolved. Only set once {Tree::Visitors::Perform} has been run.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Selector::CommaSequence]"
+    name: resolved_selector
+    rw: RW
+  - !ruby/object:RI::Attribute 
+    comment: 
+      - !ruby/struct:SM::Flow::P 
+        body: The CSS selector to extend, interspersed with {Sass::Script::Node}s representing `#{}`-interpolation.
+      - !ruby/struct:SM::Flow::P 
+        body: "@return [Array&lt;String, Sass::Script::Node&gt;]"
+    name: selector
+    rw: R
+class_methods: 
+  - !ruby/object:RI::MethodSummary 
+    name: new
+comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A static node reprenting an `@extend` directive.
+  - !ruby/struct:SM::Flow::P 
+    body: "@see Sass::Tree"
+constants: []
+
+full_name: Sass::Tree::ExtendNode
+includes: []
+
+instance_methods: []
+
+name: ExtendNode
+superclass: Node

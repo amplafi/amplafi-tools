@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Compass::Configuration::Defaults#http_pathify
+is_singleton: false
+name: http_pathify
+params: (path)
+visibility: public
