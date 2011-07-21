@@ -776,6 +776,8 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 	    <condition property="_param-five" value="">
             <equals arg1="${_param-five}" arg2="$${_param-five}"/>
         </condition>
+		<!-- TO_TIRIS: see http://ant.apache.org/manual/index.html#arg 
+		--> 
 		<exec executable="cmd" osfamily="windows" failonerror="true">
 			<arg value="/c"/>
 			<arg file="${_full-path-to-exec}"/>
@@ -786,11 +788,17 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <arg value="${_param-five}"/>
 		</exec>
 		<exec executable="${_full-path-to-exec}" osfamily="unix" failonerror="true">
+	        <!-- TO_TIRIS: see http://ant.apache.org/manual/index.html#arg 
+	         I didn't know about <arg line=""/> either ... can u change this target and callee's
+	        --> 
+			<arg line="${_param-one} ${_param-two} ${_param-three} ${_param-four} ${_param-five}"/>
+			<!--
 			<arg value="${_param-one}"/>
 			<arg value="${_param-two}"/>
 			<arg value="${_param-three}"/>
             <arg value="${_param-four}"/>
             <arg value="${_param-five}"/>			
+            -->
 		</exec>
 	</target>
 	<!-- ============================================= -->
