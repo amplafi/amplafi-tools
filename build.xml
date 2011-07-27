@@ -672,7 +672,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
     <target name="_sass-watch">
         <!-- Known Issues: -->
         <echo>
-            * To exit CTRL+C is used canciling not only the sass operation but ant as well. The side effect 
+            * To exit CTRL+C is used canceling not only the sass operation but ant as well. The side effect 
               of this is that the css files don't get changed back to read only.
         </echo>
         <antcall target="_exec">
