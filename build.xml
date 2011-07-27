@@ -643,12 +643,10 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
      -->
         <!-- XXX: This would not have to run on every call if we check that the proper jar exists -->
 
-         <antcall target="_exec">
-             <param name="_full-path-to-exec" value="${mvn}"/>
-             <param name="_param-one" value="org.apache.maven.plugins:maven-dependency-plugin:2.3:get"/>
-             <param name="_param-two" value="-DrepoUrl=http://download.java.net/maven/2/"/>
-             <param name="_param-three" value="-Dartifact=org.jruby:jruby-complete:1.6.3"/>
-         </antcall>
+        <antcall target="_exec">
+            <param name="_full-path-to-exec" value="${mvn}"/>
+            <param name="_arg-line" value='"org.apache.maven.plugins:maven-dependency-plugin:2.3:get" "-DrepoUrl=http://download.java.net/maven/2/" "-Dartifact=org.jruby:jruby-complete:1.6.3"'/>
+        </antcall>
 	</target>
 	<target name="css-tool-install" depends="_compass-installation" description="installs the tools (Compass, Sass) to handle css generation">
 	</target>
@@ -669,6 +667,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 			<param name="gem" value="sass" />
 		</antcall>
 	</target>
+    <!-- Depreciated: use compass-watch instead -->
     <target name="sass-watch" depends="_sass-before,_sass-watch,_sass-finish" description="Watches sass files. Properties sass-in and sass-out must be set."/>
     <target name="_sass-watch">
         <!-- Known Issues: -->
@@ -678,9 +677,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
         </echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}"/>
-            <param name="_param-one" value="sass"/>
-            <param name="_param-two" value="--watch"/>
-            <param name="_param-three" value="${sass-in}:${sass-out}"/>
+            <param name="_arg-line" value='"sass" "--watch" "${sass-in}:${sass-out}"'/>
         </antcall>
     </target>
     <target name="_sass-before">
@@ -703,7 +700,23 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_permissions-set-readonly" value="true"/>
         </antcall>
     </target>
+    <target name="compass-build" description="Uses compass to build css related files.">
+        <fail unless="compass-project-dir" />
+        <antcall target="_exec">
+            <param name="_full-path-to-exec" value="${jruby}"/>
+            <param name="_arg-line" value='"compass" "compile" "${compass-project-dir}"'/>
+        </antcall>
+    </target>
+    <target name="compass-watch" description="Uses compass to continuously watch and build css related files.">
+        <fail unless="compass-project-dir" />
+        <echo>This target will always fail, due to how you are to exit the compass watcher.</echo>
+        <antcall target="_exec">
+            <param name="_full-path-to-exec" value="${jruby}"/>
+            <param name="_arg-line" value='"compass" "watch" "${compass-project-dir}"'/>
+        </antcall>
+    </target>
     <!-- Note: css files are marked readonly on the filesystem to prevent manually changing them.-->
+    <!-- Depreciated use compass-build instead -->
     <target name="sass-compile" depends="_sass-before,_sass-compile,_sass-finish" description="Compiles (updates) sass files. Properties sass-in and sass-out must be set."/>
     <target name="_sass-compile">
         <!-- Known Issues:
@@ -712,9 +725,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
           need to be removed.-->
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}"/>
-            <param name="_param-one" value="sass"/>
-            <param name="_param-two" value="--update"/>
-            <param name="_param-three" value="${sass-in}:${sass-out}"/>
+            <param name="_arg-line" value='"sass" "--update" "${sass-in}:${sass-out}"'/>
         </antcall>
     </target>
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
@@ -749,56 +760,27 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 		<echo>Installing ruby gem ${gem} to ${env.GEM_HOME}</echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}" />
-            <param name="_param-one" value="gem" />
-            <param name="_param-two" value="install" />
-        	<param name="_param-three" value="--rdoc"/>
-        	<param name="_param-four" value="--ri"/>
-            <param name="_param-five" value="${gem}" />
+            <param name="_arg-line" value='"gem" "install" "--rdoc" "--ri" "${gem}"'/>
         </antcall>
 	</target>
-	<!-- Run an executable on linux or a bat file on windows.
-	Supports up to three parameters. Just remember user input is not supported,
-	so commands must be non-interactive-->
+    <!-- Run an executable on linux or a bat file on windows.
+    It is reccomended that you pass the ${_arg-line} parameter with quotations around each argument.
+    Example: <param name="_arg-line" value='"${argOne}" "${argTwo}"'/> This way if ${argOne} is a 
+    fileName with a space in it, it will not be inadvertantly broken up into two arguments.
+    Just remember user input is not supported,
+    so commands must be non-interactive-->
 	<target name="_exec">
 		<fail unless="_full-path-to-exec"/>
-		<condition property="_param-one" value="">
-				<equals arg1="${_param-one}" arg2="$${_param-one}"/>
-		</condition>
-		<condition property="_param-two" value="">
-			<equals arg1="${_param-two}" arg2="$${_param-two}"/>
-		</condition>
-        <condition property="_param-three" value="">
-            <equals arg1="${_param-three}" arg2="$${_param-three}"/>
+        <condition property="_arg-line" value="">
+            <equals arg1="${_arg-line}" arg2="$${_arg-line}"/>
         </condition>
-	    <condition property="_param-four" value="">
-	        <equals arg1="${_param-four}" arg2="$${_param-four}"/>
-	    </condition>
-	    <condition property="_param-five" value="">
-            <equals arg1="${_param-five}" arg2="$${_param-five}"/>
-        </condition>
-		<!-- TO_TIRIS: see http://ant.apache.org/manual/index.html#arg 
-		--> 
 		<exec executable="cmd" osfamily="windows" failonerror="true">
 			<arg value="/c"/>
 			<arg file="${_full-path-to-exec}"/>
-			<arg value="${_param-one}"/>
-			<arg value="${_param-two}"/>
-            <arg value="${_param-three}"/>
-		    <arg value="${_param-four}"/>
-            <arg value="${_param-five}"/>
+            <arg line="${_arg-line}"/>
 		</exec>
 		<exec executable="${_full-path-to-exec}" osfamily="unix" failonerror="true">
-	        <!-- TO_TIRIS: see http://ant.apache.org/manual/index.html#arg 
-	         I didn't know about <arg line=""/> either ... can u change this target and callee's
-	        --> 
-			<arg line="${_param-one} ${_param-two} ${_param-three} ${_param-four} ${_param-five}"/>
-			<!--
-			<arg value="${_param-one}"/>
-			<arg value="${_param-two}"/>
-			<arg value="${_param-three}"/>
-            <arg value="${_param-four}"/>
-            <arg value="${_param-five}"/>			
-            -->
+            <arg line="${_arg-line}"/>
 		</exec>
 	</target>
 	<!-- ============================================= -->
