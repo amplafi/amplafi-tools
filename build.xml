@@ -672,7 +672,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
     <target name="_sass-watch">
         <!-- Known Issues: -->
         <echo>
-            * To exit CTRL+C is used canciling not only the sass operation but ant as well. The side effect 
+            * To exit CTRL+C is used canceling not only the sass operation but ant as well. The side effect 
               of this is that the css files don't get changed back to read only.
         </echo>
         <antcall target="_exec">
@@ -763,6 +763,20 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_arg-line" value='"gem" "install" "--rdoc" "--ri" "${gem}"'/>
         </antcall>
 	</target>
+	<target name="plovr-watch" description="Runs plovr server to compile closure on fly.">
+        <!-- TODO: convert to antcall when amplafi-tools/build.xml is imported -->
+		<antcall target="_exec">
+            <param name="_full-path-to-exec" value="java" />
+            <param name="_arg-line" value='-jar plovr.jar serve ${plovr-config}'/>
+        </antcall>
+	</target>
+	<target name="plovr-build" description="Runs plovr server to compile closure on fly.">
+        <!-- TODO: convert to antcall when amplafi-tools/build.xml is imported -->
+		<antcall target="_exec">
+            <param name="_full-path-to-exec" value="java" />
+            <param name="_arg-line" value='-jar plovr.jar build ${plovr-config} &gt; ${prod-closure-file}'/>
+        </antcall>
+	</target>
     <!-- Run an executable on linux or a bat file on windows.
     It is reccomended that you pass the ${_arg-line} parameter with quotations around each argument.
     Example: <param name="_arg-line" value='"${argOne}" "${argTwo}"'/> This way if ${argOne} is a 
@@ -779,8 +793,8 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 			<arg file="${_full-path-to-exec}"/>
             <arg line="${_arg-line}"/>
 		</exec>
-		<exec executable="${_full-path-to-exec}" osfamily="unix" failonerror="true">
-            <arg line="${_arg-line}"/>
+		<exec executable="/bin/sh" osfamily="unix" failonerror="true">
+            <arg line='-c "${_full-path-to-exec} ${_arg-line}"'/>
 		</exec>
 	</target>
 	<!-- ============================================= -->
