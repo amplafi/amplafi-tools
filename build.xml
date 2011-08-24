@@ -776,7 +776,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_arg-line" value='-jar plovr.jar serve ${plovr-config}'/>
         </antcall>
 	</target>
-	<target name="plovr-build" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
+	<target name="plovr-build" description="Compiles closure application." depends="_closure-check-out">
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="java" />
             <param name="_arg-line" value='-jar plovr.jar build ${plovr-config} &gt; ${prod-closure-file}'/>
