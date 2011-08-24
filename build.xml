@@ -763,19 +763,29 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_arg-line" value='"gem" "install" "--rdoc" "--ri" "${gem}"'/>
         </antcall>
 	</target>
-	<target name="plovr-watch" description="Runs plovr server to compile closure on fly.">
+	<target name="plovr-watch" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
         <!-- TODO: convert to antcall when amplafi-tools/build.xml is imported -->
 		<antcall target="_exec">
             <param name="_full-path-to-exec" value="java" />
             <param name="_arg-line" value='-jar plovr.jar serve ${plovr-config}'/>
         </antcall>
 	</target>
-	<target name="plovr-build" description="Runs plovr server to compile closure on fly.">
+	<target name="plovr-build" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
         <!-- TODO: convert to antcall when amplafi-tools/build.xml is imported -->
 		<antcall target="_exec">
             <param name="_full-path-to-exec" value="java" />
             <param name="_arg-line" value='-jar plovr.jar build ${plovr-config} &gt; ${prod-closure-file}'/>
         </antcall>
+	</target>
+	<target name="_closure-check-out">
+		<antcall target="_exec">
+        	<param name="_full-path-to-exec" value="svn" />
+        	<param name="_arg-line" value='checkout http://closure-library.googlecode.com/svn/trunk/ closure-library-read-only'/>
+   		</antcall>
+		<antcall target="_exec">
+        	<param name="_full-path-to-exec" value="svn" />
+        	<param name="_arg-line" value='checkout http://closure-templates.googlecode.com/svn/trunk/ closure-templates-read-only'/>
+		</antcall>
 	</target>
     <!-- Run an executable on linux or a bat file on windows.
     It is reccomended that you pass the ${_arg-line} parameter with quotations around each argument.
