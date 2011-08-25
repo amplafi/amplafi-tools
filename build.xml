@@ -668,38 +668,6 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
         </antcall>
     </target>
     <!-- Depreciated: use compass-watch instead -->
-    <target name="sass-watch" depends="_sass-before,_sass-watch,_sass-finish" description="Watches sass files. Properties sass-in and sass-out must be set."/>
-    <target name="_sass-watch">
-        <!-- Known Issues: -->
-        <echo>
-            * To exit CTRL+C is used canceling not only the sass operation but ant as well. The side effect 
-              of this is that the css files don't get changed back to read only.
-        </echo>
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby}"/>
-            <param name="_arg-line" value='"sass" "--watch" "${sass-in}:${sass-out}"'/>
-        </antcall>
-    </target>
-    <target name="_sass-before">
-        <condition property="_has-sass-in">
-            <not> <equals arg1="${sass-in}" arg2="$${sass-in}"/> </not>
-            </condition>
-        <fail unless="${_has-sass-in}" message="You must set the sass-in property to use this task. This property should point to a flat directory or file where sass files are stored."/>
-        <condition property="_has-sass-out">
-            <not> <equals arg1="${sass-out}" arg2="$${sass-out}"/> </not>
-        </condition>
-        <fail unless="${_has-sass-out}" message="You must set the sass-out property to use this task. This property should point to a directory/file where css is to be generated from the provided sass file(s)."/>
-        <antcall target="_change-files-permissions-for-css-dir">
-            <param name="_permissions-dir" value="${sass-out}"/>
-            <param name="_permissions-set-readonly" value="false"/>
-        </antcall>
-    </target>
-    <target name="_sass-finish">
-        <antcall target="_change-files-permissions-for-css-dir">
-            <param name="_permissions-dir" value="${sass-out}"/>
-            <param name="_permissions-set-readonly" value="true"/>
-        </antcall>
-    </target>
     <target name="compass-build" description="Uses compass to build css related files.">
         <fail unless="compass-project-dir" />
         <antcall target="_exec">
@@ -715,19 +683,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_arg-line" value='"compass" "watch" "${compass-project-dir}"'/>
         </antcall>
     </target>
-    <!-- Note: css files are marked readonly on the filesystem to prevent manually changing them.-->
-    <!-- Depreciated use compass-build instead -->
-    <target name="sass-compile" depends="_sass-before,_sass-compile,_sass-finish" description="Compiles (updates) sass files. Properties sass-in and sass-out must be set."/>
-    <target name="_sass-compile">
-        <!-- Known Issues:
-        * sass files that are deleted will not automatically have the associated css file deleted; 
-          so if it is desired that a css file is removed both the sass file and the css file will 
-          need to be removed.-->
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby}"/>
-            <param name="_arg-line" value='"sass" "--update" "${sass-in}:${sass-out}"'/>
-        </antcall>
-    </target>
+
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
     <target name="_change-files-permissions-for-css-dir">
         <!-- Known Issues:
