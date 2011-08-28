@@ -205,7 +205,7 @@ When you are satisfied with your changes you will have to send a pull request to
          This command is what initially creates the .gitconfig file. 
 * maven complains about the ANDROID_HOME environment variable not being set while building the amplafi-android project.
    * If you need the amplafi-android project to build, please visit [Installing Android SDK](http://developer.android.com/sdk/installing.html) for information on how to install the SDK.
-   * Once the SDK is installed add the ANDRIOD_HOME enviroment variable to point to the SDK.
+   * Once the SDK is installed add the ANDRIOD_HOME environment variable to point to the SDK.
 
 Notes on progress:
 
