@@ -297,7 +297,7 @@
         <antcall target="${target-call}">
             <param name="${target-parameter}" value="amplafi-tapestry4-test" />
         </antcall>
-    	<!-- amplafi-tapestry4-test -->
+        <!-- amplafi-tapestry4-test -->
         <echo>Calling ${target-call} for amplafi-tapestry4-stacktraces</echo>
         <antcall target="${target-call}">
             <param name="${target-parameter}" value="amplafi-tapestry4-stacktraces" />
@@ -417,6 +417,32 @@
         email = ....
         name = ...
     </echo>
+    </target>
+    <target name="git-completion-script" description="get the git completion script">
+        <exec executable="curl" dir="bin">
+            <arg value="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash"/>
+            <arg value="-O"/>
+            <arg value="-L"/>
+        </exec>
+        <exec executable="chmod" dir="bin">
+            <arg value="+X"/>
+            <arg value="git-completion.bash"/>
+        </exec>
+        <exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_git-completion-script">
+            <arg value="git-completion.bash"/>
+            <arg value="${user.home}/bin/git-completion.bash"/>
+        </exec>
+        <fail message="bin/git-completion-script.bash differs from ${user.home}/bin/git-completion.bash. Do manual copy.">
+            <condition>
+                <equals arg1="${__diff_git-completion-script}" arg2="1"/>
+            </condition>
+        </fail>
+        <exec executable="cp" dir="bin">
+            <arg value="-f"/>
+            <arg value="-v"/>
+            <arg value="git-completion.bash"/>
+            <arg value="${user.home}/bin/git-completion.bash"/>
+        </exec>
     </target>
     <target name="update-source" depends="git-pull-all" description="Update the github projects."></target>
     <target name="git-pull-all" description="git pull all github projects">
@@ -723,7 +749,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_full-path-to-exec" value="${jruby}" />
             <param name="_arg-line" value='"gem" "install" "--rdoc" "--ri" "${gem}"'/>
         </antcall>
-	</target>
+    </target>
     <target name="gem-cleanup" description="do a ruby gem cleanup">
         <echo>Cleaning up ${env.GEM_HOME}</echo>
         <antcall target="_exec">
@@ -731,28 +757,28 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
             <param name="_arg-line" value='"gem" "cleanup"'/>
         </antcall>
     </target>
-	<target name="plovr-watch" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
+    <target name="plovr-watch" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="java" />
             <param name="_arg-line" value='-jar plovr.jar serve ${plovr-config}'/>
         </antcall>
-	</target>
-	<target name="plovr-build" description="Compiles closure application." depends="_closure-check-out">
+    </target>
+    <target name="plovr-build" description="Compiles closure application." depends="_closure-check-out">
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="java" />
             <param name="_arg-line" value='-jar plovr.jar build ${plovr-config} &gt; ${prod-closure-file}'/>
         </antcall>
-	</target>
-	<target name="_closure-check-out">
-		<antcall target="_exec">
-        	<param name="_full-path-to-exec" value="svn" />
-        	<param name="_arg-line" value='checkout http://closure-library.googlecode.com/svn/trunk/ closure-library-read-only'/>
-   		</antcall>
-		<antcall target="_exec">
-        	<param name="_full-path-to-exec" value="svn" />
-        	<param name="_arg-line" value='checkout http://closure-templates.googlecode.com/svn/trunk/ closure-templates-read-only'/>
-		</antcall>
-	</target>
+    </target>
+    <target name="_closure-check-out">
+        <antcall target="_exec">
+            <param name="_full-path-to-exec" value="svn" />
+            <param name="_arg-line" value='checkout http://closure-library.googlecode.com/svn/trunk/ closure-library-read-only'/>
+           </antcall>
+        <antcall target="_exec">
+            <param name="_full-path-to-exec" value="svn" />
+            <param name="_arg-line" value='checkout http://closure-templates.googlecode.com/svn/trunk/ closure-templates-read-only'/>
+        </antcall>
+    </target>
     <!-- Run an executable on linux or a bat file on windows.
     It is reccomended that you pass the ${_arg-line} parameter with quotations around each argument.
     Example: <param name="_arg-line" value='"${argOne}" "${argTwo}"'/> This way if ${argOne} is a 
