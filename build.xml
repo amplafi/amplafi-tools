@@ -424,10 +424,6 @@
             <arg value="-O"/>
             <arg value="-L"/>
         </exec>
-        <exec executable="chmod" dir="bin">
-            <arg value="+X"/>
-            <arg value="git-completion.bash"/>
-        </exec>
         <exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_git-completion-script">
             <arg value="git-completion.bash"/>
             <arg value="${user.home}/bin/git-completion.bash"/>
@@ -443,6 +439,17 @@
             <arg value="git-completion.bash"/>
             <arg value="${user.home}/bin/git-completion.bash"/>
         </exec>
+    	<echo>
+Add :
+    		
+source ~/bin/git-completion-script.bash
+    	
+export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWSTASHSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM="auto"
+    	</echo>
     </target>
     <target name="update-source" depends="git-pull-all" description="Update the github projects."></target>
     <target name="git-pull-all" description="git pull all github projects">
