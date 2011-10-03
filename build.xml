@@ -439,16 +439,27 @@
             <arg value="git-completion.bash"/>
             <arg value="${user.home}/bin/git-completion.bash"/>
         </exec>
+        <exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_include-git-completion">
+            <arg value="include-git-completion.bash"/>
+            <arg value="${user.home}/bin/include-git-completion.bash"/>
+        </exec>
+        <fail message="bin/include-git-completion.bash differs from ${user.home}/bin/include-git-completion.bash Do manual copy.">
+            <condition>
+                <equals arg1="${__diff_include-git-completion}" arg2="1"/>
+            </condition>
+        </fail>
+        <exec executable="cp" dir="bin">
+            <arg value="-f"/>
+            <arg value="-v"/>
+            <arg value="include-git-completion.bash"/>
+            <arg value="${user.home}/bin/include-git-completion.bash"/>
+        </exec>
     	<echo>
 Add :
     		
-source ~/bin/git-completion-script.bash
-    	
-export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWSTASHSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWUPSTREAM="auto"
+source bin/include-git-completion.bash
+    		
+to your .bashrc
     	</echo>
     </target>
     <target name="update-source" depends="git-pull-all" description="Update the github projects."></target>
