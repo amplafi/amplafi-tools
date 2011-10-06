@@ -457,7 +457,7 @@
     	<echo>
 Add :
     		
-source bin/include-git-completion.bash
+. bin/include-git-completion.bash
     		
 to your .bashrc
     	</echo>
