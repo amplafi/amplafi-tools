@@ -703,6 +703,12 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
         <antcall target="gem-install">
             <param name="gem" value="compass" />
         </antcall>
+        <echo>TODO: (maybe run this command rather(?) than have a static config.rb )
+compass install compass . --sass-dir "src/main/sass" --css-dir "src/main/webapp/css" --javascripts-dir "src/main/webapp/js" --images-dir "src/main/webapp/images"
+also can we avoid having to set these:
+            export GEM_HOME=......./amplafi-tools/ruby/gems
+                export PATH=......./amplafi-tools/ruby/gems/bin:${PATH}
+        </echo>        
     </target>
     <target name="_sass-installation" depends="_jruby-config">
         <!-- runs equivalent of 'gem install sass' to download sass for use with jruby-->
@@ -719,6 +725,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
     <!-- Depreciated: use compass-watch instead -->
     <target name="compass-build" description="Uses compass to build css related files.">
         <fail unless="compass-project-dir" />
+        <echo>If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}"/>
             <param name="_arg-line" value='"compass" "compile" "${compass-project-dir}"'/>
