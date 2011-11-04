@@ -298,9 +298,9 @@
             <param name="${target-parameter}" value="amplafi-tapestry4-test" />
         </antcall>
         <!-- amplafi-tapestry4-test -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-stacktraces</echo>
+        <echo>Calling ${target-call} for amplafi-tapestry4-utils</echo>
         <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-stacktraces" />
+            <param name="${target-parameter}" value="amplafi-tapestry4-utils" />
         </antcall>
         <!-- htmlcleaner -->
         <echo>Calling ${target-call} for htmlcleaner</echo>
