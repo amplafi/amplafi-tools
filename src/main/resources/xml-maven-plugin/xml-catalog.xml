@@ -1,0 +1,18 @@
+<!--
+ This file contains the local location of the XML DTDs and schemas. This is used original for html validation with xml-maven-plugin.
+ Note that the location of the DTD/schema files is relative to the location of this file.
+ 
+ Not at all certain that the elements are correct. 
+ 
+ See: http://jira.codehaus.org/browse/MOJO-1413
+ -->
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <public publicId="http://www.w3.org/2001/XMLSchema" uri="www.w3.org/2001/XMLSchema.xsd"/>
+    <public publicId="http://www.w3.org/XML/1998/namespace" uri="www.w3.org/2001/xml.xsd"/>
+    <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-lat1.ent" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-lat1.ent"/>
+    <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-special.ent" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-special.ent"/>
+    <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-symbol.ent" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-symbol.ent"/>
+    <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"/>
+    <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
+    <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+</catalog>
