@@ -545,9 +545,18 @@ to your .bashrc
         <!--<get src="http://sworddance.com/tools/apache-tomcat-${tomcat-build}-src.zip" dest="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" verbose="false" />-->
         <!-- copy instead of get-->
         <copy file="${tools-dir}/apache-tomcat-${tomcat-build}-src.zip" tofile="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" filtering="false" preservelastmodified="true" />
-
+        <move file="${tomcat-home}/webapps" tofile="${tomcat-home}/webapps-examples" failonerror="false"/>
     </target>
-
+    <target name="create-tomcat-ROOT" description="Run if tomcat starts but does not start the web code">
+        <fail unless="application-web-project-dir"/>
+        <echo>Creating ${tomcat-config-dir}/ROOT.xml</echo>
+        <echoxml file="${tomcat-config-dir}/ROOT.xml">
+            <Context reloadable="true" docBase="${application-web-project-dir}/src/main/webapp" workDir="${application-web-project-dir}/working" debug="99" 
+                     privileged="true" antiResourceLocking="false" antiJARLocking="false">
+                <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/></Context>
+        </echoxml>
+    </target>
+    
     <!-- james -->
     <target name="_james-config-opensource" depends="_validate-james,_unzip-james" />
     <target name="_validate-james">
