@@ -671,7 +671,7 @@ to your .bashrc
     <target name="_jruby-script-generation" depends="_jruby-download" unless="_jruby-available">
         <mkdir dir="bin"/>
         <echo file="bin/${jruby-exec}"> 
-${_script-var-export} jruby_build=1.6.3
+${_script-var-export} jruby_build=1.6.5
 ${_script-var-export} GEM_HOME=${env.GEM_HOME}
 java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.separator}jruby-complete${file.separator}${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}${file.separator}jruby-complete-${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}.jar -S ${_script-vat-all-parameters}
         </echo>
