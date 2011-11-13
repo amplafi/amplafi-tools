@@ -782,7 +782,7 @@ also can we avoid having to set these:
 		<echo>Installing ruby gem ${gem} to ${env.GEM_HOME}</echo>
 		<antcall target="_exec">
 			<param name="_full-path-to-exec" value="${jruby}" />
-			<param name="_arg-line" value='"gem" "install" "-i ${env.GEM_HOME} --rdoc" "--ri" "${gem}"' />
+			<param name="_arg-line" value='"gem" "install" "--install-dir ${env.GEM_HOME}" "--rdoc" "${gem}"' />
 		</antcall>
 	</target>
 	<target name="gem-cleanup" description="do a ruby gem cleanup">
