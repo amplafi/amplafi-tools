@@ -779,10 +779,9 @@ also can we avoid having to set these:
 		</attrib>
 	</target>
 	<target name="gem-install" description="do a ruby gem install">
-		<echo>Installing ruby gem ${gem} to ${env.GEM_HOME}</echo>
+		<echo>Installing ruby gem ${gem} to ${tools-dir}${file.separator}ruby${file.separator}gems</echo>
 		<antcall target="_exec">
-			<param name="_full-path-to-exec" value="${jruby}" />
-			<param name="_arg-line" value='"gem" "install" "--install-dir ${env.GEM_HOME}" "--rdoc" "${gem}"' />
+			<param name="_full-path-to-exec" value="${jruby} 'gem install ${gem} --install-dir ${tools-dir}${file.separator}ruby${file.separator}gems --rdoc'" />
 		</antcall>
 	</target>
 	<target name="gem-cleanup" description="do a ruby gem cleanup">
