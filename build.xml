@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="opensource-setup" default="help" basedir=".">
 
-    <dirname property="root-dir" file="." />
-    <property file="pom.properties" />
-    <property file="build.server.properties" />
-    <condition property="osname" value="macosx">
-        <os name="Mac OS X" />
-    </condition>
-    <condition property="osname" value="windows">
-        <os name="Windows XP" />
-    </condition>
+	<dirname property="root-dir" file="." />
+	<property file="pom.properties" />
+	<property file="build.server.properties" />
+	<condition property="osname" value="macosx">
+		<os name="Mac OS X" />
+	</condition>
+	<condition property="osname" value="windows">
+		<os name="Windows XP" />
+	</condition>
 
-    <!-- set environment variables -->
-    <property name="env.ANT_HOME" value="${ant-home}" />
-    <property name="env.MAVEN_HOME" value="${maven-home}" />
-    <property name="env.MAVEN_MEMORY_OPTS" value="${maven-memory-opts}" />
-    <property name="env.MAVEN_OPTS" value="${maven-memory-opts}" />
-    <property name="env.TOMCAT_HOME" value="${tomcat-home}" />
-    <property name="env.JAMES_HOME" value="${james-home}" />
-    <property name="env.GEM_HOME" value="${user.dir}${file.separator}ruby${file.separator}gems"/>
-    <property environment="env" />
+	<!-- set environment variables -->
+	<property name="env.ANT_HOME" value="${ant-home}" />
+	<property name="env.MAVEN_HOME" value="${maven-home}" />
+	<property name="env.MAVEN_MEMORY_OPTS" value="${maven-memory-opts}" />
+	<property name="env.MAVEN_OPTS" value="${maven-memory-opts}" />
+	<property name="env.TOMCAT_HOME" value="${tomcat-home}" />
+	<property name="env.JAMES_HOME" value="${james-home}" />
+	<property name="env.GEM_HOME" value="${user.dir}${file.separator}ruby${file.separator}gems" />
+	<property environment="env" />
 
-    <property file="build.${osname}.properties" />
-    <condition property="osfamily" value="winnt">
-        <os family="winnt" />
-    </condition>
-    <condition property="osfamily" value="unix">
-        <os family="unix" />
-    </condition>
-    <property file="build.${osfamily}.properties" />
-    <property file="build.properties" />
-    <tstamp>
-        <format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
-    </tstamp>
-    <!-- TARGETS -->
-    <target name="_test">
-        <echo>Testing is running.</echo>
-    </target>
+	<property file="build.${osname}.properties" />
+	<condition property="osfamily" value="winnt">
+		<os family="winnt" />
+	</condition>
+	<condition property="osfamily" value="unix">
+		<os family="unix" />
+	</condition>
+	<property file="build.${osfamily}.properties" />
+	<property file="build.properties" />
+	<tstamp>
+		<format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
+	</tstamp>
+	<!-- TARGETS -->
+	<target name="_test">
+		<echo>Testing is running.</echo>
+	</target>
 
-    <target name="help" description="HOW TO GET STARTED">
-        <echo>Getting started:</echo>
-        <echo>You are running on : ${osname} ${osfamily} / ${os.version} ${os.name} ${os.arch}</echo>
-        <echo>Standard tools needed: ( you may have some of them already ) 
+	<target name="help" description="HOW TO GET STARTED">
+		<echo>Getting started:</echo>
+		<echo>You are running on : ${osname} ${osfamily} / ${os.version} ${os.name} ${os.arch}</echo>
+		<echo>Standard tools needed: ( you may have some of them already ) 
             1. eclipse 3.5 or higher from ${remote-eclipse-site}
             2. java ${java-build} (Current: runtime: ${java.runtime.version} compiler: ${java.version} )
         
@@ -49,92 +49,92 @@
             
             Run: "apache-ant-1.8.2/bin/ant -p" for other commands
         </echo>
-    </target>
-    <target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,pull-opensource,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource">
-    </target>
-    <target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,_build-clean-all-opensource,eclipse-one-time-config-opensource">
-    </target>
-    <target name="pull-opensource" depends="git-pull-all" />
+	</target>
+	<target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,pull-opensource,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource">
+	</target>
+	<target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,_build-clean-all-opensource,eclipse-one-time-config-opensource">
+	</target>
+	<target name="pull-opensource" depends="git-pull-all" />
 
-    <!-- support tasks-->
-    <target name="_configure_environment">
+	<!-- support tasks-->
+	<target name="_configure_environment">
 
-        <!-- check if ANT_HOME is set-->
-        <antcall target="_check-environment-variable">
-            <param name="environment-variable" value="ANT_HOME" />
-        </antcall>
-        <!-- check if MAVEN_HOME is set-->
-        <antcall target="_check-environment-variable">
-            <param name="environment-variable" value="MAVEN_HOME" />
-        </antcall>
-        <!-- check if TOMCAT_HOME is set-->
-        <antcall target="_check-environment-variable">
-            <param name="environment-variable" value="TOMCAT_HOME" />
-        </antcall>
-        <!-- check if JAMES_HOME is set-->
-        <antcall target="_check-environment-variable">
-            <param name="environment-variable" value="JAMES_HOME" />
-        </antcall>
-    </target>
-    <!-- This target assumes the environment variables are already loaded in env -->
-    <target name="_check-environment-variable">
-        <fail unless="environment-variable" />
-        <property environment="test-env" />
-        <property name="nested-system-environment-variable" value="test-env.${environment-variable}" />
-        <_propertycopy name="system-environment-variable" from="${nested-system-environment-variable}" />
-        <property name="nested-using-environment-variable" value="env.${environment-variable}" />
-        <_propertycopy name="using-environment-variable" from="${nested-using-environment-variable}" />
+		<!-- check if ANT_HOME is set-->
+		<antcall target="_check-environment-variable">
+			<param name="environment-variable" value="ANT_HOME" />
+		</antcall>
+		<!-- check if MAVEN_HOME is set-->
+		<antcall target="_check-environment-variable">
+			<param name="environment-variable" value="MAVEN_HOME" />
+		</antcall>
+		<!-- check if TOMCAT_HOME is set-->
+		<antcall target="_check-environment-variable">
+			<param name="environment-variable" value="TOMCAT_HOME" />
+		</antcall>
+		<!-- check if JAMES_HOME is set-->
+		<antcall target="_check-environment-variable">
+			<param name="environment-variable" value="JAMES_HOME" />
+		</antcall>
+	</target>
+	<!-- This target assumes the environment variables are already loaded in env -->
+	<target name="_check-environment-variable">
+		<fail unless="environment-variable" />
+		<property environment="test-env" />
+		<property name="nested-system-environment-variable" value="test-env.${environment-variable}" />
+		<_propertycopy name="system-environment-variable" from="${nested-system-environment-variable}" />
+		<property name="nested-using-environment-variable" value="env.${environment-variable}" />
+		<_propertycopy name="using-environment-variable" from="${nested-using-environment-variable}" />
 
-        <condition property="set-warning">
-            <and>
-                <isset property="test-env.${environment-variable}" />
-                <not>
-                    <equals arg1="${using-environment-variable}" arg2="${system-environment-variable}" />
-                </not>
-            </and>
-        </condition>
-        <antcall target="_environment-variable-warning">
-            <param name="warning-system-variable" value="${environment-variable}" />
-            <param name="warning-old-variable" value="${system-environment-variable}" />
-            <param name="warning-using-variable" value="${using-environment-variable}" />
-        </antcall>
-    </target>
-    <target name="_environment-variable-warning" if="set-warning">
-        <fail unless="warning-system-variable" />
-        <fail unless="warning-old-variable" />
-        <fail unless="warning-using-variable" />
-        <echo> WARNING:  Environment variable ${warning-system-variable} is set to: ${warning-old-variable}
+		<condition property="set-warning">
+			<and>
+				<isset property="test-env.${environment-variable}" />
+				<not>
+					<equals arg1="${using-environment-variable}" arg2="${system-environment-variable}" />
+				</not>
+			</and>
+		</condition>
+		<antcall target="_environment-variable-warning">
+			<param name="warning-system-variable" value="${environment-variable}" />
+			<param name="warning-old-variable" value="${system-environment-variable}" />
+			<param name="warning-using-variable" value="${using-environment-variable}" />
+		</antcall>
+	</target>
+	<target name="_environment-variable-warning" if="set-warning">
+		<fail unless="warning-system-variable" />
+		<fail unless="warning-old-variable" />
+		<fail unless="warning-using-variable" />
+		<echo> WARNING:  Environment variable ${warning-system-variable} is set to: ${warning-old-variable}
            and instead using: ${warning-using-variable}
         </echo>
-    </target>
-    <!-- hack obtained from http://ant.apache.org/faq.html#propertyvalue-as-name-for-property -->
-    <!-- hack allows to use nested properties -->
-    <macrodef name="_propertycopy">
-        <attribute name="name" />
-        <attribute name="from" />
-        <sequential>
-            <property name="@{name}" value="${@{from}}" />
-        </sequential>
-    </macrodef>
-    <!-- ============================================================================= -->
-    <!-- eclipse configuration -->
-    <!-- ============================================================================= -->
-    <target name="eclipse-one-time-config-opensource" depends="_eclipse-init-opensource,eclipse-setup-all-opensource" description="You will only need to run this ONCE if Eclipse complains about M2_REPO is not set.">
-        <echo>TODO: verify that YOU are running latest eclipse!!!!!!</echo>
-        <!-- need to add "-Dfile.encoding=UTF-8" (no quotes) to eclipse.ini see: http://maven.apache.org/general.html#special-characters-site -->
-    </target>
-    <target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var" />
-    <target name="eclipse-setup" depends="dependencies" description="Recreate the eclipse project files">
-        <echo>Copy the 'standard' eclipse configuration to where eclipse expects it</echo>
-        <echo>Ideally q4e would solve this problem :-P</echo>
-        <antcall target="_mvn-no-tests">
-            <param name="mvn-target" value="eclipse:clean" />
-        </antcall>
-        <antcall target="_mvn-no-tests">
-            <!-- TODO: -DdownloadJavadocs=true -DdownloadSources=true -->
-            <param name="mvn-target" value="eclipse:eclipse" />
-        </antcall>
-        <!-- default settings should not copy over the previously existing files
+	</target>
+	<!-- hack obtained from http://ant.apache.org/faq.html#propertyvalue-as-name-for-property -->
+	<!-- hack allows to use nested properties -->
+	<macrodef name="_propertycopy">
+		<attribute name="name" />
+		<attribute name="from" />
+		<sequential>
+			<property name="@{name}" value="${@{from}}" />
+		</sequential>
+	</macrodef>
+	<!-- ============================================================================= -->
+	<!-- eclipse configuration -->
+	<!-- ============================================================================= -->
+	<target name="eclipse-one-time-config-opensource" depends="_eclipse-init-opensource,eclipse-setup-all-opensource" description="You will only need to run this ONCE if Eclipse complains about M2_REPO is not set.">
+		<echo>TODO: verify that YOU are running latest eclipse!!!!!!</echo>
+		<!-- need to add "-Dfile.encoding=UTF-8" (no quotes) to eclipse.ini see: http://maven.apache.org/general.html#special-characters-site -->
+	</target>
+	<target name="_eclipse-init-opensource" depends="_eclipse-init-maven-var" />
+	<target name="eclipse-setup" depends="dependencies" description="Recreate the eclipse project files">
+		<echo>Copy the 'standard' eclipse configuration to where eclipse expects it</echo>
+		<echo>Ideally q4e would solve this problem :-P</echo>
+		<antcall target="_mvn-no-tests">
+			<param name="mvn-target" value="eclipse:clean" />
+		</antcall>
+		<antcall target="_mvn-no-tests">
+			<!-- TODO: -DdownloadJavadocs=true -DdownloadSources=true -->
+			<param name="mvn-target" value="eclipse:eclipse" />
+		</antcall>
+		<!-- default settings should not copy over the previously existing files
         <copy todir=".settings" failonerror="false"  verbose="true">
             <fileset dir="eclipse.${osname}.settings"/>
         </copy>
@@ -142,463 +142,463 @@
             <fileset dir="eclipse.default.settings"/>
         </copy>
             -->
-    </target>
-    <target name="eclipse-setup-all-opensource">
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="_eclipse-setup-one-project" />
-            <param name="target-parameter" value="project-name" />
-        </antcall>
-    </target>
-    <target name="_eclipse-setup-one-project">
-        <fail unless="project-name" />
-        <antcall target="eclipse-setup">
-            <param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
-        </antcall>
-    </target>
-    <target name="_eclipse-init-maven-var">
-        <echo>Creating Eclipse variable (M2_REPO) to point to the maven repository.</echo>
-        <antcall target="_mvn-no-tests">
-            <param name="mvn-profile" value="-Declipse.workspace=${root-dir}" />
-            <param name="mvn-target" value="eclipse:configure-workspace" />
-        </antcall>
-    </target>
-    <target name="build-clean-opensource" depends="clean-opensource,build-opensource" description="clean,build">
-    </target>
-    <target name="build-opensource" description="Installs all of the opensource projects in the maven repository. Does not run the tests.">
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="_build-clean-for-one-project-using-maven" />
-            <param name="target-parameter" value="project-name" />
-            <param name="mvn-target" value="install" />
-        </antcall>
-    </target>
-    <target name="clean-opensource" description="Cleans the all of the opensource projects">
-        <echo>Cleaning project...</echo>
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="_build-clean-for-one-project-using-maven" />
-            <param name="target-parameter" value="project-name" />
-            <param name="mvn-target" value="clean" />
-        </antcall>
-    </target>
-    <target name="_build-clean-all-opensource">
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="_build-clean-for-one-project-using-maven" />
-            <param name="target-parameter" value="project-name" />
-            <param name="mvn-target" value="clean install" />
-        </antcall>
-    </target>
-    <target name="_build-clean-for-one-project-using-maven">
-        <!-- TODO: Find a way to have maven calculate the dependencies of multiple projects and perform the clean install as a single build.
+	</target>
+	<target name="eclipse-setup-all-opensource">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_eclipse-setup-one-project" />
+			<param name="target-parameter" value="project-name" />
+		</antcall>
+	</target>
+	<target name="_eclipse-setup-one-project">
+		<fail unless="project-name" />
+		<antcall target="eclipse-setup">
+			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
+		</antcall>
+	</target>
+	<target name="_eclipse-init-maven-var">
+		<echo>Creating Eclipse variable (M2_REPO) to point to the maven repository.</echo>
+		<antcall target="_mvn-no-tests">
+			<param name="mvn-profile" value="-Declipse.workspace=${root-dir}" />
+			<param name="mvn-target" value="eclipse:configure-workspace" />
+		</antcall>
+	</target>
+	<target name="build-clean-opensource" depends="clean-opensource,build-opensource" description="clean,build">
+	</target>
+	<target name="build-opensource" description="Installs all of the opensource projects in the maven repository. Does not run the tests.">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
+			<param name="target-parameter" value="project-name" />
+			<param name="mvn-target" value="install" />
+		</antcall>
+	</target>
+	<target name="clean-opensource" description="Cleans the all of the opensource projects">
+		<echo>Cleaning project...</echo>
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
+			<param name="target-parameter" value="project-name" />
+			<param name="mvn-target" value="clean" />
+		</antcall>
+	</target>
+	<target name="_build-clean-all-opensource">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_build-clean-for-one-project-using-maven" />
+			<param name="target-parameter" value="project-name" />
+			<param name="mvn-target" value="clean install" />
+		</antcall>
+	</target>
+	<target name="_build-clean-for-one-project-using-maven">
+		<!-- TODO: Find a way to have maven calculate the dependencies of multiple projects and perform the clean install as a single build.
                 Calling clean install on maven projects one at a time is slow, 
                 because maven will clean build all of the dependencies as well.
                 There has to be a way to call maven once with all of the needed project information-->
-        <fail unless="project-name" />
-        <fail unless="mvn-target" message="Need to specify the target(s) (ex. clean)"/>
-        <antcall target="_mvn-no-tests">
-            <param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
-        </antcall>
-    </target>
+		<fail unless="project-name" />
+		<fail unless="mvn-target" message="Need to specify the target(s) (ex. clean)" />
+		<antcall target="_mvn-no-tests">
+			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
+		</antcall>
+	</target>
 
-    <!-- ============================================================================= -->
-    <!-- getting source code and libraries -->
-    <!-- ============================================================================= -->
-    <target name="dependencies-all-opensource" description="calls all opensource targets separately with the dependency:sources target for mvn">
-        <!-- Get dependencies for each project separately-->
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="_get-dependencies-for-one-project" />
-            <param name="target-parameter" value="project-name" />
-        </antcall>
-    </target>
-    <target name="_get-dependencies-for-one-project">
-        <fail unless="project-name" />
-        <antcall target="dependencies">
-            <param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
-        </antcall>
-    </target>
-    <!-- ============================================================================ -->
-    <!-- List of opensource projects -->
-    <!-- Target _opensource-list-calls is like a list that antcalls the ${target-call} and supplies the call with it's item on the list.-->
-    <!-- General usage of the task is as follows:
+	<!-- ============================================================================= -->
+	<!-- getting source code and libraries -->
+	<!-- ============================================================================= -->
+	<target name="dependencies-all-opensource" description="calls all opensource targets separately with the dependency:sources target for mvn">
+		<!-- Get dependencies for each project separately-->
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="_get-dependencies-for-one-project" />
+			<param name="target-parameter" value="project-name" />
+		</antcall>
+	</target>
+	<target name="_get-dependencies-for-one-project">
+		<fail unless="project-name" />
+		<antcall target="dependencies">
+			<param name="mvn-profile" value="-f ${root-dir}${file.separator}${project-name}${file.separator}pom.xml" />
+		</antcall>
+	</target>
+	<!-- ============================================================================ -->
+	<!-- List of opensource projects -->
+	<!-- Target _opensource-list-calls is like a list that antcalls the ${target-call} and supplies the call with it's item on the list.-->
+	<!-- General usage of the task is as follows:
     <antcall target="_opensource-list-calls">
         <param name="target-call" value="this is where you put the target to call for each item" />
         <param name="target-parameter" value="if the target needs the opensource project name in a certain parameter put the string literal of that parameter in this parameter" />
         <param name="other target parameters" value="any other parameters that you want to set for the target can be passed on multile lines starting with this one. These parameters will not be used by _opensource-list-calls but are passed on to the target that it calls." />
     </antcall> -->
-    <!-- ============================================================================ -->
-    <target name="_opensource-list-calls">
-        <fail unless="target-call" />
-        <fail unless="target-parameter" />
-        <!-- amplafi-tools-->
-        <!-- The amplafi-tools project is not on the list because I don't know how ant will react when changing the build.xml file at the same time it is running. Like when performing a git-pull-all -->
-        
-        <!-- amplafiphp -->
-        <echo>
+	<!-- ============================================================================ -->
+	<target name="_opensource-list-calls">
+		<fail unless="target-call" />
+		<fail unless="target-parameter" />
+		<!-- amplafi-tools-->
+		<!-- The amplafi-tools project is not on the list because I don't know how ant will react when changing the build.xml file at the same time it is running. Like when performing a git-pull-all -->
+
+		<!-- amplafiphp -->
+		<echo>
             WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
         </echo>
-        <echo>Calling ${target-call} for amplafiphp</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafiphp" />
-            <!-- this project is not on amplafi's profile-->
-            <param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
-        </antcall>
-        <!-- p6spy project from patmoore's account -->
-        <echo>Calling ${target-call} for p6spy</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="p6spy" />
-            <!-- this project is not on amplafi's profile-->
-            <param name="git-url" value="git@github.com:patmoore/p6spy.git" />
-        </antcall>
-        <!-- amplafi-android -->
-        <echo>Calling ${target-call} for amplafi-android</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-android" />
-        </antcall>
-        <!-- amplafi-opensource-parent -->
-        <echo>Calling ${target-call} for amplafi-opensource-parent</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-opensource-parent" />
-        </antcall>
-        <!-- amplafi-json -->
-        <echo>Calling ${target-call} for amplafi-json</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-json" />
-        </antcall>
-        <!-- amplafi-sworddance -->
-        <echo>Calling ${target-call} for amplafi-sworddance</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-sworddance" />
-        </antcall>
-        <!-- amplafi-flow-client -->
-        <echo>Calling ${target-call} for amplafi-flow-client</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-client" />
-        </antcall>
-        <!-- amplafi-flow-core -->
-        <echo>Calling ${target-call} for amplafi-flow-core</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-core" />
-        </antcall>
-        <!-- amplafi-flow-tapestry4 -->
-        <echo>Calling ${target-call} for amplafi-flow-tapestry4</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-tapestry4" />
-        </antcall>
-        <!-- amplafi-flow-tapestry5 -->
-        <echo>Calling ${target-call} for amplafi-flow-tapestry5</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-tapestry5" />
-        </antcall>
-        <!-- amplafi-hivemind -->
-        <echo>Calling ${target-call} for amplafi-hivemind</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-hivemind" />
-        </antcall>
-        <!-- amplafi-tapestry4-test -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-test</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-test" />
-        </antcall>
-        <!-- amplafi-tapestry4-test -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-utils</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-utils" />
-        </antcall>
-        <!-- htmlcleaner -->
-        <echo>Calling ${target-call} for htmlcleaner</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="htmlcleaner" />
-        </antcall>
-        <!-- jericho-html -->
-        <echo>Calling ${target-call} for jericho-html</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="jericho-html" />
-        </antcall>
-        <!-- amplafi-tapestry4-springsecurity -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-springsecurity</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-springsecurity" />
-        </antcall>
-    </target>
+		<echo>Calling ${target-call} for amplafiphp</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafiphp" />
+			<!-- this project is not on amplafi's profile-->
+			<param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
+		</antcall>
+		<!-- p6spy project from patmoore's account -->
+		<echo>Calling ${target-call} for p6spy</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="p6spy" />
+			<!-- this project is not on amplafi's profile-->
+			<param name="git-url" value="git@github.com:patmoore/p6spy.git" />
+		</antcall>
+		<!-- amplafi-android -->
+		<echo>Calling ${target-call} for amplafi-android</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-android" />
+		</antcall>
+		<!-- amplafi-opensource-parent -->
+		<echo>Calling ${target-call} for amplafi-opensource-parent</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-opensource-parent" />
+		</antcall>
+		<!-- amplafi-json -->
+		<echo>Calling ${target-call} for amplafi-json</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-json" />
+		</antcall>
+		<!-- amplafi-sworddance -->
+		<echo>Calling ${target-call} for amplafi-sworddance</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-sworddance" />
+		</antcall>
+		<!-- amplafi-flow-client -->
+		<echo>Calling ${target-call} for amplafi-flow-client</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-flow-client" />
+		</antcall>
+		<!-- amplafi-flow-core -->
+		<echo>Calling ${target-call} for amplafi-flow-core</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-flow-core" />
+		</antcall>
+		<!-- amplafi-flow-tapestry4 -->
+		<echo>Calling ${target-call} for amplafi-flow-tapestry4</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-flow-tapestry4" />
+		</antcall>
+		<!-- amplafi-flow-tapestry5 -->
+		<echo>Calling ${target-call} for amplafi-flow-tapestry5</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-flow-tapestry5" />
+		</antcall>
+		<!-- amplafi-hivemind -->
+		<echo>Calling ${target-call} for amplafi-hivemind</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-hivemind" />
+		</antcall>
+		<!-- amplafi-tapestry4-test -->
+		<echo>Calling ${target-call} for amplafi-tapestry4-test</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-tapestry4-test" />
+		</antcall>
+		<!-- amplafi-tapestry4-test -->
+		<echo>Calling ${target-call} for amplafi-tapestry4-utils</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-tapestry4-utils" />
+		</antcall>
+		<!-- htmlcleaner -->
+		<echo>Calling ${target-call} for htmlcleaner</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="htmlcleaner" />
+		</antcall>
+		<!-- jericho-html -->
+		<echo>Calling ${target-call} for jericho-html</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="jericho-html" />
+		</antcall>
+		<!-- amplafi-tapestry4-springsecurity -->
+		<echo>Calling ${target-call} for amplafi-tapestry4-springsecurity</echo>
+		<antcall target="${target-call}">
+			<param name="${target-parameter}" value="amplafi-tapestry4-springsecurity" />
+		</antcall>
+	</target>
 
-    <target name="dependencies" description="Get the dependent libraries -Dmvn-profile needs to be set">
-        <echo>
+	<target name="dependencies" description="Get the dependent libraries -Dmvn-profile needs to be set">
+		<echo>
             =============================================
             If this may take a looooooooooooong time if you have a slow connection
             Go eat dinner, watch a movie, etc -- but check back just in case something breaks
             (Or it finishes really quickly!)
             =============================================
         </echo>
-        <antcall target="_mvn-no-tests">
-            <param name="mvn-target" value="dependency:sources" />
-        </antcall>
-    </target>
+		<antcall target="_mvn-no-tests">
+			<param name="mvn-target" value="dependency:sources" />
+		</antcall>
+	</target>
 
-    <!-- git tasks-->
-    <!-- missing something on how to do push from eclipse -->
-    <target name="git-push-all" description="git commit and push all - This target needs a -Dm=&quot;reason for changes here&quot;">
-        <!-- commit/push all from list. -->
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="git-push" />
-            <param name="target-parameter" value="project" />
-        </antcall>
-    </target>
-    <target name="git-push" description="git commit/push -Dproject needs to be set">
-        <fail unless="project" />
-        <echo>${project}</echo>
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
-            <arg value="diff" />
-        </exec>
-        <fail unless="m" />
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
-            <arg value="commit" />
-            <arg value="-a" />
-            <arg value="-q" />
-            <arg value="-m" />
-            <arg value="${m}" />
-        </exec>
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
-            <arg value="push" />
-        </exec>
-    </target>
-    <target name="git-diff-all" description="git diff all">
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="git-diff" />
-            <param name="target-parameter" value="project" />
-        </antcall>
-    </target>
-    <target name="git-diff" description="git diff -Dproject needs to be set">
-        <fail unless="project" />
-        <echo>${project}</echo>
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
-            <arg value="diff" />
-        </exec>
-    </target>
-    <!-- TODO: check to make sure git clone on existing directory o.k. prob should switch to _git-update if directory already exists -->
-    <target name="git-pull" description="git pull/clone -Dproject needs to be set">
-        <fail unless="project" />
-        <condition property="_dont-git-pull">
-            <not>
-                <available file="${root-dir}/${project}" />
-            </not>
-        </condition>
-        <antcall target="_git-pull">
-        </antcall>
-        <condition property="_dont-git-clone">
-            <available file="${root-dir}/${project}" />
-        </condition>
-        <antcall target="_git-clone">
-        </antcall>
-    </target>
-    <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
-        <fail unless="project" />
+	<!-- git tasks-->
+	<!-- missing something on how to do push from eclipse -->
+	<target name="git-push-all" description="git commit and push all - This target needs a -Dm=&quot;reason for changes here&quot;">
+		<!-- commit/push all from list. -->
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="git-push" />
+			<param name="target-parameter" value="project" />
+		</antcall>
+	</target>
+	<target name="git-push" description="git commit/push -Dproject needs to be set">
+		<fail unless="project" />
+		<echo>${project}</echo>
+		<exec executable="${git-exec}" dir="${root-dir}/${project}">
+			<arg value="diff" />
+		</exec>
+		<fail unless="m" />
+		<exec executable="${git-exec}" dir="${root-dir}/${project}">
+			<arg value="commit" />
+			<arg value="-a" />
+			<arg value="-q" />
+			<arg value="-m" />
+			<arg value="${m}" />
+		</exec>
+		<exec executable="${git-exec}" dir="${root-dir}/${project}">
+			<arg value="push" />
+		</exec>
+	</target>
+	<target name="git-diff-all" description="git diff all">
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="git-diff" />
+			<param name="target-parameter" value="project" />
+		</antcall>
+	</target>
+	<target name="git-diff" description="git diff -Dproject needs to be set">
+		<fail unless="project" />
+		<echo>${project}</echo>
+		<exec executable="${git-exec}" dir="${root-dir}/${project}">
+			<arg value="diff" />
+		</exec>
+	</target>
+	<!-- TODO: check to make sure git clone on existing directory o.k. prob should switch to _git-update if directory already exists -->
+	<target name="git-pull" description="git pull/clone -Dproject needs to be set">
+		<fail unless="project" />
+		<condition property="_dont-git-pull">
+			<not>
+				<available file="${root-dir}/${project}" />
+			</not>
+		</condition>
+		<antcall target="_git-pull">
+		</antcall>
+		<condition property="_dont-git-clone">
+			<available file="${root-dir}/${project}" />
+		</condition>
+		<antcall target="_git-clone">
+		</antcall>
+	</target>
+	<target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
+		<fail unless="project" />
 
-        <property name="git-url" value="${github-base}${project}.git" />
-        <echo>Cloning ${git-url}</echo>
-        <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
-            <arg value="clone" />
-            <arg value="${git-url}" />
-            <arg value="${root-dir}${file.separator}${project}" />
-        </exec>
-    </target>
-    <target name="_git-pull" unless="_dont-git-pull">
-        <fail unless="project" />
-        <echo>git pulling ${project}</echo>
-        <exec executable="${git-exec}" dir="${root-dir}${file.separator}${project}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
-            <arg value="pull" />
-        </exec>
-    </target>
-    <target name="_gitconfig-exists-check">
-        <condition property="_gitconfig-exist">
-            <available file="${user.home}${file.separator}.gitconfig" />
-        </condition>
-    </target>
-    <target name="_gitconfig-warning" depends="_gitconfig-exists-check" unless="_gitconfig-exist">
-        <echo>git may have issues going to github. Mine looks like: (leading tabs )
+		<property name="git-url" value="${github-base}${project}.git" />
+		<echo>Cloning ${git-url}</echo>
+		<exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
+			<arg value="clone" />
+			<arg value="${git-url}" />
+			<arg value="${root-dir}${file.separator}${project}" />
+		</exec>
+	</target>
+	<target name="_git-pull" unless="_dont-git-pull">
+		<fail unless="project" />
+		<echo>git pulling ${project}</echo>
+		<exec executable="${git-exec}" dir="${root-dir}${file.separator}${project}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
+			<arg value="pull" />
+		</exec>
+	</target>
+	<target name="_gitconfig-exists-check">
+		<condition property="_gitconfig-exist">
+			<available file="${user.home}${file.separator}.gitconfig" />
+		</condition>
+	</target>
+	<target name="_gitconfig-warning" depends="_gitconfig-exists-check" unless="_gitconfig-exist">
+		<echo>git may have issues going to github. Mine looks like: (leading tabs )
     [user]
         email = ....
         name = ...
     </echo>
-    </target>
-    <target name="git-completion-script" description="get the git completion script">
-        <exec executable="curl" dir="bin">
-            <arg value="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash"/>
-            <arg value="-O"/>
-            <arg value="-L"/>
-        </exec>
-        <exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_git-completion-script">
-            <arg value="git-completion.bash"/>
-            <arg value="${user.home}/bin/git-completion.bash"/>
-        </exec>
-        <fail message="bin/git-completion-script.bash differs from ${user.home}/bin/git-completion.bash. Do manual copy.">
-            <condition>
-                <equals arg1="${__diff_git-completion-script}" arg2="1"/>
-            </condition>
-        </fail>
-        <exec executable="cp" dir="bin">
-            <arg value="-f"/>
-            <arg value="-v"/>
-            <arg value="git-completion.bash"/>
-            <arg value="${user.home}/bin/git-completion.bash"/>
-        </exec>
-        <exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_include-git-completion">
-            <arg value="include-git-completion.bash"/>
-            <arg value="${user.home}/bin/include-git-completion.bash"/>
-        </exec>
-        <fail message="bin/include-git-completion.bash differs from ${user.home}/bin/include-git-completion.bash Do manual copy.">
-            <condition>
-                <equals arg1="${__diff_include-git-completion}" arg2="1"/>
-            </condition>
-        </fail>
-        <exec executable="cp" dir="bin">
-            <arg value="-f"/>
-            <arg value="-v"/>
-            <arg value="include-git-completion.bash"/>
-            <arg value="${user.home}/bin/include-git-completion.bash"/>
-        </exec>
-    	<echo>
+	</target>
+	<target name="git-completion-script" description="get the git completion script">
+		<exec executable="curl" dir="bin">
+			<arg value="https://raw.github.com/git/git/master/contrib/completion/git-completion.bash" />
+			<arg value="-O" />
+			<arg value="-L" />
+		</exec>
+		<exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_git-completion-script">
+			<arg value="git-completion.bash" />
+			<arg value="${user.home}/bin/git-completion.bash" />
+		</exec>
+		<fail message="bin/git-completion-script.bash differs from ${user.home}/bin/git-completion.bash. Do manual copy.">
+			<condition>
+				<equals arg1="${__diff_git-completion-script}" arg2="1" />
+			</condition>
+		</fail>
+		<exec executable="cp" dir="bin">
+			<arg value="-f" />
+			<arg value="-v" />
+			<arg value="git-completion.bash" />
+			<arg value="${user.home}/bin/git-completion.bash" />
+		</exec>
+		<exec executable="diff" dir="bin" failonerror="false" resultproperty="__diff_include-git-completion">
+			<arg value="include-git-completion.bash" />
+			<arg value="${user.home}/bin/include-git-completion.bash" />
+		</exec>
+		<fail message="bin/include-git-completion.bash differs from ${user.home}/bin/include-git-completion.bash Do manual copy.">
+			<condition>
+				<equals arg1="${__diff_include-git-completion}" arg2="1" />
+			</condition>
+		</fail>
+		<exec executable="cp" dir="bin">
+			<arg value="-f" />
+			<arg value="-v" />
+			<arg value="include-git-completion.bash" />
+			<arg value="${user.home}/bin/include-git-completion.bash" />
+		</exec>
+		<echo>
 Add :
     		
 . bin/include-git-completion.bash
     		
 to your .bashrc
     	</echo>
-    </target>
-    <target name="update-source" depends="git-pull-all" description="Update the github projects."></target>
-    <target name="git-pull-all" description="git pull all github projects">
-        <antcall target="git-pull">
-            <param name="project" value="amplafi-tools"/>
-        </antcall>
-        <antcall target="_opensource-list-calls">
-            <param name="target-call" value="git-pull" />
-            <param name="target-parameter" value="project" />
-        </antcall>
-    </target>
+	</target>
+	<target name="update-source" depends="git-pull-all" description="Update the github projects.">
+	</target>
+	<target name="git-pull-all" description="git pull all github projects">
+		<antcall target="git-pull">
+			<param name="project" value="amplafi-tools" />
+		</antcall>
+		<antcall target="_opensource-list-calls">
+			<param name="target-call" value="git-pull" />
+			<param name="target-parameter" value="project" />
+		</antcall>
+	</target>
 
-    <target name="validate-tools-opensource" depends="_java-config,_ant-config,_mvn-config,_jruby-config,css-tool-install,server-config-opensource,_update-bashrc,_fail-on-old-ant" 
-          description="Validate that the needed opensource tools have been downloaded and are the correct version">
-        <fail unless="tomcat-home" message="tomcat-home has not been set." />
-        <fail unless="maven-home" message="maven-home has not been set." />
-        <fail message="tomcat ports are in use! stop any running instances of tomcat!" if="_tomcat-sockets-in-use" />
-    </target>
-    <target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config-opensource,_james-config-opensource">
-    </target>
+	<target name="validate-tools-opensource" depends="_java-config,_ant-config,_mvn-config,_jruby-config,css-tool-install,server-config-opensource,_update-bashrc,_fail-on-old-ant" description="Validate that the needed opensource tools have been downloaded and are the correct version">
+		<fail unless="tomcat-home" message="tomcat-home has not been set." />
+		<fail unless="maven-home" message="maven-home has not been set." />
+		<fail message="tomcat ports are in use! stop any running instances of tomcat!" if="_tomcat-sockets-in-use" />
+	</target>
+	<target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config-opensource,_james-config-opensource">
+	</target>
 
 
-    <target name="_update-bashrc" depends="_concat-bashrc,_move-env-settings-aside" />
-    <target name="_set-update-bashrc">
-        <condition property="_update-bashrc">
-            <and>
-                <os family="unix" />
-                <available file="${env.settings}" />
-            </and>
-        </condition>
-    </target>
-    <target name="_ask-to-update-bashrc" depends="_set-update-bashrc" if="_update-bashrc">
-        <echo>
+	<target name="_update-bashrc" depends="_concat-bashrc,_move-env-settings-aside" />
+	<target name="_set-update-bashrc">
+		<condition property="_update-bashrc">
+			<and>
+				<os family="unix" />
+				<available file="${env.settings}" />
+			</and>
+		</condition>
+	</target>
+	<target name="_ask-to-update-bashrc" depends="_set-update-bashrc" if="_update-bashrc">
+		<echo>
                 The ${env.settings} file exists. 
                 The contents need to be in your ${user.home}/.bashrc file.
                 
                 Contents to be appended:
         </echo>
-        <concat>
-            <fileset file="${env.settings}" />
-        </concat>
-        <input message="Update your ${user.home}/.bashrc file with the contents of ${env.settings} [s=skip (already done)], [n=No, stop and will do manually]?" validargs="y,n,s" addproperty="_answer-to-do-update-bashrc" />
-        <condition property="do.update-bashrc">
-            <equals arg1="y" arg2="${_answer-to-do-update-bashrc}" />
-        </condition>
-        <fail message="Put the settings recorded in ${env.settings} in your environment file. And then rerun ant.">
-            <condition>
-                <equals arg1="n" arg2="${_answer-to-do-update-bashrc}" />
-            </condition>
-        </fail>
-    </target>
-    <target name="_concat-bashrc" depends="_ask-to-update-bashrc" if="do.update-bashrc">
-        <concat destfile="${user.home}/.bashrc" binary="true" append="true">
-            <fileset file="${env.settings}" />
-        </concat>
-    </target>
-    <target name="_move-env-settings-aside" if="_update-bashrc">
-        <antcall target="_backup">
-            <param name="_file" value="${env.settings}" />
-            <param name="_ext" value="txt" />
-        </antcall>
-    </target>
+		<concat>
+			<fileset file="${env.settings}" />
+		</concat>
+		<input message="Update your ${user.home}/.bashrc file with the contents of ${env.settings} [s=skip (already done)], [n=No, stop and will do manually]?" validargs="y,n,s" addproperty="_answer-to-do-update-bashrc" />
+		<condition property="do.update-bashrc">
+			<equals arg1="y" arg2="${_answer-to-do-update-bashrc}" />
+		</condition>
+		<fail message="Put the settings recorded in ${env.settings} in your environment file. And then rerun ant.">
+			<condition>
+				<equals arg1="n" arg2="${_answer-to-do-update-bashrc}" />
+			</condition>
+		</fail>
+	</target>
+	<target name="_concat-bashrc" depends="_ask-to-update-bashrc" if="do.update-bashrc">
+		<concat destfile="${user.home}/.bashrc" binary="true" append="true">
+			<fileset file="${env.settings}" />
+		</concat>
+	</target>
+	<target name="_move-env-settings-aside" if="_update-bashrc">
+		<antcall target="_backup">
+			<param name="_file" value="${env.settings}" />
+			<param name="_ext" value="txt" />
+		</antcall>
+	</target>
 
-    <!-- tomcat -->
-    <target name="_tomcat-dev-config-opensource" depends="_validate-tomcat,_unzip-tomcat" />
-    <target name="_validate-tomcat">
-        <condition property="_tomcat_is_old">
-            <not>
-                <available file="${tools-dir}/${tomcat-tool}" />
-            </not>
-        </condition>
-    </target>
-    <target name="_unzip-tomcat" if="_tomcat_is_old">
-        <echo>Getting the correct version of tomcat.</echo>
-        <antcall target="_tools-unzip">
-            <param name="remote-tool" value="apache-tomcat-${tomcat-build}.zip" />
-            <param name="tool" value="apache-tomcat-${tomcat-build}" />
-            <param name="_env-var" value="TOMCAT_HOME" />
-            <param name="_build.local-var" value="tomcat-home" />
-        </antcall>
-        <!-- get the tomcat source into the unzipped executable directory -->
-        <!--<get src="http://sworddance.com/tools/apache-tomcat-${tomcat-build}-src.zip" dest="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" verbose="false" />-->
-        <!-- copy instead of get-->
-        <copy file="${tools-dir}/apache-tomcat-${tomcat-build}-src.zip" tofile="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" filtering="false" preservelastmodified="true" />
-        <move file="${tomcat-home}/webapps" tofile="${tomcat-home}/webapps-examples" failonerror="false"/>
-    </target>
-    <target name="create-tomcat-ROOT" description="Run if tomcat starts but does not start the web code">
-        <fail unless="application-web-project-dir"/>
-        <echo>Creating ${tomcat-config-dir}/ROOT.xml</echo>
-        <echoxml file="${tomcat-config-dir}/ROOT.xml">
-            <Context reloadable="true" docBase="${application-web-project-dir}/src/main/webapp" workDir="${application-web-project-dir}/working" debug="99" 
-                     privileged="true" antiResourceLocking="false" antiJARLocking="false">
-                <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true"/></Context>
-        </echoxml>
-    </target>
-    
-    <!-- james -->
-    <target name="_james-config-opensource" depends="_validate-james,_unzip-james" />
-    <target name="_validate-james">
-        <echo>Validating James exists: ${james-home}</echo>
-        <condition property="_james_is_old">
-            <not>
-                <available file="${james-home}" type="dir" />
-            </not>
-        </condition>
-    </target>
-    <target name="_unzip-james" if="_james_is_old">
-        <echo>Getting the correct version of james.</echo>
-        <antcall target="_tools-unzip">
-            <param name="remote-tool" value="${james-tool}-bin.zip" />
-            <param name="_env-var" value="JAMES_HOME" />
-            <param name="_build.local-var" value="james-home" />
-            <param name="tool" value="${james-tool}" />
-            <param name="tool-executable" value="james" />
-        </antcall>
-    </target>
+	<!-- tomcat -->
+	<target name="_tomcat-dev-config-opensource" depends="_validate-tomcat,_unzip-tomcat" />
+	<target name="_validate-tomcat">
+		<condition property="_tomcat_is_old">
+			<not>
+				<available file="${tools-dir}/${tomcat-tool}" />
+			</not>
+		</condition>
+	</target>
+	<target name="_unzip-tomcat" if="_tomcat_is_old">
+		<echo>Getting the correct version of tomcat.</echo>
+		<antcall target="_tools-unzip">
+			<param name="remote-tool" value="apache-tomcat-${tomcat-build}.zip" />
+			<param name="tool" value="apache-tomcat-${tomcat-build}" />
+			<param name="_env-var" value="TOMCAT_HOME" />
+			<param name="_build.local-var" value="tomcat-home" />
+		</antcall>
+		<!-- get the tomcat source into the unzipped executable directory -->
+		<!--<get src="http://sworddance.com/tools/apache-tomcat-${tomcat-build}-src.zip" dest="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" verbose="false" />-->
+		<!-- copy instead of get-->
+		<copy file="${tools-dir}/apache-tomcat-${tomcat-build}-src.zip" tofile="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" filtering="false" preservelastmodified="true" />
+		<move file="${tomcat-home}/webapps" tofile="${tomcat-home}/webapps-examples" failonerror="false" />
+	</target>
+	<target name="create-tomcat-ROOT" description="Run if tomcat starts but does not start the web code">
+		<fail unless="application-web-project-dir" />
+		<echo>Creating ${tomcat-config-dir}/ROOT.xml</echo>
+		<echoxml file="${tomcat-config-dir}/ROOT.xml">
+			<Context reloadable="true" docBase="${application-web-project-dir}/src/main/webapp" workDir="${application-web-project-dir}/working" debug="99" privileged="true" antiResourceLocking="false" antiJARLocking="false">
+				<Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true" />
+			</Context>
+		</echoxml>
+	</target>
 
-    <!-- maven -->
-    <target name="_mvn-config" depends="_validate-mvn,_unzip-mvn">
-    </target>
-    <target name="_validate-mvn">
-        <echo>Validating Maven exists: ${maven-home}</echo>
-        <condition property="_mvn_is_old">
-            <not>
-                <available file="${maven-home}" type="dir" />
-            </not>
-        </condition>
-    </target>
-    <target name="_unzip-mvn" if="_mvn_is_old">
-        <echo>Getting the correct version of mvn.</echo>
-        <antcall target="_tools-unzip">
-            <param name="remote-tool" value="${maven-tool}-bin.zip" />
-            <param name="_env-var" value="MAVEN_HOME" />
-            <param name="_build.local-var" value="maven-home" />
-            <param name="tool" value="${maven-tool}" />
-            <param name="tool-executable" value="mvn" />
-        </antcall>
-        <!-- Theses are now stored in build.properties 
+	<!-- james -->
+	<target name="_james-config-opensource" depends="_validate-james,_unzip-james" />
+	<target name="_validate-james">
+		<echo>Validating James exists: ${james-home}</echo>
+		<condition property="_james_is_old">
+			<not>
+				<available file="${james-home}" type="dir" />
+			</not>
+		</condition>
+	</target>
+	<target name="_unzip-james" if="_james_is_old">
+		<echo>Getting the correct version of james.</echo>
+		<antcall target="_tools-unzip">
+			<param name="remote-tool" value="${james-tool}-bin.zip" />
+			<param name="_env-var" value="JAMES_HOME" />
+			<param name="_build.local-var" value="james-home" />
+			<param name="tool" value="${james-tool}" />
+			<param name="tool-executable" value="james" />
+		</antcall>
+	</target>
+
+	<!-- maven -->
+	<target name="_mvn-config" depends="_validate-mvn,_unzip-mvn">
+	</target>
+	<target name="_validate-mvn">
+		<echo>Validating Maven exists: ${maven-home}</echo>
+		<condition property="_mvn_is_old">
+			<not>
+				<available file="${maven-home}" type="dir" />
+			</not>
+		</condition>
+	</target>
+	<target name="_unzip-mvn" if="_mvn_is_old">
+		<echo>Getting the correct version of mvn.</echo>
+		<antcall target="_tools-unzip">
+			<param name="remote-tool" value="${maven-tool}-bin.zip" />
+			<param name="_env-var" value="MAVEN_HOME" />
+			<param name="_build.local-var" value="maven-home" />
+			<param name="tool" value="${maven-tool}" />
+			<param name="tool-executable" value="mvn" />
+		</antcall>
+		<!-- Theses are now stored in build.properties 
         <antcall target="_write_to_env_settings">
             <param name="__env-var" value="MAVEN_MEMORY_OPTS" />
             <param name="__build.local-var" value="MAVEN_MEMORY_OPTS" />
@@ -608,355 +608,356 @@ to your .bashrc
             <param name="__env-var" value="MAVEN_OPTS" />
             <param name="__env-value" value="${_env-var-before-env-ref}MAVEN_MEMORY_OPTS${_env-var-after-env-ref}" />
         </antcall>-->
-    </target>
+	</target>
 
-    <!-- NOTE: targets below this line must use very old ant tasks as we may be using a very old version of ant (many linux distros are very behind) -->
-    <!-- ant -->
-    <target name="_ant-config" depends="_validate-ant,_add-ant-path">
-        <!-- we don't check for the _dojo043-fix-config here because this runs when the user is first getting started -->
-    </target>
-    <target name="_fail-on-old-ant">
-        <fail if="_ant_is_old" message="Your ant was an old version. Rerun ant using the new version. You MUST restart with a new shell to get your enviroment variable changes" />
-    </target>
-    <target name="_validate-ant">
-        <echo>Checking ant version. Expecting: ${ant-build} Got: ${ant.version}</echo>
-        <condition property="_ant_is_old">
-            <not>
-                <matches pattern="${ant-build}" string="${ant.version}" />
-            </not>
-        </condition>
-    </target>
-    <!-- Task writes the ant path to the env.settings file -->
-    <target name="_add-ant-path" unless="ant-is-on-path" depends="_is-ant-on-path">
-        <antcall target="_write_path_to_env_settings">
-            <param name="tool" value="${ant-tool}" />
-        </antcall>
-    </target>
-    <!-- determines if ant in the tools directory is on the environment path
+	<!-- NOTE: targets below this line must use very old ant tasks as we may be using a very old version of ant (many linux distros are very behind) -->
+	<!-- ant -->
+	<target name="_ant-config" depends="_validate-ant,_add-ant-path">
+		<!-- we don't check for the _dojo043-fix-config here because this runs when the user is first getting started -->
+	</target>
+	<target name="_fail-on-old-ant">
+		<fail if="_ant_is_old" message="Your ant was an old version. Rerun ant using the new version. You MUST restart with a new shell to get your enviroment variable changes" />
+	</target>
+	<target name="_validate-ant">
+		<echo>Checking ant version. Expecting: ${ant-build} Got: ${ant.version}</echo>
+		<condition property="_ant_is_old">
+			<not>
+				<matches pattern="${ant-build}" string="${ant.version}" />
+			</not>
+		</condition>
+	</target>
+	<!-- Task writes the ant path to the env.settings file -->
+	<target name="_add-ant-path" unless="ant-is-on-path" depends="_is-ant-on-path">
+		<antcall target="_write_path_to_env_settings">
+			<param name="tool" value="${ant-tool}" />
+		</antcall>
+	</target>
+	<!-- determines if ant in the tools directory is on the environment path
     Stores the answer in ${ant-is-on-path}-->
-    <target name="_is-ant-on-path">
-        <property environment="test-env" />
-        <condition property="ant-is-on-path">
-            <contains string="${test-env.PATH}" substring="${tools-dir}${file.separator}${ant-tool}${file.separator}bin" />
-        </condition>
-    </target>
+	<target name="_is-ant-on-path">
+		<property environment="test-env" />
+		<condition property="ant-is-on-path">
+			<contains string="${test-env.PATH}" substring="${tools-dir}${file.separator}${ant-tool}${file.separator}bin" />
+		</condition>
+	</target>
 
-    <!-- downloading/unziping ant should no longer be needed, since it should be in the amplafi-tools dir and pulled from the opensource repository-->
-    <target name="_unzip-ant" if="_ant_is_old">
-        <echo>Getting the correct version of ant. Once it is downloaded, you will need to rerun ant using the downloaded version of ant.</echo>
-        <antcall target="_tools-unzip">
-            <param name="remote-tool" value="${ant-tool}-bin.zip" />
-            <param name="_env-var" value="ANT_HOME" />
-            <param name="_build.local-var" value="ant-home" />
-            <param name="tool" value="${ant-tool}" />
-            <param name="tool-executable" value="ant" />
-        </antcall>
-        <echo>Your ant was an old version. Rerun ant using the new version. See ${env.settings} file</echo>
-    </target>
-    <target name="scm-pull-tools">
-        <antcall target="git-pull">
-            <param name="project" value="amplafi-tools" />
-        </antcall>
-    </target>
+	<!-- downloading/unziping ant should no longer be needed, since it should be in the amplafi-tools dir and pulled from the opensource repository-->
+	<target name="_unzip-ant" if="_ant_is_old">
+		<echo>Getting the correct version of ant. Once it is downloaded, you will need to rerun ant using the downloaded version of ant.</echo>
+		<antcall target="_tools-unzip">
+			<param name="remote-tool" value="${ant-tool}-bin.zip" />
+			<param name="_env-var" value="ANT_HOME" />
+			<param name="_build.local-var" value="ant-home" />
+			<param name="tool" value="${ant-tool}" />
+			<param name="tool-executable" value="ant" />
+		</antcall>
+		<echo>Your ant was an old version. Rerun ant using the new version. See ${env.settings} file</echo>
+	</target>
+	<target name="scm-pull-tools">
+		<antcall target="git-pull">
+			<param name="project" value="amplafi-tools" />
+		</antcall>
+	</target>
 
-    <!-- ================JRUBY============================= -->
-    <target name="jruby" depends="_jruby-config,_compass-installation" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
-    </target>
-    <target name="_jruby-config" depends="_jruby-validation,_jruby-script-generation">
-        <echo>${_jruby-available}</echo>
-    </target>
-    <target name="_jruby-validation">
-        <available file="bin/${jruby-exec}" property="_jruby-available"/>
-    </target>
-    <target name="_jruby-script-generation" depends="_jruby-download" unless="_jruby-available">
-        <mkdir dir="bin"/>
-        <echo file="bin/${jruby-exec}"> 
-${_script-var-export} jruby_build=1.6.3
+	<!-- ================JRUBY============================= -->
+	<target name="jruby" depends="_jruby-config,_compass-installation" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
+	</target>
+	<target name="_jruby-config" depends="_jruby-validation,_jruby-script-generation">
+		<echo>${_jruby-available}</echo>
+	</target>
+	<target name="_jruby-validation">
+		<available file="bin/${jruby-exec}" property="_jruby-available" />
+	</target>
+	<target name="_jruby-script-generation" depends="_jruby-download" unless="_jruby-available">
+		<mkdir dir="bin" />
+		<echo file="bin/${jruby-exec}"> 
+${_script-var-export} jruby_build=1.6.5
 ${_script-var-export} GEM_HOME=${env.GEM_HOME}
 java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.separator}jruby-complete${file.separator}${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}${file.separator}jruby-complete-${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}.jar -S ${_script-vat-all-parameters}
         </echo>
-        <chmod file="bin/${jruby-exec}" perm="ugo+rx"/> <!-- TODO: this only works under unix, does windows need something similar?-->
-        <antcall target="_write_path_to_env_settings">
-            <param name="tool" value=""/>   
-            <param name="_env-value" value="${tools-dir}${file.separator}bin" />
-            <param name="_env-var" value="" />
-            <param name="_build.local-var" value="${_build.local-var}" />
-        </antcall>
-        <antcall target="_write_to_env_settings">
-            <param name="__env-var" value="GEM_HOME"/>
-            <param name="__env-value" value="${tools-dir}${file.separator}ruby${file.separator}gems"/>
-        </antcall>
-        <antcall target="_write_path_to_env_settings">
-            <param name="tool" value="ruby${file.separator}gems"/>   
-            <param name="_env-value" value="${tools-dir}${file.separator}bin" />
-            <param name="_env-var" value="" />
-            <param name="_build.local-var" value="${_build.local-var}" />
-        </antcall>
-    </target>
-    <target name="_jruby-download" unless="_jruby-available">
-        <!-- 
+		<chmod file="bin/${jruby-exec}" perm="ugo+rx" />
+		<!-- TODO: this only works under unix, does windows need something similar?-->
+		<antcall target="_write_path_to_env_settings">
+			<param name="tool" value="" />
+			<param name="_env-value" value="${tools-dir}${file.separator}bin" />
+			<param name="_env-var" value="" />
+			<param name="_build.local-var" value="${_build.local-var}" />
+		</antcall>
+		<antcall target="_write_to_env_settings">
+			<param name="__env-var" value="GEM_HOME" />
+			<param name="__env-value" value="${tools-dir}${file.separator}ruby${file.separator}gems" />
+		</antcall>
+		<antcall target="_write_path_to_env_settings">
+			<param name="tool" value="ruby${file.separator}gems" />
+			<param name="_env-value" value="${tools-dir}${file.separator}bin" />
+			<param name="_env-var" value="" />
+			<param name="_build.local-var" value="${_build.local-var}" />
+		</antcall>
+	</target>
+	<target name="_jruby-download" unless="_jruby-available">
+		<!-- 
         Question: if user repository is not present will maven create it?
     Example download command:
-    mvn org.apache.maven.plugins:maven-dependency-plugin:2.3:get -DrepoUrl=http://download.java.net/maven/2/ -Dartifact=org.jruby:jruby-complete:1.6.3
+    mvn org.apache.maven.plugins:maven-dependency-plugin:2.3:get -DrepoUrl=http://download.java.net/maven/2/ -Dartifact=org.jruby:jruby-complete:1.6.5
      -->
-        <!-- XXX: This would not have to run on every call if we check that the proper jar exists -->
+		<!-- XXX: This would not have to run on every call if we check that the proper jar exists -->
 
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${mvn}"/>
-            <param name="_arg-line" value='"org.apache.maven.plugins:maven-dependency-plugin:2.3:get" "-DrepoUrl=http://download.java.net/maven/2/" "-Dartifact=org.jruby:jruby-complete:1.6.3"'/>
-        </antcall>
-    </target>
-    <target name="css-tool-install" depends="_compass-installation,gem-cleanup" description="installs the tools (Compass, Sass) to handle css generation">
-    </target>
-    <target name="_compass-installation" depends="_jruby-config,_sass-installation">
-        <antcall target="gem-install">
-            <param name="gem" value="compass" />
-        </antcall>
-        <echo>TODO: (maybe run this command rather(?) than have a static config.rb )
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${mvn}" />
+			<param name="_arg-line" value='"org.apache.maven.plugins:maven-dependency-plugin:2.3:get" "-DrepoUrl=http://download.java.net/maven/2/" "-Dartifact=org.jruby:jruby-complete:1.6.5"' />
+		</antcall>
+	</target>
+	<target name="css-tool-install" depends="_compass-installation,gem-cleanup" description="installs the tools (Compass, Sass) to handle css generation">
+	</target>
+	<target name="_compass-installation" depends="_jruby-config,_sass-installation">
+		<antcall target="gem-install">
+			<param name="gem" value="compass" />
+		</antcall>
+		<echo>TODO: (maybe run this command rather(?) than have a static config.rb )
 compass install compass . --sass-dir "src/main/sass" --css-dir "src/main/webapp/css" --javascripts-dir "src/main/webapp/js" --images-dir "src/main/webapp/images"
 also can we avoid having to set these:
             export GEM_HOME=......./amplafi-tools/ruby/gems
                 export PATH=......./amplafi-tools/ruby/gems/bin:${PATH}
-        </echo>        
-    </target>
-    <target name="_sass-installation" depends="_jruby-config">
-        <!-- runs equivalent of 'gem install sass' to download sass for use with jruby-->
-        <!-- XXX: This would not have to be run on every call if there is a way to tell
+        </echo>
+	</target>
+	<target name="_sass-installation" depends="_jruby-config">
+		<!-- runs equivalent of 'gem install sass' to download sass for use with jruby-->
+		<!-- XXX: This would not have to be run on every call if there is a way to tell
         if sass has already been installed using jruby -->
-        <echo>
+		<echo>
             Installing sass:
             TODO: Check: Will this work if the terminal has not been reopened to refresh environment variables?
         </echo>
-        <antcall target="gem-install">
-            <param name="gem" value="sass" />
-        </antcall>
-    </target>
-    <!-- Depreciated: use compass-watch instead -->
-    <target name="compass-build" description="Uses compass to build css related files.">
-        <fail unless="compass-project-dir" />
-        <echo>If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby}"/>
-            <param name="_arg-line" value='"compass" "compile" "${compass-project-dir}"'/>
-        </antcall>
-    </target>
-    <target name="compass-watch" description="Uses compass to continuously watch and build css related files.">
-        <fail unless="compass-project-dir" />
-        <echo>This target will always fail, due to how you are to exit the compass watcher.</echo>
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby}"/>
-            <param name="_arg-line" value='"compass" "watch" "${compass-project-dir}"'/>
-        </antcall>
-    </target>
+		<antcall target="gem-install">
+			<param name="gem" value="sass" />
+		</antcall>
+	</target>
+	<!-- Depreciated: use compass-watch instead -->
+	<target name="compass-build" description="Uses compass to build css related files.">
+		<fail unless="compass-project-dir" />
+		<echo>If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${jruby}" />
+			<param name="_arg-line" value='"compass" "compile" "${compass-project-dir}"' />
+		</antcall>
+	</target>
+	<target name="compass-watch" description="Uses compass to continuously watch and build css related files.">
+		<fail unless="compass-project-dir" />
+		<echo>This target will always fail, due to how you are to exit the compass watcher.</echo>
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${jruby}" />
+			<param name="_arg-line" value='"compass" "watch" "${compass-project-dir}"' />
+		</antcall>
+	</target>
 
-    <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
-    <target name="_change-files-permissions-for-css-dir">
-        <!-- Known Issues:
+	<!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
+	<target name="_change-files-permissions-for-css-dir">
+		<!-- Known Issues:
         * Subversion does not store file permissions. The only way that this is applied the the files is 
           if this target is run after downloading the files from the repository.
         * All of the css files are marked readonly even if they do not have a sass equivalent, so
           there is an exta step involved in editing these files.
           * Workaround - rename the css file to sass and put it in the sass directory, sass will will copy 
             it to the css directory on next compile.-->
-        <echo>Changing permission in: ${_permissions-dir}</echo>
-        <fail unless="_permissions-dir" message="Property _permissions-dir must be set. Determins directory of which files will be affected."/>
-        <fail unless="_permissions-set-readonly" message="Property _permissions-set-readonly must be set (true/false)"/>
-        <fileset dir="${_permissions-dir}" id="_css-files">
-            <include name="**/*.css"/>
-        </fileset>
-        <condition property="_permissions-unix" value="a-w" else="a+w">
-            <istrue value="${_permissions-set-readonly}"/>
-        </condition>
-        <condition property="_permissions-windows" value="true" else="false">
-            <istrue value="${_permissions-set-readonly}"/>
-        </condition>
-        <chmod perm="${_permissions-unix}">
-            <fileset refid="_css-files"/>
-        </chmod>
-        <attrib readonly="${_permissions-windows}">
-            <fileset refid="_css-files"/>
-        </attrib>
-    </target>
-    <target name="gem-install" description="do a ruby gem install">
-        <echo>Installing ruby gem ${gem} to ${env.GEM_HOME}</echo>
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby}" />
-            <param name="_arg-line" value='"gem" "install" "--rdoc" "--ri" "${gem}"'/>
-        </antcall>
-    </target>
-    <target name="gem-cleanup" description="do a ruby gem cleanup">
-        <echo>Cleaning up ${env.GEM_HOME}</echo>
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby}" />
-            <param name="_arg-line" value='"gem" "cleanup"'/>
-        </antcall>
-    </target>
-    <target name="plovr-watch" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="java" />
-            <param name="_arg-line" value='-jar plovr.jar serve ${plovr-config}'/>
-        </antcall>
-    </target>
-    <target name="plovr-build" description="Compiles closure application." depends="_closure-check-out">
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="java" />
-            <param name="_arg-line" value='-jar plovr.jar build ${plovr-config} &gt; ${prod-closure-file}'/>
-        </antcall>
-    </target>
-    <target name="_closure-check-out">
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="svn" />
-            <param name="_arg-line" value='checkout http://closure-library.googlecode.com/svn/trunk/ closure-library-read-only'/>
-           </antcall>
-        <antcall target="_exec">
-            <param name="_full-path-to-exec" value="svn" />
-            <param name="_arg-line" value='checkout http://closure-templates.googlecode.com/svn/trunk/ closure-templates-read-only'/>
-        </antcall>
-    </target>
-    <!-- Run an executable on linux or a bat file on windows.
+		<echo>Changing permission in: ${_permissions-dir}</echo>
+		<fail unless="_permissions-dir" message="Property _permissions-dir must be set. Determins directory of which files will be affected." />
+		<fail unless="_permissions-set-readonly" message="Property _permissions-set-readonly must be set (true/false)" />
+		<fileset dir="${_permissions-dir}" id="_css-files">
+			<include name="**/*.css" />
+		</fileset>
+		<condition property="_permissions-unix" value="a-w" else="a+w">
+			<istrue value="${_permissions-set-readonly}" />
+		</condition>
+		<condition property="_permissions-windows" value="true" else="false">
+			<istrue value="${_permissions-set-readonly}" />
+		</condition>
+		<chmod perm="${_permissions-unix}">
+			<fileset refid="_css-files" />
+		</chmod>
+		<attrib readonly="${_permissions-windows}">
+			<fileset refid="_css-files" />
+		</attrib>
+	</target>
+	<target name="gem-install" description="do a ruby gem install">
+		<echo>Installing ruby gem ${gem} to ${env.GEM_HOME}</echo>
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${jruby}" />
+			<param name="_arg-line" value='"gem" "install" "--rdoc" "--ri" "${gem}"' />
+		</antcall>
+	</target>
+	<target name="gem-cleanup" description="do a ruby gem cleanup">
+		<echo>Cleaning up ${env.GEM_HOME}</echo>
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="${jruby}" />
+			<param name="_arg-line" value='"gem" "cleanup"' />
+		</antcall>
+	</target>
+	<target name="plovr-watch" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="java" />
+			<param name="_arg-line" value='-jar plovr.jar serve ${plovr-config}' />
+		</antcall>
+	</target>
+	<target name="plovr-build" description="Compiles closure application." depends="_closure-check-out">
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="java" />
+			<param name="_arg-line" value='-jar plovr.jar build ${plovr-config} &gt; ${prod-closure-file}' />
+		</antcall>
+	</target>
+	<target name="_closure-check-out">
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="svn" />
+			<param name="_arg-line" value='checkout http://closure-library.googlecode.com/svn/trunk/ closure-library-read-only' />
+		</antcall>
+		<antcall target="_exec">
+			<param name="_full-path-to-exec" value="svn" />
+			<param name="_arg-line" value='checkout http://closure-templates.googlecode.com/svn/trunk/ closure-templates-read-only' />
+		</antcall>
+	</target>
+	<!-- Run an executable on linux or a bat file on windows.
     It is reccomended that you pass the ${_arg-line} parameter with quotations around each argument.
     Example: <param name="_arg-line" value='"${argOne}" "${argTwo}"'/> This way if ${argOne} is a 
     fileName with a space in it, it will not be inadvertantly broken up into two arguments.
     Just remember user input is not supported,
     so commands must be non-interactive-->
-    <target name="_exec">
-        <fail unless="_full-path-to-exec"/>
-        <condition property="_arg-line" value="">
-            <equals arg1="${_arg-line}" arg2="$${_arg-line}"/>
-        </condition>
-        <exec executable="cmd" osfamily="windows" failonerror="true">
-            <arg value="/c"/>
-            <arg file="${_full-path-to-exec}"/>
-            <arg line="${_arg-line}"/>
-        </exec>
-        <exec executable="/bin/sh" osfamily="unix" failonerror="true">
-            <arg line='-c "${_full-path-to-exec} ${_arg-line}"'/>
-        </exec>
-    </target>
-    <!-- ============================================= -->
-    <target name="_tools-unzip" depends="_mkdir-tools">
-        <!-- no longer need
+	<target name="_exec">
+		<fail unless="_full-path-to-exec" />
+		<condition property="_arg-line" value="">
+			<equals arg1="${_arg-line}" arg2="$${_arg-line}" />
+		</condition>
+		<exec executable="cmd" osfamily="windows" failonerror="true">
+			<arg value="/c" />
+			<arg file="${_full-path-to-exec}" />
+			<arg line="${_arg-line}" />
+		</exec>
+		<exec executable="/bin/sh" osfamily="unix" failonerror="true">
+			<arg line='-c "${_full-path-to-exec} ${_arg-line}"' />
+		</exec>
+	</target>
+	<!-- ============================================= -->
+	<target name="_tools-unzip" depends="_mkdir-tools">
+		<!-- no longer need
         <delete file="${tools-dir}/${remote-tool}" />
         <get src="http://sworddance.com/tools/${remote-tool}" dest="${tools-dir}/${remote-tool}" verbose="false" /> -->
-        <unzip src="${tools-dir}/${remote-tool}" dest="${tools-dir}">
-        </unzip>
-        <antcall target="_write_path_to_env_settings">
-            <param name="_env-value" value="${tools-dir}/${tool}" />
-            <param name="_env-var" value="${_env-var}" />
-            <param name="_build.local-var" value="${_build.local-var}" />
-        </antcall>
-        <chmod dir="${tools-dir}/${tool}/bin" perm="ugo+rx" includes="**/*.sh ${tool-executable}" />
-        <property name="_download-happened" value="true" />
-        <echo>Master ${tools-dir}/${remote-tool} was extracted to ${tools-dir}/${remote-tool}. </echo>
-    </target>
-    <target name="_mkdir-tools">
-        <mkdir dir="${tools-dir}" />
-    </target>
+		<unzip src="${tools-dir}/${remote-tool}" dest="${tools-dir}">
+		</unzip>
+		<antcall target="_write_path_to_env_settings">
+			<param name="_env-value" value="${tools-dir}/${tool}" />
+			<param name="_env-var" value="${_env-var}" />
+			<param name="_build.local-var" value="${_build.local-var}" />
+		</antcall>
+		<chmod dir="${tools-dir}/${tool}/bin" perm="ugo+rx" includes="**/*.sh ${tool-executable}" />
+		<property name="_download-happened" value="true" />
+		<echo>Master ${tools-dir}/${remote-tool} was extracted to ${tools-dir}/${remote-tool}. </echo>
+	</target>
+	<target name="_mkdir-tools">
+		<mkdir dir="${tools-dir}" />
+	</target>
 
 
-    <!-- java testing -->
-    <target name="_java-config" depends="_validate-java,_validate-javac">
-        <echo>Java looks good :-)</echo>
-    </target>
-    <target name="_validate-javac" depends="_validate-javac_in_path,_validate-javac_using_env">
-    </target>
-    <target name="_validate-javac_in_path">
-        <available file="javac" filepath="${env.PATH}" property="_javac-found" />
-        <available file="javac.exe" filepath="${env.PATH}" property="_javac-found" />
-    </target>
-    
-    <target name="_validate-javac_using_env" depends="_validate-JAVA_HOME" unless="_javac-found">
-        <!-- someone may have just the JRE loaded. (i.e. no javac compiler ) we are requiring that JAVA_HOME env be set so use that -->
-        <fail message="${env.JAVA_HOME}/bin/javac (also looked for javac.exe) does not exist- You need to download the Java JDK from http://java.sun.com/javase/downloads/index.jsp">
-            <condition>
-                <not>
-                    <or>
-                        <available file="${env.JAVA_HOME}/bin/javac" property="_javac-found" />
-                        <available file="${env.JAVA_HOME}/bin/javac.exe" property="_javac-found" />
-                    </or>
-                </not>
-            </condition>
-        </fail>
-    </target>
-    <target name="_validate-java">
-        <echo>Checking for correct java version. Expecting: ${java-build} runtime=${java.runtime.version} compiler=${java.version}</echo>
-        <fail message="Old java need version ${java-build} runtime=${java.runtime.version} ${java.version}">
-            <condition>
-                <not>
-                    <and>
-                        <matches pattern="^${java-build}" string="${java.runtime.version}" />
-                        <matches pattern="^${java-build}" string="${java.version}" />
-                    </and>
-                </not>
-            </condition>
-        </fail>
-    </target>
-    <target name="_validate-JAVA_HOME" unless="_javac-found">
-        <fail unless="env.JAVA_HOME" message="JAVA_HOME has not been set. Check to make sure all the environment variables defined in ${env.settings} have been added to your enviroment" />
-    </target>
-    <target name="_write_to_env_settings" depends="_write_to_build_local_properties">
-        <echo>
+	<!-- java testing -->
+	<target name="_java-config" depends="_validate-java,_validate-javac">
+		<echo>Java looks good :-)</echo>
+	</target>
+	<target name="_validate-javac" depends="_validate-javac_in_path,_validate-javac_using_env">
+	</target>
+	<target name="_validate-javac_in_path">
+		<available file="javac" filepath="${env.PATH}" property="_javac-found" />
+		<available file="javac.exe" filepath="${env.PATH}" property="_javac-found" />
+	</target>
+
+	<target name="_validate-javac_using_env" depends="_validate-JAVA_HOME" unless="_javac-found">
+		<!-- someone may have just the JRE loaded. (i.e. no javac compiler ) we are requiring that JAVA_HOME env be set so use that -->
+		<fail message="${env.JAVA_HOME}/bin/javac (also looked for javac.exe) does not exist- You need to download the Java JDK from http://java.sun.com/javase/downloads/index.jsp">
+			<condition>
+				<not>
+					<or>
+						<available file="${env.JAVA_HOME}/bin/javac" property="_javac-found" />
+						<available file="${env.JAVA_HOME}/bin/javac.exe" property="_javac-found" />
+					</or>
+				</not>
+			</condition>
+		</fail>
+	</target>
+	<target name="_validate-java">
+		<echo>Checking for correct java version. Expecting: ${java-build} runtime=${java.runtime.version} compiler=${java.version}</echo>
+		<fail message="Old java need version ${java-build} runtime=${java.runtime.version} ${java.version}">
+			<condition>
+				<not>
+					<and>
+						<matches pattern="^${java-build}" string="${java.runtime.version}" />
+						<matches pattern="^${java-build}" string="${java.version}" />
+					</and>
+				</not>
+			</condition>
+		</fail>
+	</target>
+	<target name="_validate-JAVA_HOME" unless="_javac-found">
+		<fail unless="env.JAVA_HOME" message="JAVA_HOME has not been set. Check to make sure all the environment variables defined in ${env.settings} have been added to your enviroment" />
+	</target>
+	<target name="_write_to_env_settings" depends="_write_to_build_local_properties">
+		<echo>
                 ===============================================================================
                 Environment variable settings added to ${env.settings}.
                 ===============================================================================
             </echo>
-        <fail unless="__env-var" />
-        <fail unless="__env-value" />
-        <echo file="${env.settings}" append="true">
+		<fail unless="__env-var" />
+		<fail unless="__env-value" />
+		<echo file="${env.settings}" append="true">
     ${_env-var-before}${__env-var}${_env-var-between}${__env-value}${_env-var-after}</echo>
 
 
-    </target>
-    <target name="_write_to_build_local_properties" if="__build.local-var">
-        <echo file="${build.local.properties}" append="true">
+	</target>
+	<target name="_write_to_build_local_properties" if="__build.local-var">
+		<echo file="${build.local.properties}" append="true">
         ${__build.local-var}=${__env-value}</echo>
-    </target>
-    <target name="_write_path_to_env_settings">
-        <fail unless="tool" />
+	</target>
+	<target name="_write_path_to_env_settings">
+		<fail unless="tool" />
 
-        <!-- This is stored in build.properties now 
+		<!-- This is stored in build.properties now 
         <fail unless="_env-var" />
         <antcall target="_write_to_env_settings">
             <param name="__env-var" value="${_env-var}" />
             <param name="__build.local-var" value="${_build.local-var}" />
             <param name="__env-value" value="${tools-dir}${file.separator}${tool}" />
         </antcall> -->
-        <antcall target="_write_to_env_settings">
-            <param name="__env-var" value="PATH" />
-            <param name="__env-value" value="${tools-dir}${file.separator}${tool}${file.separator}bin${path.separator}${_env-var-before-env-ref}PATH${_env-var-after-env-ref}" />
-        </antcall>
-    </target>
-    <target name="_mvn">
-        <fail unless="mvn-target" />
-        <!-- need to construct commandline manually because not all values are supplied  -->
-        <echo>Running: ${mvn} ${mvn-profile} ${mvn-target}</echo>
-        <!-- see http://ant.apache.org/manual/CoreTasks/exec.html :  windows users need to run "cmd /c mvn.bat" -->
-        <exec command="${mvn} ${mvn-profile} ${mvn-target}">
-        </exec>
-    </target>
-    <target name="_mvn-no-tests">
-        <fail unless="mvn-target" />
-        <!-- need to construct commandline manually because not all values are supplied  -->
-        <echo>Running: ${mvn} ${mvn-profile} ${mvn-target}</echo>
-        <!-- see http://ant.apache.org/manual/CoreTasks/exec.html :  windows users need to run "cmd /c mvn.bat" -->
-        <exec command="&quot;${mvn}&quot; ${mvn-profile} ${mvn-no-tests-sys-property} ${mvn-target}">
-        </exec>
-    </target>
-    <target name="_backup">
-        <fail unless="_file" />
-        <fail unless="_ext" />
-        <basename property="_basename" file="${_file}" suffix="${_ext}" />
-        <dirname property="_dirname" file="${_file}" />
-        <condition property="_move_verbose" value="false">
-            <not>
-                <isset property="_move_verbose" />
-            </not>
-        </condition>
-        <move file="${_dirname}/${_basename}.${_ext}" tofile="${_dirname}/${_basename}.${time-suffix}.${_ext}" failonerror="false" verbose="${_move_verbose}" />
-    </target>
-    <target name="_say">
-        <exec executable="say" os="Mac OS X">
-            <arg value="${_say_what}" />
-        </exec>
-    </target>
+		<antcall target="_write_to_env_settings">
+			<param name="__env-var" value="PATH" />
+			<param name="__env-value" value="${tools-dir}${file.separator}${tool}${file.separator}bin${path.separator}${_env-var-before-env-ref}PATH${_env-var-after-env-ref}" />
+		</antcall>
+	</target>
+	<target name="_mvn">
+		<fail unless="mvn-target" />
+		<!-- need to construct commandline manually because not all values are supplied  -->
+		<echo>Running: ${mvn} ${mvn-profile} ${mvn-target}</echo>
+		<!-- see http://ant.apache.org/manual/CoreTasks/exec.html :  windows users need to run "cmd /c mvn.bat" -->
+		<exec command="${mvn} ${mvn-profile} ${mvn-target}">
+		</exec>
+	</target>
+	<target name="_mvn-no-tests">
+		<fail unless="mvn-target" />
+		<!-- need to construct commandline manually because not all values are supplied  -->
+		<echo>Running: ${mvn} ${mvn-profile} ${mvn-target}</echo>
+		<!-- see http://ant.apache.org/manual/CoreTasks/exec.html :  windows users need to run "cmd /c mvn.bat" -->
+		<exec command="&quot;${mvn}&quot; ${mvn-profile} ${mvn-no-tests-sys-property} ${mvn-target}">
+		</exec>
+	</target>
+	<target name="_backup">
+		<fail unless="_file" />
+		<fail unless="_ext" />
+		<basename property="_basename" file="${_file}" suffix="${_ext}" />
+		<dirname property="_dirname" file="${_file}" />
+		<condition property="_move_verbose" value="false">
+			<not>
+				<isset property="_move_verbose" />
+			</not>
+		</condition>
+		<move file="${_dirname}/${_basename}.${_ext}" tofile="${_dirname}/${_basename}.${time-suffix}.${_ext}" failonerror="false" verbose="${_move_verbose}" />
+	</target>
+	<target name="_say">
+		<exec executable="say" os="Mac OS X">
+			<arg value="${_say_what}" />
+		</exec>
+	</target>
 </project>
