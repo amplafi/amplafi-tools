@@ -1,4 +1,4 @@
-# Amplafi Opensource Tools Project #
+# Amplafi Opensource Tools #
 Welcome to the Amplafi opensource tools project. The goal of this
 project is to get a user up and running with all of the needed tools and
 source to work on the opensource projects.  If you made it to these instructions, you successfully ignored all the clutter at the top of this webpage.  
