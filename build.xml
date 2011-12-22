@@ -33,13 +33,14 @@
     <tstamp>
         <format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
     </tstamp>
+
     <!-- TARGETS -->
     <target name="_test">
         <echo>Testing is running.</echo>
     </target>
     <taskdef resource="net/sf/antcontrib/antlib.xml">
       <classpath>
-        <pathelement location="ant-contrib-1.0b3/ant-contrib-1.0b3.jar"/>
+        <pathelement location="ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar"/>
       </classpath>
     </taskdef>
     <target name="help" description="HOW TO GET STARTED">
@@ -927,8 +928,6 @@ also can we avoid having to set these:
         <fail unless="__env-value" />
         <echo file="${env.settings}" append="true">
     ${_env-var-before}${__env-var}${_env-var-between}${__env-value}${_env-var-after}</echo>
-
-
     </target>
     <target name="_write_to_build_local_properties" if="__build.local-var">
         <echo file="${build.local.properties}" append="true">
