@@ -15,4 +15,7 @@
     <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd"/>
     <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"/>
     <public publicId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" uri="www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+    <!-- for web.xml -->
+    <public publicId="http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" uri="java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"/>
+    <public publicId="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"  uri="java.sun.com/xml/ns/javaee/web-app_2_5.xsd"/>
 </catalog>
