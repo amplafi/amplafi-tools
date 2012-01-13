@@ -616,7 +616,7 @@ to your .bashrc
     <target name="_unzip-mvn" if="_mvn_is_old">
         <echo>Getting the correct version of mvn.</echo>
         <antcall target="_tools-unzip">
-            <param name="remote-tool" value="${maven-tool}-bin.zip" />
+            <param name="remote-tool" value="${maven-tool}.zip" />
             <param name="_env-var" value="MAVEN_HOME" />
             <param name="_build.local-var" value="maven-home" />
             <param name="tool" value="${maven-tool}" />
