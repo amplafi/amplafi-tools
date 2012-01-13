@@ -18,7 +18,7 @@
     <property name="env.MAVEN_OPTS" value="${maven-memory-opts}" />
     <property name="env.TOMCAT_HOME" value="${tomcat-home}" />
     <property name="env.JAMES_HOME" value="${james-home}" />
-    <property name="env.GEM_HOME" value="${user.dir}${file.separator}ruby${file.separator}gems" />
+    <property name="env.GEM_HOME" value="${tools-dir}${file.separator}ruby${file.separator}gems" />
     <property environment="env" />
 
     <property file="build.${osname}.properties" />
