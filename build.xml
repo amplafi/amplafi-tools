@@ -728,7 +728,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
 
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${mvn}" />
-            <param name="_arg-line" value='"org.apache.maven.plugins:maven-dependency-plugin:2.3:get" "-DrepoUrl=http://download.java.net/maven/2/" "-Dartifact=org.jruby:jruby-complete:1.6.5"' />
+            <param name="_arg-line" value='"org.apache.maven.plugins:maven-dependency-plugin:2.3:get" "-DrepoUrl=http://download.java.net/maven/2/" "-Dartifact=org.jruby:jruby-complete:${jruby-version}"' />
         </antcall>
     </target>
     <target name="css-tool-install" depends="_compass-installation,gem-cleanup" description="installs the tools (Compass, Sass) to handle css generation">
