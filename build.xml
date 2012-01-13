@@ -695,7 +695,7 @@ to your .bashrc
     <target name="_jruby-script-generation" depends="_jruby-download" unless="_jruby-available">
         <mkdir dir="bin" />
         <echo file="bin/${jruby-exec}"> 
-${_script-var-export} jruby_build=1.6.5
+${_script-var-export} jruby_build=${jruby-version}
 ${_script-var-export} GEM_HOME=${env.GEM_HOME}
 java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.separator}jruby-complete${file.separator}${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}${file.separator}jruby-complete-${_env-var-before-env-ref}jruby_build${_env-var-after-env-ref}.jar -S ${_script-vat-all-parameters}
         </echo>
@@ -722,7 +722,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
         <!-- 
         Question: if user repository is not present will maven create it?
     Example download command:
-    mvn org.apache.maven.plugins:maven-dependency-plugin:2.3:get -DrepoUrl=http://download.java.net/maven/2/ -Dartifact=org.jruby:jruby-complete:1.6.5
+    mvn org.apache.maven.plugins:maven-dependency-plugin:2.3:get -DrepoUrl=http://download.java.net/maven/2/ -Dartifact=org.jruby:jruby-complete:1.6.5.1
      -->
         <!-- XXX: This would not have to run on every call if we check that the proper jar exists -->
 
