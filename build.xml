@@ -38,11 +38,8 @@
     <target name="_test">
         <echo>Testing is running.</echo>
     </target>
-    <taskdef resource="net/sf/antcontrib/antlib.xml">
-      <classpath>
-        <pathelement location="ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar"/>
-      </classpath>
-    </taskdef>
+    <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${tools-dir}/ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar"/>
+
     <target name="help" description="HOW TO GET STARTED">
         <echo>Getting started:</echo>
         <echo>You are running on : ${osname} ${osfamily} / ${os.version} ${os.name} ${os.arch}</echo>
