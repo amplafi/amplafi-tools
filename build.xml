@@ -398,34 +398,38 @@
     <!-- TODO: check to make sure git clone on existing directory o.k. prob should switch to _git-update if directory already exists -->
     <target name="git-pull" description="git pull/clone -Dproject needs to be set">
         <fail unless="project" />
+        <property name="gitrootdir" value="${root-dir}"/>
         <condition property="_dont-git-pull">
             <not>
-                <available file="${root-dir}/${project}" />
+                <available file="${gitrootdir}/${project}" />
             </not>
         </condition>
         <antcall target="_git-pull">
         </antcall>
         <condition property="_dont-git-clone">
-            <available file="${root-dir}/${project}" />
+            <available file="${gitrootdir}/${project}" />
         </condition>
         <antcall target="_git-clone">
         </antcall>
     </target>
     <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
         <fail unless="project" />
-
-        <property name="git-url" value="${github-base}${project}.git" />
-        <echo>Cloning ${git-url}</echo>
-        <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
+        <fail unless="project-owner" />
+        <mkdir dir="${gitrootdir}"/>
+        <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
+        <property name="branch" value="master"/>
+        <echo>Cloning ${git-url} (branch : ${branch} ) into ${gitrootdir}/${project}</echo>
+        <exec executable="${git-exec}" dir="${gitrootdir}" resultproperty="_git-error-code" failonerror="true">
             <arg value="clone" />
+            <arg value="--branch"/>
+            <arg value="${branch}"/>
             <arg value="${git-url}" />
-            <arg value="${root-dir}${file.separator}${project}" />
         </exec>
     </target>
     <target name="_git-pull" unless="_dont-git-pull">
         <fail unless="project" />
         <echo>git pulling ${project}</echo>
-        <exec executable="${git-exec}" dir="${root-dir}${file.separator}${project}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
+        <exec executable="${git-exec}" dir="${gitrootdir}/${project}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
             <arg value="pull" />
         </exec>
     </target>
@@ -734,6 +738,7 @@ java -jar ${mvn-repository}${file.separator}org${file.separator}jruby${file.sepa
         <antcall target="gem-install">
             <param name="gem" value="compass" />
         </antcall>
+        <echo>need to copy the file : src/main/resources/compass-config/config.rb to theroot directory of the project using compass</echo>
         <echo>TODO: (maybe run this command rather(?) than have a static config.rb )
 compass install compass . --sass-dir "src/main/sass" --css-dir "src/main/webapp/css" --javascripts-dir "src/main/webapp/js" --images-dir "src/main/webapp/images"
 also can we avoid having to set these:
@@ -753,7 +758,6 @@ also can we avoid having to set these:
             <param name="gem" value="sass" />
         </antcall>
     </target>
-    <!-- Depreciated: use compass-watch instead -->
     <target name="compass-build" description="Uses compass to build css related files.">
         <fail unless="compass-project-dir" />
         <echo>If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
