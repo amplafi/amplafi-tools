@@ -396,7 +396,7 @@
         </exec>
     </target>
     <!-- TODO: check to make sure git clone on existing directory o.k. prob should switch to _git-update if directory already exists -->
-    <target name="git-pull" description="git pull/clone -Dproject needs to be set">
+    <target name="git-pull" description="git pull/clone. Parameters project-owner, project, branch">
         <fail unless="project" />
         <property name="gitrootdir" value="${root-dir}"/>
         <condition property="_dont-git-pull">
@@ -413,8 +413,8 @@
         </antcall>
     </target>
     <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
-        <fail unless="project" />
-        <fail unless="project-owner" />
+        <fail unless="project" message="Need 'project' to be set."/>
+        <fail unless="project-owner" message="Need 'project-owner' to be set."/>
         <mkdir dir="${gitrootdir}"/>
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
@@ -845,7 +845,9 @@ also can we avoid having to set these:
     Just remember user input is not supported,
     so commands must be non-interactive-->
     <target name="_exec">
-        <fail unless="_full-path-to-exec" />
+        <fail unless="_full-path-to-exec" message="_full-path-to-exec is not set"/>
+        <echo>Executing ${_full-path-to-exec} ${_arg-line}</echo>
+        <!-- set _arg-line to blank if _arg-line is not set to a value. This stops the executable from getting a bad argument -->
         <condition property="_arg-line" value="">
             <equals arg1="${_arg-line}" arg2="$${_arg-line}" />
         </condition>
