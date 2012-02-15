@@ -354,18 +354,18 @@
     <target name="git-push" description="git commit/push -Dproject needs to be set">
         <fail unless="project" />
         <echo>${project}</echo>
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
+        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
             <arg value="diff" />
         </exec>
         <fail unless="m" />
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
+        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
             <arg value="commit" />
             <arg value="-a" />
             <arg value="-q" />
             <arg value="-m" />
             <arg value="${m}" />
         </exec>
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
+        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
             <arg value="push" />
         </exec>
     </target>
@@ -391,7 +391,7 @@
     <target name="git-diff" description="git diff -Dproject needs to be set">
         <fail unless="project" />
         <echo>${project}</echo>
-        <exec executable="${git-exec}" dir="${root-dir}/${project}">
+        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
             <arg value="diff" />
         </exec>
     </target>
@@ -489,6 +489,71 @@ Add :
 to your .bashrc
         </echo>
     </target>
+    <target name="git-svn-fetch" description="git svn fetch/clone -Dproject needs to be set">
+        <fail unless="project"/>
+        <property name="gitrootdir" value="${root-dir}"/>
+        <condition property="_dont-git-pull">
+            <not><available file="${gitrootdir}/${project}"/></not>
+        </condition>
+        <antcall target="_git-svn-fetch">
+        </antcall>
+        <condition property="_dont-git-clone">
+            <available file="${gitrootdir}/${project}"/>
+        </condition>
+        <antcall target="_git-svn-clone">
+        </antcall>
+    </target>    
+    <target name="git-svn-pull" description="git svn pull/clone -Dproject needs to be set">
+        <fail unless="project"/>
+        <property name="gitrootdir" value="${root-dir}"/>
+        <condition property="_dont-git-pull">
+            <not><available file="${gitrootdir}/${project}"/></not>
+        </condition>
+        <antcall target="_git-svn-update">
+        </antcall>
+        <condition property="_dont-git-clone">
+            <available file="${gitrootdir}/${project}"/>
+        </condition>
+        <antcall target="_git-svn-clone">
+        </antcall>
+    </target>
+    <target name="_git-svn-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
+        <fail unless="project"/>
+        <!-- git-url could be specified or svn-url --> 
+        <property name="git-url" value="${svn-url}/${project}${branch}"/>
+        
+        <echo>git svn cloning ${git-url}</echo>
+        <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
+            <arg value="svn"/>
+            <arg value="clone"/>
+            <!-- to limit range if we need this.
+            <arg value="-r"/>
+            -->
+            <arg value="${git-url}"/>
+            <arg value="${gitrootdir}/${project}"/>
+        </exec>
+    </target>
+    <target name="_git-svn-fetch" unless="_dont-git-pull">
+        <echo>Updating ${project}</echo>
+        <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="false">
+            <arg value="svn"/>
+            <arg value="fetch"/>
+        </exec>
+    </target>    
+    <target name="_git-svn-update" depends="_git-svn-fetch" unless="_dont-git-pull">
+        <echo>Merging ${project}</echo>
+
+        <echo>Switching to the local master branch and then doing an svn rebase.</echo>
+        <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="true">
+            <arg value="checkout"/>
+            <arg value="master"/>
+        </exec>
+        <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="false">
+            <arg value="svn"/>
+            <arg value="rebase"/>
+        </exec>
+    </target>
+
     <target name="update-source" description="Update the github projects. git pull all github projects">
         <antcall target="git-pull">
             <param name="project" value="amplafi-tools" />
