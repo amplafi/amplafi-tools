@@ -49,7 +49,7 @@
         
             Run: "opensource-one-time-setup" will check and download any missing tools. You may need to run this repeatedly.
             
-            Run: "apache-ant-1.8.2/bin/ant -p" for other commands
+            Run: "apache-ant-1.8.2${file.separator}bin${file.separator}ant -p" for other commands
         </echo>
     </target>
     <target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,update-source,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource"
@@ -703,7 +703,10 @@ to your .bashrc
     <!-- NOTE: targets below this line must use very old ant tasks as we may be using a very old version of ant (many linux distros are very behind) -->
     <!-- ant -->
     <target name="_ant-config" depends="_validate-ant,_add-ant-path">
-        <!-- we don't check for the _dojo043-fix-config here because this runs when the user is first getting started -->
+        <echo>Making ant-contrib tasks available</echo>
+        <!-- otherwise would need: <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${tools-dir}/ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar"/> -->
+        <!-- we do this even though ant-contrib is checked in because we may have updated the ant-contrib release or the ant release. This avoids annoying breaks -->
+        <copy file="ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar" tofile="apache-ant-${ant-build}/lib/ant-contrib.jar" overwrite="true"/>
     </target>
     <target name="_fail-on-old-ant">
         <fail if="_ant_is_old" message="Your ant was an old version. Rerun ant using the new version. You MUST restart with a new shell to get your enviroment variable changes" />
