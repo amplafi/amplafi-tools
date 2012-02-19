@@ -825,7 +825,6 @@ also can we avoid having to set these:
     <target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
         <fail unless="compass-project-dir" />
         <echo>If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
-        <echo>${_compass-command-line}</echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}" />
             <param name="_arg-line" value='"compass" "compile" ${_compass-command-line}' />
@@ -853,7 +852,7 @@ also can we avoid having to set these:
         
         <property name="compass-sass-dir" value="src/main/sass"/>
         <property name="compass-css-dir" value="src/main/resources/css"/>
-        <property name="_compass-command-line-args" value=" '--images-dir=${compass-images-dir}' '--javascripts-dir=${compass-javascript-dir}' '--css-dir=${compass-css-dir}' '--sass-dir=${compass-sass-dir}' --output-style nested"/>
+        <property name="_compass-command-line-args" value=" '--images-dir=${compass-images-dir}' '--javascripts-dir=${compass-javascript-dir}' '--css-dir=${compass-css-dir}' '--sass-dir=${compass-sass-dir}' --output-style nested --no-line-comments"/>
     </target>
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
     <target name="_change-files-permissions-for-css-dir">
