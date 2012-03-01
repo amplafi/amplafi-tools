@@ -885,7 +885,8 @@ also can we avoid having to set these:
     <target name="gem-install" description="do a ruby gem install">
         <echo>Installing ruby gem ${gem} to ${tools-dir}${file.separator}ruby${file.separator}gems</echo>
         <antcall target="_exec">
-            <param name="_full-path-to-exec" value="${jruby} 'gem install ${gem} --install-dir ${tools-dir}${file.separator}ruby${file.separator}gems --rdoc'" />
+        	<!-- could add (doubledash)rdoc but some docs have errors -->  
+            <param name="_full-path-to-exec" value="${jruby} gem install ${gem} --install-dir ${tools-dir}${file.separator}ruby${file.separator}gems" />
         </antcall>
     </target>
     <target name="gem-cleanup" description="do a ruby gem cleanup">
