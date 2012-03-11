@@ -33,11 +33,11 @@
     <tstamp>
         <format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
     </tstamp>
-
+    <property name="html-project-list" value="htmlcleaner,jericho-html"/>
+    <property name="t4-project-list" value="amplafi-hivemind,amplafi-tapestry4-test,amplafi-tapestry4-utils,amplafi-tapestry4-springsecurity"/>
+    <property name="flow-project-list" value="amplafi-flow-core,amplafi-flow-client,amplafi-flow-tapestry4,amplafi-flow-tutorial,amplafi-flow-tapestry5" />
+    <property name="opensource-project-list" value="amplafi-android,amplafi-opensource-parent,amplafi-json,amplafi-sworddance,${flow-project-list},${t4-project-list},${html-project-list}"/>
     <!-- TARGETS -->
-    <target name="_test">
-        <echo>Testing is running.</echo>
-    </target>
     <!-- needed because ant-contrib may not yet be copied to the ant/lib directory -->
     <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${tools-dir}/ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar"/>
 
@@ -233,16 +233,6 @@
         <!-- amplafi-tools-->
         <!-- The amplafi-tools project is not on the list because I don't know how ant will react when changing the build.xml file at the same time it is running. Like when performing a update-source -->
 
-        <!-- amplafiphp -->
-        <echo>
-            WARNING: when calling maven to work on this list item, it will always fail. This is because there is no pom.xml file in this project.
-        </echo>
-        <echo>Calling ${target-call} for amplafiphp</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafiphp" />
-            <!-- this project is not on amplafi's profile-->
-            <param name="git-url" value="git@github.com:doolin/amplafiphp.git" />
-        </antcall>
         <!-- p6spy project from patmoore's account -->
         <echo>Calling ${target-call} for p6spy</echo>
         <antcall target="${target-call}">
@@ -250,81 +240,15 @@
             <!-- this project is not on amplafi's profile-->
             <param name="git-url" value="git@github.com:patmoore/p6spy.git" />
         </antcall>
-        <!-- amplafi-android -->
-        <echo>Calling ${target-call} for amplafi-android</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-android" />
-        </antcall>
-        <!-- amplafi-opensource-parent -->
-        <echo>Calling ${target-call} for amplafi-opensource-parent</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-opensource-parent" />
-        </antcall>
-        <!-- amplafi-json -->
-        <echo>Calling ${target-call} for amplafi-json</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-json" />
-        </antcall>
-        <!-- amplafi-sworddance -->
-        <echo>Calling ${target-call} for amplafi-sworddance</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-sworddance" />
-        </antcall>
-        <!-- amplafi-flow-client -->
-        <echo>Calling ${target-call} for amplafi-flow-tutorial</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-tutorial" />
-        </antcall>
-        <!-- amplafi-flow-client -->
-        <echo>Calling ${target-call} for amplafi-flow-client</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-client" />
-        </antcall>
-        <!-- amplafi-flow-core -->
-        <echo>Calling ${target-call} for amplafi-flow-core</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-core" />
-        </antcall>
-        <!-- amplafi-flow-tapestry4 -->
-        <echo>Calling ${target-call} for amplafi-flow-tapestry4</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-tapestry4" />
-        </antcall>
-        <!-- amplafi-flow-tapestry5 -->
-        <echo>Calling ${target-call} for amplafi-flow-tapestry5</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-flow-tapestry5" />
-        </antcall>
-        <!-- amplafi-hivemind -->
-        <echo>Calling ${target-call} for amplafi-hivemind</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-hivemind" />
-        </antcall>
-        <!-- amplafi-tapestry4-test -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-test</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-test" />
-        </antcall>
-        <!-- amplafi-tapestry4-test -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-utils</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-utils" />
-        </antcall>
-        <!-- htmlcleaner -->
-        <echo>Calling ${target-call} for htmlcleaner</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="htmlcleaner" />
-        </antcall>
-        <!-- jericho-html -->
-        <echo>Calling ${target-call} for jericho-html</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="jericho-html" />
-        </antcall>
-        <!-- amplafi-tapestry4-springsecurity -->
-        <echo>Calling ${target-call} for amplafi-tapestry4-springsecurity</echo>
-        <antcall target="${target-call}">
-            <param name="${target-parameter}" value="amplafi-tapestry4-springsecurity" />
-        </antcall>
+        <property name="project-owner" value="amplafi"/>
+        <for list="${opensource-project-list}" param="project">
+            <sequential>
+                <echo>Calling ${target-call} for @{project}</echo>
+                <antcall target="${target-call}">
+                    <param name="${target-parameter}" value="@{project}" />
+                </antcall>
+            </sequential>
+        </for>
     </target>
 
     <target name="dependencies" description="Get the dependent libraries -Dmvn-profile needs to be set">
@@ -415,7 +339,16 @@
     </target>
     <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
         <fail unless="project" message="Need 'project' to be set."/>
-        <fail unless="project-owner" message="Need 'project-owner' to be set."/>
+        <fail message="project-owner or git-url needs to be set">
+            <condition>
+                <not>
+                    <or>
+                        <isset property="project-owner"/>
+                        <isset property="git-url"/>
+                    </or>
+                </not>
+            </condition>
+        </fail>
         <mkdir dir="${gitrootdir}"/>
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
@@ -761,13 +694,18 @@ to your .bashrc
         <echo>${_jruby-available}</echo>
     </target>
     <target name="_jruby-validation">
-        <available file="${jruby-jar}" property="_jruby-available" />
+        <condition property="_jruby-available">
+            <and>
+                <available file="${jruby-jar}" />
+                <available file="bin/${jruby-exec}" />
+            </and>
+        </condition>
     </target>
     <target name="_jruby-script-generation" unless="_jruby-available">
         <mkdir dir="bin" />
         <echo file="bin/${jruby-exec}"> 
 ${_script-var-export} GEM_HOME=${env.GEM_HOME}
-java -jar ${jruby-jar} -S ${_script-vat-all-parameters}
+java -jar ${jruby-jar} -S ${_script-var-all-parameters}
         </echo>
         <chmod file="bin/${jruby-exec}" perm="ugo+rx" />
         <!-- TODO: this only works under unix, does windows need something similar?-->
@@ -885,7 +823,7 @@ also can we avoid having to set these:
     <target name="gem-install" description="do a ruby gem install">
         <echo>Installing ruby gem ${gem} to ${tools-dir}${file.separator}ruby${file.separator}gems</echo>
         <antcall target="_exec">
-        	<!-- could add (doubledash)rdoc but some docs have errors -->  
+            <!-- could add (doubledash)rdoc but some docs have errors -->  
             <param name="_full-path-to-exec" value="${jruby} gem install ${gem} --install-dir ${tools-dir}${file.separator}ruby${file.separator}gems" />
         </antcall>
     </target>
@@ -926,11 +864,11 @@ also can we avoid having to set these:
     so commands must be non-interactive-->
     <target name="_exec">
         <fail unless="_full-path-to-exec" message="_full-path-to-exec is not set"/>
-        <echo>Executing ${_full-path-to-exec} ${_arg-line}</echo>
         <!-- set _arg-line to blank if _arg-line is not set to a value. This stops the executable from getting a bad argument -->
         <condition property="_arg-line" value="">
             <equals arg1="${_arg-line}" arg2="$${_arg-line}" />
         </condition>
+        <echo>Executing ${_full-path-to-exec} ${_arg-line}</echo>
         <exec executable="cmd" osfamily="windows" failonerror="true">
             <arg value="/c" />
             <arg file="${_full-path-to-exec}" />
