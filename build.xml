@@ -352,6 +352,8 @@
         <mkdir dir="${gitrootdir}"/>
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
+    	<!-- supply default local directory name as the project name --> 
+    	<property name="local-directory" value="${project}" />
         <echo>Cloning ${git-url} (branch : ${branch} ) into ${gitrootdir}/${project}</echo>
         <exec executable="${git-exec}" dir="${gitrootdir}" resultproperty="_git-error-code" failonerror="true">
             <arg value="clone" />
