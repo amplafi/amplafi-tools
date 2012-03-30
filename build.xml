@@ -329,12 +329,12 @@
         <echo>Local dir: ${local-directory}</echo>
     	<condition property="_dont-git-pull">
             <not>
-                <available file="${gitrootdir}/${local-directory}" />
+                <available file="${gitrootdir}/${local-directory}/.git" />
             </not>
         </condition>
         <antcall target="_git-pull"/>
         <condition property="_dont-git-clone">
-            <available file="${gitrootdir}/${local-directory}" />
+            <available file="${gitrootdir}/${local-directory}/.git" />
         </condition>
         <antcall target="_git-clone"/>
     </target>
