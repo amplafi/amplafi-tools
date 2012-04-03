@@ -11,3 +11,5 @@
 /closure-templates-read-only
 /closure-file
 /closure-library-read-only
+.classpath
+/.settings
