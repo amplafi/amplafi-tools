@@ -690,7 +690,7 @@ to your .bashrc
 
     <!-- ================JRUBY============================= -->
     <property name="jruby-jar" value="${mvn-repository}/org/jruby/jruby-complete/${jruby-version}/jruby-complete-${jruby-version}.jar"/>
-    <target name="jruby" depends="_jruby-config,_compass-installation" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
+    <target name="jruby" depends="_jruby-config" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
     </target>
     <target name="_jruby-config" depends="_jruby-validation,_jruby-download,_jruby-script-generation">
         <echo>${_jruby-available}</echo>
@@ -764,7 +764,7 @@ also can we avoid having to set these:
     
     <target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
         <fail unless="compass-project-dir" />
-        <echo>If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
+        <echo>${jruby} If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}" />
             <param name="_arg-line" value='"compass" "compile" ${_compass-command-line}' />
@@ -778,7 +778,7 @@ also can we avoid having to set these:
             <param name="_arg-line" value='"compass" "watch" ${_compass-command-line}' />
         </antcall>
     </target>
-    <target name="_compass-config" depends="_check-compass-config,_compass-set-commandline">
+    <target name="_compass-config" depends="jruby,_check-compass-config,_compass-set-commandline">
         <property name="_compass-command-line-args" value=""/>
         <property name="_compass-command-line" value=" '${compass-project-dir}' ${_compass-command-line-args} "/>
     </target>
