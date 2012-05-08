@@ -324,10 +324,10 @@
     <target name="git-pull" description="git pull/clone. Parameters project-owner, project, branch">
         <fail unless="project" />
         <property name="gitrootdir" value="${root-dir}"/>
-    	<!-- supply default local directory name as the project name --> 
-    	<property name="local-directory" value="${project}" />
+        <!-- supply default local directory name as the project name --> 
+        <property name="local-directory" value="${project}" />
         <echo>Local dir: ${local-directory}</echo>
-    	<condition property="_dont-git-pull">
+        <condition property="_dont-git-pull">
             <not>
                 <available file="${gitrootdir}/${local-directory}/.git" />
             </not>
@@ -359,7 +359,7 @@
             <arg value="--branch"/>
             <arg value="${branch}"/>
             <arg value="${git-url}" />
-        	<arg value="${local-directory}"/>
+            <arg value="${local-directory}"/>
         </exec>
     </target>
     <target name="_git-pull" unless="_dont-git-pull">
@@ -470,7 +470,7 @@ to your .bashrc
         </exec>
     </target>
     <target name="_git-svn-fetch" unless="_dont-git-pull">
-        <echo>Updating ${project}</echo>
+        <echo>Updating ${gitrootdir}/${project}</echo>
         <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="false">
             <arg value="svn"/>
             <arg value="fetch"/>
@@ -688,6 +688,36 @@ to your .bashrc
         </antcall>
     </target>
 
+    <!-- PHP Unit Testing -->
+    <target name="phpunit-install" description="PHPUnit installation">
+    	<echo>If pear is missing then run:
+    		ant pear-install</echo>
+    	<exec executable="pear">
+    		<arg value="config-set"/>
+            <arg value="auto_discover"/>
+            <arg value="1"/>
+		</exec>
+        <exec executable="pear">
+            <arg value="install"/>
+            <arg value="pear.phpunit.de/PHPUnit"/>
+    	</exec>
+        <echo>Additional optional PHPUnit code is listed at http://www.phpunit.de/manual/3.7/en/installation.html</echo>
+    </target>
+    <target name="pear-install" description="Pear installation">
+        <!-- TODO need to test for os version ( see below for mac only args ) -->
+    	<!-- TODO do "pear upgrade PEAR" if pear already installed --> 
+        <exec executable="curl">
+            <arg value="http://pear.php.net/go-pear.phar"/>
+            <arg value="-o"/>
+            <arg value="bin/go-pear.phar"/>
+        </exec>
+        <fail>The bin/go-pear.phar is interactive. And we cannot run it automatically. Please run:
+        	(for Non-Mac's):
+            php bin/go-pear.phar
+            (for Macs)
+            php -d detect_unicode=0 bin/go-pear.phar
+        </fail>
+    </target>
     <!-- ================JRUBY============================= -->
     <property name="jruby-jar" value="${mvn-repository}/org/jruby/jruby-complete/${jruby-version}/jruby-complete-${jruby-version}.jar"/>
     <target name="jruby" depends="_jruby-config" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
@@ -763,7 +793,6 @@ also can we avoid having to set these:
     
     
     <target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
-        <fail unless="compass-project-dir" />
         <echo>${jruby} If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}" />
@@ -789,9 +818,9 @@ also can we avoid having to set these:
         <!-- not certain if these default paths should really be relative -->
         <property name="compass-images-dir" value="src/main/resources/img"/>
         <property name="compass-javascript-dir" value="src/main/resources/js"/>
+        <property name="compass-css-dir" value="src/main/resources/css"/>
         
         <property name="compass-sass-dir" value="src/main/sass"/>
-        <property name="compass-css-dir" value="src/main/resources/css"/>
         <property name="_compass-command-line-args" value=" '--images-dir=${compass-images-dir}' '--javascripts-dir=${compass-javascript-dir}' '--css-dir=${compass-css-dir}' '--sass-dir=${compass-sass-dir}' --output-style nested --no-line-comments"/>
     </target>
     <!-- Changes the file permissions in a specified directory to remove/add write permissions. -->
@@ -941,6 +970,54 @@ also can we avoid having to set these:
     <target name="_validate-JAVA_HOME" unless="_javac-found">
         <fail unless="env.JAVA_HOME" message="JAVA_HOME has not been set. Check to make sure all the environment variables defined in ${env.settings} have been added to your enviroment" />
     </target>
+	
+	<!-- MYSQL targets -->
+    <target name="mysql-root-user-check" description="Check to see if supplied mysql root user/password works">
+        <input
+          message="Enter the mysql-root-user: "
+          addproperty="mysql-root-user"
+        />        
+        <input message="Enter the mysql root username (${mysql-root-user})'s password:" addproperty="mysql-root-password"/>
+        <exec executable="${mysql}" errorproperty="_mysql-root-user-check-error">
+            <arg value="--user=${mysql-root-user}"/>
+            <arg value="--password=${mysql-root-password}"/>
+        </exec>
+        <condition property="_mysql-root-user-check-failed">
+            <not><equals arg1="" arg2="${_mysql-root-user-check-error}"/></not>            
+        </condition>
+    </target>
+    <target name="init-database-users" depends="mysql-root-user-check" description="init-database-users">
+    	<fail unless="mysql-user-account"/>
+    	<fail unless="mysql-user-password"/>
+    	<fail unless="database-name"/>
+    	<fail unless="mysql-root-user"/>
+        <fail unless="mysql-root-password"/>
+        <echo>Creating "${mysql-user-account}" database user account. You will need to login with the mysql root account</echo>
+        <!-- happens if mysql-root-user does not have a value -->
+        <!-- ERROR 1045 (28000): Access denied for user '-p'@'localhost' (using password: NO) -->
+        <!-- TODO: need to ask user with ant for a mysql-root-user -->
+        <echo>Creating access for ${mysql-user-account} (if this fails make sure user name is less than 16 characters)</echo>
+        <for list="%,localhost" param="mysql-scope">
+            <sequential>
+            	<echo>GRANT ${mysql-privileges} ON ${database-name}.* TO '${mysql-user-account}'@'@{mysql-scope}' IDENTIFIED BY '${mysql-user-password}';"</echo>
+                <exec executable="${mysql}" errorproperty="_init-database-users-failed">
+                      <arg value="--user=${mysql-root-user}"/>
+                      <arg value="--password=${mysql-root-password}"/>
+                      <arg value="--execute=GRANT ${mysql-privileges} ON ${database-name}.* TO '${mysql-user-account}'@'@{mysql-scope}' IDENTIFIED BY '${mysql-user-password}';"/>
+                </exec>
+            </sequential>
+        </for>
+    </target>
+    <target name="mysql-drop-and-create-db" depends="mysql-root-user-check">
+        <fail unless="database-name"/>
+        <echo>Dropping database ${database-name} ${mysql-charset}</echo>
+        <exec executable="${mysql}">
+              <arg value="--user=${mysql-root-user}"/>
+              <arg value="--password=${mysql-root-password}"/>
+              <arg value="--execute=drop database if exists `${database-name}`; create database `${database-name}` ${mysql-charset};"/>
+        </exec>
+    </target>
+	
     <target name="_write_to_env_settings" depends="_write_to_build_local_properties">
         <echo>
                 ===============================================================================
