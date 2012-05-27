@@ -713,9 +713,9 @@ to your .bashrc
         </exec>
         <fail>The bin/go-pear.phar is interactive. And we cannot run it automatically. Please run:
         	(for Non-Mac's):
-            php bin/go-pear.phar
-            (for Macs)
-            php -d detect_unicode=0 bin/go-pear.phar
+            php ${tools-dir}/bin/go-pear.phar
+        	(for Macs)
+            php -d detect_unicode=0 ${tools-dir}/bin/go-pear.phar
         </fail>
     </target>
     <!-- ================JRUBY============================= -->
