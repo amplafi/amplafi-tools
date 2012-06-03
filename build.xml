@@ -582,7 +582,22 @@ to your .bashrc
             </Context>
         </echoxml>
     </target>
-
+    <target name="run-war" description="Run the self contained war">
+        <exec executable="java">
+            <arg value="-jar"/>
+            <arg value="${executable-war-location}"/>
+        </exec>
+    </target>
+    <target name="debug-war" description="Run the self contained war w/debug">
+        <fail unless="executable-war-location"/>
+        <property name="debug_port" value="8000"/>
+        <echo>Debug on port ${debug_port}</echo>
+        <exec executable="java">
+            <arg value="-agentlib:jdwp=transport=dt_socket,server=y,address=${debug_port}"/>
+            <arg value="-jar"/>
+            <arg value="${executable-war-location}"/>
+        </exec>
+    </target>
     <!-- james -->
     <target name="_james-config-opensource" depends="_validate-james,_unzip-james" />
     <target name="_validate-james">
