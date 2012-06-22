@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="opensource-setup" default="help" basedir=".">
 
-    <dirname property="root-dir" file="." />
+    <dirname property="root-dir" file="."/>
+    <property file="${root-dir}/build.local.properties"/>
     <property file="pom.properties" />
     <property file="build.server.properties" />
     <condition property="osname" value="macosx">
@@ -233,12 +234,12 @@
         <!-- amplafi-tools-->
         <!-- The amplafi-tools project is not on the list because I don't know how ant will react when changing the build.xml file at the same time it is running. Like when performing a update-source -->
 
-        <!-- p6spy project from patmoore's account -->
+        <!-- p6spy project from p6spy's account -->
         <echo>Calling ${target-call} for p6spy</echo>
         <antcall target="${target-call}">
             <param name="${target-parameter}" value="p6spy" />
             <!-- this project is not on amplafi's profile-->
-            <param name="git-url" value="git@github.com:patmoore/p6spy.git" />
+            <param name="git-url" value="git@github.com:p6spy/p6spy.git" />
         </antcall>
         <property name="project-owner" value="amplafi"/>
         <for list="${opensource-project-list}" param="project">
@@ -721,11 +722,7 @@ to your .bashrc
     <target name="pear-install" description="Pear installation">
         <!-- TODO need to test for os version ( see below for mac only args ) -->
     	<!-- TODO do "pear upgrade PEAR" if pear already installed --> 
-        <exec executable="curl">
-            <arg value="http://pear.php.net/go-pear.phar"/>
-            <arg value="-o"/>
-            <arg value="bin/go-pear.phar"/>
-        </exec>
+        <get src="http://pear.php.net/go-pear.phar" dest="bin/go-pear.phar"/>
         <fail>The bin/go-pear.phar is interactive. And we cannot run it automatically. Please run:
         	(for Non-Mac's):
             php ${tools-dir}/bin/go-pear.phar
