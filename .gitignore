@@ -1,9 +1,7 @@
 /apache-tomcat-5.5.31
 /apache-tomcat-5.5.31-generated
-/apache-tomcat-7.0.22
 /apache-james-2.3.2
-/apache-maven-2.2.1
-/apache-maven-3.0.3
+/apache-maven-3.0.4
 .project
 /env.settings*
 /ruby
@@ -12,4 +10,5 @@
 /closure-file
 /closure-library-read-only
 .classpath
-/.settings
+.settings
+.DS_Store
