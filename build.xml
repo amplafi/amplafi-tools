@@ -1029,7 +1029,73 @@ also can we avoid having to set these:
               <arg value="--execute=drop database if exists `${database-name}`; create database `${database-name}` ${mysql-charset};"/>
         </exec>
     </target>
-	
+    <target name="mysql-reset-root-password" depends="_mysql-root-user-check" description="Reset mysql root user/password">
+        <echo>Steps laid out at http://www.cyberciti.biz/tips/recover-mysql-root-password.html and http://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html</echo>
+        <echo>Make sure the mysql daemon is stopped ( use kill but not kill -9 )</echo>
+        <input message="Confirm resetting mysql root password? [y/n]" validargs="y,n" addproperty="_do-mysql-reset-root-password-answer"/>
+        <condition property="_do-mysql-reset-root-password">
+          <equals arg1="y" arg2="${_do-mysql-reset-root-password-answer}"/>
+        </condition>        
+        <antcall target="_do-mysql-reset-root-password"/>
+    </target>
+    <target name="_do-mysql-reset-root-password" if="_do-mysql-reset-root-password">
+        <!--
+        <exec executable="${mysql}">
+            <arg value="stop"/>
+        </exec>
+        -->
+        <echo>Starting mysql w/o password enabled.</echo>
+        <exec executable="${mysqld}" spawn="true">
+            <arg value="--skip-grant-tables"/>
+        </exec>
+        <ant dir="${tools-dir}" target="mysql-reset-root-password-actual">
+        </ant>
+        <!--
+        <exec executable="${mysql}">
+            <arg value="stop"/>
+        </exec>
+        -->
+        <echo>Do the mysql stop/ restart now</echo>
+    </target>
+    <target name="mysql-reset-root-password-actual" depends="_mysql-root-user-check" description="Used when manually starting and stopping the mysql daemon. (Usually use mysql-reset-root-password)" if="_do-mysql-reset-root-password">
+        <echo>Resetting password for ${mysql-root-user}.</echo>
+        <!-- maybe use 'REPLACE' instead of update to handle case where ${mysql-root-user} does not exist? -->
+        <exec executable="${mysql}">
+            <arg value="-u"/>
+            <arg value="root"/>
+            <arg value="mysql"/>
+            <arg value="--execute=update user set password=PASSWORD(&quot;${mysql-root-password}&quot;) where User='${mysql-root-user}';flush privileges"/>
+        </exec>
+    </target>
+    <target name="_mysql-root-user-check">
+        <!-- TODO use amplafi-tools target: mysql-root-user-check -->
+        <input
+          message="Enter the mysql-root-user: "
+          addproperty="mysql-root-user"
+        />        
+        <input message="Enter the mysql root username (${mysql-root-user})'s password:" addproperty="mysql-root-password"/>
+        <exec executable="${mysql}" errorproperty="_mysql-root-user-check-error">
+            <arg value="--user=${mysql-root-user}"/>
+            <arg value="--password=${mysql-root-password}"/>
+        </exec>
+        <condition property="_mysql-root-user-check-failed">
+            <not><equals arg1="" arg2="${_mysql-root-user-check-error}"/></not>            
+        </condition>
+    </target>
+    <target name="mysql-input-sql" description="input sql">
+        <fail unless="input-sql"/>
+        <fail unless="database-name"/>
+        <fail unless="mysql-username"/>
+        <fail unless="mysql-password"/>
+        <available file="${input-sql}" property="_input-sql-file-exists" type="file"/>
+        <fail unless="_input-sql-file-exists" message="'${input-sql}' file does not exist"/>
+        <exec executable="${mysql}" failonerror="true" input="${input-sql}">
+            <arg value="--user=${mysql-username}"/>
+            <arg value="--password=${mysql-password}"/>
+            <arg value="--database=${database-name}"/>
+        </exec>
+    </target>
+    
     <target name="_write_to_env_settings" depends="_write_to_build_local_properties">
         <echo>
                 ===============================================================================
