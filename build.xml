@@ -40,7 +40,7 @@
     <property name="opensource-project-list" value="amplafi-android,amplafi-opensource-parent,amplafi-json,amplafi-sworddance,${flow-project-list},${t4-project-list},${html-project-list}"/>
     <!-- TARGETS -->
     <!-- needed because ant-contrib may not yet be copied to the ant/lib directory -->
-    <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${tools-dir}/ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar"/>
+    <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${tools-dir}/ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar" onerror="fail"/>
 
     <target name="help" description="HOW TO GET STARTED">
         <echo>Getting started:</echo>
@@ -1089,6 +1089,7 @@ also can we avoid having to set these:
         <fail unless="mysql-password"/>
         <available file="${input-sql}" property="_input-sql-file-exists" type="file"/>
         <fail unless="_input-sql-file-exists" message="'${input-sql}' file does not exist"/>
+        <echo>Applying ${input-sql} to ${database-name}</echo>
         <exec executable="${mysql}" failonerror="true" input="${input-sql}">
             <arg value="--user=${mysql-username}"/>
             <arg value="--password=${mysql-password}"/>
