@@ -237,9 +237,8 @@
         <!-- p6spy project from p6spy's account -->
         <echo>Calling ${target-call} for p6spy</echo>
         <antcall target="${target-call}">
+            <param name="project-owner" value="p6spy"/>
             <param name="${target-parameter}" value="p6spy" />
-            <!-- this project is not on amplafi's profile-->
-            <param name="git-url" value="git@github.com:p6spy/p6spy.git" />
         </antcall>
         <property name="project-owner" value="amplafi"/>
         <for list="${opensource-project-list}" param="project">
@@ -339,7 +338,7 @@
         </condition>
         <antcall target="_git-clone"/>
     </target>
-    <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
+    <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning,_ssh-warning">
         <fail unless="project" message="Need 'project' to be set."/>
         <fail message="project-owner or git-url needs to be set">
             <condition>
@@ -375,11 +374,23 @@
             <available file="${user.home}${file.separator}.gitconfig" />
         </condition>
     </target>
+    <target name="_sshconfig-exists-check">
+        <condition property="_sshconfig-exists">
+            <available file="${user.home}${file.separator}.ssh"/>
+        </condition>
+    </target>
+    <target name="_ssh-warning" depends="_sshconfig-exists-check">
+        <fail unless="_sshconfig-exists">
+No ${user.home}${file.separator}.ssh directory
+You need to setup ssh configuration correctly with github
+See https://help.github.com/articles/generating-ssh-keys
+        </fail>
+    </target>
     <target name="_gitconfig-warning" depends="_gitconfig-exists-check" unless="_gitconfig-exist">
-        <echo>git may have issues going to github. Mine looks like: (leading tabs )
-    [user]
-        email = ....
-        name = ...
+        <echo>Missing .gitconfig in home directory. git may have issues going to github. Mine looks like:
+[user]
+    email = ....
+    name = ...
     </echo>
     </target>
     <target name="git-completion-script" description="get the git completion script">
