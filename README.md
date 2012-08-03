@@ -10,10 +10,12 @@ Note: Comments and corrections to these instructions are welcome.
   **These prerequisites can be installed in any directory you want**
 
 * **[A Github Account:](https://github.com/)**
-   * Setup your machine to use github with Git's  [instructions](http://help.github.com/set-up-git-redirect).
+   * Setup your machine to use github with GitHub's [client and instructions](http://help.github.com/set-up-git-redirect).
+   * If you don't want to use the github client, you can use plain git on the command line and [register your ssh keys with github](https://help.github.com/articles/generating-ssh-keys)
 
 * **[Git 1.7+:](http://help.github.com/set-up-git-redirect)**  The program git is needed for the initial download and install.
    * Check this is installed with this command, still in Git Bash on Windows.
+   * [Git is also available independently of github](http://git-scm.com/download)
 
 <code>git --version</code>
 
@@ -25,15 +27,14 @@ Note: Comments and corrections to these instructions are welcome.
   
         b) Now when you run the msysgit bash you should be prompted for your passphrase. If you are not prompted for your passphrase then restart windows and start the msysgit bash tool again. 
 
-
-   * If you get an error like: *Permission denied (publickey)*, please review your Git and ssh setup for correctness.
-
-* **[Java JDK 1.6+:](http://www.oracle.com/technetwork/java/javase/downloads/index.html)**  This program is needed to run builds. Note this is the *JDK*, not the *JRE*, and you want to avoid the "glassfish" version".  Here is a [link for Windows Java JDK] (http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html)
+   * On Mac Applications > Utilities > Keychain Access needs to be run ( have it run always )
+    
+* **[Java JDK 1.7+:](http://www.oracle.com/technetwork/java/javase/downloads/index.html)**  This program is needed to run builds. Note this is the *JDK*, not the *JRE*, and you want to avoid the "glassfish" version".  Here is a [link for Windows Java JDK] (http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html)
 
    * Check that this is installed with this command, still in Git Bash on Windows.
 <pre> java -version</pre>
 
-   * The output should say something like: Java SE runtime build 1.6.
+   * The output should say something like: Java SE runtime build 1.7.
 
 * **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in (You can start downloading this tool and continue with the instructions if you are on a fast connection). Note this is the *EE* version of Eclipse.
    * The "Eclipse IDE for Java EE Developers" is the tool you need.
@@ -42,25 +43,29 @@ Note: Comments and corrections to these instructions are welcome.
 * When going through the instructions, if you run into trouble, first look at the known issues section at the bottom of this document to see if your trouble has a known fix.
 * If using windows, the commands will need to be issued from the msysgit Git Bash tool, which is Linux style commands, or use cygwin. If using Windows command line, slashes in full path names will need to be reversed to backwards slash: "\\"
 
+NOTE: I have found bizarre behavior with GitBash on windows, specifically editing a file on the GitBash command line creates a copy of the file in a different location. From the GitBash command line,
+the cloned file with your edits appears to be in the directory. However, eclipse and other tools do not see the changed file. However, changes made in eclipse are (usually) visible in the GitBash command line.
+Just use GitBash to run commands, not for editing. 
 
 ## Creating the proper folder structure##
 
 1. Find the place where you want the amplafi files and tools to be placed.
-2. Create the directory "amplafi-code". This is where the clone of amplafi-tools repository will reside.
+2. Create the directory "farreaches". This is where the clone of amplafi-tools repository will reside.
 
 
 ## Cloning the amplafi-tools repository using git##
 
-1. Change your working directory to the amplafi-code directory you just created: 
-<pre> cd /path/to/amplafi-code </pre>
-2. Run this command, which will create the amplafi-tools subdirectory in amplafi-code directory:
-<pre> git clone https://github.com/amplafi/amplafi-tools.git </pre>
+1. Change your working directory to the farreaches directory you just created: 
+<pre> cd /path/to/farreaches </pre>
+2. Run this command, which will create the amplafi-tools subdirectory in farreaches directory:
+<pre> git clone git://github.com/amplafi/amplafi-tools.git</pre>
+   * If you get an error like: *Permission denied (publickey)*, please review your Git and ssh setup for correctness and make sure you have [registered your ssh keys with github](https://help.github.com/articles/generating-ssh-keys)
 
 ## Starting the ant script##
 
 1. Change your working directory to the amplafi-tools directory that was just created by cloning the amplafi-tools repository.
 2. Run this command.
-<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup </pre>
+<pre> apache-ant-1.8.4/bin/ant opensource-one-time-setup </pre>
 
 3. The console window might prompt for things (but not in Windows) so pay attention and answer the questions/prompts.
 
@@ -73,7 +78,7 @@ Note: Comments and corrections to these instructions are welcome.
     c) make sure you were in the correct directory before running the command
 
 5. Rerun if needed until success: 
-<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup </pre>
+<pre> apache-ant-1.8.4/bin/ant opensource-one-time-setup </pre>
 
 6. Success will include these statements in the terminal (or Git Bash on Windows): <pre>complete-one-time-config-opensource:
 opensource-one-time-setup:
@@ -85,28 +90,28 @@ Total time: 41 minutes 7 seconds</pre>
 
 Currently you have downloaded all of the opensource projects, but do not have write access. It is nessary at this point to modify your origin and upstream so that they point to the correct projects. The big picture is that the origin should point to your fork, and the upstream should point to the amplafi project.
 
-1. cd into the amplafi-code directory
+1. cd into the farreaches directory
 2. Delete the directory you will be working on 
 3. Follow these [instructions](http://help.github.com/fork-a-repo/) to fork the project you will be working on and re-download the new fork.
 
 ##Setup the Eclipse workspace##
 Now that you have the opensource files it is time to add them to an Eclipse workspace.
 
-1. Open eclipse and set your working directory to the amplafi-code directory.
+1. Open eclipse and set your working directory to the farreaches directory.
 2. Go to the workbench.
 3. Use the menu **File>Import...**
 4. Open the General folder (with the + sign or arrow) and select **Existing Projects Into Workspace**.
 5. Hit the next button.
 6. On the option **Select root directory** hit the browse button.
-7. Choose the **amplafi-code** directory(and hit okay).
+7. Choose the **farreaches** directory(and hit okay).
 8. A list of projects should appear on the screen, and all of them should be checked.
 9. Now, hit **Finish**.
 10. Now, eclipse will take a moment and refresh and build the projects. When it completes you should see no errors (just warnings and tasks).
    * If you see errors, then close eclipse and:
       1. Go to the command window and run this command again.
-<pre> apache-ant-1.8.2/bin/ant opensource-one-time-setup</pre>
+<pre> apache-ant-1.8.4/bin/ant opensource-one-time-setup</pre>
 
-      2. Open eclipse to the amplafi-code workspace.
+      2. Open eclipse to the farreaches workspace.
       3. Select all of the projects on the left hand side and **press the F5 key** (This will force refresh).
       4. Now use the menu **Projects>clean...**
       5. Choose **clean all projects**.
@@ -117,7 +122,7 @@ TODO: add something about what to do when you want to import from a fork and Ecl
 
 ## Configure Eclipse##
 
-The following files are located in the amplafi-code/amplafi-opensource-parent/src/main/resources/eclipse/
+The following files are located in the farreaches/amplafi-opensource-parent/src/main/resources/eclipse/
 directory.
 
 1. **import the eclipse-java-codetemplates.xml**
