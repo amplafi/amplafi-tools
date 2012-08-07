@@ -5,6 +5,10 @@ source to work on the opensource projects.
 
 Note: Comments and corrections to these instructions are welcome.
 
+## Before you start##
+* When going through the instructions, if you run into trouble, first look at the known issues section at the bottom of this document to see if your trouble has a known fix.
+* If using windows, the commands will need to be issued from the msysgit Git Bash tool, which is Linux style commands, or use cygwin. If using Windows command line, slashes in full path names will need to be reversed to backwards slash: "\\"
+
 ## Prerequisites:##
 
   **These prerequisites can be installed in any directory you want**
@@ -29,6 +33,11 @@ Note: Comments and corrections to these instructions are welcome.
 
    * On Mac Applications > Utilities > Keychain Access needs to be run ( have it run always )
     
+NOTE: I have found bizarre behavior with GitBash on windows, specifically editing a file on the GitBash command line creates a copy of the file in a different location. From the GitBash command line,
+the cloned file with your edits appears to be in the directory. However, eclipse and other tools do not see the changed file. However, changes made in eclipse are (usually) visible in the GitBash command line.
+Just use GitBash to run commands, not for editing. 
+
+
 * **[Java JDK 1.7+:](http://www.oracle.com/technetwork/java/javase/downloads/index.html)**  This program is needed to run builds. Note this is the *JDK*, not the *JRE*, and you want to avoid the "glassfish" version".  Here is a [link for Windows Java JDK] (http://www.oracle.com/technetwork/java/javase/downloads/jdk-6u25-download-346242.html)
 
    * Check that this is installed with this command, still in Git Bash on Windows.
@@ -37,31 +46,21 @@ Note: Comments and corrections to these instructions are welcome.
    * The output should say something like: Java SE runtime build 1.7.
 
 * **Eclipse**
- Everyone else on the team uses Eclipse. You are permitted to use another debugging environment. However, make sure that such an environment does not handicap your performance. In particular,
-be aware that you will need to debug java and PHP. 
  
- We have had good success with using [Pulse](http://www.poweredbypulse.com/) to manage eclipse and its various plugins.  
+We have had good success with using [Pulse](http://www.poweredbypulse.com/) to manage eclipse and its various plugins.  
 
- Here is instruction on how to get simplest eclipse installation.
-  * Go to the Pulse site and download a client for your plaform.
-  * Run it, here it may ask you to register, do the registartion.</li>
-  * After you're logged in to the client (it is called Pulse Explorer) select the latest version
+Here is instruction on how to get simplest eclipse installation.
+   * Go to the Pulse site and download a client for your plaform.
+   * Run it, here it may ask you to register, do the registartion.
+   * After you're logged in to the client (it is called Pulse Explorer) select the latest version
    of eclipse at the left top corner.
-  * Go to Ready To Use Profiles -> Popular. Right click on the 'Eclipse for Java' profile. Select 'Add to my profiles'
+   * Go to Ready To Use Profiles -> Popular. Right click on the 'Eclipse for Java' profile. Select 'Add to my profiles'
    option. Now you should see it on the 'My profiles view'.
-  * Click on the newly created profile. Here you can customize your eclipse. Go to the Software tab 
+   * Click on the newly created profile. Here you can customize your eclipse. Go to the Software tab 
    and find git plugin. Add the plugin to the profile.
-  * Click 'Launch now' button -- after this your eclipse will be configured and launched.
+   * Click 'Launch now' button -- after this your eclipse will be configured and launched.
   
 Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downloads/)
-
-## Before you start##
-* When going through the instructions, if you run into trouble, first look at the known issues section at the bottom of this document to see if your trouble has a known fix.
-* If using windows, the commands will need to be issued from the msysgit Git Bash tool, which is Linux style commands, or use cygwin. If using Windows command line, slashes in full path names will need to be reversed to backwards slash: "\\"
-
-NOTE: I have found bizarre behavior with GitBash on windows, specifically editing a file on the GitBash command line creates a copy of the file in a different location. From the GitBash command line,
-the cloned file with your edits appears to be in the directory. However, eclipse and other tools do not see the changed file. However, changes made in eclipse are (usually) visible in the GitBash command line.
-Just use GitBash to run commands, not for editing. 
 
 ## Creating the proper folder structure##
 
