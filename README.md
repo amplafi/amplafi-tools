@@ -1,7 +1,7 @@
 # Amplafi Opensource Tools #
 Welcome to the Amplafi opensource tools project. The goal of this
 project is to get a user up and running with all of the needed tools and
-source to work on the opensource projects.  If you made it to these instructions, you successfully ignored all the clutter at the top of this webpage.  
+source to work on the opensource projects. 
 
 Note: Comments and corrections to these instructions are welcome.
 
@@ -36,8 +36,24 @@ Note: Comments and corrections to these instructions are welcome.
 
    * The output should say something like: Java SE runtime build 1.7.
 
-* **[Eclipse latest download:](http://www.eclipse.org/downloads/)** This is the tool you will be developing in (You can start downloading this tool and continue with the instructions if you are on a fast connection). Note this is the *EE* version of Eclipse.
-   * The "Eclipse IDE for Java EE Developers" is the tool you need.
+* **Eclipse
+ Everyone else on the team uses Eclipse. You are permitted to use another debugging environment. However, make sure that such an environment does not handicap your performance. In particular,
+be aware that you will need to debug java and PHP. 
+ 
+ We have had good success with using [Pulse](http://www.poweredbypulse.com/) to manage eclipse and its various plugins.  
+
+ Here is instruction on how to get simplest eclipse installation.
+  * Go to the Pulse site and download a client for your plaform.
+  * Run it, here it may ask you to register, do the registartion.</li>
+  * After you're logged in to the client (it is called Pulse Explorer) select the latest version
+   of eclipse at the left top corner.
+  * Go to Ready To Use Profiles -> Popular. Right click on the 'Eclipse for Java' profile. Select 'Add to my profiles'
+   option. Now you should see it on the 'My profiles view'.
+  * Click on the newly created profile. Here you can customize your eclipse. Go to the Software tab 
+   and find git plugin. Add the plugin to the profile.
+  * Click 'Launch now' button -- after this your eclipse will be configured and launched.
+  
+Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downloads/)
 
 ## Before you start##
 * When going through the instructions, if you run into trouble, first look at the known issues section at the bottom of this document to see if your trouble has a known fix.
