@@ -24,11 +24,9 @@ Note: Comments and corrections to these instructions are welcome.
 <code>git --version</code>
 
    * The output should say something like: git version 1.7.
-   * Use the [instructions](http://help.github.com/set-up-git-redirect) if you need to set it up. 
-   * On Windows you need to set up an ssh-agent on your machine so there is no user verification required during the cloning that follows:
- 
+   * Use the [instructions](http://help.github.com/set-up-git-redirect) if you need to set it up a way to get through firewalls 
+   * To avoid constant requests for the passphrase, set up ssh-agent:
         a) set up an ssh-agent using these [instructions](http://help.github.com/working-with-key-passphrases/)
-  
         b) Now when you run the msysgit bash you should be prompted for your passphrase. If you are not prompted for your passphrase then restart windows and start the msysgit bash tool again. 
 
    * On Mac Applications > Utilities > Keychain Access needs to be run ( have it run always )
@@ -85,11 +83,8 @@ Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downl
 3. The console window might prompt for things (but not in Windows) so pay attention and answer the questions/prompts.
 
 4. If the build fails then 
-
     a) read the error and see if it is something easy like github not being setup properly, correct github setupcommand
-
     b) check the known issues below
-
     c) make sure you were in the correct directory before running the command
 
 5. Rerun if needed until success: 
