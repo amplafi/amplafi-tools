@@ -10,7 +10,7 @@ Note: Comments and corrections to these instructions are welcome.
   **These prerequisites can be installed in any directory you want**
 
 * **[A Github Account:](https://github.com/)**
-   * Setup your machine to use github with GitHub's [client and instructions](http://help.github.com/set-up-git-redirect).
+   * Setup your machine to use github with GitHub's [client and instructions](http://help.github.com/set-up-git-redirect) s.
    * If you don't want to use the github client, you can use plain git on the command line and [register your ssh keys with github](https://help.github.com/articles/generating-ssh-keys)
 
 * **[Git 1.7+:](http://help.github.com/set-up-git-redirect)**  The program git is needed for the initial download and install.
@@ -36,7 +36,7 @@ Note: Comments and corrections to these instructions are welcome.
 
    * The output should say something like: Java SE runtime build 1.7.
 
-* **Eclipse
+* **Eclipse**
  Everyone else on the team uses Eclipse. You are permitted to use another debugging environment. However, make sure that such an environment does not handicap your performance. In particular,
 be aware that you will need to debug java and PHP. 
  
@@ -104,7 +104,7 @@ Total time: 41 minutes 7 seconds</pre>
 
 ## Change the origin and upstream for the project you are working on##
 
-Currently you have downloaded all of the opensource projects, but do not have write access. It is nessary at this point to modify your origin and upstream so that they point to the correct projects. The big picture is that the origin should point to your fork, and the upstream should point to the amplafi project.
+Currently you have downloaded all of the opensource projects, but do not have write access. It is necessary at this point to modify your origin and upstream so that they point to the correct projects. The big picture is that the origin should point to your fork, and the upstream should point to the amplafi project.
 
 1. cd into the farreaches directory
 2. Delete the directory you will be working on 
