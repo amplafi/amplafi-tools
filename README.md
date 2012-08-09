@@ -217,6 +217,12 @@ When you are satisfied with your changes you will have to send a pull request to
          * home-dir/.gitconfig file has not yet been created. Check that the file is there. If it is not run the following command to create it.
          <pre> git config --global user.name "Firstname Lastname"</pre>
          This command is what initially creates the .gitconfig file. 
+* ant opensource-one-time-setup fails with error
+  Execute failed: java.io.IOException:
+   Cannot run program "git.cmd" : CreateProcess error =2, The system cannot find the file specified
+        at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+        ...
+  * To fix this problem set the correct path for git-exec in the build.local.properties file.   
 * maven complains about the ANDROID_HOME environment variable not being set while building the amplafi-android project.
    * If you need the amplafi-android project to build, please visit [Installing Android SDK](http://developer.android.com/sdk/installing.html) for information on how to install the SDK.
    * Once the SDK is installed add the ANDRIOD_HOME environment variable to point to the SDK.
