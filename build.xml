@@ -2,6 +2,7 @@
 <project name="opensource-setup" default="help" basedir=".">
 
     <dirname property="root-dir" file="."/>
+    <property file="build.local.properties"/>
     <property file="${root-dir}/build.local.properties"/>
     <property file="pom.properties" />
     <property file="build.server.properties" />
@@ -338,8 +339,10 @@
         </condition>
         <antcall target="_git-clone"/>
     </target>
-    <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning,_ssh-warning">
-        <fail unless="project" message="Need 'project' to be set."/>
+    <target name="_git-clone" unless="_dont-git-clone" depends="_git-validation,_gitconfig-warning,_ssh-warning">
+        <echo>${_git-available}</echo>
+	<fail unless="_git-available" message="Git executable not found. Please check the path in local or respective platform specific properties files."/>
+	<fail unless="project" message="Need 'project' to be set."/>
         <fail message="project-owner or git-url needs to be set">
             <condition>
                 <not>
@@ -385,6 +388,11 @@ No ${user.home}${file.separator}.ssh directory
 You need to setup ssh configuration correctly with github
 See https://help.github.com/articles/generating-ssh-keys
         </fail>
+    </target>
+    <target name="_git-validation">
+        <condition property="_git-available">
+            <available file="${git-exec}" />
+        </condition>
     </target>
     <target name="_gitconfig-warning" depends="_gitconfig-exists-check" unless="_gitconfig-exist">
         <echo>Missing .gitconfig in home directory. git may have issues going to github. Mine looks like:
