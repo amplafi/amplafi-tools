@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bookmarks>
    <site url="http://download.jboss.org/jbosstools/updates/stable" selected="true" name="Hibernate tools"/>
-   <site url="http://findbugs.cs.umd.edu/eclipse"selected="true" name="Findbugs" />
+   <site url="http://findbugs.cs.umd.edu/eclipse" selected="true" name="Findbugs" />
    <site url="http://opensocial-development-environment.googlecode.com/svn/update-site/site.xml" selected="true" name="OpenSocial update site"/>
    <site url="http://pydev.org/updates" selected="false" name="Python update site"/>
    <site url="http://q4e.googlecode.com/svn/trunk/updatesite/" selected="false" name="Q4E update site"/>
