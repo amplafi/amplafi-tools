@@ -28,7 +28,6 @@
     <property name="env.MAVEN_HOME" value="${maven-home}" />
     <property name="env.MAVEN_MEMORY_OPTS" value="${maven-memory-opts}" />
     <property name="env.MAVEN_OPTS" value="${maven-memory-opts}" />
-    <property name="env.TOMCAT_HOME" value="${tomcat-home}" />
     <property name="env.JAMES_HOME" value="${james-home}" />
     <property name="env.GEM_HOME" value="${tools-dir}${file.separator}ruby${file.separator}gems" />
     <property environment="env" />
@@ -71,10 +70,6 @@
         <!-- check if MAVEN_HOME is set-->
         <antcall target="_check-environment-variable">
             <param name="environment-variable" value="MAVEN_HOME" />
-        </antcall>
-        <!-- check if TOMCAT_HOME is set-->
-        <antcall target="_check-environment-variable">
-            <param name="environment-variable" value="TOMCAT_HOME" />
         </antcall>
         <!-- check if JAMES_HOME is set-->
         <antcall target="_check-environment-variable">
@@ -279,6 +274,7 @@
     </target>
     <target name="git-push" description="git commit/push -Dproject needs to be set">
         <fail unless="project" />
+        <echo>Harisovo maslo:</echo>	
         <echo>${project}</echo>
         <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
             <arg value="diff" />
@@ -521,11 +517,9 @@ to your .bashrc
     </target>
 
     <target name="validate-tools-opensource" depends="_java-config,_ant-config,_mvn-config,_jruby-config,css-tool-install,server-config-opensource,_update-bashrc,_fail-on-old-ant" description="Validate that the needed opensource tools have been downloaded and are the correct version">
-        <fail unless="tomcat-home" message="tomcat-home has not been set." />
-        <fail unless="maven-home" message="maven-home has not been set." />
-        <fail message="tomcat ports are in use! stop any running instances of tomcat!" if="_tomcat-sockets-in-use" />
+       
     </target>
-    <target name="server-config-opensource" depends="_java-config,_ant-config,_tomcat-dev-config-opensource,_james-config-opensource">
+    <target name="server-config-opensource" depends="_java-config,_ant-config, _james-config-opensource">
     </target>
 
 
@@ -569,39 +563,7 @@ to your .bashrc
             <param name="_ext" value="txt" />
         </antcall>
     </target>
-
-    <!-- tomcat -->
-    <target name="_tomcat-dev-config-opensource" depends="_validate-tomcat,_unzip-tomcat" />
-    <target name="_validate-tomcat">
-        <condition property="_tomcat_is_old">
-            <not>
-                <available file="${tools-dir}/${tomcat-tool}" />
-            </not>
-        </condition>
-    </target>
-    <target name="_unzip-tomcat" if="_tomcat_is_old">
-        <echo>Getting the correct version of tomcat.</echo>
-        <antcall target="_tools-unzip">
-            <param name="remote-tool" value="apache-tomcat-${tomcat-build}.zip" />
-            <param name="tool" value="apache-tomcat-${tomcat-build}" />
-            <param name="_env-var" value="TOMCAT_HOME" />
-            <param name="_build.local-var" value="tomcat-home" />
-        </antcall>
-        <!-- get the tomcat source into the unzipped executable directory -->
-        <!--<get src="http://sworddance.com/tools/apache-tomcat-${tomcat-build}-src.zip" dest="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" verbose="false" />-->
-        <!-- copy instead of get-->
-        <copy file="${tools-dir}/apache-tomcat-${tomcat-build}-src.zip" tofile="${tools-dir}/apache-tomcat-${tomcat-build}/src.zip" filtering="false" preservelastmodified="true" />
-        <move file="${tomcat-home}/webapps" tofile="${tomcat-home}/webapps-examples" failonerror="false" />
-    </target>
-    <target name="create-tomcat-ROOT" description="Run if tomcat starts but does not start the web code">
-        <fail unless="application-web-project-dir" />
-        <echo>Creating ${tomcat-config-dir}/ROOT.xml</echo>
-        <echoxml file="${tomcat-config-dir}/ROOT.xml">
-            <Context reloadable="true" docBase="${application-web-project-dir}/src/main/webapp" workDir="${application-web-project-dir}/working" debug="99" privileged="true" antiResourceLocking="false" antiJARLocking="false">
-                <Logger className="org.apache.catalina.logger.SystemOutLogger" verbosity="4" timestamp="true" />
-            </Context>
-        </echoxml>
-    </target>
+ 
     <target name="run-war" description="Run the self contained war">
         <exec executable="java">
             <arg value="-jar"/>
