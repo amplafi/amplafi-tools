@@ -274,7 +274,6 @@
     </target>
     <target name="git-push" description="git commit/push -Dproject needs to be set">
         <fail unless="project" />
-        <echo>Harisovo maslo:</echo>	
         <echo>${project}</echo>
         <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
             <arg value="diff" />
