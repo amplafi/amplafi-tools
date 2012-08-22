@@ -1141,7 +1141,7 @@ also can we avoid having to set these:
     </target>
     <target name="_say">
         <exec executable="say" os="Mac OS X">
-            <arg value="${_say_what}" />
+            <arg value="${_say-what}" />
         </exec>
     </target>
 </project>
