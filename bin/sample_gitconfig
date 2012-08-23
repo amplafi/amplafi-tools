@@ -1,0 +1,93 @@
+[user]
+	email = <your email address here>
+	name = <your name here>
+[alias]
+	helpall = "!sh -c 'git help -a ; cat .git/config ~/.gitconfig' - "
+        mg = merge -s recursive -Xours -Xpatience -Xignore-all-space
+        ff = merge --ff-only
+	pusha = push --all --tags
+        
+        # git alias new_alias original_command
+        alias = "!sh -c '[ $# = 2 ] && git config --global alias.\"$1\" \"$2\" && exit 0 || echo \"usage: git alias <new alias> <original command>\" >&2 && exit 1' -"
+	lgf = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --name-only
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=iso
+	lgl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=local
+	# find shorten hash collisions
+	abbr = "!sh -c 'git rev-list --all | grep ^$1 | while read commit; do git --no-pager log -n1 --pretty=format:\"%H %ci %an %s%n\" $commit; done' -"
+        # There's no way to tell git remote update to prune stale branches, and git remote prune does not understand --all. So here is an alias to do the job
+        prune-all = !git remote | xargs -n 1 git remote prune
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	ls = ls-files
+	# finds last copy of file before it was removed and checks that version back out for restoring
+	unrm = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+
+	# Show files ignored by git:
+	ign = ls-files -o -i --exclude-standard
+
+	sh = stash
+	shp = stash pop
+	shl = stash list
+	
+	ap = add -p 
+	ci = commit 
+	cim = commit -m 
+	cia = commit --amend
+	co = checkout
+	com = checkout master
+	coe = checkout external_id
+	st = status
+	cf = "!sh -c 'cat .git/config ~/.gitconfig' - "
+	vc = "!sh -c 'vi ~/.gitconfig' - "
+	dfc = diff --cached
+	dfw = diff -w
+	dfno = diff -w --name-only
+	br = branch -a
+	brb = branch -b
+	brd = branch -d
+	ch = cherry --abbrev -v 
+	chp = cherry-pick 
+	rb = rebase
+        rbm = rebase master
+        rba = rebase --abort
+        rbc = rebase --continue
+        rbs = rebase --skip
+	rbn = rebase -i HEAD~$1
+	catp = cat-file -p
+	catt = cat-file -t
+	h = help
+	hash = hash-object
+# http://gitready.com/advanced/2011/10/21/ribbon-and-catchup-reading-new-commits.html
+	ribbon = tag --force _ribbon origin/master
+# to reduce branch merge noise add : --first-parent -m
+	catchup = log --patch --reverse --topo-order _ribbon..origin/master
+[merge]
+	defaultToUpstream = true
+[diff]
+	suppressBlankEmpty = true
+[gc]
+	auto = 1000
+[branch]
+	autosetupmerge = always
+
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[core]
+    whitespace=fix,-indent-with-non-tab,-trailing-space,cr-at-eol,tabwidth=4
+[diff]
+	mnemonicprefix = true
