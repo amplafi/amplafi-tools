@@ -51,7 +51,7 @@
         
             Run: "opensource-one-time-setup" will check and download any missing tools. You may need to run this repeatedly.
             
-            Run: "apache-ant-1.8.2${file.separator}bin${file.separator}ant -p" for other commands
+            Run: "apache-ant-1.8.4{file.separator}bin${file.separator}ant -p" for other commands
         </echo>
     </target>
     <target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,update-source,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource"
@@ -334,8 +334,7 @@
         </condition>
         <antcall target="_git-clone"/>
     </target>
-    <target name="_git-clone" unless="_dont-git-clone" depends="_git-validation,_gitconfig-warning,_ssh-warning">
-        <fail unless="_git-available" message="Git executable not found at '${git-exec}'. Please check the path in local or respective platform specific properties files."/>
+    <target name="_git-clone" unless="_dont-git-clone" depends="_gitconfig-warning,_ssh-warning">
         <fail unless="project" message="Need 'project' to be set."/>
         <fail message="project-owner or git-url needs to be set">
             <condition>
@@ -350,7 +349,7 @@
         <mkdir dir="${gitrootdir}"/>
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
-        <echo>Cloning ${git-url} (branch : ${branch} ) into ${gitrootdir}/${local-directory}</echo>
+        <echo>Cloning ${git-url} (branch : ${branch} ) into ${gitrootdir}/${local-directory} (git-exec: ${git-exec} )</echo>
         <exec executable="${git-exec}" dir="${gitrootdir}" resultproperty="_git-error-code" failonerror="true">
             <arg value="clone" />
             <arg value="--branch"/>
@@ -382,11 +381,6 @@ No ${user.home}${file.separator}.ssh directory
 You need to setup ssh configuration correctly with github
 See https://help.github.com/articles/generating-ssh-keys
         </fail>
-    </target>
-    <target name="_git-validation">
-        <condition property="_git-available">
-            <available file="${git-exec}" />
-        </condition>
     </target>
     <target name="_gitconfig-warning" depends="_gitconfig-exists-check" unless="_gitconfig-exist">
         <echo>Missing .gitconfig in home directory. git may have issues going to github. Mine looks like:
