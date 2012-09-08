@@ -779,6 +779,10 @@ also can we avoid having to set these:
     
     <target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
         <echo>${jruby} If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
+        <echo>NOTE: if you have GEM_HOME set to a different directory than the directory under amplafi-tools, you will need to manually install sass and compass
+            gem install sass
+            gem install compass
+        </echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}" />
             <param name="_arg-line" value='"compass" "compile" ${_compass-command-line}' />
@@ -794,9 +798,11 @@ also can we avoid having to set these:
     </target>
     <target name="_compass-config" depends="jruby,_check-compass-config,_compass-set-commandline">
         <property name="_compass-command-line-args" value=""/>
+        <fail unless="compass-project-dir" />
         <property name="_compass-command-line" value=" '${compass-project-dir}' ${_compass-command-line-args} "/>
     </target>
     <target name="_check-compass-config">
+        <fail unless="compass-project-dir" />
         <available file="config.rb" filepath="${compass-project-dir}" property="_sass-config-found" />
     </target>
     <target name="_compass-set-commandline" unless="_sass-config-found">
