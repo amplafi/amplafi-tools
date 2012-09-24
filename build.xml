@@ -465,6 +465,7 @@ to your .bashrc
         <fail unless="project"/>
         <!-- git-url could be specified or svn-url --> 
         <property name="git-url" value="${svn-url}/${project}${branch}"/>
+        <property name="revision" value="0"/>
         
         <echo>git svn cloning ${git-url}</echo>
         <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
@@ -475,6 +476,8 @@ to your .bashrc
             -->
             <arg value="${git-url}"/>
             <arg value="${gitrootdir}/${project}"/>
+            <arg value="-r"/>
+            <arg value="${revision}:HEAD"></arg>
         </exec>
     </target>
     <target name="_git-svn-fetch" unless="_dont-git-pull">
