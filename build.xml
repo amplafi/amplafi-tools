@@ -894,12 +894,14 @@ also can we avoid having to set these:
             <equals arg1="${_arg-line}" arg2="$${_arg-line}" />
         </condition>
         <echo>Executing ${_full-path-to-exec} ${_arg-line}</echo>
-        <exec executable="cmd" osfamily="windows" failonerror="true">
+    	<!-- Fail by default.-->
+    	<property name="fail_on_exec_error" value="true"/>
+        <exec executable="cmd" osfamily="windows" failonerror="${fail_on_exec_error}">
             <arg value="/c" />
             <arg value="${_full-path-to-exec}" />
             <arg line="${_arg-line}" />
         </exec>
-        <exec executable="/bin/sh" osfamily="unix" failonerror="true">
+        <exec executable="/bin/sh" osfamily="unix" failonerror="${fail_on_exec_error}">
             <arg line='-c "${_full-path-to-exec} ${_arg-line}"' />
         </exec>
     </target>
