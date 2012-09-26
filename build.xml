@@ -896,7 +896,7 @@ also can we avoid having to set these:
         <echo>Executing ${_full-path-to-exec} ${_arg-line}</echo>
         <exec executable="cmd" osfamily="windows" failonerror="true">
             <arg value="/c" />
-            <arg file="${_full-path-to-exec}" />
+            <arg value="${_full-path-to-exec}" />
             <arg line="${_arg-line}" />
         </exec>
         <exec executable="/bin/sh" osfamily="unix" failonerror="true">
