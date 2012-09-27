@@ -465,6 +465,7 @@ to your .bashrc
         <fail unless="project"/>
         <!-- git-url could be specified or svn-url --> 
         <property name="git-url" value="${svn-url}/${project}${branch}"/>
+        <property name="revision" value="0"/>
     	<!-- Allow checking HEAD only.-->
     	<if>
     		<equals arg1="${revision}" arg2="HEAD"/>
@@ -475,8 +476,6 @@ to your .bashrc
     			<property name="checkout-target" value="${revision}:HEAD"/>
     		</else>
     	</if>
-        <property name="revision" value="0"/>
-        
         <echo>git svn cloning ${git-url}</echo>
         <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
             <arg value="svn"/>
