@@ -865,6 +865,11 @@ also can we avoid having to set these:
             <param name="_arg-line" value='"gem" "cleanup"' />
         </antcall>
     </target>
+    <target name="gollum-install" description="gollum is a ruby gem that allows easy offline editing of the github based wikis">
+        <antcall target="gem-install">
+            <param name="gem" value="gollum" />
+        </antcall>
+    </target>
     <target name="plovr-watch" description="Runs plovr server to compile closure on fly." depends="_closure-check-out">
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="java" />
