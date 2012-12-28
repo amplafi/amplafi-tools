@@ -47,9 +47,9 @@ public class ReplaceIds extends Task {
 
     @Override
     public void execute() throws BuildException {
-        try (Scanner s = new Scanner(new File(inputFile));
-             PrintWriter w = new PrintWriter(ouputFile)) {
-            replace(s, w);
+        try (Scanner input = new Scanner(new File(inputFile));
+             PrintWriter output = new PrintWriter(ouputFile)) {
+            replace(input, output);
         } catch (Exception e) {
             throw new BuildException(e);
         }
