@@ -13,3 +13,4 @@
 .settings
 .DS_Store
 /build.local.properties
+/target
