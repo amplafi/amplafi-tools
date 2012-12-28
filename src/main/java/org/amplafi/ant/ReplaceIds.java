@@ -8,7 +8,7 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
 /**
- * Replaces arbitrary string in a file with incremental int values.
+ * Replaces all occurancies of an arbitrary string in a file with incremental int values.
  * 
  * @author aectann@gmail.com (Konstantin Burov)
  *
