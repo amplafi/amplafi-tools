@@ -103,7 +103,7 @@
         <fail unless="warning-system-variable" />
         <fail unless="warning-old-variable" />
         <fail unless="warning-using-variable" />
-        <echo> WARNING:  Environment variable ${warning-system-variable} is set to: ${warning-old-variable}
+        <echo>WARNING:  Environment variable ${warning-system-variable} is set to: ${warning-old-variable}
            and instead using: ${warning-using-variable}
         </echo>
     </target>
