@@ -9,6 +9,8 @@ import org.apache.tools.ant.Task;
 
 /**
  * Replaces all occurancies of an arbitrary string in a file with incremental int values.
+ *
+ * Used to avoid unnecessary deltas when creating liquibase files.
  * 
  * @author aectann@gmail.com (Konstantin Burov)
  *
