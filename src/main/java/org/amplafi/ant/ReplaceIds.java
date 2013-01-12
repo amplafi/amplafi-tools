@@ -8,19 +8,18 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
 
 /**
- * Replaces all occurancies of an arbitrary string in a file with incremental int values.
- *
+ * Replaces all occurancies of an arbitrary string in a file with incremental int values. 
+ * 
  * Used to avoid unnecessary deltas when creating liquibase files.
  * 
  * @author aectann@gmail.com (Konstantin Burov)
- *
  */
 public class ReplaceIds extends Task {
-    
+
     private String inputFile;
-    
-    private String ouputFile;
-    
+
+    private String outputFile;
+
     private String stringToReplace;
 
     public String getInputFile() {
@@ -31,14 +30,14 @@ public class ReplaceIds extends Task {
         this.inputFile = inputFile;
     }
 
-    public String getOuputFile() {
-        return ouputFile;
+    public String getOutputFile() {
+        return outputFile;
     }
 
-    public void setOuputFile(String ouputFile) {
-        this.ouputFile = ouputFile;
+    public void setOutputFile(String outputFile) {
+        this.outputFile = outputFile;
     }
-    
+
     public String getStringToReplace() {
         return stringToReplace;
     }
@@ -49,8 +48,7 @@ public class ReplaceIds extends Task {
 
     @Override
     public void execute() throws BuildException {
-        try (Scanner input = new Scanner(new File(inputFile));
-             PrintWriter output = new PrintWriter(ouputFile)) {
+        try (Scanner input = new Scanner(new File(inputFile)); PrintWriter output = new PrintWriter(outputFile)) {
             replace(input, output);
         } catch (Exception e) {
             throw new BuildException(e);
