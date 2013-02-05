@@ -994,6 +994,10 @@ also can we avoid having to set these:
         </condition>
     </target>
     <target name="init-database-users" depends="mysql-root-user-check" description="init-database-users">
+        <!-- TODO make look to create multiple users -->
+        <antcall target="mysql-create-user"/>
+    </target>
+    <target name="mysql-create-user" depends="mysql-root-user-check" description="create a mysql user : -Dmysql-user-account= -Dmysql-user-password= -Ddatabase-name=">
         <fail unless="mysql-user-account"/>
         <fail unless="mysql-user-password"/>
         <fail unless="database-name"/>
@@ -1015,7 +1019,7 @@ also can we avoid having to set these:
             </sequential>
         </for>
     </target>
-    <target name="mysql-drop-and-create-db" depends="mysql-root-user-check">
+    <target name="mysql-drop-and-create-db" depends="mysql-root-user-check" description="Create a mysql db -Ddatabase-name=">
         <fail unless="database-name"/>
         <echo>Dropping database ${database-name} ${mysql-charset}</echo>
         <exec executable="${mysql}">
