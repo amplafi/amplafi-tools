@@ -1010,11 +1010,11 @@ also can we avoid having to set these:
         <echo>Creating access for ${mysql-user-account} (if this fails make sure user name is less than 16 characters)</echo>
         <for list="%,localhost" param="mysql-scope">
             <sequential>
-                <echo>GRANT ${mysql-privileges} ON ${database-name}.* TO '${mysql-user-account}'@'@{mysql-scope}' IDENTIFIED BY '${mysql-user-password}';"</echo>
+                <echo>GRANT ${mysql-privileges} ON `${database-name}`.* TO '${mysql-user-account}'@'@{mysql-scope}' IDENTIFIED BY '${mysql-user-password}';"</echo>
                 <exec executable="${mysql}" errorproperty="_init-database-users-failed">
                       <arg value="--user=${mysql-root-user}"/>
                       <arg value="--password=${mysql-root-password}"/>
-                      <arg value="--execute=GRANT ${mysql-privileges} ON ${database-name}.* TO '${mysql-user-account}'@'@{mysql-scope}' IDENTIFIED BY '${mysql-user-password}';"/>
+                      <arg value="--execute=GRANT ${mysql-privileges} ON `${database-name}`.* TO '${mysql-user-account}'@'@{mysql-scope}' IDENTIFIED BY '${mysql-user-password}';"/>
                 </exec>
             </sequential>
         </for>
