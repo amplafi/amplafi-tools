@@ -65,6 +65,10 @@ Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downl
 1. Find the place where you want the amplafi files and tools to be placed.
 2. Create the directory "farreaches". This is where the clone of amplafi-tools repository will reside.
 
+## Preparing system-specific variables##
+1. If your Maven is cofigured to use a custom repository location (not USER_HOME/.m2/repository)
+   Create amplafi-tools/build.local.properties file and add the following line:
+   <pre> mvn-repository=CUSTOM_PATH_TO_MAVEN_REPOSITORY </pre>
 
 ## Cloning the amplafi-tools repository using git##
 
