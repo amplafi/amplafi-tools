@@ -67,8 +67,7 @@ Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downl
 
 ## Preparing system-specific variables##
 1. Create amplafi-tools/build.local.properties file.
-1. If your Maven is cofigured to use a custom repository location (not USER_HOME/.m2/repository):
-   * Add the following line:
+1. If your Maven is cofigured to use a custom repository location (not USER_HOME/.m2/repository) add line:
    <pre> mvn-repository=CUSTOM_PATH_TO_MAVEN_REPOSITORY </pre>
 2. If you use Windows you need to specify MySQL home folder:
    <pre> mysql-home=PATH_TO_MYSQL_HOME </pre>
