@@ -66,9 +66,12 @@ Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downl
 2. Create the directory "farreaches". This is where the clone of amplafi-tools repository will reside.
 
 ## Preparing system-specific variables##
+1. Create amplafi-tools/build.local.properties file.
 1. If your Maven is cofigured to use a custom repository location (not USER_HOME/.m2/repository):
-   * Create amplafi-tools/build.local.properties file and add the following line:
+   * Add the following line:
    <pre> mvn-repository=CUSTOM_PATH_TO_MAVEN_REPOSITORY </pre>
+2. If you use Windows you need to specify MySQL home folder:
+   <pre> mysql-home=PATH_TO_MYSQL_HOME </pre>
 
 ## Cloning the amplafi-tools repository using git##
 
