@@ -713,7 +713,6 @@ to your .bashrc
     </target>
 	
 	<!-- ================Groovy============================= -->
-	<property name="groovy-version" value="2.1.1" />
 	<property name="groovy-jar" value="${mvn-repository}/org/codehaus/groovy/groovy-all/${groovy-version}/groovy-all-${groovy-version}.jar"/>
 	<target name="_groovy-config" depends="_groovy-validate,_groovy-download">
     </target>
