@@ -684,18 +684,6 @@ to your .bashrc
             <param name="project" value="amplafi-tools" />
         </antcall>
     </target>
-	
-	<!-- A small tutorial on using Groovy+Ant is here http://groovy.codehaus.org/The+groovy+Ant+Task -->
-	<!-- TODO Load groovy dynamicly, not using Ant's classpath -->
-	<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy"/>
-
-	<target name="groovy-script" description="General-purpose task for groovy scripts invocation.">
-		<fail unless="groovy-script-src" />
-		<fail unless="groovy-script-args-string" />
-		<groovy src="${groovy-script-src}">
-			<arg line="${groovy-script-args-string}"/>
-		</groovy>
-    </target>
 
     <!-- PHP Unit Testing -->
     <target name="phpunit-install" description="PHPUnit installation">
@@ -723,6 +711,42 @@ to your .bashrc
             php -d detect_unicode=0 ${tools-dir}/bin/go-pear.phar
         </fail>
     </target>
+	
+	<!-- ================Groovy============================= -->
+	<property name="groovy-version" value="2.1.1" />
+	<property name="groovy-jar" value="${mvn-repository}/org/codehaus/groovy/groovy-all/${groovy-version}/groovy-all-${groovy-version}.jar"/>
+	<target name="_groovy-config" depends="_groovy-validate,_groovy-download">
+    </target>
+	
+	<target name="_groovy-validate">
+        <condition property="_groovy-available">
+            <available file="${groovy-jar}" />
+        </condition>
+    </target>
+	<target name="_groovy-download" unless="_groovy-available">
+		<echo>downloading org.codehaus.groovy:groovy-all:${groovy-version}</echo>
+		<antcall target="_exec">
+            <param name="_full-path-to-exec" value="${mvn}" />
+            <param name="_arg-line" value='"org.apache.maven.plugins:maven-dependency-plugin:2.3:get" "-DrepoUrl=http://download.java.net/maven/2/" "-Dartifact=org.codehaus.groovy:groovy-all:${groovy-version}"' />
+        </antcall>
+    </target>
+	
+	<target name="groovy-script" depends="_groovy-config" description="General-purpose task for groovy scripts invocation.">
+		<fail unless="groovy-script-src" />
+		<fail unless="groovy-script-args-string" />
+		
+		<!-- A small tutorial on using Groovy+Ant is here http://groovy.codehaus.org/The+groovy+Ant+Task -->
+		<!-- TODO Load groovy dynamicly, not using Ant's classpath -->
+		<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy" classpath="${groovy-jar}"/>
+		
+		<echo>Executing groovy script: ${groovy-script-src}. Args: ${groovy-script-args-string}</echo>
+		
+		<groovy src="${groovy-script-src}">
+			<arg line="${groovy-script-args-string}"/>
+		</groovy>
+    </target>
+	
+	
     <!-- ================JRUBY============================= -->
     <property name="jruby-jar" value="${mvn-repository}/org/jruby/jruby-complete/${jruby-version}/jruby-complete-${jruby-version}.jar"/>
     <target name="jruby" depends="_jruby-config" description="Creates the bin directory with jruby executable. Requires mvn be run to get jruby">
