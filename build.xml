@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="opensource-setup" default="help" basedir=".">
-
     <dirname property="root-dir" file="."/>
     <property file="build.local.properties"/>
     <property file="${root-dir}/build.local.properties"/>
@@ -685,6 +684,18 @@ to your .bashrc
             <param name="project" value="amplafi-tools" />
         </antcall>
     </target>
+	
+	<!-- A small tutorial on using Groovy+Ant is here http://groovy.codehaus.org/The+groovy+Ant+Task -->
+	<!-- TODO Load groovy dynamicly, not using Ant's classpath -->
+	<taskdef name="groovy" classname="org.codehaus.groovy.ant.Groovy"/>
+
+	<target name="groovy-script" description="General-purpose task for groovy scripts invocation.">
+		<fail unless="groovy-script-src" />
+		<fail unless="groovy-script-args-string" />
+		<groovy src="${groovy-script-src}">
+			<arg line="${groovy-script-args-string}"/>
+		</groovy>
+    </target>
 
     <!-- PHP Unit Testing -->
     <target name="phpunit-install" description="PHPUnit installation">
@@ -785,8 +796,7 @@ also can we avoid having to set these:
         </antcall>
     </target>
     
-    
-    <target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
+	<target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
         <echo>${jruby} If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
         <echo>NOTE: if you have GEM_HOME set to a different directory than the directory under amplafi-tools, you will need to manually install sass and compass
             gem install sass
