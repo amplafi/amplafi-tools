@@ -462,6 +462,7 @@ to your .bashrc
     </target>
     <target name="_git-svn-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
         <fail unless="project"/>
+        <property name="branch" value=""/>
         <!-- git-url could be specified or svn-url --> 
         <property name="git-url" value="${svn-url}/${project}${branch}"/>
         <property name="revision" value="0"/>
@@ -479,10 +480,12 @@ to your .bashrc
         <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
             <arg value="svn"/>
             <arg value="clone"/>
-            <arg value="${git-url}"/>
-            <arg value="${gitrootdir}/${project}"/>
+            <!-- -s means standard svn layout w/ tags, branches and trunk -->
+            <arg value="-s"/>
             <arg value="-r"/>
             <arg value="${checkout-target}"/>
+            <arg value="${git-url}"/>
+            <arg value="${gitrootdir}/${project}"/>
         </exec>
     </target>
     <target name="_git-svn-fetch" unless="_dont-git-pull">
