@@ -14,3 +14,4 @@
 .DS_Store
 /build.local.properties
 /target
+pom.xml.versionsBackup
