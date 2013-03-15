@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.amplafi</groupId>
         <artifactId>amplafi-opensource-parent</artifactId>
-        <version>1.0.4</version>
+        <version>1.0.5</version>
         <relativePath>../amplafi-opensource-parent/pom.xml</relativePath>
     </parent>
     <dependencies>
