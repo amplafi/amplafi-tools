@@ -34,8 +34,12 @@
         <format property="time-suffix" pattern="yyyy-MM-dd-HH-mm-ss" />
     </tstamp>
     <property name="html-project-list" value="jericho-html"/>
+    <!--
     <property name="t4-project-list" value="amplafi-hivemind,amplafi-tapestry4-test,amplafi-tapestry4-utils,amplafi-tapestry4-springsecurity"/>
     <property name="flow-project-list" value="amplafi-flow-core,amplafi-flow-client,amplafi-flow-tapestry4,amplafi-flow-tutorial" />
+    -->
+    <property name="t4-project-list" value="amplafi-hivemind"/>
+    <property name="flow-project-list" value="amplafi-flow-core,amplafi-flow-client" />
     <property name="opensource-project-list" value="amplafi-android,amplafi-opensource-parent,amplafi-json,amplafi-sworddance,${flow-project-list},${t4-project-list},${html-project-list},liquibase-hibernate,logglylog4j"/>
     <!-- TARGETS -->
     <!-- needed because ant-contrib may not yet be copied to the ant/lib directory -->
