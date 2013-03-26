@@ -1,7 +1,5 @@
-/apache-tomcat-5.5.31
-/apache-tomcat-5.5.31-generated
 /apache-james-2.3.2
-/apache-maven-3.0.4
+/apache-maven-3.0.5
 .project
 /env.settings*
 /ruby
