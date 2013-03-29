@@ -60,7 +60,7 @@
     <target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,update-source,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource"
         description="configures the opensource tools">
     </target>
-    <target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,_build-clean-all-opensource,eclipse-one-time-config-opensource">
+    <target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,_build-clean-all-opensource">
     </target>
 
     <!-- support tasks-->
