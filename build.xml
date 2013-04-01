@@ -1181,9 +1181,9 @@ also can we avoid having to set these:
         <property name="mvn-env" value=""/>
         <property name="_exec-dir" value="${basedir}"/>
         <!-- need to construct commandline manually because not all values are supplied  -->
-        <echo>Running: ${mvn} ${mvn-env} ${mvn-profile} ${mvn-target}</echo>
+        <echo>Running: ${mvn} -Dmaven.test.skip=true ${mvn-env} ${mvn-profile} ${mvn-target}</echo>
         <!-- see http://ant.apache.org/manual/CoreTasks/exec.html :  windows users need to run "cmd /c mvn.bat" -->
-        <exec dir="${_exec-dir}" command="&quot;${mvn}&quot; ${mvn-env} ${mvn-profile} ${mvn-no-tests-sys-property} ${mvn-target}">
+        <exec dir="${_exec-dir}" command="&quot;${mvn}&quot; -Dmaven.test.skip=true ${mvn-env} ${mvn-profile} ${mvn-no-tests-sys-property} ${mvn-target}">
         </exec>
     </target>
     <target name="_backup">
