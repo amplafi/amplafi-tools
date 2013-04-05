@@ -26,7 +26,7 @@ Note: Comments and corrections to these instructions are welcome.
    * The output should say something like: git version 1.7.
    * Use the [instructions](http://help.github.com/set-up-git-redirect) if you need to set it up a way to get through firewalls 
    * To avoid constant requests for the passphrase, set up ssh-agent:
-        * set up an ssh-agent using these [instructions](http://help.github.com/working-with-key-passphrases/)
+        * set up an ssh-agent using these [instructions](http://help.github.com/working-with-key-passphrases/). For Arch Linux (which does not have ssh-agent run by default), see [these instructions](https://wiki.archlinux.org/index.php/SSH_Keys#ssh-agent) too.
         * Now when you run the msysgit bash you should be prompted for your passphrase. If you are not prompted for your passphrase then restart windows and start the msysgit bash tool again. 
 
    * On Mac Applications > Utilities > Keychain Access needs to be run ( have it run always )
