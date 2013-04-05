@@ -57,7 +57,7 @@
             Run: "apache-ant-1.9.0${file.separator}bin${file.separator}ant -p" for other commands
         </echo>
     </target>
-    <target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,update-source,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource"
+    <target name="opensource-one-time-setup" depends="_configure_environment,update-source,validate-tools-opensource,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource"
         description="configures the opensource tools">
     </target>
     <target name="complete-one-time-config-opensource" depends="dependencies-all-opensource,_build-clean-all-opensource">
@@ -233,12 +233,6 @@
         <!-- amplafi-tools-->
         <!-- The amplafi-tools project is not on the list because I don't know how ant will react when changing the build.xml file at the same time it is running. Like when performing a update-source -->
 
-        <!-- p6spy project from p6spy's account -->
-        <echo>Calling ${target-call} for p6spy</echo>
-        <antcall target="${target-call}">
-            <param name="project-owner" value="p6spy"/>
-            <param name="${target-parameter}" value="p6spy" />
-        </antcall>
         <property name="project-owner" value="amplafi"/>
         <for list="${opensource-project-list}" param="project">
             <sequential>
