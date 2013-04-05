@@ -54,7 +54,7 @@
         
             Run: "opensource-one-time-setup" will check and download any missing tools. You may need to run this repeatedly.
             
-            Run: "apache-ant-1.8.4{file.separator}bin${file.separator}ant -p" for other commands
+            Run: "apache-ant-1.9.0${file.separator}bin${file.separator}ant -p" for other commands
         </echo>
     </target>
     <target name="opensource-one-time-setup" depends="_configure_environment,validate-tools-opensource,update-source,dependencies-all-opensource,complete-one-time-config-opensource,_build-clean-all-opensource"
