@@ -209,6 +209,8 @@ directory.
 When you are satisfied with your changes you will have to send a pull request to add them to the upstream repository. Please follow these [instructions](http://help.github.com/pull-requests/).
 
 ## Known Issues##
+* ERROR:  Could not find a valid gem 'compass' (>= 0) in any repository
+   * Try: `./bin/jruby gem install compass --install-dir <YOUR_FARREACHES_DIR>/amplafi-tools/ruby/gems/`
 * JAVA_HOME has not been set - build failure
    * This environment variable should be setup when installing the JDK. Set this environment variable to point to the installation directory for the Java Development Kit.
 * ant git-pull-all-opensource (git clone or pull) just hangs
