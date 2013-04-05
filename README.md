@@ -82,7 +82,7 @@ Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downl
 
 1. Change your working directory to the amplafi-tools directory that was just created by cloning the amplafi-tools repository.
 2. Run this command.
-<pre> apache-ant-1.8.4/bin/ant opensource-one-time-setup </pre>
+<pre> apache-ant-1.9.0/bin/ant opensource-one-time-setup </pre>
 
 3. The console window might prompt for things (but not in Windows) so pay attention and answer the questions/prompts.
 
@@ -92,7 +92,7 @@ Alternatively, [Eclipse can be downloaded directly](http://www.eclipse.org/downl
     * make sure you were in the correct directory before running the command
 
 5. Rerun if needed until success: 
-<pre> apache-ant-1.8.4/bin/ant opensource-one-time-setup </pre>
+<pre> apache-ant-1.9.0/bin/ant opensource-one-time-setup </pre>
 
 6. Success will include these statements in the terminal (or Git Bash on Windows): <pre>complete-one-time-config-opensource:
 opensource-one-time-setup:
@@ -122,7 +122,7 @@ Now that you have the opensource files it is time to add them to an Eclipse work
 9. Now, hit **Finish**.
 10. Now, eclipse will take a moment and refresh and build the projects. When it completes you should see no errors (just warnings and tasks). If you see errors, then close eclipse and:
       1. Go to the command window and run this command again.
-<pre> apache-ant-1.8.4/bin/ant opensource-one-time-setup</pre>
+<pre> apache-ant-1.9.0/bin/ant opensource-one-time-setup</pre>
 
       2. Open eclipse to the farreaches workspace.
       3. Select all of the projects on the left hand side and **press the F5 key** (This will force refresh).
