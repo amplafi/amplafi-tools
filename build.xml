@@ -819,8 +819,13 @@ also can we avoid having to set these:
             <param name="gem" value="sass" />
         </antcall>
     </target>
+    <target name="_csscss-installation" depends="_jruby-config">
+        <antcall target="gem-install">
+            <param name="gem" value="csscss" />
+        </antcall>
+    </target>
     
-	<target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
+    <target name="compass-build" depends="_compass-config" description="Uses compass to build css related files.">
         <echo>${jruby} If this fails then in amplafi-tools run: "ant css-tool-install"; gem home= ${env.GEM_HOME}; compass-project-dir=${compass-project-dir}</echo>
         <echo>NOTE: if you have GEM_HOME set to a different directory than the directory under amplafi-tools, you will need to manually install sass and compass
             gem install sass
