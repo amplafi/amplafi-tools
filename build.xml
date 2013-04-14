@@ -890,6 +890,34 @@ also can we avoid having to set these:
             <fileset refid="_css-files" />
         </attrib>
     </target>
+    <!-- HACK TODO PAT: this was copied from the farreaches-common. Some of the properties are not set correctly -->
+    <target name="compass-ci" description="Commit css files in ${prop-web-css}">
+        <fail unless="prop-web-css"/>
+        <fail unless="prop-web"/>
+        <pathconvert property="_prop-web-css-files" pathsep=" ">
+            <fileset dir="${prop-web-css}">
+                <include name="**/*.css"/>
+                <!-- HACK: there are two files that are ignored in the css directory:
+                I       src/main/webapp/css/bundle-guest.css
+                I       src/main/webapp/css/bundle-member.css
+                These files will be added and committed if they are not excluded from this filset.-->
+                <exclude name="**/*bundle*.css"/>
+            </fileset>
+            <globmapper from="${prop-web}${file.separator}*" to=".${file.separator}*"/>
+        </pathconvert>
+        <echo>Adding css files.</echo>
+        <exec executable="${git-exec}" dir="${prop-web}" failonerror="false">
+            <arg value="add"/>
+            <arg line="${_prop-web-css-files}"/>
+        </exec>
+        <echo>Committing css files</echo>
+        <exec executable="${git-exec}" dir="${prop-web}" failonerror="false">
+            <arg value="commit"/>
+            <arg value="-m"/>
+            <arg value="Auto generated css file added/updated."/>
+            <arg line="${_prop-web-css-files}"/>
+        </exec>
+    </target>
     <target name="gem-install" description="do a ruby gem install">
         <echo>Installing ruby gem ${gem} to ${tools-dir}${file.separator}ruby${file.separator}gems</echo>
         <antcall target="_exec">
