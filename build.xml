@@ -40,7 +40,7 @@
     -->
     <property name="t4-project-list" value="amplafi-hivemind"/>
     <property name="flow-project-list" value="amplafi-flow-core,amplafi-flow-client" />
-    <property name="opensource-project-list" value="amplafi-android,amplafi-opensource-parent,amplafi-json,amplafi-sworddance,${flow-project-list},${t4-project-list},${html-project-list},liquibase-hibernate,logglylog4j"/>
+    <property name="opensource-project-list" value="amplafi-opensource-parent,amplafi-json,amplafi-sworddance,${flow-project-list},${t4-project-list},${html-project-list},liquibase-hibernate,logglylog4j"/>
     <!-- TARGETS -->
     <!-- needed because ant-contrib may not yet be copied to the ant/lib directory -->
     <taskdef resource="net/sf/antcontrib/antlib.xml" classpath="${tools-dir}/ant-contrib-${ant-contrib-build}/ant-contrib-${ant-contrib-build}.jar" onerror="fail"/>
