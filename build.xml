@@ -343,11 +343,12 @@
                 </not>
             </condition>
         </fail>
+        <property name="fail-if-fail" value="true"/>
         <mkdir dir="${gitrootdir}"/>
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
         <echo>Cloning ${git-url} (branch : ${branch} ) into ${gitrootdir}/${local-directory} (git-exec: ${git-exec} )</echo>
-        <exec executable="${git-exec}" dir="${gitrootdir}" resultproperty="_git-error-code" failonerror="true">
+        <exec executable="${git-exec}" dir="${gitrootdir}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
             <arg value="clone" />
             <arg value="--branch"/>
             <arg value="${branch}"/>
@@ -357,8 +358,9 @@
     </target>
     <target name="_git-pull" unless="_dont-git-pull">
         <fail unless="project" />
+        <property name="fail-if-fail" value="true"/>
         <echo>git pulling ${local-directory}</echo>
-        <exec executable="${git-exec}" dir="${gitrootdir}/${local-directory}" resultproperty="_git-error-code" failonerror="false" failifexecutionfails="false">
+        <exec executable="${git-exec}" dir="${gitrootdir}/${local-directory}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
             <arg value="pull" />
         </exec>
     </target>
@@ -461,6 +463,7 @@ to your .bashrc
     <target name="_git-svn-clone" unless="_dont-git-clone" depends="_gitconfig-warning">
         <fail unless="project"/>
         <property name="branch" value=""/>
+        <property name="fail-if-fail" value="true"/>
         <!-- git-url could be specified or svn-url --> 
         <property name="git-url" value="${svn-url}/${project}${branch}"/>
         <property name="revision" value="0"/>
@@ -475,7 +478,7 @@ to your .bashrc
     		</else>
     	</if>
         <echo>git svn cloning ${git-url}</echo>
-        <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="true">
+        <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
             <arg value="svn"/>
             <arg value="clone"/>
             <!-- -s means standard svn layout w/ tags, branches and trunk -->
