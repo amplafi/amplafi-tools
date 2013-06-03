@@ -272,18 +272,19 @@
     <target name="git-push" description="git commit/push -Dproject needs to be set">
         <fail unless="project" />
         <echo>${project}</echo>
-        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
+        <property name="local-directory" value="${gitrootdir}/${project}" />        
+        <exec executable="${git-exec}" dir="${local-directory}">
             <arg value="diff" />
         </exec>
-        <fail unless="m" />
-        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
+        <fail unless="commit-message" />
+        <exec executable="${git-exec}" dir="${local-directory}">
             <arg value="commit" />
             <arg value="-a" />
             <arg value="-q" />
             <arg value="-m" />
-            <arg value="${m}" />
+            <arg value="${commit-message}" />
         </exec>
-        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
+        <exec executable="${git-exec}" dir="${local-directory}">
             <arg value="push" />
         </exec>
     </target>
@@ -291,13 +292,12 @@
         <exec dir="${directory}" executable="${git-exec}" failonerror="true">
             <arg value="add"/>
             <arg value="-A"/>
-            <arg value="--"/>
-            <arg value="${directory}"/>
+            <arg value="."/>
         </exec>
         <exec dir="${directory}" executable="${git-exec}" failonerror="false">
             <arg value="commit"/>
             <arg value="-m"/>
-            <arg value="${m}"/>
+            <arg value="${commit-message}"/>
         </exec>
     </target>
     <target name="git-diff-all" description="git diff all">
@@ -308,8 +308,9 @@
     </target>
     <target name="git-diff" description="git diff -Dproject needs to be set">
         <fail unless="project" />
+        <property name="local-directory" value="${gitrootdir}/${project}" />        
         <echo>${project}</echo>
-        <exec executable="${git-exec}" dir="${gitrootdir}/${project}">
+        <exec executable="${git-exec}" dir="${local-directory}">
             <arg value="diff" />
         </exec>
     </target>
@@ -318,16 +319,16 @@
         <fail unless="project" />
         <property name="gitrootdir" value="${root-dir}"/>
         <!-- supply default local directory name as the project name --> 
-        <property name="local-directory" value="${project}" />
+        <property name="local-directory" value="${gitrootdir}/${project}" />        
         <echo>Local dir: ${local-directory}</echo>
         <condition property="_dont-git-pull">
             <not>
-                <available file="${gitrootdir}/${local-directory}/.git" />
+                <available file="${local-directory}/.git" />
             </not>
         </condition>
         <antcall target="_git-pull"/>
         <condition property="_dont-git-clone">
-            <available file="${gitrootdir}/${local-directory}/.git" />
+            <available file="${local-directory}/.git" />
         </condition>
         <antcall target="_git-clone"/>
     </target>
@@ -344,10 +345,12 @@
             </condition>
         </fail>
         <property name="fail-if-fail" value="true"/>
-        <mkdir dir="${gitrootdir}"/>
+        <property name="local-directory" value="${gitrootdir}/${project}" />        
+        <basename directory="${local-directory}" property="__local-directory-root"/>
+        <mkdir dir="${__local-directory-root}" />
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
-        <echo>Cloning ${git-url} (branch : ${branch} ) into ${gitrootdir}/${local-directory} (git-exec: ${git-exec} )</echo>
+        <echo>Cloning ${git-url} (branch : ${branch} ) into ${local-directory} (git-exec: ${git-exec} )</echo>
         <exec executable="${git-exec}" dir="${gitrootdir}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
             <arg value="clone" />
             <arg value="--branch"/>
@@ -360,7 +363,7 @@
         <fail unless="project" />
         <property name="fail-if-fail" value="true"/>
         <echo>git pulling ${local-directory}</echo>
-        <exec executable="${git-exec}" dir="${gitrootdir}/${local-directory}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
+        <exec executable="${git-exec}" dir="${local-directory}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
             <arg value="pull" />
         </exec>
     </target>
@@ -435,13 +438,14 @@ to your .bashrc
     <target name="git-svn-fetch" description="git svn fetch/clone -Dproject needs to be set">
         <fail unless="project"/>
         <property name="gitrootdir" value="${root-dir}"/>
+        <property name="local-directory" value="${gitrootdir}/${project}" />        
         <condition property="_dont-git-pull">
-            <not><available file="${gitrootdir}/${project}"/></not>
+            <not><available file="${local-directory}"/></not>
         </condition>
         <antcall target="_git-svn-fetch">
         </antcall>
         <condition property="_dont-git-clone">
-            <available file="${gitrootdir}/${project}"/>
+            <available file="${local-directory}"/>
         </condition>
         <antcall target="_git-svn-clone">
         </antcall>
@@ -449,13 +453,14 @@ to your .bashrc
     <target name="git-svn-pull" description="git svn pull/clone -Dproject needs to be set">
         <fail unless="project"/>
         <property name="gitrootdir" value="${root-dir}"/>
+        <property name="local-directory" value="${gitrootdir}/${project}" />        
         <condition property="_dont-git-pull">
-            <not><available file="${gitrootdir}/${project}"/></not>
+            <not><available file="${local-directory}"/></not>
         </condition>
         <antcall target="_git-svn-update">
         </antcall>
         <condition property="_dont-git-clone">
-            <available file="${gitrootdir}/${project}"/>
+            <available file="${local-directory}"/>
         </condition>
         <antcall target="_git-svn-clone">
         </antcall>
@@ -467,6 +472,8 @@ to your .bashrc
         <!-- git-url could be specified or svn-url --> 
         <property name="git-url" value="${svn-url}/${project}${branch}"/>
         <property name="revision" value="0"/>
+        <!-- -s means standard svn layout w/ tags, branches and trunk. Most svn repos follow this. -->
+        <property name="svn-standard" value="--stdlayout"/>
     	<!-- Allow checking HEAD only.-->
     	<if>
     		<equals arg1="${revision}" arg2="HEAD"/>
@@ -477,21 +484,14 @@ to your .bashrc
     			<property name="checkout-target" value="${revision}:HEAD"/>
     		</else>
     	</if>
-        <echo>git svn cloning ${git-url}</echo>
+        <echo>git svn cloning ${git-url} to Local dir: ${local-directory}</echo>        
         <exec executable="${git-exec}" resultproperty="_git-error-code" failonerror="${fail-if-fail}" failifexecutionfails="${fail-if-fail}">
-            <arg value="svn"/>
-            <arg value="clone"/>
-            <!-- -s means standard svn layout w/ tags, branches and trunk -->
-            <arg value="-s"/>
-            <arg value="-r"/>
-            <arg value="${checkout-target}"/>
-            <arg value="${git-url}"/>
-            <arg value="${gitrootdir}/${project}"/>
+            <arg line="svn clone -r ${checkout-target} ${svn-standard} ${git-url} ${local-directory}"/>
         </exec>
     </target>
     <target name="_git-svn-fetch" unless="_dont-git-pull">
-        <echo>Updating ${gitrootdir}/${project}</echo>
-        <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="false">
+        <echo>Updating ${local-directory}</echo>
+        <exec dir="${local-directory}" executable="${git-exec}" failonerror="false">
             <arg value="svn"/>
             <arg value="fetch"/>
         </exec>
@@ -500,11 +500,11 @@ to your .bashrc
         <echo>Merging ${project}</echo>
 
         <echo>Switching to the local master branch and then doing an svn rebase.</echo>
-        <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="true">
+        <exec dir="${local-directory}" executable="${git-exec}" failonerror="true">
             <arg value="checkout"/>
             <arg value="master"/>
         </exec>
-        <exec dir="${gitrootdir}/${project}" executable="${git-exec}" failonerror="false">
+        <exec dir="${local-directory}" executable="${git-exec}" failonerror="false">
             <arg value="svn"/>
             <arg value="rebase"/>
         </exec>
