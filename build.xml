@@ -346,7 +346,7 @@
         </fail>
         <property name="fail-if-fail" value="true"/>
         <property name="local-directory" value="${gitrootdir}/${project}" />        
-        <basename directory="${local-directory}" property="__local-directory-root"/>
+        <basename file="${local-directory}" property="__local-directory-root"/>
         <mkdir dir="${__local-directory-root}" />
         <property name="git-url" value="${github-base}/${project-owner}/${project}.git" />
         <property name="branch" value="master"/>
