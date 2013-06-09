@@ -1071,8 +1071,8 @@ also can we avoid having to set these:
         <fail unless="mysql-user-account"/>
         <fail unless="mysql-user-password"/>
         <fail unless="database-name"/>
-        <fail unless="mysql-root-user"/>
-        <fail unless="mysql-root-password"/>
+        <fail unless="mysql-root-user"  message="mysql-root-user is not set: suggest setting ROOT mysql account in mysql-root-user in ${root-dir}/build.local.properties"/>
+        <fail unless="mysql-root-password"  message="mysql-root-password is not set: suggest setting ROOT mysql password mysql-root-password in ${root-dir}/build.local.properties"/>
         <echo>Creating "${mysql-user-account}" database user account. You will need to login with the mysql root account</echo>
         <!-- happens if mysql-root-user does not have a value -->
         <!-- ERROR 1045 (28000): Access denied for user '-p'@'localhost' (using password: NO) -->
