@@ -836,7 +836,7 @@ also can we avoid having to set these:
         </echo>
         <antcall target="_exec">
             <param name="_full-path-to-exec" value="${jruby}" />
-            <param name="_arg-line" value='"compass" "compile" ${_compass-command-line}' />
+            <param name="_arg-line" value='"ruby/gems/bin/compass" "compile" ${_compass-command-line}' />
         </antcall>
     </target>
     <target name="compass-watch" depends="_compass-config" description="Uses compass to continuously watch and build css related files.">
