@@ -1,5 +1,6 @@
 /apache-james-2.3.2
-/apache-maven-3.0.5
+/apache-maven-*
+/apache-ant-*
 .project
 /env.settings*
 /ruby
